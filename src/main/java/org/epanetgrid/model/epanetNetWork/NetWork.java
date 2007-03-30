@@ -33,7 +33,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public Set<T> getTanks();
 	
-	public <L extends ILink,N extends INode> N getAnterior(L link);
+	public INode getAnterior(ILink link);
 	
-	public <L extends ILink,N extends INode> N getProximo(L link);
+	public INode getProximo(ILink link);
 }

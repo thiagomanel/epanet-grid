@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface IValve extends ILink {
+public interface IValve<T extends IPipe> extends ILink<T> {
 
 //	valve type
 //	valve setting TODO:

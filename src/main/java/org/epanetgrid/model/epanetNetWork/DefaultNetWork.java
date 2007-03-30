@@ -23,7 +23,7 @@ import org.epanetgrid.model.nodes.ITank;
  * @author thiago
  *
  */
-public class DefaultNetWork <L extends ILink> implements NetWork{
+public class DefaultNetWork implements NetWork{
 	
 	private final Map<String, NetworkComponent> component = new HashMap<String, NetworkComponent>();
 	
@@ -35,11 +35,9 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 	private final Set<IReservoir> reservoirs = new HashSet<IReservoir>();
 	private final Set<ITank> tanks = new HashSet<ITank>();
 	
-	private final Map<L, String> nosAMontante = new HashMap<L, String>();
-	private final Map<L, String> nosAJusante = new HashMap<L, String>();
+	private final Map<ILink<?>, INode<?>> nosAMontante = new HashMap<ILink<?>, INode<?>>();
+	private final Map<ILink<?>, INode<?>> nosAJusante = new HashMap<ILink<?>, INode<?>>();
 
-	
-	public void removeLink(String label)
 	
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPipes()
@@ -48,13 +46,26 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 		return Collections.unmodifiableSet(pipes);
 	}
 
+	private void addComponent(NetworkComponent component){
+		this.component.put(component.label(), component);
+	}
+	
+	private void removeComponent(String label){
+		this.component.remove(label);
+	}
+	
+	public NetworkComponent getElemento(String label){
+		return this.component.get(label);
+	}
+	
 	public void addPipe(IPipe pipe, INode noMontante, INode noJusante) {
 		if (contains(pipe.label())) {
 			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + pipe.label() + ">.");
 		}
 		pipes.add(pipe);
 		component.put(pipe.label(), pipe);
-		nosAMontante.put((L) pipe, noMontante.label());
+		nosAMontante.put(pipe, noMontante);
+		nosAJusante.put(pipe, noJusante);
 	}
 	
 	/* (non-Javadoc)
@@ -70,7 +81,8 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 		}
 		pumps.add(pump);
 		component.put(pump.label(), pump);
-		nosAMontante.put((L) pump, noMontante.label());
+		nosAMontante.put(pump, noMontante);
+		nosAJusante.put(pump, noJusante);
 	}
 
 	/* (non-Javadoc)
@@ -86,7 +98,8 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 		}
 		valves.add(valve);
 		component.put(valve.label(), valve);
-		nosAMontante.put((L) valve, noMontante.label());
+		nosAMontante.put(valve, noMontante);
+		nosAJusante.put(valve, noJusante);
 	}
 
 	/* (non-Javadoc)
@@ -139,7 +152,7 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 		return Collections.unmodifiableSet(tanks);
 	}
 	
-	public void addTanks(ITank tank) {
+	public void addTanks(ITank<?> tank) {
 		if (contains(tank.label())) {
 			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + tank.label() + ">.");
 		}
@@ -148,13 +161,11 @@ public class DefaultNetWork <L extends ILink> implements NetWork{
 	}
 
 	public INode getAnterior(ILink link) {
-		// TODO Auto-generated method stub
-		return null;
+		return nosAMontante.get(link);
 	}
 
 	public INode getProximo(ILink link) {
-		// TODO Auto-generated method stub
-		return null;
+		return nosAJusante.get(link);
 	}
 
 }

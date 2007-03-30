@@ -90,7 +90,7 @@ public class DefaultPipe implements IPipe {
 		this.length = builder.length;
 	}
 	
-	public class Builder {
+	public static class Builder {
 		
 		protected Measure<Length> length = Measure.valueOf(1, Length.SI_UNIT);
 		protected Measure<Length> diameter = Measure.valueOf(1, Length.SI_UNIT);;
@@ -130,6 +130,10 @@ public class DefaultPipe implements IPipe {
 		public Builder roughnessCoefficient(Measure<Dimensionless> roughnessCoefficient) {
 			this.roughnessCoefficient = roughnessCoefficient;
 			return this;
+		}
+		
+		public DefaultPipe build(){
+			return new DefaultPipe(this);
 		}
 	}
 }

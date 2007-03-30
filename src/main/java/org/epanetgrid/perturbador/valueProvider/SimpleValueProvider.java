@@ -17,7 +17,7 @@ public class SimpleValueProvider {
 	}
 
 	/**
-	 * Discretização feita em intervalos constantes
+	 * Discretizacao feita em intervalos constantes
 	 * @param minValue
 	 * @param maxValue
 	 * @param numSamples
@@ -29,7 +29,7 @@ public class SimpleValueProvider {
 	}
 	
 	/**
-	 * Discretização feita em intervalos constantes
+	 * Discretizacao feita em intervalos constantes
 	 * @param percentualVar
 	 * @param averageValue
 	 * @param numSamples
@@ -42,8 +42,8 @@ public class SimpleValueProvider {
 	}
 	
 	/**
-	 * Discretização feita em intervalos não-constantes
-	 * @param minValue Valor mínimo
+	 * Discretizacao feita em intervalos nao-constantes
+	 * @param minValue Valor mi�nimo
 	 * @param discr Discretizacao
 	 * @param numSamples Numero de amostras
 	 * @return
@@ -55,7 +55,7 @@ public class SimpleValueProvider {
 	}
 	
 	public static ValueProvider getValueProvider(double minValue, double maxValue, double discrer){
-		if(discrer <= 0) throw new IllegalArgumentException("Discretização deve ser positiva.");
+		if(discrer <= 0) throw new IllegalArgumentException("Discretizacao deve ser positiva.");
 		int numSamples = (int) ((maxValue - minValue) / discrer);//test
 		return new MonteCarloValueProvider(minValue, maxValue, numSamples, createRandomSeed());
 	}

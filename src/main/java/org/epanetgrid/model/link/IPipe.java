@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface IPipe extends ILink {
+public interface IPipe<T extends IPipe> extends ILink<T> {
 
 	public static enum Status {OPEN, CLOSED, CV};
 	
