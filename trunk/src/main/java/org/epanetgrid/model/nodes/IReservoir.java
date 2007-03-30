@@ -12,7 +12,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface IReservoir extends INode {
+public interface IReservoir<T extends IJunction> extends INode<T> {
 
 	public Measure<Length> getHead();
 	

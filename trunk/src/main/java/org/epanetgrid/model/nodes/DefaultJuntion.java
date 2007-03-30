@@ -56,7 +56,7 @@ public class DefaultJuntion implements IJunction {
 		this.label = builder.label;
 	}
 	
-	public class Builder {
+	public static class Builder {
 		
 		public Measure<Length> elevation;
 		public Measure<VolumetricFlowRate> baseDemandFlow;
@@ -91,5 +91,8 @@ public class DefaultJuntion implements IJunction {
 			return this;
 		}
 		
+		public DefaultJuntion build(){
+			return new DefaultJuntion(this);
+		}
 	}
 }

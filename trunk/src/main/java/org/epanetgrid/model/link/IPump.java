@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface IPump extends ILink {
+public interface IPump<T extends IPipe> extends ILink<T> {
 
 	public Measure<Energy> getPower();
 	

@@ -18,8 +18,7 @@ public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 	private double valorMedio;
 	private Double discretizacao;
 	
-	/**
-	 * 
+	 /** 
 	 * @param extremoInferior
 	 * @param extremoSuperior
 	 * @param discretizacao

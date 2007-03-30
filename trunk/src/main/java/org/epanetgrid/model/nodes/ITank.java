@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface ITank extends INode {
+public interface ITank<T extends IJunction> extends INode<T> {
 
 	public Measure<Length> getElevation();
 	
