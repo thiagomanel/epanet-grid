@@ -14,7 +14,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public class DefaultPipe implements IPipe {
+public class DefaultPipe implements IPipe<DefaultPipe> {
 
 	private final Measure<Length> length;
 	private final Measure<Length> diameter;
@@ -55,7 +55,6 @@ public class DefaultPipe implements IPipe {
 	 * @see org.epanetgrid.model.link.IPipe#getStatus()
 	 */
 	public Status getStatus() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -99,6 +98,10 @@ public class DefaultPipe implements IPipe {
 		protected NetWork network;
 		protected String label;
 		
+		/**
+		 * @param label
+		 * @param netWork
+		 */
 		public Builder(String label, NetWork netWork){
 			this.network = netWork;
 			this.label = label;
