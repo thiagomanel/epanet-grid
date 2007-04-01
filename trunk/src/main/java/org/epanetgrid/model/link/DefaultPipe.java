@@ -92,7 +92,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	public static class Builder {
 		
 		protected Measure<Length> length = Measure.valueOf(1, Length.SI_UNIT);
-		protected Measure<Length> diameter = Measure.valueOf(1, Length.SI_UNIT);;
+		protected Measure<Length> diameter = Measure.valueOf(1, Length.SI_UNIT);
 		protected Measure<Dimensionless> roughnessCoefficient = Measure.valueOf(1, Dimensionless.SI_UNIT);
 		protected Measure<Dimensionless> lossCoefficient = Measure.valueOf(1, Dimensionless.SI_UNIT);
 		protected NetWork network;
@@ -107,7 +107,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 			this.label = label;
 		}
 		
-		public Builder copy(IPipe pipe){
+		public Builder copy(IPipe<?> pipe){
 			diameter(pipe.getDiameter());
 			length(pipe.getLength());
 			lossCoefficient(pipe.getLossCoefficient());

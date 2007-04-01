@@ -49,7 +49,7 @@ public class DefaultReservoir implements IReservoir<DefaultReservoir> {
 	
 	public static class Builder {
 		
-		private Measure<Length> head;
+		private Measure<Length> head = Measure.valueOf(1, Length.SI_UNIT);
 		private String headPatternID;
 		private String label;
 		private NetWork network;
