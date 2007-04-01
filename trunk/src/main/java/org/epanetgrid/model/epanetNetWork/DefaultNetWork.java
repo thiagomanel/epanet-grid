@@ -41,7 +41,7 @@ public class DefaultNetWork implements NetWork{
 	private DefaultNetWork(Builder builder){ 
 		
 	}
-	
+		
 	public static class Builder{
 		
 		public Builder(){ }
@@ -66,6 +66,9 @@ public class DefaultNetWork implements NetWork{
 		this.component.remove(label);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getElemento(java.lang.String)
+	 */
 	public NetworkComponent getElemento(String label){
 		return this.component.get(label);
 	}
@@ -138,6 +141,9 @@ public class DefaultNetWork implements NetWork{
 		return contains(component.label());
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#contains(java.lang.String)
+	 */
 	public boolean contains(String label) {
 		return component.containsKey(label);
 	}
@@ -172,10 +178,16 @@ public class DefaultNetWork implements NetWork{
 		component.put(tank.label(), tank);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getAnterior(org.epanetgrid.model.ILink)
+	 */
 	public INode getAnterior(ILink link) {
 		return nosAMontante.get(link);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getProximo(org.epanetgrid.model.ILink)
+	 */
 	public INode getProximo(ILink link) {
 		return nosAJusante.get(link);
 	}
