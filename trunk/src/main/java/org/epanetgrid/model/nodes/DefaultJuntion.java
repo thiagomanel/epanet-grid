@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public class DefaultJuntion implements IJunction {
+public class DefaultJuntion implements IJunction<DefaultJuntion> {
 
 	private final Measure<Length> elevation;
 	private final Measure<VolumetricFlowRate> baseDemandFlow;
