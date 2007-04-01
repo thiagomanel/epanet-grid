@@ -5,6 +5,7 @@ package org.epanetgrid.model.link;
 
 import javax.quantities.Dimensionless;
 import javax.quantities.Energy;
+import javax.quantities.Length;
 
 import org.epanetgrid.model.INode;
 import org.epanetgrid.model.epanetNetWork.NetWork;
@@ -90,8 +91,8 @@ public class DefaultPump implements IPump<DefaultPump> {
 	public static class Builder {
 		
 		private String headCurveID;
-		private Measure<Energy> power;
-		private Measure<Dimensionless> relativeSped;
+		private Measure<Energy> power = Measure.valueOf(1, Energy.SI_UNIT);
+		private Measure<Dimensionless> relativeSped = Measure.valueOf(1, Dimensionless.SI_UNIT);
 		private String idTimePattern;
 		private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 		private String label;
@@ -105,7 +106,7 @@ public class DefaultPump implements IPump<DefaultPump> {
 			this.label = label;
 		}
 		
-		public Builder copy(IPump pump){
+		public Builder copy(IPump<?> pump){
 			headCurveID(pump.getHeadCurveID());
 			power(pump.getPower());
 			relativeSped(pump.getRelativeSpeed());
