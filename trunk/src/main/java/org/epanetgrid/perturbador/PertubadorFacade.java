@@ -39,13 +39,13 @@ public class PertubadorFacade {
 		new HashMap<String, Map<pert_types, Collection<IPerturbador>>>();
 									
 	/**
+	 * 
 	 * @param malhaBase
-	 * @param vars
 	 * @return
 	 */
 	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
-				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>,
-									IReservoir<?>> malhaBase, Collection<IPerturbador> vars){
+				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase){
+		
 		
 		return null;
 	}

@@ -38,6 +38,18 @@ public class DefaultNetWork implements NetWork{
 	private final Map<ILink<?>, INode<?>> nosAMontante = new HashMap<ILink<?>, INode<?>>();
 	private final Map<ILink<?>, INode<?>> nosAJusante = new HashMap<ILink<?>, INode<?>>();
 
+	private DefaultNetWork(Builder builder){ 
+		
+	}
+	
+	public static class Builder{
+		
+		public Builder(){ }
+		
+		public DefaultNetWork build(){
+			return new DefaultNetWork(this);
+		}
+	}
 	
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPipes()
