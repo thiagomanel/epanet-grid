@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.epanetgrid.model.ILink;
 import org.epanetgrid.model.INode;
+import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
 import org.epanetgrid.model.link.IValve;
@@ -36,4 +37,8 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	public INode getAnterior(ILink link);
 	
 	public INode getProximo(ILink link);
+	
+	public NetworkComponent getElemento(String label);
+	
+	public boolean contains(String label);
 }

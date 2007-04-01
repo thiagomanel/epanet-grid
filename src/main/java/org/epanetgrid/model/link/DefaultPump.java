@@ -5,7 +5,6 @@ package org.epanetgrid.model.link;
 
 import javax.quantities.Dimensionless;
 import javax.quantities.Energy;
-import javax.quantities.Length;
 
 import org.epanetgrid.model.INode;
 import org.epanetgrid.model.epanetNetWork.NetWork;

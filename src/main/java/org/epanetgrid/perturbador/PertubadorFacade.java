@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
+import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
@@ -46,10 +47,21 @@ public class PertubadorFacade {
 	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase){
 		
+		Map<String, Collection<NetworkComponent>> elementosGerados = new HashMap<String, Collection<NetworkComponent>>(); 
+		
+		for (String label : labelToPerturbadores.keySet()) {
+			Map<pert_types, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
+			elementosGerados.put(label, geraElementosPerturbados(perturbadoresByType, malhaBase.getElemento(label)));
+		}
 		
 		return null;
 	}
 	
+	private Collection<NetworkComponent> geraElementosPerturbados(Map<pert_types, Collection<IPerturbador>> perturbadoresByType, NetworkComponent component) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * @param varPert
 	 * @param TipoPertub
@@ -70,7 +82,7 @@ public class PertubadorFacade {
 	}
 	
 	/**
-	 * So pode existir uma coleção de perturbadores de determinado tipo para cada elemento.
+	 * So pode existir uma coleï¿½ï¿½o de perturbadores de determinado tipo para cada elemento.
 	 * @param label
 	 * @param tipoPerturbacao
 	 * @param perturbadores
