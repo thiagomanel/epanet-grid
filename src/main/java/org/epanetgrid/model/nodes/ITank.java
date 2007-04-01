@@ -13,7 +13,7 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public interface ITank<T extends IJunction> extends INode<T> {
+public interface ITank<T extends ITank> extends INode<T> {
 
 	public Measure<Length> getElevation();
 	
@@ -25,7 +25,7 @@ public interface ITank<T extends IJunction> extends INode<T> {
 	
 	public Measure<Length> getNominalDiameter();
 	
-	public Measure<Volume> getMinimuVolume();
+	public Measure<Volume> getMinimumVolume();
 	
 	public String getVolumeCurveID();
 }

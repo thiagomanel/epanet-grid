@@ -137,5 +137,4 @@ public class DefaultPump implements IPump<DefaultPump> {
 			return new DefaultPump(this);
 		}
 	}
-	
 }
