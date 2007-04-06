@@ -47,21 +47,10 @@ public class PertubadorFacade {
 	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase){
 		
-		Map<String, Collection<NetworkComponent>> elementosGerados = new HashMap<String, Collection<NetworkComponent>>(); 
-		
-		for (String label : labelToPerturbadores.keySet()) {
-			Map<pert_types, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
-			elementosGerados.put(label, geraElementosPerturbados(perturbadoresByType, malhaBase.getElemento(label)));
-		}
 		
 		return null;
 	}
 	
-	private Collection<NetworkComponent> geraElementosPerturbados(Map<pert_types, Collection<IPerturbador>> perturbadoresByType, NetworkComponent component) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/**
 	 * @param varPert
 	 * @param TipoPertub
