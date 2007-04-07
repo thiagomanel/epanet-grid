@@ -11,7 +11,14 @@ import org.epanetgrid.model.NetworkComponent;
  */
 public interface IPerturbador<T extends NetworkComponent> {
 
+	/**
+	 * @param component
+	 * @return
+	 */
 	public T disturb(T component);
 	
+	/**
+	 * @return
+	 */
 	public String getComponentLabel();
 }

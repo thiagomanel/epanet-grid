@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
