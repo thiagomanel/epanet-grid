@@ -91,16 +91,16 @@ public class DefaultTank implements ITank<DefaultTank> {
 		this.volumeCurveID = builder.volumeCurveID;
 	}
 
-	public class Builder{
+	public static class Builder{
 
-		public String volumeCurveID;
-		public Measure<Length> nominalDiameter = Measure.valueOf(1, Length.SI_UNIT);
-		public Measure<Volume> minimumVolume = Measure.valueOf(1, Volume.SI_UNIT);
-		public Measure<Length> minimumWaterLevel = Measure.valueOf(1, Length.SI_UNIT);
-		public Measure<Length> maximumWaterLevel = Measure.valueOf(1, Length.SI_UNIT);
-		public String label;
-		public Measure<Length> initialWaterLevel = Measure.valueOf(1, Length.SI_UNIT);;
-		public Measure<Length> elevation = Measure.valueOf(1, Length.SI_UNIT);
+		private String volumeCurveID;
+		private Measure<Length> nominalDiameter = Measure.valueOf(1, Length.SI_UNIT);
+		private Measure<Volume> minimumVolume = Measure.valueOf(1, Volume.SI_UNIT);
+		private Measure<Length> minimumWaterLevel = Measure.valueOf(1, Length.SI_UNIT);
+		private Measure<Length> maximumWaterLevel = Measure.valueOf(1, Length.SI_UNIT);
+		private String label;
+		private Measure<Length> initialWaterLevel = Measure.valueOf(1, Length.SI_UNIT);;
+		private Measure<Length> elevation = Measure.valueOf(1, Length.SI_UNIT);
 		private NetWork network;
 		
 		public Builder(String label, NetWork netWork){

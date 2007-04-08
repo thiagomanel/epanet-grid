@@ -58,9 +58,9 @@ public class DefaultJuntion implements IJunction<DefaultJuntion> {
 	
 	public static class Builder {
 		
-		public Measure<Length> elevation = Measure.valueOf(1, Length.SI_UNIT);
-		public Measure<VolumetricFlowRate> baseDemandFlow = Measure.valueOf(1, VolumetricFlowRate.SI_UNIT);;
-		public String demandPatternID;
+		protected Measure<Length> elevation = Measure.valueOf(1, Length.SI_UNIT);
+		protected Measure<VolumetricFlowRate> baseDemandFlow = Measure.valueOf(1, VolumetricFlowRate.SI_UNIT);;
+		protected String demandPatternID;
 		protected NetWork network;
 		protected String label;
 		
