@@ -1,11 +1,15 @@
 package org.epanetgrid.model.epanetNetWork;
 
+import java.util.Set;
+
 import javax.quantities.Dimensionless;
 import javax.quantities.Length;
 import javax.quantities.VolumetricFlowRate;
 
 import junit.framework.TestCase;
 
+import org.epanetgrid.model.ILink;
+import org.epanetgrid.model.INode;
 import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
@@ -29,6 +33,51 @@ public class DefaultNetWorkTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		baseNetWork = createNetWork();
+	}
+	
+	/**
+	 * 
+	 */
+	public void testReplaceComponent(){
+		
+		IPipe basePipe = (IPipe) baseNetWork.getElemento("P1");
+		INode noMontante = baseNetWork.getAnterior(basePipe);
+		INode noJusante = baseNetWork.getProximo(basePipe);
+		
+		Measure<Length> newLength = basePipe.getLength().times(2);
+		IPipe newPipe = new DefaultPipe.Builder("P1-new", baseNetWork).copy(basePipe).length(newLength).build();
+		baseNetWork.replaceComponent("P1", newPipe);
+		
+		assertFalse(baseNetWork.contains("P1"));
+		assertFalse(baseNetWork.getPipes().contains(basePipe));
+		assertTrue(baseNetWork.contains("P1-new"));
+		assertTrue(baseNetWork.getPipes().contains(newPipe));
+		
+		assertEquals(noMontante, baseNetWork.getAnterior(newPipe));
+		assertEquals(noJusante, baseNetWork.getProximo(newPipe));
+		assertEquals(newLength, newPipe.getLength());
+		
+		IJunction<?> baseNode = (IJunction<?>) baseNetWork.getElemento("N4");
+		Set<ILink<?>> elosMontante = baseNetWork.getAnteriores(baseNode);
+		Set<ILink<?>> elosJusante = baseNetWork.getProximos(baseNode);
+		
+		Measure<Length> newElevation = baseNode.getElevation().times(2);
+		IJunction newJunction =  new DefaultJuntion.Builder("newJuction", baseNetWork).copy(baseNode).elevation(newElevation).build();
+		
+		baseNetWork.replaceComponent(baseNode.label(), newJunction);
+		
+		assertFalse(baseNetWork.contains(baseNode.label()));
+		assertFalse(baseNetWork.getJunctions().contains(baseNode));
+		assertTrue(baseNetWork.contains(newJunction.label()));
+		assertTrue(baseNetWork.getJunctions().contains(newJunction));
+		
+		for (ILink<?> link : elosJusante) {
+			assertEquals(newJunction, baseNetWork.getAnterior(link));
+		}
+		
+		for (ILink<?> link : elosMontante) {
+			assertEquals(newJunction, baseNetWork.getProximo(link));
+		}
 	}
 	
 	/**
