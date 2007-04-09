@@ -41,7 +41,6 @@ class PertubadorRunner {
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase, 
 									Map<String, Map<pert_types, Collection<IPerturbador>>> labelToPerturbadores ){
 		
-		
 		Map<String, Collection<NetworkComponent>> elementosGerados = new HashMap<String, Collection<NetworkComponent>>(); 
 		
 		for (String label : labelToPerturbadores.keySet()) {

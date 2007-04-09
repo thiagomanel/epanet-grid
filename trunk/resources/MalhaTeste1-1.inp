@@ -1,0 +1,121 @@
+[JUNCTIONS]
+;ID     Elevation    Demand     Pattern
+;-------------------------------------------
+N1       621.75                   
+N2       633          2.12          demanda
+N3       625          2.12         demanda
+N4       618          2.12          demanda
+N5       633          2.12          demanda
+N6       640          2.12          demanda
+N7       622          2.12          demanda
+N8       628        
+N9       631          
+N10      631         
+N11      689          8.08            demanda
+N12      640         
+N13      575         
+N14      575         
+N15      661          
+N16      635          4.04            demanda
+N17      653          12.22         demanda
+
+[RESERVOIRS]
+;ID     Head   
+;---------------
+M1      621.75     
+
+[TANKS]
+;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.     
+;----------------------------------------------------------
+R1       643       20         18.4        21.4       10.3
+R2       689       10         7.2         12.7       11.3
+R3       669       10         8.3         12.2       9.2
+
+[PIPES]
+;ID     Node1     Node2     Length     Diam.     Roughness 
+;-----------------------------------------------------------
+T1      N1         R1        2365       200        100         
+T2      R1         N2        181        250        100  
+T3      N2         N3        465        250        100  
+T4      N3         N4        122        250        100  
+T5      N4         N5        335        250        100  
+T6      N5         N6        164        250        100  
+T7      N6         N7        1768       250        100  
+T8      N7         N8        485        250        100  
+T9      N8         N9        280        200        150  
+T10     N10        R2        1441       200        150  
+T11     R2         N11       1          200        150  
+T12     N11        N12       3354       150        150  
+T13     N12        N13       6340       150        150  
+T14     N14        R3        5290       150        150  
+T15     R3         N15       172        100        150  
+T16     N15        N16       511        75         150  
+T17     N15        N17       1450       150        150    
+
+[PUMPS]
+;ID     Node1     Node2     Properties   
+;---------------------------------------------
+B1        M1       N1        HEAD B1
+B2        N9       N10       HEAD B2 
+B3        N13      N14       HEAD B3
+
+[CURVES]
+;ID     Flow     Head
+;Curvas das bombas
+;-------------------------
+B1       0        102.6
+B1       10       102.06
+B1       20       98.41
+B1       30       91.67
+B1       40       81.83
+B1       50       68.69
+B1       60       52.84
+;---------------------------
+B2       0        102.42
+B2       10       100.28
+B2       20       95.90
+B2       30       89.28
+B2       40       80.42
+B2       50       69.32
+B2       60       55.97
+;---------------------------
+B3       0        124.71
+B3       10       122.05
+B3       20       108.76
+B3       30       80.88
+B3       40       50.33
+B3       50       5.19
+
+[PATTERNS]
+;Padrao de consumo
+demanda 0.25 0.25 0.25 0.25 0.25 0.5 0.5 0.5 1 1 1.2 1.2 1.2 1.2 1 1 1 1 0.8 0.6 0.6 0.6 0.6 0.6
+; Padrao de custo
+preco 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 7.75 7.75 7.75 1 1 1 1 1 1 
+
+[ENERGY]
+GLOBAL PRICE     0.10294
+GLOBAL PATTERN   preco
+DEMAND CHARGE    9.52
+
+[OPTIONS]
+UNITS LPS
+HEADLOSS H-W
+
+[TIMES]
+DURATION 24 HOURS
+HYDRAULIC TIMESTEP 60 MINUTES
+PATTERN TIMESTEP 60 MINUTES
+START CLOKTIME 12:00 AM
+ 
+[REPORT]
+STATUS no
+SUMMARY yes
+MESSAGES yes
+NODES all
+LINKS all
+FILE Relatorio-1.txt
+ENERGY YES
+
+
+
+
