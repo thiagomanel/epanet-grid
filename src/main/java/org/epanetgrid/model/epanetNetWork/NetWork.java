@@ -38,7 +38,13 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public INode getProximo(ILink link);
 	
+	public Set<ILink<?>> getAnteriores(INode node);
+	
+	public Set<ILink<?>> getProximos(INode node);
+	
 	public NetworkComponent getElemento(String label);
 	
 	public boolean contains(String label);
+	
+	public void replaceComponent(String oldComponentLabel, NetworkComponent newComponent);
 }

@@ -42,6 +42,9 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	
 	private final Map<ILink<?>, INode<?>> nosAMontante = new HashMap<ILink<?>, INode<?>>();
 	private final Map<ILink<?>, INode<?>> nosAJusante = new HashMap<ILink<?>, INode<?>>();
+	
+	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
+	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
 	private DefaultNetWork(Builder builder){ 
 		NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork = builder.baseNetWork;
@@ -136,6 +139,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		component.put(pipe.label(), pipe);
 		nosAMontante.put(pipe, noMontante);
 		nosAJusante.put(pipe, noJusante);
+		elosAJusante.get(noMontante).add(pipe);
+		elosAMontante.get(noJusante).add(pipe);
 	}
 	
 	/* (non-Javadoc)
@@ -153,6 +158,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		component.put(pump.label(), pump);
 		nosAMontante.put(pump, noMontante);
 		nosAJusante.put(pump, noJusante);
+		elosAJusante.get(noMontante).add(pump);
+		elosAMontante.get(noJusante).add(pump);
 	}
 
 	/* (non-Javadoc)
@@ -170,6 +177,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		component.put(valve.label(), valve);
 		nosAMontante.put(valve, noMontante);
 		nosAJusante.put(valve, noJusante);
+		elosAJusante.get(noMontante).add(valve);
+		elosAMontante.get(noJusante).add(valve);
 	}
 
 	/* (non-Javadoc)
@@ -187,8 +196,10 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	public void addJuncao(IJunction juncao) {
 		if (contains(juncao.label())) {
 			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + juncao.label() + ">.");
-		}
+		}		
 		junctions.add(juncao);
+		elosAMontante.put(juncao, new HashSet<ILink<?>>());
+		elosAJusante.put(juncao, new HashSet<ILink<?>>());
 		component.put(juncao.label(), juncao);
 	}
 
@@ -215,6 +226,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + reservoir.label() + ">.");
 		}
 		reservoirs.add(reservoir);
+		elosAMontante.put(reservoir, new HashSet<ILink<?>>());
+		elosAJusante.put(reservoir, new HashSet<ILink<?>>());
 		component.put(reservoir.label(), reservoir);
 	}
 	
@@ -230,6 +243,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + tank.label() + ">.");
 		}
 		tanks.add(tank);
+		elosAMontante.put(tank, new HashSet<ILink<?>>());
+		elosAJusante.put(tank, new HashSet<ILink<?>>());
 		component.put(tank.label(), tank);
 	}
 
@@ -247,4 +262,120 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return nosAJusante.get(link);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#replaceComponent(java.lang.String, org.epanetgrid.model.NetworkComponent)
+	 */
+	public void replaceComponent(String oldComponentLabel, NetworkComponent newComponent) {
+		//<ugly>
+		if(isNodeComponent(oldComponentLabel)){
+			
+			INode oldComponent = (INode)getElemento(oldComponentLabel);
+			Set<ILink<?>> elosMontante = getAnteriores(oldComponent);
+			elosMontante.remove(oldComponent);
+			
+			Set<ILink<?>> elosJusante = getProximos(oldComponent);
+			elosJusante.remove(oldComponent);
+			
+			//ugly!!
+			if(getTanks().contains(oldComponent)){
+				removeNode(oldComponent);
+				addTanks((ITank<?>) newComponent);
+			}else if(getReservoirs().contains(oldComponent)){
+				removeNode(oldComponent);
+				addReservoir((IReservoir) newComponent);
+			}else if(getJunctions().contains(oldComponent)){
+				removeNode(oldComponent);
+				addJuncao((IJunction) newComponent);
+			}
+			
+			for (ILink<?> link : elosJusante) {
+				nosAMontante.remove(link);
+				nosAMontante.put(link, (INode<?>) newComponent);
+			}
+			
+			for (ILink<?> link : elosMontante) {
+				nosAJusante.remove(link);
+				nosAJusante.put(link, (INode<?>) newComponent);
+			}
+			
+		}else if(isLinkComponent(oldComponentLabel)){
+			
+			ILink oldComponent = (ILink)getElemento(oldComponentLabel);
+			INode noMontante = getAnterior(oldComponent);
+			INode noJusante = getProximo(oldComponent);
+
+			//ugly!!
+			if(getPipes().contains(oldComponent)){
+				removeLink(oldComponent);
+				addPipe((IPipe) newComponent, noMontante, noJusante);
+			}else if(getPumps().contains(oldComponent)){
+				removeLink(oldComponent);
+				addPump((IPump) newComponent, noMontante, noJusante);
+			}else if(getValves().contains(oldComponent)){
+				removeLink(oldComponent);
+				addValve((IValve) newComponent, noMontante, noJusante);
+			}
+		}
+		//</ugly>
+	}
+
+	private void removeLink(ILink link){
+		Set<ILink<?>> set = elosAMontante.get(nosAJusante.get(link));
+		if (null != set) {
+			set.remove(link);
+		}
+		set = elosAJusante.get(nosAMontante.get(link));
+		if (null != set) {
+			set.remove(link);
+		}
+		
+		nosAJusante.remove(link);
+		nosAMontante.remove(link);
+		
+		pipes.remove(link);
+		valves.remove(link);
+		pumps.remove(link);
+		
+		component.remove(link.label());
+	}
+	
+	private void removeNode(INode node){
+		junctions.remove(node);
+		tanks.remove(node);
+		reservoirs.remove(node);
+		
+		for (ILink link : elosAJusante.get(node)) {
+			removeLink(link);
+		}
+		
+		for (ILink link : elosAMontante.get(node)) {
+			removeLink(link);
+		}
+		
+		component.remove(node.label());
+	}
+	
+	//FIXME: DEVERIA LANÇAR UMA EXCEPTION SE O ELEMENTO NAUM EXISTIR
+	private boolean isLinkComponent(String label){
+		NetworkComponent component = getElemento(label); 
+		return ( component == null) ? false : ( getPipes().contains(component) || getPumps().contains(component)
+													|| getValves().contains(component)); 
+	}
+
+	private boolean isNodeComponent(String label){
+		NetworkComponent component = getElemento(label); 
+		return ( component == null) ? false : ( getTanks().contains(component) || getReservoirs().contains(component)
+													|| getJunctions().contains(component));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getAnteriores(org.epanetgrid.model.INode)
+	 */
+	public Set<ILink<?>> getAnteriores(INode node) {
+		return this.elosAMontante.get(node);
+	}
+
+	public Set<ILink<?>> getProximos(INode node) {
+		return this.elosAJusante.get(node);
+	}
 }
