@@ -1,6 +1,7 @@
 package org.epanetgrid.data;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Set;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
@@ -21,7 +22,7 @@ public class EpaFileReaderTest extends TestCase {
 	/*
 	 * Test method for 'org.epanetgrid.data.EpaFileReader.read(String)'
 	 */
-	public final void testRead() throws FileNotFoundException {
+	public final void testRead() throws IOException {
 		
 		String filePath = "/resources/NoDonutForYou";
 		EpaFileReader fileReader = new EpaFileReader();
