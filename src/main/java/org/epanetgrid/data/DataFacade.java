@@ -3,7 +3,7 @@
  */
 package org.epanetgrid.data;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
 
@@ -15,7 +15,7 @@ import org.epanetgrid.model.epanetNetWork.NetWork;
  */
 public class DataFacade {
 	
-	public NetWork createNetWorkFromFile(String filePath) throws FileNotFoundException{
+	public NetWork createNetWorkFromFile(String filePath) throws IOException{
 		return new EpaFileReader().read(filePath);
 	}
 	
