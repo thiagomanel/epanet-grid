@@ -19,8 +19,8 @@ public class DataFacade {
 		return new EpaFileReader().read(filePath);
 	}
 	
-	public void saveNetWork(NetWork netWork){
-		new EpaFileWriter().write(netWork);
+	public void saveNetWork(NetWork netWork, String filePath) throws IOException{
+		new EpaFileWriter().write(netWork, filePath);
 	}
 	
 }

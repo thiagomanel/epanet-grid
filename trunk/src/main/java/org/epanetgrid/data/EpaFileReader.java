@@ -29,7 +29,6 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
-import org.epanetgrid.perturbador.perturbadores.IPerturbador;
 import org.jscience.physics.measures.Measure;
 
 /**
