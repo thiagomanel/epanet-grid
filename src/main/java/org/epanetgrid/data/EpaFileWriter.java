@@ -85,7 +85,6 @@ class EpaFileWriter {
 		protected abstract void printCore(PrintWriter writer);
 
 		protected abstract void printHeader(PrintWriter writer);
-		
 	}
 	
 	private class JuncaoWriter extends AbstractComponentWriter {
