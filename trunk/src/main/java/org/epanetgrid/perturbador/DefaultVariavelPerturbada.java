@@ -46,6 +46,4 @@ public class DefaultVariavelPerturbada implements IVariavelPerturbada {
 		return this.vp;
 	}
 
-	
-
 }
