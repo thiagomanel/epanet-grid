@@ -12,7 +12,6 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 import javax.quantities.Dimensionless;
-import javax.quantities.Energy;
 import javax.quantities.Length;
 import javax.quantities.VolumetricFlowRate;
 
@@ -26,9 +25,6 @@ import org.epanetgrid.model.link.IPump;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
-import org.epanetgrid.model.nodes.IJunction;
-import org.epanetgrid.model.nodes.IReservoir;
-import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
 import org.jscience.physics.measures.Measure;
 
@@ -83,7 +79,7 @@ class EpaFileReader {
 		private static final String PATTERN_ID = "PATTERN";
 		private static final String TIME_ID = "TIMES";
 		private static final String OPTION_ID = "OPTIONS";
-		private static final String REPORT_ID = "REPORTS";
+		private static final String REPORT_ID = "REPORT";
 		private static final String ENERGY_ID = "ENERGY";
 		
 		private final Parser junctionParse = new JunctionParser();
@@ -159,6 +155,11 @@ class EpaFileReader {
 			tanksParser.collectResult(netWork);
 			pipeParser.collectResult(netWork);
 			pumpParser.collectResult(netWork);
+			patternParser.collectResult(netWork);
+			timeParser.collectResult(netWork);
+			reportParser.collectResult(netWork);
+			optionParser.collectResult(netWork);
+			energyParser.collectResult(netWork);
 		}
 	}
 	

@@ -53,6 +53,21 @@ public class EpaFileReaderTest extends TestCase {
 		
 		Set<ITank<?>> pumps = netWork.getPumps();
 		assertEquals(3, pumps.size());
+		
+		Set<String> options = netWork.getOptions();
+		assertEquals(2, options.size());
+		
+		Set<String> patterns = netWork.getPattern();
+		assertEquals(2, patterns.size());
+		
+		Set<String> energy = netWork.getEnergy();
+		assertEquals(3, energy.size());
+		
+		Set<String> times = netWork.getTimes();
+		assertEquals(4, times.size());
+		
+		Set<String> reports = netWork.getReports();
+		assertEquals(7, reports.size());
 	}
 
 }
