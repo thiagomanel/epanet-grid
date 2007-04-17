@@ -27,7 +27,7 @@ public class JunctionElevationPerturbador extends AbstractPerturbador<DefaultJun
 	 * @see org.epanetgrid.perturbador.perturbadores.IPerturbador#disturb(T)
 	 */
 	public DefaultJuntion disturb(DefaultJuntion component) {
-		 Measure<Length> newElevation = Measure.valueOf(getNewValue(), Length.SI_UNIT);
+		Measure<Length> newElevation = Measure.valueOf(getNewValue(), Length.SI_UNIT);
 		return new DefaultJuntion.Builder(getComponentLabel(), null).copy(component).elevation(newElevation).build();
 	}
 
