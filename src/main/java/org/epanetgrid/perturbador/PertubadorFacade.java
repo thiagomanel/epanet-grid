@@ -17,12 +17,6 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.perturbador.perturbadores.IPerturbador;
-import org.epanetgrid.perturbador.perturbadores.junctions.JunctionBaseDemandFlowPerturbador;
-import org.epanetgrid.perturbador.perturbadores.junctions.JunctionElevationPerturbador;
-import org.epanetgrid.perturbador.perturbadores.pipes.PipeDiameterPerturbador;
-import org.epanetgrid.perturbador.perturbadores.pipes.PipeLengthPerturbador;
-import org.epanetgrid.perturbador.perturbadores.pipes.PipeLossCoefPerturbador;
-import org.epanetgrid.perturbador.perturbadores.pipes.PipeRoughnessCoefPerturbador;
 import org.epanetgrid.perturbador.valueProvider.ValueProvider;
 
 
@@ -31,12 +25,9 @@ import org.epanetgrid.perturbador.valueProvider.ValueProvider;
  *
  */
 public class PertubadorFacade {
-
-	public static enum pert_types {PIPE_LENGTH, PIPE_DIAMETER, PIPE_ROUGHNESS_COEF, PIPE_LOSS_COEF, 
-									JUNCTION_ELEVATION, JUNCTION_BASE_DEMAND_FLOW};
 	
-	private Map<String, Map<pert_types, Collection<IPerturbador>>> labelToPerturbadores = 
-		new HashMap<String, Map<pert_types, Collection<IPerturbador>>>();
+	private Map<String, Map<PertubationType, Collection<IPerturbador>>> labelToPerturbadores = 
+		new HashMap<String, Map<PertubationType, Collection<IPerturbador>>>();
 									
 	/**
 	 * 
@@ -46,8 +37,7 @@ public class PertubadorFacade {
 	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase){
 		
-		
-		return null;
+		return new PertubadorRunner().getMalhaPerturbadas(malhaBase, labelToPerturbadores);
 	}
 	
 	/**
@@ -55,18 +45,10 @@ public class PertubadorFacade {
 	 * @param TipoPertub
 	 * @return
 	 */
-	public void createPerturbadores(String label, ValueProvider vp, pert_types TipoPertub){
+	public void createPerturbadores(String label, ValueProvider vp, PertubationType TipoPertub){
 		//refactor
 		IVariavelPerturbada varPert = new DefaultVariavelPerturbada(label, vp);  
-		
-		if(pert_types.PIPE_LENGTH.equals(TipoPertub) || pert_types.PIPE_DIAMETER.equals(TipoPertub) 
-				|| pert_types.PIPE_LOSS_COEF.equals(TipoPertub) || pert_types.PIPE_ROUGHNESS_COEF.equals(TipoPertub)) {
-			
-			addPerturbadores(label, TipoPertub, createPipePerturbadores(varPert, TipoPertub));
-		}
-		else if(pert_types.JUNCTION_BASE_DEMAND_FLOW.equals(TipoPertub) || pert_types.JUNCTION_ELEVATION.equals(TipoPertub)) {
-			addPerturbadores(label, TipoPertub, createJunctionPerturbadores(varPert, TipoPertub));
-		}
+		addPerturbadores(label, TipoPertub, createPerturbadores(varPert, TipoPertub));
 	}
 	
 	/**
@@ -75,47 +57,22 @@ public class PertubadorFacade {
 	 * @param tipoPerturbacao
 	 * @param perturbadores
 	 */
-	private void addPerturbadores(String label, pert_types tipoPerturbacao, Collection<IPerturbador> perturbadores){
+	private void addPerturbadores(String label, PertubationType tipoPerturbacao, Collection<IPerturbador> perturbadores){
 		labelToPerturbadores.remove(label);
-		Map<pert_types, Collection<IPerturbador>> pertFromType = new HashMap<pert_types, Collection<IPerturbador>>();
+		Map<PertubationType, Collection<IPerturbador>> pertFromType = new HashMap<PertubationType, Collection<IPerturbador>>();
 		pertFromType.put(tipoPerturbacao, perturbadores);
 		labelToPerturbadores.put(label, pertFromType);
 	}
 	
-	private Collection<IPerturbador> createPipePerturbadores(IVariavelPerturbada varPert, pert_types TipoPerturbacao){
+	private Collection<IPerturbador> createPerturbadores(IVariavelPerturbada varPert, PertubationType tipoPerturbacao){
 		
 		Collection<IPerturbador> perturbadores = new LinkedList<IPerturbador>();
-
-		//refactor
 		for (int i = 0; i < varPert.getNumSamples(); i++) {
-			if(pert_types.PIPE_DIAMETER.equals(TipoPerturbacao)) {
-				perturbadores.add(new PipeDiameterPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
-			else if(pert_types.PIPE_LENGTH.equals(TipoPerturbacao)) {
-				perturbadores.add(new PipeLengthPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
-			else if(pert_types.PIPE_LOSS_COEF.equals(TipoPerturbacao)) {
-				perturbadores.add(new PipeLossCoefPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
-			else if(pert_types.PIPE_ROUGHNESS_COEF.equals(TipoPerturbacao)) {
-				perturbadores.add(new PipeRoughnessCoefPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
+			perturbadores.add(PertubationType.getPerturbador(varPert.getComponentLabel(),
+																varPert.getValueProvider().getValorPerturbado()[i],
+																tipoPerturbacao));
 		}
-		return perturbadores;
-	}
-	
-	private Collection<IPerturbador> createJunctionPerturbadores(IVariavelPerturbada varPert, pert_types TipoPerturbacao){
 		
-		Collection<IPerturbador> perturbadores = new LinkedList<IPerturbador>();
-		
-		for (int i = 0; i < varPert.getNumSamples(); i++) {
-			if(pert_types.JUNCTION_BASE_DEMAND_FLOW.equals(TipoPerturbacao)) {
-				perturbadores.add(new JunctionBaseDemandFlowPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
-			else if(pert_types.JUNCTION_ELEVATION.equals(TipoPerturbacao)) {
-				perturbadores.add(new JunctionElevationPerturbador(varPert.getComponentLabel(), varPert.getValueProvider().getValorPerturbado()[i]));
-			}
-		}
 		return perturbadores;
 	}
 	

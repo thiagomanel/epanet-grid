@@ -19,7 +19,6 @@ import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
-import org.epanetgrid.perturbador.PertubadorFacade.pert_types;
 import org.epanetgrid.perturbador.perturbadores.IPerturbador;
 
 /**
@@ -39,12 +38,12 @@ class PertubadorRunner {
 	 */
 	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase, 
-									Map<String, Map<pert_types, Collection<IPerturbador>>> labelToPerturbadores ){
+									Map<String, Map<PertubationType, Collection<IPerturbador>>> labelToPerturbadores ){
 		
 		Map<String, Collection<NetworkComponent>> elementosGerados = new HashMap<String, Collection<NetworkComponent>>(); 
 		
 		for (String label : labelToPerturbadores.keySet()) {
-			Map<pert_types, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
+			Map<PertubationType, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
 			elementosGerados.put(label, geraElementosPerturbados(malhaBase.getElemento(label), perturbadoresByType));
 		}
 		
@@ -69,7 +68,7 @@ class PertubadorRunner {
 	 * @return
 	 */
 	protected Collection<NetworkComponent> geraElementosPerturbados(NetworkComponent component,
-									Map<pert_types, Collection<IPerturbador>> perturbadoresByType) {
+									Map<PertubationType, Collection<IPerturbador>> perturbadoresByType) {
 		
 		Collection<NetworkComponent> elementosPerturbados = new LinkedList<NetworkComponent>();
 		for (Collection<IPerturbador> perturbadores : perturbadoresByType.values()) {
