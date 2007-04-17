@@ -47,4 +47,14 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	public boolean contains(String label);
 	
 	public void replaceComponent(String oldComponentLabel, NetworkComponent newComponent);
+	
+	public Set<String> getPattern();
+	
+	public Set<String> getEnergy();
+	
+	public Set<String> getOptions();
+	
+	public Set<String> getTimes();
+	
+	public Set<String> getReports();
 }

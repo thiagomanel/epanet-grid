@@ -90,8 +90,8 @@ public class DefaultPump implements IPump<DefaultPump> {
 	public static class Builder {
 		
 		private String headCurveID;
-		private Measure<Energy> power = Measure.valueOf(1, Energy.SI_UNIT);
-		private Measure<Dimensionless> relativeSped = Measure.valueOf(1, Dimensionless.SI_UNIT);
+		private Measure<Energy> power;
+		private Measure<Dimensionless> relativeSped;
 		private String idTimePattern;
 		private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 		private String label;

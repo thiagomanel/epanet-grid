@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 import javax.quantities.Dimensionless;
+import javax.quantities.Energy;
 import javax.quantities.Length;
 import javax.quantities.VolumetricFlowRate;
 
@@ -79,12 +80,22 @@ class EpaFileReader {
 		private static final String PUMP_ID = "PUMPS";
 		private static final String RESERVOIR_ID = "RESERVOIRS";
 		private static final String TANK_ID = "TANK";
+		private static final String PATTERN_ID = "PATTERN";
+		private static final String TIME_ID = "TIMES";
+		private static final String OPTION_ID = "OPTIONS";
+		private static final String REPORT_ID = "REPORTS";
+		private static final String ENERGY_ID = "ENERGY";
 		
 		private final Parser junctionParse = new JunctionParser();
 		private final Parser reservoirsParser = new ReservoirParser();
 		private final Parser tanksParser = new TankParser();
 		private final Parser pipeParser = new PipeParser();
 		private final Parser pumpParser = new PumpParser();
+		private final Parser patternParser = new PatterdIDParser();
+		private final Parser timeParser = new TimeIDParser();
+		private final Parser reportParser = new ReportIDParser();
+		private final Parser optionParser = new OptionIDParser();
+		private final Parser energyParser = new EnergyIDParser();
 		
 		private final Parser NOPParser = new Parser(){
 			public void parse(String line) {}
@@ -115,6 +126,7 @@ class EpaFileReader {
 		}
 
 		private Parser decideActionParser(String line) {
+			//bug
 			if(line.contains(this.JUNCTION_ID)){
 				return junctionParse;
 			}else if(line.contains(this.RESERVOIR_ID)){
@@ -125,6 +137,16 @@ class EpaFileReader {
 				return pipeParser;
 			}else if(line.contains(this.PUMP_ID)){
 				return pumpParser;
+			}else if(line.contains(this.PATTERN_ID)){
+				return patternParser;
+			}else if(line.contains(this.TIME_ID)){
+				return timeParser;
+			}else if(line.contains(this.REPORT_ID)){
+				return reportParser;
+			}else if(line.contains(this.OPTION_ID)){
+				return optionParser;
+			}else if(line.contains(this.ENERGY_ID)){
+				return energyParser;
 			}
 			else {
 				return NOPParser;
@@ -140,25 +162,11 @@ class EpaFileReader {
 		}
 	}
 	
-	private class JunctionParser implements Parser{
+	private class JunctionParser extends SimpleLineParser{
 
-		private final Set<String> commands = new HashSet<String>();
-		
-		public void parse(String line) {
-			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
-				commands.add(line);
-			}
-		}
-
-		public void collectResult(DefaultNetWork netWork) {
-			for (String command : commands) {
-				netWork.addJuncao(createJunction(command, netWork));
-			}
-		}
-		
-		private IJunction createJunction(String command, DefaultNetWork netWork){
-
-			//ID     Elevation    Demand     Pattern
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+//			ID     Elevation    Demand     Pattern
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String junctID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -182,28 +190,14 @@ class EpaFileReader {
 				junctionBuilder.demandPatternID(pattern);
 			}
 			
-			return junctionBuilder.build();
+			netWork.addJuncao(junctionBuilder.build());
 		}
 	}
 	
-	private class ReservoirParser implements Parser{
-
-		private final Set<String> commands = new HashSet<String>();
-		
-		public void parse(String line) {
-			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
-				commands.add(line);
-			}
-		}
-
-		public void collectResult(DefaultNetWork netWork) {
-			for (String command : commands) {
-				netWork.addReservoir(createReservoir(command, netWork));
-			}
-		}
-		
-		private IReservoir createReservoir(String command, DefaultNetWork netWork){
-			//ID     Head   
+	private class ReservoirParser extends SimpleLineParser{
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+//			ID     Head   
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String reservID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -214,28 +208,15 @@ class EpaFileReader {
 			if(head != null) {
 				reservBuilder.head(Measure.valueOf(Double.valueOf(head), Length.SI_UNIT));
 			}
-			return reservBuilder.build();
+			netWork.addReservoir(reservBuilder.build());
 		}
 	}
 	
-	private class TankParser implements Parser{
+	private class TankParser extends SimpleLineParser{
 
-		private final Set<String> commands = new HashSet<String>();
-		
-		public void parse(String line) {
-			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
-				commands.add(line);
-			}
-		}
-
-		public void collectResult(DefaultNetWork netWork) {
-			for (String command : commands) {
-				netWork.addTanks(createTank(command, netWork));
-			}
-		}
-		
-		private ITank createTank(String command, DefaultNetWork netWork){
-			//;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.  
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+//			;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.  
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String tankID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -268,29 +249,15 @@ class EpaFileReader {
 				tankBuilder.nominalDiameter(Measure.valueOf(Double.valueOf(diameter), Length.SI_UNIT));
 			}
 			
-			return tankBuilder.build();
+			netWork.addTanks(tankBuilder.build());
 		}
 	}
 	
-	private class PipeParser implements Parser{
+	private class PipeParser extends SimpleLineParser{
 
-		private final Set<String> commands = new HashSet<String>();
-		
-		public void parse(String line) {
-			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
-				commands.add(line);
-			}
-		}
-
-		public void collectResult(DefaultNetWork netWork) {
-			for (String command : commands) {
-				createAndAddPipe(command, netWork);
-			}
-		}
-		
-		private void createAndAddPipe(String command, DefaultNetWork netWork){
-			
-			//;ID     Node1     Node2     Length     Diam.     Roughness 
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+//			;ID     Node1     Node2     Length     Diam.     Roughness 
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String pipeID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -324,25 +291,11 @@ class EpaFileReader {
 		}
 	}
 	
-	private class PumpParser implements Parser{
+	private class PumpParser extends SimpleLineParser{
 
-		private final Set<String> commands = new HashSet<String>();
-		
-		public void parse(String line) {
-			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
-				commands.add(line);
-			}
-		}
-
-		public void collectResult(DefaultNetWork netWork) {
-			for (String command : commands) {
-				createAndAddPump(command, netWork);
-			}
-		}
-		
-		private void createAndAddPump(String command, DefaultNetWork netWork){
-			
-			//;ID     Node1     Node2     Properties    
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+//			;ID     Node1     Node2     Properties    
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String pipeID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -365,5 +318,70 @@ class EpaFileReader {
 			netWork.addPump(pump, montanteNode, jusanteNode);
 		}
 	}
+	
+	private abstract class SimpleLineParser implements Parser{
+
+		private final Set<String> commands = new HashSet<String>();
+		
+		/* (non-Javadoc)
+		 * @see org.epanetgrid.data.EpaFileReader.Parser#parse(java.lang.String)
+		 */
+		public void parse(String line) {
+			if( (!line.startsWith(COMMENTS_ID) && (!line.startsWith(TYPE_DESCRIPT_ID)))) {
+				commands.add(line);
+			}
+		}
+
+		/* (non-Javadoc)
+		 * @see org.epanetgrid.data.EpaFileReader.Parser#collectResult(org.epanetgrid.model.epanetNetWork.DefaultNetWork)
+		 */
+		public void collectResult(DefaultNetWork netWork) {
+			for (String command : commands) {
+				collectResult(command, netWork);
+			}
+		}
+		
+		/**
+		 * @param command
+		 * @param netWork
+		 */
+		protected abstract void collectResult(String command, DefaultNetWork netWork);
+	}
+	
+	private class PatterdIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addPattern(command);
+		}
+	}
+	
+	private class TimeIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addTime(command);
+		}
+	}
+	
+	private class OptionIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addOption(command);
+		}
+	}
+	
+	private class ReportIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addReport(command);
+		}
+	}
+	
+	private class EnergyIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addEnergy(command);
+		}
+	}
+	
 }
 

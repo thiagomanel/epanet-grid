@@ -46,6 +46,16 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
 	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
+	private Set<String> energy;
+
+	private Set<String> options;
+
+	private Set<String> patterns;
+
+	private Set<String> reports;
+
+	private Set<String> times;
+
 	private DefaultNetWork(Builder builder){ 
 		NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork = builder.baseNetWork;
 		//tirar
@@ -377,5 +387,60 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 
 	public Set<ILink<?>> getProximos(INode node) {
 		return this.elosAJusante.get(node);
+	}
+
+	public void addEnergy(String energy){
+		this.energy.add(energy);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getEnergy()
+	 */
+	public Set<String> getEnergy() {
+		return this.energy;
+	}
+
+	public void addOption(String option){
+		this.options.add(option);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getOptions()
+	 */
+	public Set<String> getOptions() {
+		return this.options;
+	}
+	
+	public void addPattern(String pattern){
+		this.patterns.add(pattern);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPattern()
+	 */
+	public Set<String> getPattern() {
+		return this.patterns;
+	}
+
+	public void addReport(String report){
+		this.reports.add(report);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getReports()
+	 */
+	public Set<String> getReports() {
+		return this.reports;
+	}
+
+	public void addTime(String time){
+		this.times.add(time);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getTimes()
+	 */
+	public Set<String> getTimes() {
+		return this.times;
 	}
 }

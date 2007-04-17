@@ -68,8 +68,8 @@ public class DefaultValve implements IValve<DefaultValve> {
 	
 	public static class Builder {
 		
-		private Measure<Length> diameter = Measure.valueOf(1, Length.SI_UNIT);
-		private Measure<Dimensionless> lossCoef = Measure.valueOf(1, Dimensionless.SI_UNIT);
+		private Measure<Length> diameter;
+		private Measure<Dimensionless> lossCoef;
 		private String label;
 		private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 		
