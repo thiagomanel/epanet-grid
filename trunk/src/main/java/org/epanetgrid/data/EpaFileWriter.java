@@ -218,7 +218,7 @@ class EpaFileWriter {
 	}
 	
 	private class PumpWriter extends AbstractComponentWriter {
-		private static final String HEADER = "[PIPES]\n;ID     Node1     Node2     Properties.\n;---------------";
+		private static final String HEADER = "[PUMPS]\n;ID     Node1     Node2     Properties.\n;---------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
 		public PumpWriter(NetWork netWork){
