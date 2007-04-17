@@ -29,7 +29,6 @@ import org.epanetgrid.model.nodes.DefaultTank;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
-import org.epanetgrid.perturbador.PertubadorFacade.pert_types;
 import org.epanetgrid.perturbador.perturbadores.IPerturbador;
 import org.epanetgrid.perturbador.perturbadores.pipes.PipeLengthPerturbador;
 import org.jscience.physics.measures.Measure;
@@ -64,12 +63,12 @@ public class PertubadorRunnerTest extends TestCase {
 		perturbadores.add(pert2);
 		perturbadores.add(pert3);
 		
-		Map<pert_types, Collection<IPerturbador>> mapTypeToPert = new HashMap<pert_types, Collection<IPerturbador>>();
+		Map<PertubationType, Collection<IPerturbador>> mapTypeToPert = new HashMap<PertubationType, Collection<IPerturbador>>();
 		
-		mapTypeToPert.put(pert_types.PIPE_LENGTH, perturbadores);
+		mapTypeToPert.put(PertubationType.PIPE_LENGTH, perturbadores);
 		
-		Map<String,Map<pert_types, Collection<IPerturbador>>> mapLabelToPert 
-								= new HashMap<String,Map<pert_types, Collection<IPerturbador>>>();
+		Map<String,Map<PertubationType, Collection<IPerturbador>>> mapLabelToPert 
+								= new HashMap<String,Map<PertubationType, Collection<IPerturbador>>>();
 		
 		mapLabelToPert.put(basePipe.label(), mapTypeToPert);
 	

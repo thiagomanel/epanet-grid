@@ -13,13 +13,13 @@ import org.jscience.physics.measures.Measure;
  * @author thiago
  *
  */
-public class DefaultValvePerturbador extends AbstractPerturbador<DefaultValve> {
+public class ValveLossCoefPerturbador extends AbstractPerturbador<DefaultValve> {
 
 	/**
 	 * @param componentLabel
 	 * @param newValue
 	 */
-	public DefaultValvePerturbador(String componentLabel, double newValue) {
+	public ValveLossCoefPerturbador(String componentLabel, double newValue) {
 		super(componentLabel, newValue);
 	}
 
