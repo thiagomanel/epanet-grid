@@ -51,6 +51,12 @@ class EpaFileWriter {
 		compositeWriter.addWriter(new TankWriter(netWork));
 		compositeWriter.addWriter(new PipeWriter(netWork));
 		compositeWriter.addWriter(new PumpWriter(netWork));
+		
+		compositeWriter.addWriter(new OptionsWriter(netWork));
+		compositeWriter.addWriter(new TimeWriter(netWork));
+		compositeWriter.addWriter(new ReportWriter(netWork));
+		compositeWriter.addWriter(new EnergyWriter(netWork));
+		compositeWriter.addWriter(new PatternsWriter(netWork));
 		return compositeWriter;
 	}
 
@@ -240,5 +246,120 @@ class EpaFileWriter {
 		protected void printHeader(PrintWriter writer) {
 			writer.println(HEADER);
 		}
+	}
+	
+	private class PatternsWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[PATTERNS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public PatternsWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String pattern : netWork.getPattern()) {
+				writer.println(pattern);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class OptionsWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[OPTIONS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public OptionsWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String option : netWork.getOptions()) {
+				writer.println(option);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class TimeWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[TIMES]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public TimeWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String time : netWork.getTimes()) {
+				writer.println(time);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class ReportWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[REPORT]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public ReportWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String report : netWork.getReports()) {
+				writer.println(report);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class EnergyWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[REPORT]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public EnergyWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String energy : netWork.getEnergy()) {
+				writer.println(energy);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
 	}
 }
