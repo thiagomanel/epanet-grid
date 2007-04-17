@@ -46,19 +46,17 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
 	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
-	private Set<String> energy;
+	private final Set<String> energy = new HashSet<String>();
+	private final Set<String> options = new HashSet<String>();
+	private final Set<String> patterns = new HashSet<String>();
+	private final Set<String> reports = new HashSet<String>();
+	private final Set<String> times = new HashSet<String>();
 
-	private Set<String> options;
-
-	private Set<String> patterns;
-
-	private Set<String> reports;
-
-	private Set<String> times;
-
+	/**
+	 * @param builder
+	 */
 	private DefaultNetWork(Builder builder){ 
 		NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork = builder.baseNetWork;
-		//tirar
 		if(baseNetWork != null) {
 			copyComponents(baseNetWork);
 		}
@@ -104,7 +102,6 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	}
 
 	public static class Builder{
-		
 		private NetWork baseNetWork;
 		
 		public Builder(){ }
