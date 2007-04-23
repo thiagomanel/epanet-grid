@@ -14,6 +14,7 @@ import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
+import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
@@ -46,6 +47,12 @@ public class DefaultNetWorkTest extends TestCase {
 		
 		Measure<Length> newLength = basePipe.getLength().times(2);
 		IPipe newPipe = new DefaultPipe.Builder("P1-new", baseNetWork).copy(basePipe).length(newLength).build();
+
+		assertTrue(baseNetWork.getPipes().contains(baseNetWork.getElemento("P1")));
+		assertFalse(baseNetWork.getTanks().contains(baseNetWork.getElemento("P1")));
+		assertFalse(baseNetWork.getReservoirs().contains(baseNetWork.getElemento("P1")));
+		assertFalse(baseNetWork.getJunctions().contains(baseNetWork.getElemento("P1")));
+		
 		baseNetWork.replaceComponent("P1", newPipe);
 		
 		assertFalse(baseNetWork.contains("P1"));

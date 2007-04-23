@@ -36,7 +36,7 @@ public class EpaFileReaderTest extends TestCase {
 			fail();
 		} catch (FileNotFoundException e) { }
 		
-		filePath = "resources/MalhaTeste1-1.inp";
+		filePath = "resources/accept/MalhaTeste1-1.inp";
 		NetWork netWork = fileReader.read(filePath);
 		
 		Set<IJunction<?>> junctions  = netWork.getJunctions();

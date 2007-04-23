@@ -3,11 +3,11 @@
  */
 package org.epanetgrid.model.epanetNetWork;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.epanetgrid.model.ILink;
 import org.epanetgrid.model.INode;
@@ -23,6 +23,7 @@ import org.epanetgrid.model.nodes.DefaultTank;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
+import org.epanetgrid.util.NetWorkComponentStringComparator;
 
 /**
  * @author thiago
@@ -120,7 +121,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPipes()
 	 */
 	public Set<IPipe<?>> getPipes() {
-		return Collections.unmodifiableSet(pipes);
+		return (Set<IPipe<?>>) sortSet(pipes);
 	}
 
 	private void addComponent(NetworkComponent component){
@@ -154,7 +155,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPumps()
 	 */
 	public Set<IPump<?>> getPumps() {
-		return Collections.unmodifiableSet(pumps);
+		return (Set<IPump<?>>) sortSet(pumps);
 	}
 	
 	public void addPump(IPump pump, INode noMontante, INode noJusante) {
@@ -173,7 +174,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getValves()
 	 */
 	public Set<IValve<?>> getValves() {
-		return Collections.unmodifiableSet(valves);
+		return (Set<IValve<?>>) sortSet(valves);
 	}
 	
 	public void addValve(IValve valve, INode noMontante, INode noJusante) {
@@ -192,7 +193,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getJunctions()
 	 */
 	public Set<IJunction<?>> getJunctions() {
-		return Collections.unmodifiableSet(junctions);
+		return (Set<IJunction<?>>) sortSet(junctions);
 	}
 	
 	/**
@@ -225,7 +226,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getReservoirs()
 	 */
 	public Set<IReservoir<?>> getReservoirs() {
-		return Collections.unmodifiableSet(reservoirs);
+		return (Set<IReservoir<?>>) sortSet(reservoirs);
 	}
 	
 	public void addReservoir(IReservoir reservoir) {
@@ -242,7 +243,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getTanks()
 	 */
 	public Set<ITank<?>> getTanks() {
-		return Collections.unmodifiableSet(tanks);
+		return (Set<ITank<?>>) sortSet(tanks);
 	}
 	
 	public void addTanks(ITank<?> tank) {
@@ -439,5 +440,11 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	 */
 	public Set<String> getTimes() {
 		return this.times;
+	}
+	
+	private  Set<? extends NetworkComponent> sortSet(Set<? extends NetworkComponent> components){
+		TreeSet<NetworkComponent> sortedSet = new TreeSet(new NetWorkComponentStringComparator());
+		sortedSet.addAll(components);
+		return sortedSet;
 	}
 }
