@@ -25,7 +25,8 @@ public class SimpleValueProvider {
 	 */
 	public static ValueProvider getValueProvider(double minValue, double maxValue, int numSamples){
 		if(numSamples <= 0) throw new IllegalArgumentException("Numero de amostragens deve ser positivo.");
-		return new AnaliseSensibilidadeValueProvider(minValue, maxValue, new Double(((maxValue - minValue)/numSamples)));
+		double discretizacao = new Double(((maxValue - minValue)/ (numSamples-1) / minValue));
+		return new AnaliseSensibilidadeValueProvider(minValue, maxValue, new Double(discretizacao));
 	}
 	
 	/**
@@ -37,8 +38,10 @@ public class SimpleValueProvider {
 	 */
 	public static ValueProvider getValueProviderVariacaoPercentual(double percentualVar, double averageValue, int numSamples){
 		if(numSamples <= 0) throw new IllegalArgumentException("Numero de amostragens deve ser positivo.");
-		Double discr = new Double((averageValue * (percentualVar + 1 ) * 2)/numSamples);
-		return new AnaliseSensibilidadeValueProvider(discr, percentualVar, averageValue);
+		double maxValue = averageValue + (averageValue * percentualVar);
+		double minValue = averageValue - (averageValue * percentualVar);
+		double discr = (maxValue - minValue ) / (numSamples - 1) / minValue; 
+		return new AnaliseSensibilidadeValueProvider(minValue, maxValue, new Double(discr));
 	}
 	
 	/**
@@ -60,10 +63,9 @@ public class SimpleValueProvider {
 	 * @param discrer Valor entre [0, 1]
 	 * @return
 	 */
-	public static ValueProvider getValueProvider(double minValue, double maxValue, double discrer){
+	public static ValueProvider getValueProviderDiscretizacao(double minValue, double maxValue, double discrer){
 		if(discrer <= 0) throw new IllegalArgumentException("Discretizacao deve ser positiva.");
-		int numSamples = (int) ((maxValue - minValue) / discrer);//test
-		return new MonteCarloValueProvider(minValue, maxValue, numSamples, createRandomSeed());
+		return new AnaliseSensibilidadeValueProvider(minValue, maxValue, new Double(discrer));
 	}
 	
 	private static RandomSeed createRandomSeed(){
