@@ -68,7 +68,6 @@ public class AcceptFacade {
 	
 	private boolean containsValue(Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> 
 										malhasGeradas, String elemento, String propriedade, double value){
-		System.out.println("Contais value ");
 		for (NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork : malhasGeradas) {
 			if(containsValue(netWork, elemento, propriedade, value)){
 				return true;

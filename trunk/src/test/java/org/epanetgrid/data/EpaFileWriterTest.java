@@ -40,7 +40,7 @@ public class EpaFileWriterTest extends TestCase {
 	 * Test method for 'org.epanetgrid.data.EpaFileWriter.write(NetWork, String)'
 	 */
 	public final void testWrite() throws IOException {
-		String inputfilePath = "resources/MalhaTeste1-1.inp";
+		String inputfilePath = "resources/accept/MalhaTeste1-1.inp";
 		NetWork netWork = new EpaFileReader().read(inputfilePath);
 		
 		EpaFileWriter fileWriter = new EpaFileWriter();

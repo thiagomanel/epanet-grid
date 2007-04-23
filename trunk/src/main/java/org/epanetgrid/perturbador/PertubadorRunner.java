@@ -99,7 +99,8 @@ class PertubadorRunner {
 
 	private void insertDisturbedComponent(NetWork disturbedNetWork, NetworkComponent disturbedComponent) {
 		NetworkComponent relatedOldComponent = disturbedNetWork.getElemento(disturbedComponent.label());
-		disturbedNetWork.replaceComponent(relatedOldComponent.label(), disturbedComponent);
+		String oldComponentLabel = relatedOldComponent.label();
+		disturbedNetWork.replaceComponent(oldComponentLabel, disturbedComponent);
 	}
 
 	private NetWork createMalha(NetWork malhaBase) {
