@@ -8,7 +8,7 @@
 #Elemento e propriedade: R1      Elev.
 #
 #Variação tipo 3:                Valor mínimo: 600
-#                                Discretização: 10
+#                                Discretização: 0.016
 #                                Quantidade de malhas: 10
 
 
@@ -16,7 +16,7 @@
 
 #Malha base para a perturbação.
 setMalhaEntrada file="/local/thiago/workspace/epa/resources/accept/MalhaTeste1-1.inp"
-addElementoPerturbado R1 TANK_ELEVATION 600 10 10
+addElementoPerturbado R1 TANK_ELEVATION 600 0.016 10
 geraPerturbacao
 
 #10 malhas geradas pela perturbacao + malhabase

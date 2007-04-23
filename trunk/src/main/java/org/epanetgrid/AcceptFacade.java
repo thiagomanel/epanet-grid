@@ -6,8 +6,6 @@ package org.epanetgrid;
 import java.io.IOException;
 import java.util.Set;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
 import org.epanetgrid.data.DataFacade;
 import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.epanetNetWork.NetWork;
@@ -83,7 +81,6 @@ public class AcceptFacade {
 		if(netWork.getTanks().contains(component)) {
 			if("TANK_ELEVATION".equals(propriedade)) {
 				Measure elevation = ((ITank<?>)component).getElevation(); 
-				System.out.println("input elevation "+elevation);
 				return elevation.approximates(Measure.valueOf(value, elevation.getUnit()));
 			}
 		}
