@@ -5,10 +5,9 @@ package org.epanetgrid.perturbador;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.epanetNetWork.DefaultNetWork;
@@ -36,7 +35,7 @@ class PertubadorRunner {
 	 *  
 	 * @return Conjunto de malhas resultantes da perturbação.
 	 */
-	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
+	public List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase, 
 									Map<String, Map<PertubationType, Collection<IPerturbador>>> labelToPerturbadores ){
 		
@@ -47,8 +46,8 @@ class PertubadorRunner {
 			elementosGerados.put(label, geraElementosPerturbados(malhaBase.getElemento(label), perturbadoresByType));
 		}
 		
-		Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> malhasPerturbadas
-				= new HashSet<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>();
+		List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> malhasPerturbadas
+				= new LinkedList<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>();
 		
 		malhasPerturbadas.add(malhaBase);
 		

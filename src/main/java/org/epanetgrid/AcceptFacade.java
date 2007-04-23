@@ -4,7 +4,7 @@
 package org.epanetgrid;
 
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 import org.epanetgrid.data.DataFacade;
 import org.epanetgrid.model.NetworkComponent;
@@ -29,7 +29,7 @@ public class AcceptFacade {
 
 	private PertubadorFacade perturbFacade = new PertubadorFacade();
 	private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
-	private Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> malhasGeradas;
+	private List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> malhasGeradas;
 	
 	/**
 	 * @param file
@@ -64,7 +64,7 @@ public class AcceptFacade {
 		return containsValue(malhasGeradas, elemento, propriedade, value);
 	}
 	
-	private boolean containsValue(Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> 
+	private boolean containsValue(List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> 
 										malhasGeradas, String elemento, String propriedade, double value){
 		for (NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork : malhasGeradas) {
 			if(containsValue(netWork, elemento, propriedade, value)){

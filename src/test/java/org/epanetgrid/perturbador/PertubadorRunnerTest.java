@@ -77,7 +77,7 @@ public class PertubadorRunnerTest extends TestCase {
 		/**
 		 * 3 Malhas geradas pela perturbacao + 1 malha base
 		 */
-		Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> 
+		List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> 
 					malhasPerturbadas = pertRunner.getMalhaPerturbadas(network, mapLabelToPert);
 		
 		assertEquals(4, malhasPerturbadas.size());
