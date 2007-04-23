@@ -1,0 +1,43 @@
+#	Gerador de Malhas e Cenários
+#
+#Propriedades possiveis:
+#	TANK_ELEVATION
+#
+
+#Malha: MalhaTeste1
+#Elemento e propriedade: R1      Elev.
+#
+#Variação tipo 3:                Valor mínimo: 600
+#                                Discretização: 10
+#                                Quantidade de malhas: 10
+
+
+
+
+#Malha base para a perturbação.
+setMalhaEntrada file="/local/thiago/workspace/epa/resources/accept/MalhaTeste1-1.inp"
+addElementoPerturbado R1 TANK_ELEVATION 600 10 10
+geraPerturbacao
+
+#10 malhas geradas pela perturbacao + malhabase
+expect 11 numMalhasGeradas
+
+#verifica se em alguma das malhas existe um elemento cuja propriedade tem este valor
+#containsValue (elemento, propriedades, valor)
+
+expect true containsValue R1 TANK_ELEVATION 643
+expect true containsValue R1 TANK_ELEVATION 600
+#expect true containsValue R1 TANK_ELEVATION 610
+#expect true containsValue R1 TANK_ELEVATION 620
+#expect true containsValue R1 TANK_ELEVATION 630
+
+#expect true containsValue R1 TANK_ELEVATION 640
+#expect true containsValue R1 TANK_ELEVATION 650
+#expect true containsValue R1 TANK_ELEVATION 660
+#expect true containsValue R1 TANK_ELEVATION 670
+#expect true containsValue R1 TANK_ELEVATION 680
+
+#expect true containsValue R1 TANK_ELEVATION 690
+
+
+
