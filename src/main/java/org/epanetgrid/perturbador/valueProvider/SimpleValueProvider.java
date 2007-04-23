@@ -44,16 +44,22 @@ public class SimpleValueProvider {
 	/**
 	 * Discretizacao feita em intervalos nao-constantes
 	 * @param minValue Valor mi­nimo
-	 * @param discr Discretizacao
+	 * @param discr Discretizacao Valor entre [0, 1]
 	 * @param numSamples Numero de amostras
 	 * @return
 	 */
 	public static ValueProvider getValueProviderDiscretizacaoAndSamples(double minValue, double discr, int numSamples){
 		if(numSamples <= 0) throw new IllegalArgumentException("Numero de amostragens deve ser positivo.");
-		double maxValue = minValue + (numSamples - 1) * discr;
-		return new MonteCarloValueProvider(minValue, maxValue, numSamples, createRandomSeed());
+		double maxValue = minValue + (numSamples - 1) * (discr * minValue);
+		return new AnaliseSensibilidadeValueProvider(minValue, maxValue, new Double(discr));
 	}
 	
+	/**
+	 * @param minValue
+	 * @param maxValue
+	 * @param discrer Valor entre [0, 1]
+	 * @return
+	 */
 	public static ValueProvider getValueProvider(double minValue, double maxValue, double discrer){
 		if(discrer <= 0) throw new IllegalArgumentException("Discretizacao deve ser positiva.");
 		int numSamples = (int) ((maxValue - minValue) / discrer);//test

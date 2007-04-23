@@ -36,7 +36,6 @@ public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 		this.extremoInferior = extremoInferior;
 		this.extremoSuperior = extremoSuperior;
 		this.discretizacao = discretizacao;
-		this.discretizacao = discretizacao;
 		this.faixaVariacao = Double.NaN;
 		this.valorMedio = Double.NaN;
 	}
@@ -74,7 +73,7 @@ public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 		
 		while( (tempValue) < (extremoSuperior)){
 			seeds.add(tempValue);
-			tempValue = tempValue + (discretizacao * ((extremoSuperior - extremoInferior)));
+			tempValue = tempValue + (discretizacao * (extremoInferior));
 		}
 		
 		seeds.add(extremoSuperior);
