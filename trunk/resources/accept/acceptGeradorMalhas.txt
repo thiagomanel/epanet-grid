@@ -27,17 +27,17 @@ expect 11 numMalhasGeradas
 
 expect true containsValue R1 TANK_ELEVATION 643
 expect true containsValue R1 TANK_ELEVATION 600
-#expect true containsValue R1 TANK_ELEVATION 610
-#expect true containsValue R1 TANK_ELEVATION 620
-#expect true containsValue R1 TANK_ELEVATION 630
+expect true containsValue R1 TANK_ELEVATION 609.6
+expect true containsValue R1 TANK_ELEVATION 619.2
+expect true containsValue R1 TANK_ELEVATION 628.8
 
-#expect true containsValue R1 TANK_ELEVATION 640
-#expect true containsValue R1 TANK_ELEVATION 650
-#expect true containsValue R1 TANK_ELEVATION 660
-#expect true containsValue R1 TANK_ELEVATION 670
-#expect true containsValue R1 TANK_ELEVATION 680
+expect true containsValue R1 TANK_ELEVATION 638.4
+expect true containsValue R1 TANK_ELEVATION 648.0
+expect true containsValue R1 TANK_ELEVATION 657.6
+expect true containsValue R1 TANK_ELEVATION 667.2
+expect true containsValue R1 TANK_ELEVATION 676.8
 
-#expect true containsValue R1 TANK_ELEVATION 690
+expect true containsValue R1 TANK_ELEVATION 686.4
 
 
 

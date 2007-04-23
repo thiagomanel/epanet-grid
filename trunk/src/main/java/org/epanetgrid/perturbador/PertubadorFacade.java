@@ -6,6 +6,7 @@ package org.epanetgrid.perturbador;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public class PertubadorFacade {
 	 * @param malhaBase
 	 * @return
 	 */
-	public Set<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
+	public List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase){
 		
 		return new PertubadorRunner().getMalhaPerturbadas(malhaBase, labelToPerturbadores);
@@ -64,9 +65,9 @@ public class PertubadorFacade {
 		labelToPerturbadores.put(label, pertFromType);
 	}
 	
-	private Collection<IPerturbador> createPerturbadores(IVariavelPerturbada varPert, PertubationType tipoPerturbacao){
+	private List<IPerturbador> createPerturbadores(IVariavelPerturbada varPert, PertubationType tipoPerturbacao){
 		
-		Collection<IPerturbador> perturbadores = new LinkedList<IPerturbador>();
+		List<IPerturbador> perturbadores = new LinkedList<IPerturbador>();
 		for (int i = 0; i < varPert.getNumSamples(); i++) {
 			perturbadores.add(PertubationType.getPerturbador(varPert.getComponentLabel(),
 																varPert.getValueProvider().getValorPerturbado()[i],
