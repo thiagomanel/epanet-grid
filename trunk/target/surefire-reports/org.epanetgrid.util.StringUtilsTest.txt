@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Battery: org.epanetgrid.util.StringUtilsTest
+-------------------------------------------------------------------------------
+testExtraiOrdem(org.epanetgrid.util.StringUtilsTest)
+testExtraiAlpha(org.epanetgrid.util.StringUtilsTest)

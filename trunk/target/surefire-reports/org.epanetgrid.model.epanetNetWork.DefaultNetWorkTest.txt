@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Battery: org.epanetgrid.model.epanetNetWork.DefaultNetWorkTest
+-------------------------------------------------------------------------------
+testReplaceComponent(org.epanetgrid.model.epanetNetWork.DefaultNetWorkTest)
+testBuildNetWork(org.epanetgrid.model.epanetNetWork.DefaultNetWorkTest)

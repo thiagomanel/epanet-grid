@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Battery: org.epanetgrid.perturbador.valueProvider.AnaliseSensibilidadeValueProviderTest
+-------------------------------------------------------------------------------
+testConstructor(org.epanetgrid.perturbador.valueProvider.AnaliseSensibilidadeValueProviderTest)
