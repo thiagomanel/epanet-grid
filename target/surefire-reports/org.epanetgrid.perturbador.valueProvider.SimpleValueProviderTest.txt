@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Battery: org.epanetgrid.perturbador.valueProvider.SimpleValueProviderTest
+-------------------------------------------------------------------------------
+testGetValueProviderDiscretizacaoAndSamples(org.epanetgrid.perturbador.valueProvider.SimpleValueProviderTest)
+testGetValueProvider(org.epanetgrid.perturbador.valueProvider.SimpleValueProviderTest)
+testGetValueProviderDiscretizacao(org.epanetgrid.perturbador.valueProvider.SimpleValueProviderTest)
+testGetValueProviderVariacaoPercentual(org.epanetgrid.perturbador.valueProvider.SimpleValueProviderTest)

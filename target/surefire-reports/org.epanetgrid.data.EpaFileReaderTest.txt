@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Battery: org.epanetgrid.data.EpaFileReaderTest
+-------------------------------------------------------------------------------
+testRead(org.epanetgrid.data.EpaFileReaderTest)
