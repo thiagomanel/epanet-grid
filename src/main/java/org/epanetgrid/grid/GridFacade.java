@@ -30,18 +30,6 @@ public class GridFacade {
 		this.gridService = gridService;
 	}
 
-	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
-
-		for (File file : netWorkFiles.keySet()) {
-			String nwFileName = file.getName();
-			this.gridService.addGridRunnable(new EpanetGridRunnable(
-												file.getName(),												
-												nwFileName+".out", 
-												nwFileName+".log",
-												netWorkFiles.get(file)));
-		}
-	}
-
 	/**
 	 * 
 	 * @param netWorkFile
@@ -71,6 +59,18 @@ public class GridFacade {
 		return gridService.executeAll();
 	}
 	
+	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
+
+		for (File file : netWorkFiles.keySet()) {
+			String nwFileName = file.getName();
+			this.gridService.addGridRunnable(new EpanetGridRunnable(
+												file.getName(),												
+												nwFileName+".out", 
+												nwFileName+".log",
+												netWorkFiles.get(file)));
+		}
+	}
+	
 	//static factory
 	public static class Builder{
 		
@@ -84,7 +84,6 @@ public class GridFacade {
 			this.basePath = basePath;
 			gridService = GridFaithPool.getInstance().getService(GridFaithPool.GRIDSERVICE_EXECUTOR);
 			gridService.setApplicationJar(new File(basePath+File.separator+"gridfaith-1.3.jar"));
-			gridService.setRequirements("name == kinguio.lsd.ufcg.edu.br");
 		}
 		
 		/**
@@ -302,17 +301,6 @@ public class GridFacade {
 			}
 			return new String[] {"sh", "executa.sh" , epanetGridNetworkFile};
 		}
-		
-		private String[] sleepCommand() {
-			try {
-				Process p = Runtime.getRuntime().exec("cp -r *.* /local/vinicius/projeto1");
-				p.waitFor();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return new String[] {"cp", "-r", "*.*", "/local/vinicius/projeto1"};
-		}
-		
 	}
 	
 	public class EpanetGridRunnableResult implements Serializable{
