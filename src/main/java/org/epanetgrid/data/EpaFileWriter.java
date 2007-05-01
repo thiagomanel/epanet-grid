@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Map;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
@@ -330,8 +331,9 @@ class EpaFileWriter {
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (String report : netWork.getReports()) {
-				writer.println(report);
+			Map<String, String> reports = netWork.getReports().getValues();
+			for (String key : reports.keySet()) {
+				writer.println(key+" "+reports.get(key));;
 			}
 		}
 
@@ -344,7 +346,7 @@ class EpaFileWriter {
 	
 	private class EnergyWriter extends AbstractComponentWriter{
 
-		private static final String HEADER = "[REPORT]";
+		private static final String HEADER = "[ENERGY]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
 		public EnergyWriter(NetWork netWork) {

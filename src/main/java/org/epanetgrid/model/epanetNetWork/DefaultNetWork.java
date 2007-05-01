@@ -23,6 +23,8 @@ import org.epanetgrid.model.nodes.DefaultTank;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
+import org.epanetgrid.model.report.IReport;
+import org.epanetgrid.model.report.Report;
 import org.epanetgrid.util.NetWorkComponentStringComparator;
 
 /**
@@ -50,7 +52,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Set<String> energy = new HashSet<String>();
 	private final Set<String> options = new HashSet<String>();
 	private final Set<String> patterns = new HashSet<String>();
-	private final Set<String> reports = new HashSet<String>();
+	private final IReport reports = new Report();
 	private final Set<String> times = new HashSet<String>();
 
 	/**
@@ -420,14 +422,14 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return this.patterns;
 	}
 
-	public void addReport(String report){
-		this.reports.add(report);
+	public void addReport(String key, String value){
+		this.reports.setValue(key, value);
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getReports()
 	 */
-	public Set<String> getReports() {
+	public IReport getReports() {
 		return this.reports;
 	}
 

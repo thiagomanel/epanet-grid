@@ -1,6 +1,9 @@
 package org.epanetgrid.data;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 
 import javax.quantities.Dimensionless;
 import javax.quantities.Length;
@@ -45,6 +48,49 @@ public class EpaFileWriterTest extends TestCase {
 		
 		EpaFileWriter fileWriter = new EpaFileWriter();
 		fileWriter.write(netWork, filePath);
+		
+		netWork = new EpaFileReader().read(filePath);
+		
+		Set<IJunction<?>> junctions  = netWork.getJunctions();
+		assertEquals(17, junctions.size());	
+		
+		Set<IReservoir> reservoirs = netWork.getReservoirs();
+		assertEquals(1, reservoirs.size());
+		
+		Set<ITank<?>> tanks = netWork.getTanks();
+		assertEquals(3, tanks.size());
+		
+		Set<IPipe> pipes = netWork.getPipes();
+		assertEquals(17, pipes.size());
+		
+		Set<ITank<?>> pumps = netWork.getPumps();
+		assertEquals(3, pumps.size());
+		
+		Set<String> options = netWork.getOptions();
+		assertEquals(2, options.size());
+		
+		Set<String> patterns = netWork.getPattern();
+		assertEquals(2, patterns.size());
+		
+		/*
+		GLOBAL PRICE     0.10294
+		GLOBAL PATTERN   preco
+		DEMAND CHARGE    9.52
+		*/
+		Set<String> energy = netWork.getEnergy();
+		assertEquals(3, energy.size());
+		assertTrue(energy.contains("GLOBAL PRICE     0.10294"));
+		assertTrue(energy.contains("GLOBAL PATTERN   preco"));
+		assertTrue(energy.contains("DEMAND CHARGE    9.52"));
+		
+		Set<String> times = netWork.getTimes();
+		assertEquals(4, times.size());
+		
+		Map<String, String> reports = netWork.getReports().getValues();
+		assertEquals(7, reports.size());
+		
+		assertTrue(reports.containsKey("FILE"));
+		assertEquals("Relatorio-1.txt", reports.get("FILE").trim());
 	}
 	
 	/**
@@ -365,3 +411,4 @@ public class EpaFileWriterTest extends TestCase {
 		return network;
 	}
 }
+

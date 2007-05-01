@@ -2,6 +2,7 @@ package org.epanetgrid.data;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Set;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
@@ -66,8 +67,11 @@ public class EpaFileReaderTest extends TestCase {
 		Set<String> times = netWork.getTimes();
 		assertEquals(4, times.size());
 		
-		Set<String> reports = netWork.getReports();
+		Map<String, String> reports = netWork.getReports().getValues();
 		assertEquals(7, reports.size());
+		
+		assertTrue(reports.containsKey("FILE"));
+		assertEquals("Relatorio-1.txt", reports.get("FILE").trim());
 	}
 
 }
