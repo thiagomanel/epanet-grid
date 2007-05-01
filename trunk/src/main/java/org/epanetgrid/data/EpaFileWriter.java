@@ -40,7 +40,9 @@ class EpaFileWriter {
 		} catch (IOException e) {
 			throw e;
 		}finally{
-			writer.close();
+			if(writer != null) {
+				writer.close();
+			}
 		}
 	}
 	
