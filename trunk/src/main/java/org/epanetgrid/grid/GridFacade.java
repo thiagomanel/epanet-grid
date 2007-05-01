@@ -6,19 +6,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.Buffer;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
-import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.gridfaith.GridFaithPool;
 import org.gridfaith.interfaces.GridRunnable;
 import org.gridfaith.interfaces.GridService;
 
+/**
+ * 
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
+ */
 public class GridFacade {
 
 	private final Map<File, String> netWorkFiles = new HashMap<File, String>();
@@ -30,7 +29,6 @@ public class GridFacade {
 	private GridFacade(GridService gridService) { 
 		this.gridService = gridService;
 	}
-	
 
 	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
 
@@ -45,7 +43,9 @@ public class GridFacade {
 	}
 
 	/**
+	 * 
 	 * @param netWorkFile
+	 * @param nomeRelatorio
 	 */
 	public void addNetWorkFile(File netWorkFile, String nomeRelatorio){
 		if(!netWorkFiles.containsKey(netWorkFile)) {
@@ -55,7 +55,9 @@ public class GridFacade {
 	}
 	
 	/**
+	 * 
 	 * @param netWorkFile
+	 * @param nomeRelatorio
 	 */
 	public void addNetWorkFile(String netWorkFile, String nomeRelatorio){
 		addNetWorkFile(new File(netWorkFile), nomeRelatorio);

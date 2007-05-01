@@ -14,6 +14,7 @@ import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
+import org.epanetgrid.model.report.IReport;
 
 /**
  * @author thiago
@@ -56,5 +57,5 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public Set<String> getTimes();
 	
-	public Set<String> getReports();
+	public IReport getReports();
 }

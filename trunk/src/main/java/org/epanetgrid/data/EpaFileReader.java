@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -373,7 +374,11 @@ class EpaFileReader {
 	private class ReportIDParser extends SimpleLineParser {
 		@Override
 		protected void collectResult(String command, DefaultNetWork netWork) {
-			netWork.addReport(command);
+			Scanner scanner = new Scanner(command);
+			String key = scanner.next();
+			scanner.useDelimiter(key);
+			String value = scanner.next();
+			netWork.addReport(key, value);
 		}
 	}
 	
