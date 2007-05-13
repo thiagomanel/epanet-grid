@@ -59,6 +59,10 @@ public class GridFacade {
 		return gridService.executeAll();
 	}
 	
+	public void setRequirements(String requirements) {
+		gridService.setRequirements(requirements);
+	}
+	
 	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
 
 		for (File file : netWorkFiles.keySet()) {
@@ -97,7 +101,8 @@ public class GridFacade {
 		 * @param libraryFilePath
 		 * @return
 		 */
-		public Builder addLibrary(String libraryFilePath){
+		public Builder addLibrary(String libraryFilePath) {
+			System.out.println("Adicionando biblioteca: "+new File(basePath+File.separator+libraryFilePath).getAbsolutePath());
 			gridService.addLibrary(new File(basePath+File.separator+libraryFilePath));
 			return this;
 		}
@@ -248,7 +253,7 @@ public class GridFacade {
 					}
 				}
 			}else {
-				throw new IllegalStateException("Arquivo de relatorio inexistente");
+				throw new IllegalStateException("Arquivo de relatorio inexistente: "+relatorio.getAbsolutePath());
 			}
 			
 			File error = new File("error.txt");
