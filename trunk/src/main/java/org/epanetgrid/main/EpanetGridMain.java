@@ -22,14 +22,20 @@ public class EpanetGridMain {
 		
 		GridFacade gridFacade = new GridFacade
 				.Builder(basePath)
-				.addLibrary("serialization.jar")
+//				.addLibrary("serialization.jar")
 				.addLibrary("xpp3-1.1.3.4d_b4_min.jar")
 				.addLibrary("xstream-1.1.2.jar")
 				.addLibrary("org-epanetgrid.jar")
 				.addLibrary("ourgrid_3.3.jar")
+//				.addLibrary("smack.jar")
+//				.addLibrary("smackx.jar")
+//				.addLibrary("resources.jar")
+//				.addLibrary("jic.jar")
+//				.addLibrary("ourgrid-4.0.jar")
 				.addResource(new File(basePath+File.separator+"epanetgrid.tar.gz"))
 				.build();
-		gridFacade.addNetWorkFile(basePath+File.separator+"MalhaTeste1-1.inp", "fooRelatorio");
+//		gridFacade.setRequirements("name == parati.lsd.ufcg.edu.br");
+		gridFacade.addNetWorkFile(basePath+File.separator+"MalhaTeste1-1.inp", "Relatorio-1.txt");
 		
 		List result = gridFacade.execute();
 		EpanetGridRunnableResult resultado = (EpanetGridRunnableResult) result.get(0);
