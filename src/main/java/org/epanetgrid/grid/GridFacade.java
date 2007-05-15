@@ -132,7 +132,6 @@ public class GridFacade {
 		private final String logName;
 		private final String epanetGridNetworkFile;
 		private final String relatorioName;
-
 		
 		/**
 		 * @param epanetGridNetworkFile
@@ -153,18 +152,13 @@ public class GridFacade {
 			
 			ProcessBuilder tarBuilder = new ProcessBuilder(tarCommand());
 			
-			Process execProcess = null;
 			Process tarProcess = null;
 			try {
 				tarProcess = tarBuilder.start();
 				tarProcess.waitFor();
 				String[] executionCommand = javaCommand(epanetGridNetworkFile, outputName, logName);
-//				ProcessBuilder execBuilder = new ProcessBuilder(executionCommand);
-//				execProcess = execBuilder.start();
-//				execProcess.waitFor();
-//				ProcessBuilder sleepBuilder = new ProcessBuilder(sleepCommand());
-//				Process sleepProcess = sleepBuilder.start();
-//				sleepProcess.waitFor();
+				Process p = Runtime.getRuntime().exec(executionCommand);
+				p.waitFor();
 			} catch (Exception e) {
 				errorMsg.append(e.getMessage());
 				for (StackTraceElement stack : e.getStackTrace()) {
@@ -174,69 +168,21 @@ public class GridFacade {
 				throw new IllegalStateException(e);
 			}
 			
-			StringBuffer saidaAndLog = new StringBuffer();
+			return new EpanetGridRunnableResult(outputName, getTextContent(relatorioName), getTextContent("log.txt"),
+													getTextContent("error.txt"));
+		}
+
+		private String getTextContent(String fileName) {
 			
-//			File saida = new File("saida.txt");
-			
-//			if(saida.exists()) {
-//				BufferedReader reader = null;
-//				try {
-//					reader = new BufferedReader(new FileReader(saida));
-//					String line;
-//					while ((line = reader.readLine())!= null) {
-//						saidaAndLog.append(line);
-//					}
-//				} catch (FileNotFoundException e) {
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//				finally{
-//					if(reader !=  null) {
-//						try {
-//							reader.close();
-//						} catch (IOException e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				}
-//			}
-//			
-//			File log = new File("log.txt");
-//			if(log.exists()) {
-//				BufferedReader reader = null;
-//				try {
-//					reader = new BufferedReader(new FileReader(log));
-//					String line;
-//					while ((line = reader.readLine())!= null) {
-//						saidaAndLog.append(line);
-//					}
-//				} catch (FileNotFoundException e) {
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//				finally{
-//					if(reader !=  null) {
-//						try {
-//							reader.close();
-//						} catch (IOException e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				}
-//			}
-			
-			File relatorio = new File(relatorioName);
-			StringBuffer conteudoRelatorio = new StringBuffer();
-			if(relatorio.exists()) {
+			StringBuffer textOutPut = new StringBuffer();
+			File file = new File(fileName);
+			if(file.exists()) {
 				BufferedReader reader = null;
 				try {
-					reader = new BufferedReader(new FileReader(relatorio));
+					reader = new BufferedReader(new FileReader(file));
 					String line;
-					while ((line = reader.readLine()) != null) {
-						conteudoRelatorio.append(line);
-						conteudoRelatorio.append("\n");
+					while ((line = reader.readLine())!= null) {
+						textOutPut.append(line);
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -253,35 +199,9 @@ public class GridFacade {
 					}
 				}
 			}else {
-				throw new IllegalStateException("Arquivo de relatorio inexistente: "+relatorio.getAbsolutePath());
+				throw new IllegalStateException("Arquivo nao inexistente: "+fileName);
 			}
-			
-			File error = new File("error.txt");
-			if(error.exists()) {
-				BufferedReader reader = null;
-				try {
-					reader = new BufferedReader(new FileReader(error));
-					String line;
-					while ((line = reader.readLine())!= null) {
-						saidaAndLog.append(line);
-					}
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				finally{
-					if(reader !=  null) {
-						try {
-							reader.close();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-			
-			return new EpanetGridRunnableResult(outputName, conteudoRelatorio, new File(logName), saidaAndLog.toString());
+			return textOutPut.toString();
 		}
 
 		/**
@@ -295,63 +215,48 @@ public class GridFacade {
 		}
 		
 		private String[] javaCommand(String epanetGridNetworkFile, String outputName, String logName) {
-//			return new String[] {"java", "-Djava.library.path=lib/linux ", "-cp", "classes ", 
-//					"org.ourgrid.epanetgrid.JEpanetToolkitMain ", epanetGridNetworkFile, outputName, logName};
-			try {
-				Process p = Runtime.getRuntime().exec("sh executa.sh "+ epanetGridNetworkFile);
-				p.waitFor();
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new IllegalStateException(e);
-			}
 			return new String[] {"sh", "executa.sh" , epanetGridNetworkFile};
 		}
 	}
 	
+	/**
+	 * @author thiago
+	 */
 	public class EpanetGridRunnableResult implements Serializable{
 		
-		private final String outputFile;
-		private final File logFile;
-		private final String erroMesasage;
-
-		private final StringBuffer conteudoArquivo;
+		private final String outputFileName;
+		private final String logMessage;
+		private final String errorMessage;
+		private final String conteudoArquivo;
 		
 		/**
-		 * @param outputFile
-		 * @param logFile
-		 * @param erroMesasage
+		 * @param outputFileName
+		 * @param outPutFileContent
+		 * @param logMessage
+		 * @param errorMessage
 		 */
-		public EpanetGridRunnableResult(String outputFile, StringBuffer conteudoArquivo,File logFile, String erroMesasage) {
-			this.outputFile = outputFile;
-			this.conteudoArquivo = conteudoArquivo;
-			this.logFile = logFile;
-			this.erroMesasage = erroMesasage;
+		public EpanetGridRunnableResult(String outputFileName, String outPutFileContent, String logMessage, String errorMessage) {
+			this.outputFileName = outputFileName;
+			this.conteudoArquivo = outPutFileContent;
+			this.logMessage = logMessage;
+			this.errorMessage = errorMessage;
 		}
 		
-		public String getOutPutFile(){
-			return outputFile;
+		public String getLogMessage(){
+			return logMessage;
 		}
 		
-		public File getLogFile(){
-			return logFile;
-		}
-		
-		public String getErroMessage(){
-			return erroMesasage;
+		public String getErrorMessage(){
+			return errorMessage;
 		}
 
-		public StringBuffer getConteudoArquivo() {
+		public String getConteudoArquivo() {
 			return conteudoArquivo;
 		}
 
-		public String getErroMesasage() {
-			return erroMesasage;
+		public String getOutputFileName() {
+			return outputFileName;
 		}
-
-		public String getOutputFile() {
-			return outputFile;
-		}
-		
 	}
 	
 }
