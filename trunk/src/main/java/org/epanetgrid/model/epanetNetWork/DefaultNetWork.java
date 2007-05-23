@@ -55,6 +55,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final IReport reports = new Report();
 	private final Set<String> times = new HashSet<String>();
 
+	private final Set<String> curves = new HashSet<String>();
+
 	/**
 	 * @param builder
 	 */
@@ -427,6 +429,18 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	}
 	
 	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getCurves()
+	 */
+	public Set<String> getCurves() {
+		return this.curves;
+	}
+	
+	public void addCurve(String curve){
+		System.out.println("add curve "+curve);
+		this.curves.add(curve);
+	}
+	
+	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getReports()
 	 */
 	public IReport getReports() {
@@ -449,4 +463,5 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		sortedSet.addAll(components);
 		return sortedSet;
 	}
+
 }

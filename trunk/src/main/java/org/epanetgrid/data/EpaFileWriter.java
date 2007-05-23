@@ -59,6 +59,7 @@ class EpaFileWriter {
 		compositeWriter.addWriter(new TimeWriter(netWork));
 		compositeWriter.addWriter(new ReportWriter(netWork));
 		compositeWriter.addWriter(new EnergyWriter(netWork));
+		compositeWriter.addWriter(new CurveWriter(netWork));
 		compositeWriter.addWriter(new PatternsWriter(netWork));
 		return compositeWriter;
 	}
@@ -357,6 +358,29 @@ class EpaFileWriter {
 		protected void printCore(PrintWriter writer) {
 			for (String energy : netWork.getEnergy()) {
 				writer.println(energy);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class CurveWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[CURVES]";//FIXME COLOCAR ESTAS CONSTANTES NUM PONTO UNICO
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public CurveWriter(NetWork netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String curve : netWork.getCurves()) {
+				writer.println(curve);
 			}
 		}
 
