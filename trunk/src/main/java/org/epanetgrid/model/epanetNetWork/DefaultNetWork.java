@@ -5,6 +5,8 @@ package org.epanetgrid.model.epanetNetWork;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -55,7 +57,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final IReport reports = new Report();
 	private final Set<String> times = new HashSet<String>();
 
-	private final Set<String> curves = new HashSet<String>();
+	private final List<String> curves = new LinkedList<String>();
 
 	/**
 	 * @param builder
@@ -431,7 +433,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getCurves()
 	 */
-	public Set<String> getCurves() {
+	public List<String> getCurves() {
 		return this.curves;
 	}
 	
