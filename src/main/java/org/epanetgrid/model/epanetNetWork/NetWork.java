@@ -3,6 +3,7 @@
  */
 package org.epanetgrid.model.epanetNetWork;
 
+import java.util.List;
 import java.util.Set;
 
 import org.epanetgrid.model.ILink;
@@ -57,7 +58,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public Set<String> getTimes();
 	
-	public Set<String> getCurves();
+	public List<String> getCurves();
 	
 	public IReport getReports();
 }

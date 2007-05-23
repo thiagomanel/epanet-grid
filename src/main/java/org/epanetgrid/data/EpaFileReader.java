@@ -7,9 +7,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 import javax.quantities.Dimensionless;
@@ -49,6 +49,7 @@ class EpaFileReader {
 		
 		while((line = reader.readLine()) != null){
 			if(!line.trim().equals("")) {
+				System.out.println("line "+line);
 				parser.parse(line);
 			}
 		}
@@ -334,7 +335,7 @@ class EpaFileReader {
 	
 	private abstract class SimpleLineParser implements Parser{
 
-		private final Set<String> commands = new HashSet<String>();
+		private final List<String> commands = new LinkedList<String>();
 		
 		/* (non-Javadoc)
 		 * @see org.epanetgrid.data.EpaFileReader.Parser#parse(java.lang.String)
