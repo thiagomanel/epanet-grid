@@ -147,6 +147,19 @@ public class GridFacade {
 		}
 		
 		public Object run() {
+			
+//			try {
+//				new File(relatorioName).createNewFile();
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+//			
+//			try {
+//				new File(logName).createNewFile();
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+			
 			StringBuffer errorMsg = new StringBuffer();
 			
 			
@@ -183,6 +196,7 @@ public class GridFacade {
 					String line;
 					while ((line = reader.readLine())!= null) {
 						textOutPut.append(line);
+						textOutPut.append("\n");
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -198,8 +212,9 @@ public class GridFacade {
 						}
 					}
 				}
-			}else {
-				throw new IllegalStateException("Arquivo nao inexistente: "+fileName);
+			}
+			else {
+				return "";
 			}
 			return textOutPut.toString();
 		}
