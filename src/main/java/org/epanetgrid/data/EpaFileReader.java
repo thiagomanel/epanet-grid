@@ -82,6 +82,7 @@ class EpaFileReader {
 		private static final String OPTION_ID = "OPTIONS";
 		private static final String REPORT_ID = "REPORT";
 		private static final String ENERGY_ID = "ENERGY";
+		private static final String CURVES_ID = "CURVES";
 		
 		private final Parser junctionParse = new JunctionParser();
 		private final Parser reservoirsParser = new ReservoirParser();
@@ -93,6 +94,7 @@ class EpaFileReader {
 		private final Parser reportParser = new ReportIDParser();
 		private final Parser optionParser = new OptionIDParser();
 		private final Parser energyParser = new EnergyIDParser();
+		private final Parser curvesParser = new CurvesIDParser();
 		
 		private final Parser NOPParser = new Parser(){
 			public void parse(String line) {}
@@ -124,28 +126,29 @@ class EpaFileReader {
 
 		private Parser decideActionParser(String line) {
 			//bug
-			if(line.contains(this.JUNCTION_ID)){
+			if(line.contains(JUNCTION_ID)){
 				return junctionParse;
-			}else if(line.contains(this.RESERVOIR_ID)){
+			}else if(line.contains(RESERVOIR_ID)){
 				return reservoirsParser;
-			}else if(line.contains(this.TANK_ID)){
+			}else if(line.contains(TANK_ID)){
 				return tanksParser;
-			}else if(line.contains(this.PIPE_ID)){
+			}else if(line.contains(PIPE_ID)){
 				return pipeParser;
-			}else if(line.contains(this.PUMP_ID)){
+			}else if(line.contains(PUMP_ID)){
 				return pumpParser;
-			}else if(line.contains(this.PATTERN_ID)){
+			}else if(line.contains(PATTERN_ID)){
 				return patternParser;
-			}else if(line.contains(this.TIME_ID)){
+			}else if(line.contains(TIME_ID)){
 				return timeParser;
-			}else if(line.contains(this.REPORT_ID)){
+			}else if(line.contains(REPORT_ID)){
 				return reportParser;
-			}else if(line.contains(this.OPTION_ID)){
+			}else if(line.contains(OPTION_ID)){
 				return optionParser;
-			}else if(line.contains(this.ENERGY_ID)){
+			}else if(line.contains(ENERGY_ID)){
 				return energyParser;
-			}
-			else {
+			}else if(line.contains(CURVES_ID)){
+				return curvesParser;
+			}else {
 				return NOPParser;
 			}
 		}
@@ -161,6 +164,7 @@ class EpaFileReader {
 			reportParser.collectResult(netWork);
 			optionParser.collectResult(netWork);
 			energyParser.collectResult(netWork);
+			curvesParser.collectResult(netWork);
 		}
 	}
 	
@@ -303,8 +307,15 @@ class EpaFileReader {
 			String pipeID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 			String montNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 			String jusaNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-			String properties = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
+			StringBuffer propBuffer = new StringBuffer();
+			
+			while(tokenizer.hasMoreTokens()){
+				propBuffer.append(tokenizer.nextToken()+" ");
+			}
+
+			String properties = propBuffer.toString();
+			
 			if(pipeID == null) throw new IllegalArgumentException("As bombas devem ter um ID. "+command);
 			DefaultPump.Builder pumpBuilder = new DefaultPump.Builder(pipeID, netWork);
 			
@@ -386,6 +397,13 @@ class EpaFileReader {
 		@Override
 		protected void collectResult(String command, DefaultNetWork netWork) {
 			netWork.addEnergy(command);
+		}
+	}
+	
+	private class CurvesIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			netWork.addCurve(command);
 		}
 	}
 	

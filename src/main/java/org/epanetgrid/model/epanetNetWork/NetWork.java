@@ -57,5 +57,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public Set<String> getTimes();
 	
+	public Set<String> getCurves();
+	
 	public IReport getReports();
 }
