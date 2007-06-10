@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class GridFacade {
 
 	private final Map<File, String> netWorkFiles = new HashMap<File, String>();
 	private GridService gridService;
+	private int cont;
 	
 	/**
 	 * avoid extern initialization
@@ -64,14 +66,14 @@ public class GridFacade {
 	}
 	
 	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
-
 		for (File file : netWorkFiles.keySet()) {
 			String nwFileName = file.getName();
+			this.cont++;
 			this.gridService.addGridRunnable(new EpanetGridRunnable(
 												file.getName(),												
 												nwFileName+".out", 
 												nwFileName+".log",
-												netWorkFiles.get(file)));
+												netWorkFiles.get(file), cont));
 		}
 	}
 	
@@ -132,36 +134,28 @@ public class GridFacade {
 		private final String logName;
 		private final String epanetGridNetworkFile;
 		private final String relatorioName;
+		private final int taskNumber;
 		
 		/**
+		 * 
 		 * @param epanetGridNetworkFile
 		 * @param outPutName
 		 * @param logName
 		 * @param relatorioName
+		 * @param taskNumber
 		 */
-		public EpanetGridRunnable(String epanetGridNetworkFile, String outPutName, String logName, String relatorioName){
+		public EpanetGridRunnable(String epanetGridNetworkFile, String outPutName, String logName, 
+				String relatorioName, int taskNumber){
 			this.epanetGridNetworkFile = epanetGridNetworkFile;
 			this.outputName = outPutName;
 			this.logName = logName;
 			this.relatorioName = relatorioName;
+			this.taskNumber = taskNumber;
 		}
 		
 		public Object run() {
-			
-//			try {
-//				new File(relatorioName).createNewFile();
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-//			
-//			try {
-//				new File(logName).createNewFile();
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-			
+
 			StringBuffer errorMsg = new StringBuffer();
-			
 			
 			ProcessBuilder tarBuilder = new ProcessBuilder(tarCommand());
 			
@@ -182,12 +176,12 @@ public class GridFacade {
 			}
 			
 			return new EpanetGridRunnableResult(outputName, getTextContent(relatorioName), getTextContent("log.txt"),
-													getTextContent("error.txt"));
+													getTextContent("error.txt"), relatorioName, getTextContent("saida.txt"), taskNumber);
 		}
 
-		private String getTextContent(String fileName) {
+		private List<String> getTextContent(String fileName) {
 			
-			StringBuffer textOutPut = new StringBuffer();
+			List<String> textOutPut = new LinkedList<String>();
 			File file = new File(fileName);
 			if(file.exists()) {
 				BufferedReader reader = null;
@@ -195,8 +189,7 @@ public class GridFacade {
 					reader = new BufferedReader(new FileReader(file));
 					String line;
 					while ((line = reader.readLine())!= null) {
-						textOutPut.append(line);
-						textOutPut.append("\n");
+						textOutPut.add(line);
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -214,9 +207,9 @@ public class GridFacade {
 				}
 			}
 			else {
-				return "";
+				return new LinkedList<String>();
 			}
-			return textOutPut.toString();
+			return textOutPut;
 		}
 
 		/**
@@ -240,37 +233,59 @@ public class GridFacade {
 	public class EpanetGridRunnableResult implements Serializable{
 		
 		private final String outputFileName;
-		private final String logMessage;
-		private final String errorMessage;
-		private final String conteudoArquivo;
+		private final List<String> logMessage;
+		private final List<String> errorMessage;
+		private final List<String> conteudoArquivo;
+		private final String relatorioName;
+		private final List<String> saidaMessage;
+		private final int taskNumber;
 		
 		/**
+		 * 
 		 * @param outputFileName
 		 * @param outPutFileContent
 		 * @param logMessage
 		 * @param errorMessage
+		 * @param relatorioName
 		 */
-		public EpanetGridRunnableResult(String outputFileName, String outPutFileContent, String logMessage, String errorMessage) {
+		public EpanetGridRunnableResult(String outputFileName, List<String> outPutFileContent, List<String> logMessage, 
+				List<String> errorMessage, String relatorioName, List<String> saidaMessage, int taskNumber) {
 			this.outputFileName = outputFileName;
 			this.conteudoArquivo = outPutFileContent;
 			this.logMessage = logMessage;
 			this.errorMessage = errorMessage;
+			this.relatorioName = relatorioName;
+			this.saidaMessage = saidaMessage;
+			this.taskNumber = taskNumber;
+			
 		}
 		
-		public String getLogMessage(){
+		public List<String> getLogMessage(){
 			return logMessage;
 		}
 		
-		public String getErrorMessage(){
+		public List<String> getErrorMessage(){
 			return errorMessage;
 		}
 
-		public String getConteudoArquivo() {
+		public List<String> getConteudoArquivo() {
 			return conteudoArquivo;
 		}
 
 		public String getOutputFileName() {
 			return outputFileName;
+		}
+
+		public String getRelatorioName() {
+			return relatorioName;
+		}
+
+		public List<String> getSaidaMessage() {
+			return saidaMessage;
+		}
+
+		public int getTaskNumber() {
+			return taskNumber;
 		}
 	}
 	
