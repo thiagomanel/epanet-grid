@@ -5,7 +5,6 @@ package org.epanetgrid.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,10 +52,10 @@ public class FileUtils {
 		zout.close();  
 	}
 
-	public static String[] getFileNames(int num, String malhaName) {
+	public static String[] getFileNames(int num, String baseDir, String malhaName) {
 		String[] nomes = new String[num];
 		for (int i = 0; i < nomes.length; i++) {
-			nomes[i] = File.separator+"tmp"+File.separator+""+malhaName+"-"+(i+1)+".inp";
+			nomes[i] = baseDir+""+malhaName+"-"+(i+1)+".inp";
 		}
 		return nomes;
 	}
