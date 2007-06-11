@@ -49,7 +49,6 @@ class EpaFileReader {
 		
 		while((line = reader.readLine()) != null){
 			if(!line.trim().equals("")) {
-				System.out.println("line "+line);
 				parser.parse(line);
 			}
 		}

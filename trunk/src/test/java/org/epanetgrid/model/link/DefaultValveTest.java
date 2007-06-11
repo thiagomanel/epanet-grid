@@ -13,26 +13,21 @@ import org.jscience.physics.measures.Measure;
 
 /**
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
- *
+ * since 11/06/2007
  */
-public class DefaultPipeTest extends TestCase {
-	
+public class DefaultValveTest extends TestCase {
+
 	public void testBuild(){
 		
 		Measure<Length> diameter = Measure.valueOf(new Random().nextDouble(), Length.SI_UNIT);
-		Measure<Length> length = Measure.valueOf(new Random().nextDouble(), Length.SI_UNIT);
 		Measure<Dimensionless> lossCoef = Measure.valueOf(new Random().nextDouble(), Dimensionless.SI_UNIT);
-		Measure<Dimensionless> roughCoef = Measure.valueOf(new Random().nextDouble(), Dimensionless.SI_UNIT);
 		
-		DefaultPipe pipe = new DefaultPipe.Builder("defPipe", EasyMock.createMock(NetWork.class))
-		.diameter(diameter)
-		.length(length)
+		DefaultValve valve = new DefaultValve.Builder("defValve", EasyMock.createMock(NetWork.class))
 		.lossCoefficient(lossCoef)
-		.roughnessCoefficient(roughCoef).build();
+		.diameter(diameter)
+		.build();
 		
-		assertEquals(diameter, pipe.getDiameter());
-		assertEquals(length, pipe.getLength());
-		assertEquals(lossCoef, pipe.getLossCoefficient());
-		assertEquals(roughCoef, pipe.getRoughnessCoefficient());
+		assertEquals(diameter, valve.getDiameter());
+		assertEquals(lossCoef, valve.getLossCoefficient());
 	}
 }

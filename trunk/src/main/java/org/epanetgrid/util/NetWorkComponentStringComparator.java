@@ -4,8 +4,19 @@ import java.util.Comparator;
 
 import org.epanetgrid.model.NetworkComponent;
 
+/**
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
+ * since 11/06/2007
+ */
 public class NetWorkComponentStringComparator implements Comparator<NetworkComponent<?>> {
 
+	/**
+	 * Compares <code>NetworkComponent</code> using their label properties. This method
+	 * uses the alphanumeric schema. So <code>"a".compare("a1") < 0 </code> and <code>"b1".compare("a5") > 0 </code>
+	 * @param o1
+	 * @param o2
+	 * @return
+	 */
 	public int compare(NetworkComponent<?> o1, NetworkComponent<?> o2) {
 		String nome1 = o1.label();
 		String nome2 = o2.label();
@@ -22,7 +33,7 @@ public class NetWorkComponentStringComparator implements Comparator<NetworkCompo
 				return new Integer(ord1).intValue() - new Integer(ord2).intValue();
 			}
 			if (ord1.length() > 0 || ord2.length() > 0) {
-				return ord2.length() - ord1.length();
+				return ord1.length() - ord2.length();
 			}
 		}
 		return alphaComparation;

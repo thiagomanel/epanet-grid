@@ -2,6 +2,10 @@ package org.epanetgrid.util;
 
 import junit.framework.TestCase;
 
+/**
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
+ * since 11/06/2007
+ */
 public class StringUtilsTest extends TestCase {
 
 	protected void setUp() throws Exception {
@@ -9,6 +13,8 @@ public class StringUtilsTest extends TestCase {
 	}
 
 	public final void testExtraiOrdem() {
+		String notOrdinal = "P";
+		assertEquals("", StringUtils.extraiOrdem(notOrdinal));
 	}
 
 	public final void testExtraiAlpha() {

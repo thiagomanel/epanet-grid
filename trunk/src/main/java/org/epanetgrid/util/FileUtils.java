@@ -13,16 +13,26 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @author thiagoepdc
- *
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  */
 public class FileUtils {
 
+	/**
+	 * @param zipFilename
+	 * @param filenames
+	 * @throws IOException
+	 */
 	public static void zip(String zipFilename, String[] filenames) 
 	throws IOException {
 		zip(zipFilename, filenames, filenames);  
 	}
 
+	/**
+	 * @param zipFilename
+	 * @param filenames
+	 * @param archFilenames
+	 * @throws IOException
+	 */
 	public static void zip(
 			String zipFilename, String[] filenames, String[] archFilenames
 	) throws IOException {
@@ -52,6 +62,12 @@ public class FileUtils {
 		zout.close();  
 	}
 
+	/**
+	 * @param num
+	 * @param baseDir
+	 * @param malhaName
+	 * @return
+	 */
 	public static String[] getFileNames(int num, String baseDir, String malhaName) {
 		String[] nomes = new String[num];
 		for (int i = 0; i < nomes.length; i++) {
@@ -60,6 +76,10 @@ public class FileUtils {
 		return nomes;
 	}
 	
+	/**
+	 * @param filename
+	 * @return
+	 */
 	public static String stripPath(String filename) {
 		int index = filename.lastIndexOf("\\");
 		if (index == -1) return(filename);

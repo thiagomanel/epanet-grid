@@ -438,7 +438,6 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	}
 	
 	public void addCurve(String curve){
-		System.out.println("add curve "+curve);
 		this.curves.add(curve);
 	}
 	
