@@ -15,7 +15,7 @@
 
 
 #Malha base para a perturbação.
-setMalhaEntrada file="/local/thiago/workspace/epa/resources/accept/MalhaTeste1-1.inp"
+setMalhaEntrada file="resources/accept/MalhaTeste1-1.inp"
 addElementoPerturbado R1 TANK_ELEVATION 600 0.016 10
 geraPerturbacao
 
