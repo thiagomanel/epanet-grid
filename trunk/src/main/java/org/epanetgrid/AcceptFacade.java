@@ -16,7 +16,7 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.perturbador.PertubadorFacade;
-import org.epanetgrid.perturbador.PertubationType;
+import org.epanetgrid.perturbador.PerturbationType;
 import org.epanetgrid.perturbador.valueProvider.SimpleValueProvider;
 import org.epanetgrid.perturbador.valueProvider.ValueProvider;
 import org.jscience.physics.measures.Measure;
@@ -50,7 +50,7 @@ public class AcceptFacade {
 										double discretizacao, int quantidadeMalhas){
 		
 		ValueProvider vp = SimpleValueProvider.getValueProviderDiscretizacaoAndSamples(valorMinimo, discretizacao, quantidadeMalhas);
-		PertubationType type = getTypeByString(propriedade);
+		PerturbationType type = getTypeByString(propriedade);
 		perturbFacade.createPerturbadores(elemento, vp, type);
 	}
 	
@@ -106,9 +106,9 @@ public class AcceptFacade {
 		return new DataFacade().createNetWorkFromFile(file);
 	}
 	
-	private PertubationType getTypeByString(String typeDescrip){
+	private PerturbationType getTypeByString(String typeDescrip){
 		if("TANK_ELEVATION".endsWith(typeDescrip)) {//so pra passar
-			return PertubationType.TANK_ELEVATION;
+			return PerturbationType.TANK_ELEVATION;
 		}
 		return null;
 	}

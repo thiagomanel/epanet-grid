@@ -37,12 +37,12 @@ class PertubadorRunner {
 	 */
 	public List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>>
 				getMalhaPerturbadas(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> malhaBase, 
-									Map<String, Map<PertubationType, Collection<IPerturbador>>> labelToPerturbadores ){
+									Map<String, Map<PerturbationType, Collection<IPerturbador>>> labelToPerturbadores ){
 		
 		Map<String, Collection<NetworkComponent>> elementosGerados = new HashMap<String, Collection<NetworkComponent>>(); 
 		
 		for (String label : labelToPerturbadores.keySet()) {
-			Map<PertubationType, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
+			Map<PerturbationType, Collection<IPerturbador>> perturbadoresByType = labelToPerturbadores.get(label);
 			elementosGerados.put(label, geraElementosPerturbados(malhaBase.getElemento(label), perturbadoresByType));
 		}
 		
@@ -67,7 +67,7 @@ class PertubadorRunner {
 	 * @return
 	 */
 	protected Collection<NetworkComponent> geraElementosPerturbados(NetworkComponent component,
-									Map<PertubationType, Collection<IPerturbador>> perturbadoresByType) {
+									Map<PerturbationType, Collection<IPerturbador>> perturbadoresByType) {
 		
 		Collection<NetworkComponent> elementosPerturbados = new LinkedList<NetworkComponent>();
 		for (Collection<IPerturbador> perturbadores : perturbadoresByType.values()) {

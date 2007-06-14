@@ -63,12 +63,12 @@ public class PertubadorRunnerTest extends TestCase {
 		perturbadores.add(pert2);
 		perturbadores.add(pert3);
 		
-		Map<PertubationType, Collection<IPerturbador>> mapTypeToPert = new HashMap<PertubationType, Collection<IPerturbador>>();
+		Map<PerturbationType, Collection<IPerturbador>> mapTypeToPert = new HashMap<PerturbationType, Collection<IPerturbador>>();
 		
-		mapTypeToPert.put(PertubationType.PIPE_LENGTH, perturbadores);
+		mapTypeToPert.put(PerturbationType.PIPE_LENGTH, perturbadores);
 		
-		Map<String,Map<PertubationType, Collection<IPerturbador>>> mapLabelToPert 
-								= new HashMap<String,Map<PertubationType, Collection<IPerturbador>>>();
+		Map<String,Map<PerturbationType, Collection<IPerturbador>>> mapLabelToPert 
+								= new HashMap<String,Map<PerturbationType, Collection<IPerturbador>>>();
 		
 		mapLabelToPert.put(basePipe.label(), mapTypeToPert);
 	

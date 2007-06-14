@@ -5,11 +5,12 @@ package org.epanetgrid.perturbador;
 
 import org.epanetgrid.perturbador.valueProvider.ValueProvider;
 
+
 /**
- * @author thiagoepdc
- *
+ * @see org.epanetgrid.perturbador.IVariavelPerturbada
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
-public class DefaultVariavelPerturbada implements IVariavelPerturbada {
+class DefaultVariavelPerturbada implements IVariavelPerturbada {
 
 	private final String componentLabel;
 	private final int numSamples;
