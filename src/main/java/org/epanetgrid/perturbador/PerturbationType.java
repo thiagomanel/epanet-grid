@@ -23,10 +23,9 @@ import org.epanetgrid.perturbador.perturbadores.valves.ValveDiameterPerturbador;
 import org.epanetgrid.perturbador.perturbadores.valves.ValveLossCoefPerturbador;
 
 /**
- * @author thiagoepdc
- *
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
-public enum PertubationType {
+public enum PerturbationType {
 	
 	PIPE_LENGTH, PIPE_DIAMETER, PIPE_ROUGHNESS_COEF, PIPE_LOSS_COEF,
 	PUMP_POWER, PUMP_RELATIVE_SPEED,
@@ -36,7 +35,14 @@ public enum PertubationType {
 	JUNCTION_ELEVATION, JUNCTION_BASE_DEMAND_FLOW, 
 	TANK_ELEVATION, TANK_INIT_W_LEV, TANK_MIN_W_LEV, TANK_MIN_VOL_LEV, TANK_MAX_W_LEV, TANK_NOM_DIAM;
 	
-	public static IPerturbador getPerturbador(String componentLabel, double value, PertubationType type){
+	/**
+	 * 
+	 * @param componentLabel
+	 * @param value
+	 * @param type
+	 * @return
+	 */
+	public static IPerturbador getPerturbador(String componentLabel, double value, PerturbationType type){
 		switch (type) {
 		
 		//LINKS

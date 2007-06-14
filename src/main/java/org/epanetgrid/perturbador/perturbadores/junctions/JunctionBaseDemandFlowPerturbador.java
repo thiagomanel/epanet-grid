@@ -10,8 +10,7 @@ import org.epanetgrid.perturbador.perturbadores.AbstractPerturbador;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiagoepdc
- *
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
 public class JunctionBaseDemandFlowPerturbador extends AbstractPerturbador<DefaultJuntion>{
 
