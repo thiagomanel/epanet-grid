@@ -15,15 +15,15 @@ import junit.framework.TestCase;
 
 /**
  * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
- * since 12/06/2007
+ * since 20/06/2007
  */
-public class JunctionBaseDemandFlowPerturbadorTest extends TestCase {
+public class JunctionElevationPerturbadorTest extends TestCase {
 
 	/*
-	 * Test method for 'org.epanetgrid.perturbador.perturbadores.junctions.JunctionBaseDemandFlowPerturbador.disturb(DefaultJuntion)'
+	 * Test method for 'org.epanetgrid.perturbador.perturbadores.junctions.JunctionElevationPerturbador.disturb(IJunction)'
 	 */
-	public final void testDisturbDefaultJuntion() {
-
+	public final void testDisturbIJunction() {
+		
 		IJunction baseJunction = EasyMock.createMock(IJunction.class);
 		
 		EasyMock.expect(baseJunction.label()).andReturn(UUID.randomUUID().toString()).anyTimes();
@@ -36,13 +36,13 @@ public class JunctionBaseDemandFlowPerturbadorTest extends TestCase {
 		EasyMock.replay(baseJunction);
 		
 		double newValue = new Random().nextDouble();
-		DefaultJuntion junctPert = new JunctionBaseDemandFlowPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
+		DefaultJuntion junctPert = new JunctionElevationPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
 		
 		assertTrue(baseJunction.label().equals(junctPert.label()));
 		assertTrue(baseJunction.getDemandPatternID().equals(junctPert.getDemandPatternID()));
-		assertTrue(baseJunction.getElevation().equals(junctPert.getElevation()));
-		assertEquals(Measure.valueOf(newValue, VolumetricFlowRate.SI_UNIT).getEstimatedValue(), 
-				junctPert.getBaseDemandFlow().getEstimatedValue());
+		assertEquals(Measure.valueOf(newValue, Length.SI_UNIT).getEstimatedValue(), 
+				junctPert.getElevation().getEstimatedValue());
+		assertTrue(baseJunction.getBaseDemandFlow().equals(junctPert.getBaseDemandFlow()));
 	}
 
 }
