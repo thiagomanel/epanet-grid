@@ -21,6 +21,10 @@ import org.epanetgrid.perturbador.valueProvider.ValueProvider;
 
 
 /**
+ * Ponto de entrada no sistema para perturbacoes. 
+ * Fornece as funcionalidades de adicionar perturbacoes e gera malhas 
+ * resultantes das perturbacoes adicionadas.
+ * 
  * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
 public class PertubadorFacade {
@@ -29,7 +33,8 @@ public class PertubadorFacade {
 		new HashMap<String, Map<PerturbationType, Collection<IPerturbador>>>();
 									
 	/**
-	 * Gera
+	 * Gera malhas baseadas na perturbacoes adicionadas atráves do método 
+	 * <code>createPerturbadores(String label, ValueProvider vp, PerturbationType TipoPertub)</code> 
 	 * @param malhaBase
 	 * @return
 	 */

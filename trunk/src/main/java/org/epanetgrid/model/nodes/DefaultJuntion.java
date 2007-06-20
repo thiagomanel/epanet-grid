@@ -10,8 +10,7 @@ import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiago
- *
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
 public class DefaultJuntion implements IJunction<DefaultJuntion> {
 
