@@ -10,16 +10,27 @@ import org.epanetgrid.model.ILink;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiago
- *
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  */
 public interface IPump<T extends IPump> extends ILink<T> {
 
+	/**
+	 * @return
+	 */
 	public Measure<Energy> getPower();
 	
+	/**
+	 * @return
+	 */
 	public String getHeadCurveID();
 	
+	/**
+	 * @return
+	 */
 	public Measure<Dimensionless> getRelativeSpeed();
 	
+	/**
+	 * @return
+	 */
 	public String idTimePattern();
 }
