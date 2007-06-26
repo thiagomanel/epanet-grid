@@ -6,14 +6,14 @@ package org.epanetgrid.perturbador.perturbadores.tank;
 import javax.quantities.Length;
 
 import org.epanetgrid.model.nodes.DefaultTank;
+import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.perturbador.perturbadores.AbstractPerturbador;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiago
- *
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  */
-public class TankMinimunWaterLevel extends AbstractPerturbador<DefaultTank> {
+public class TankMinimunWaterLevel extends AbstractPerturbador<ITank> {
 
 	/**
 	 * @param componentLabel
@@ -28,7 +28,7 @@ public class TankMinimunWaterLevel extends AbstractPerturbador<DefaultTank> {
 	 * @see org.epanetgrid.perturbador.perturbadores.AbstractPerturbador#disturb(T)
 	 */
 	@Override
-	public DefaultTank disturb(DefaultTank component) {
+	public ITank disturb(ITank component) {
 		Measure<Length> newMinimumWaterLevel = Measure.valueOf(getNewValue(), Length.SI_UNIT);
 		return new DefaultTank.Builder(getComponentLabel(), null).copy(component).minimumWaterLevel(newMinimumWaterLevel).build();
 	}

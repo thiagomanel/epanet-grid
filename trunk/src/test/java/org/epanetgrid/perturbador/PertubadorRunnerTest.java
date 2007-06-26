@@ -54,9 +54,9 @@ public class PertubadorRunnerTest extends TestCase {
 	@SuppressWarnings("unchecked")
 	public void testGetMalhaPerturbadas() {
 		
-		IPerturbador<DefaultPipe> pert1 = new PipeLengthPerturbador(basePipe.label(), 1);
-		IPerturbador<DefaultPipe> pert2 = new PipeLengthPerturbador(basePipe.label(), 2);
-		IPerturbador<DefaultPipe> pert3 = new PipeLengthPerturbador(basePipe.label(), 3);
+		IPerturbador<IPipe> pert1 = new PipeLengthPerturbador(basePipe.label(), 1);
+		IPerturbador<IPipe> pert2 = new PipeLengthPerturbador(basePipe.label(), 2);
+		IPerturbador<IPipe> pert3 = new PipeLengthPerturbador(basePipe.label(), 3);
 		
 		Collection<IPerturbador> perturbadores  = new LinkedList<IPerturbador>();
 		perturbadores.add(pert1);
@@ -107,9 +107,9 @@ public class PertubadorRunnerTest extends TestCase {
 	@SuppressWarnings("unchecked")
 	public void testDisturbComponent(){
 		
-		IPerturbador<DefaultPipe> pert1 = new PipeLengthPerturbador(basePipe.label(), 1);
-		IPerturbador<DefaultPipe> pert2 = new PipeLengthPerturbador(basePipe.label(), 2);
-		IPerturbador<DefaultPipe> pert3 = new PipeLengthPerturbador(basePipe.label(), 3);
+		IPerturbador<IPipe> pert1 = new PipeLengthPerturbador(basePipe.label(), 1);
+		IPerturbador<IPipe> pert2 = new PipeLengthPerturbador(basePipe.label(), 2);
+		IPerturbador<IPipe> pert3 = new PipeLengthPerturbador(basePipe.label(), 3);
 		
 		Collection<IPerturbador> perturbadores  = new LinkedList<IPerturbador>();
 		perturbadores.add(pert1);
