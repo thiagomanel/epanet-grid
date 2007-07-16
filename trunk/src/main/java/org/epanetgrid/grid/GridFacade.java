@@ -16,6 +16,7 @@ import org.gridfaith.interfaces.GridRunnable;
 import org.gridfaith.interfaces.GridService;
 
 /**
+ * Grid execution facade for EPANET simulations.
  * 
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  */
@@ -33,9 +34,10 @@ public class GridFacade {
 	}
 
 	/**
-	 * 
+	 * Adds a epanet's network file and a name for its output for
+	 * grid execution.
 	 * @param netWorkFile
-	 * @param nomeRelatorio
+	 * @param nomeRelatorio Simulation outputName
 	 */
 	public void addNetWorkFile(File netWorkFile, String nomeRelatorio){
 		if(!netWorkFiles.containsKey(netWorkFile)) {
@@ -45,15 +47,17 @@ public class GridFacade {
 	}
 	
 	/**
-	 * 
+	 * Adds a epanet's network file and a name for its output for
+	 * grid execution.
 	 * @param netWorkFile
-	 * @param nomeRelatorio
+	 * @param nomeRelatorio Simulation outputName.
 	 */
 	public void addNetWorkFile(String netWorkFile, String nomeRelatorio){
 		addNetWorkFile(new File(netWorkFile), nomeRelatorio);
 	}
 	
 	/**
+	 * Fires the grid execution.
 	 * @return
 	 */
 	public List execute(){
@@ -61,6 +65,11 @@ public class GridFacade {
 		return gridService.executeAll();
 	}
 	
+	/**
+	 * Set the execution requirements. See OurGrid documentation
+	 * www.ourgrid.org for details. 
+	 * @param requirements
+	 */
 	public void setRequirements(String requirements) {
 		gridService.setRequirements(requirements);
 	}
@@ -104,7 +113,6 @@ public class GridFacade {
 		 * @return
 		 */
 		public Builder addLibrary(String libraryFilePath) {
-			System.out.println("Adicionando biblioteca: "+new File(basePath+File.separator+libraryFilePath).getAbsolutePath());
 			gridService.addLibrary(new File(basePath+File.separator+libraryFilePath));
 			return this;
 		}
@@ -228,7 +236,7 @@ public class GridFacade {
 	}
 	
 	/**
-	 * @author thiago
+	 * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
 	 */
 	public class EpanetGridRunnableResult implements Serializable{
 		

@@ -30,8 +30,7 @@ import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiago
- *
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  */
 class EpaFileReader {
 	
