@@ -21,8 +21,7 @@ import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 
 /**
- * @author thiago
- *
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  */
 class EpaFileWriter {
 

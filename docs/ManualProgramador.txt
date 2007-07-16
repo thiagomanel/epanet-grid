@@ -1,0 +1,20 @@
+MANUAL DO PROGRAMADOR - EpanetGrid
+
+@author Thiago Emmanuel Pereira, thiago.manel@gmail.com
+---------------------------------------------------------
+
+Descrição do projeto
+
+Estrutura do Código
+
+	src/main/java - Diretório do código fonte
+	src/test/java - Diretório dos testes unitários
+
+Descrição Pacotes
+
+	org.epanetgrid
+		data - Manipula entrada/saída no formato padrão (.inp) definido pelo EPANET.
+		grid - Facade para execução de simulações EPANET em grade, usa como Middleware o OurGrid, www.ourgrid.org
+		model - Modelo de objetos que representam a rede hidráulica do EPANET.
+		perturbador -Implementa um módulo de análise da variação dos valores dos elementos da rede hidráulica.
+		util - Funções complementares como Compactadores, Métodos de Ordenação etc.
