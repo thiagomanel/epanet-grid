@@ -5,16 +5,64 @@ MANUAL DO PROGRAMADOR - EpanetGrid
 
 Descrição do projeto
 
+--------------------------
 Estrutura do Código
 
 	src/main/java - Diretório do código fonte
 	src/test/java - Diretório dos testes unitários
-
+--------------------------
 Descrição Pacotes
 
 	org.epanetgrid
 		data - Manipula entrada/saída no formato padrão (.inp) definido pelo EPANET.
-		grid - Facade para execução de simulações EPANET em grade, usa como Middleware o OurGrid, www.ourgrid.org
+		grid - Facade para execução de simulações EPANET em grade, usa como Middleware 
+			   o OurGrid, www.ourgrid.org
 		model - Modelo de objetos que representam a rede hidráulica do EPANET.
-		perturbador -Implementa um módulo de análise da variação dos valores dos elementos da rede hidráulica.
+		perturbador - Implementa um módulo de análise da variação dos valores dos elementos
+					  da rede hidráulica.
 		util - Funções complementares como Compactadores, Métodos de Ordenação etc.
+
+
+org.epanetgrid.data
+
+	A API deste pacote contem apenas a classe DataFacade que disponibiliza os métodos:
+	
+		public NetWork createNetWorkFromFile(String filePath) throws IOException;
+		public void saveNetWork(NetWork netWork, String filePath) throws IOException;
+
+	O trabalho concreto de manipulação de entrada/saída é feito por classes com acesso de pacote, com
+	esta visibilidade estas classes não fazem parte da API e podem mudar sem que o código cliente da
+	Facade seja impactado. Qualquer outro requisito de entrada/saída que envolva formatos do EPANET
+	deve seguir este modelo de extensão: adicionar métodos na Facade e criar classes que não tenham 
+	visibilidade PUBLIC.
+	
+org.epanetgrid.grid
+
+	Este pacote fornece duas classes como API:
+		
+		GridFacade		
+			public void addNetWorkFile(File netWorkFile, String nomeRelatorio);	
+			public void addNetWorkFile(String netWorkFile, String nomeRelatorio);	
+			public List execute();
+		
+		GridFacade.Builder
+			public Builder(String basePath);
+			public GridFacade build();
+			public Builder addLibrary(String libraryFilePath);
+			public Builder addResource(File resource);
+			public Builder setRequirements(String requirements);
+
+	A classe GridFacade não possui um construtor público, para construir um objeto deste tipo deve-se 
+	usar a classe GridFacade.Builder. Esta é uma técnica usada para ter métodos contrutores mais 
+	expressivos além de evitar extensão da classe GridFacade.
+	
+	Veja que a classe GridFacade.Builder contém métodos que configuram a execução da tarefa que usará o 
+	a grade computacional, como as bibliotecas e arquivos que compõe o ambiente de execução e os requisitos
+	da tarefa.
+	
+	Os métodos de GridFacade dizem respeito a configuração dos dados de entrada (addNetWorkFile) e o disparo 
+	da execução da tarefa na grade.
+	
+org.epanetgrid.model
+
+org.epanetgrid.perturbador		

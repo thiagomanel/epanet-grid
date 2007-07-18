@@ -1,0 +1,9 @@
+# Testa a conversao de arquivos .net para .inp
+#
+
+#Malha .net entrada: MalhaTesteConvert.net
+#Saida .inp padrao: MalhaTesteConvert.inp
+#
+
+#Malha .net de entrada
+convertToINP fileNET="resources/accept/MalhaTesteConvert.net" INPRestult="resources/accept/output.inp"
