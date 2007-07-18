@@ -65,15 +65,6 @@ public class GridFacade {
 		return gridService.executeAll();
 	}
 	
-	/**
-	 * Set the execution requirements. See OurGrid documentation
-	 * www.ourgrid.org for details. 
-	 * @param requirements
-	 */
-	public void setRequirements(String requirements) {
-		gridService.setRequirements(requirements);
-	}
-	
 	private void addGridExecutor(GridService grid, Map<File, String> netWorkFiles) {
 		for (File file : netWorkFiles.keySet()) {
 			String nwFileName = file.getName();
