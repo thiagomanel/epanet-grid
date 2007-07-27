@@ -1,9 +1,10 @@
 /**
  * 
  */
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.resultRelatorios;
 
 import java.io.File;
+
 
 /**
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
@@ -12,6 +13,10 @@ import java.io.File;
  */
 public interface EPANETResultRelatorio {
 
+	/**
+	 * @param relatorio
+	 * @return
+	 */
 	public IResultRelatorio generateRelatorio(File relatorio); 
 	
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.resultRelatorios;
 
 import java.util.Date;
 

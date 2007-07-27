@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.outPutRelatorios;
 
 import javax.quantities.Velocity;
 
@@ -11,21 +11,19 @@ import org.jscience.physics.measures.Measure;
  * @author
  * since 18/07/2007
  */
-public class VelocidadeMaximaNode {
+public class VelocidadeMinimaNode {
 
-	private final Measure<Velocity> velocidadeMaxima;
+	private final Measure<Velocity> velocidadeMinima;
 	private final String nodeName;
 
 	/**
 	 * @param pressaoMaxima
 	 * @param nodeName
 	 */
-	public VelocidadeMaximaNode(Measure<Velocity> velocidadeMaxima, String nodeName){
-		this.velocidadeMaxima = velocidadeMaxima;
+	public VelocidadeMinimaNode(Measure<Velocity> velocidadeMinima, String nodeName){
+		this.velocidadeMinima = velocidadeMinima;
 		this.nodeName = nodeName;
 	}
-	
-	
 	
 	/**
 	 * @return
@@ -34,12 +32,11 @@ public class VelocidadeMaximaNode {
 		return this.nodeName;
 	}
 
-
 	/**
 	 * @return Returns the velocidadeMaxima.
 	 */
-	public Measure<Velocity> getVelocidadeMaxima() {
-		return velocidadeMaxima;
+	public Measure<Velocity> getVelocidadeMinima() {
+		return velocidadeMinima;
 	}
 
 }

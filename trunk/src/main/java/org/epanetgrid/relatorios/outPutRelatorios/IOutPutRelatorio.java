@@ -1,7 +1,8 @@
 /**
  * 
  */
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.outPutRelatorios;
+
 
 
 
@@ -12,12 +13,12 @@ package org.epanetgrid.relatorios;
 public interface IOutPutRelatorio {
 
 	/**
-	Quantidade de alarmes de pressão negativa - SAIDA
+	Quantidade de alarmes de pressao negativa - SAIDA
 	Quantidade total de alarmes - SAIDA
-	Pressão mínima nos nós em toda a simulação - SAIDA
-	Pressão máxima por nó em toda a simulação - SAIDA 
-	Velocidade mínima dos tubos em toda a simulação - SAIDA
-	Velocidade máxima dos tubos em toda a simulação - SAIDA
+	Presso minima nos nos em toda a simulacao - SAIDA
+	Pressao maxima por no em toda a simulacao - SAIDA 
+	Velocidade minima dos tubos em toda a simulacao - SAIDA
+	Velocidade maxima dos tubos em toda a simulacao - SAIDA
 	*/
 	
 	public int getNumAlarmes(IAlarme.Tipo tipo);
