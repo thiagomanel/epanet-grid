@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.outPutRelatorios;
 
 /**
  * @author

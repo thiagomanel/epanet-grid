@@ -1,8 +1,8 @@
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.outPutRelatorios;
 
 import java.io.File;
 
-import org.epanetgrid.relatorios.IAlarme.Tipo;
+import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
 
 /**
  * @author
@@ -12,6 +12,9 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 
 	private final File arquivo;
 
+	/**
+	 * @param arquivo
+	 */
 	public DefaultOutPutRelatorio(File arquivo) {
 		this.arquivo = arquivo;
 	}

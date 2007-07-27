@@ -1,4 +1,4 @@
-package org.epanetgrid.relatorios;
+package org.epanetgrid.relatorios.resultRelatorios;
 
 import java.io.File;
 import java.util.Date;
