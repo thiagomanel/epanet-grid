@@ -1,0 +1,18 @@
+Data da simulação - RESULT
+Custo total - RESULT
+Quantidade de alarmes de pressão negativa - SAIDA
+Quantidade total de alarmes - SAIDA
+Pressão mínima nos nós em toda a simulação - SAIDA
+Pressão máxima por nó em toda a simulação - SAIDA 
+Velocidade mínima dos tubos em toda a simulação - SAIDA
+Velocidade máxima dos tubos em toda a simulação - SAIDA
+
+
+Do grid (informações coletadas por execução):
+
+1)Tempo total de execução
+2)Número de máquinas diferentes utilizadas
+3)Número de máquinas diferentes utilizadas com sucesso
+4)Número de réplicas FINISHED
+5)Número de réplicas FAILED
+6)Número de réplicas ABORTED
