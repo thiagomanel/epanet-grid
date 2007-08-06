@@ -5,6 +5,9 @@ package org.epanetgrid.relatorios.common;
 
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 /**
  * <code>IMatcher</code> implementation using regular expressions.
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
@@ -34,5 +37,28 @@ public class RegexMatcher implements IMatcher{
 		
 		return pattern.matcher(source).matches();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof RegexMatcher == false) {
+			return false;
+		}
+		if (this == obj) {
+			return true;
+		}
+		
+		RegexMatcher rhs = (RegexMatcher) obj;
+		
+		return new EqualsBuilder()
+	        .append(pattern.pattern(), rhs.pattern.pattern())
+	        .isEquals();
+	}
 
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37)
+					.append(pattern.pattern())
+					.toHashCode();
+	}
 }
