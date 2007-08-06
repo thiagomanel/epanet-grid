@@ -29,7 +29,6 @@ public class RegexMatcherTest extends TestCase {
 			new RegexMatcher(null);
 			fail();
 		} catch (IllegalArgumentException e) { }
-		
 	}
 	
 	/**
@@ -41,6 +40,15 @@ public class RegexMatcherTest extends TestCase {
 			new RegexMatcher("foo").match(null);
 			fail();
 		} catch (IllegalArgumentException e) { }
+	}
+	
+	public void testEquals() {
+		
+		IMatcher sameMatcher = new RegexMatcher("a");
+		assertTrue(sameMatcher.equals(sameMatcher));
+		
+		IMatcher equalsMatcher = new RegexMatcher("a");
+		assertTrue(equalsMatcher.equals(sameMatcher));
 	}
 	
 	/**
@@ -57,6 +65,7 @@ public class RegexMatcherTest extends TestCase {
 		assertTrue(new RegexMatcher(".foo").match(" foo"));
 		assertTrue(new RegexMatcher(".foo").match("afoo"));
 		
+		assertTrue(new RegexMatcher(".*foo").match("aaafoo"));
 	}
 	
 }
