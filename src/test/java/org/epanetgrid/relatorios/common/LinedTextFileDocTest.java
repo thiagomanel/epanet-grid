@@ -3,8 +3,10 @@
  */
 package org.epanetgrid.relatorios.common;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import junit.framework.TestCase;
@@ -17,6 +19,14 @@ import org.easymock.classextension.EasyMock;
  */
 public class LinedTextFileDocTest extends TestCase {
 
+	/**
+	 * avvva 
+	 * omomomo
+	 * CaasC
+	 * 123Hei
+	 */
+	private final static String inputFile = "resources"+File.separator+"input";
+	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
@@ -32,49 +42,68 @@ public class LinedTextFileDocTest extends TestCase {
 		} catch (IllegalArgumentException e) { }
 		
 		try {
-			Iterable<String> source = EasyMock.createMock(Iterable.class);
-			EasyMock.replay(source);
-			new LinedTextFileDoc.Builder(source).addMatcher(null);
+			new LinedTextFileDoc.Builder(new File("file_does_not_exists")).build();
+			fail();
+		} catch (FileNotFoundException e) { }
+		
+		try {
+			File file = EasyMock.createMock(File.class);
+			EasyMock.replay(file);
+			new LinedTextFileDoc.Builder(file).addMatcher(null);
 			fail();
 		} catch (IllegalArgumentException e) { }
 		
 		
 		try {
-			Iterable<String> source = EasyMock.createMock(Iterable.class);
+			File file = EasyMock.createMock(File.class);
 			IMatcher goodMatcher = EasyMock.createMock(IMatcher.class);
-			EasyMock.replay(source);
+			EasyMock.replay(file);
 			EasyMock.replay(goodMatcher);
-			new LinedTextFileDoc.Builder(source)
+			new LinedTextFileDoc.Builder(file)
 						.addMatcher(goodMatcher)
 						.addMatcher(null);
 			fail();
+			
 		} catch (IllegalArgumentException e) { }
 	}
 	
-	public void testGetDocItems(){
+	public void testDuplicatedMatcher() {
 		
-		fail();
+		//same object
+		try {
+			File file = EasyMock.createMock(File.class);
+			IMatcher goodMatcher = new RegexMatcher("a");
+			new LinedTextFileDoc.Builder(file)
+						.addMatcher(goodMatcher)
+						.addMatcher(goodMatcher);
+			fail();
+			
+		} catch (IllegalArgumentException e) { }
 		
-		Iterable<String> source = EasyMock.createMock(Iterable.class);
-		Iterator<String> iter = EasyMock.createMock(Iterator.class);
+		//the objects are equals
+		try {
+			File file = EasyMock.createMock(File.class);
+			IMatcher goodMatcher = new RegexMatcher("a");
+			IMatcher equalsMatcher = new RegexMatcher("a");
+			new LinedTextFileDoc.Builder(file)
+						.addMatcher(goodMatcher)
+						.addMatcher(equalsMatcher);
+			fail();
+			
+		} catch (IllegalArgumentException e) { }
+	}
+	
+	public void testGetDocItems() throws IOException{
+
+		/**
+		 * avvva 
+		 * omomomo
+		 * CaasC
+		 * 123Hei
+		 */
+		IMatcher matcher = new RegexMatcher(".*om.*");
 		
-		EasyMock.expect(iter.hasNext()).andReturn(true);
-		EasyMock.expect(iter.next()).andReturn("baa");
-		EasyMock.expect(iter.hasNext()).andReturn(false);
-		EasyMock.expect(iter.next()).andReturn("foo");
-		
-		EasyMock.expect(source.iterator()).andReturn(iter);
-		
-		EasyMock.replay(iter);
-		EasyMock.replay(source);
-		
-		IMatcher matcher = EasyMock.createMock(IMatcher.class);
-		EasyMock.expect(matcher.match("baa")).andReturn(true);
-		EasyMock.expect(matcher.match("foo")).andReturn(false);
-		
-		EasyMock.replay(matcher);
-		
-		LinedTextFileDoc lineTex = new LinedTextFileDoc.Builder(source).addMatcher(matcher).build();
+		LinedTextFileDoc lineTex = new LinedTextFileDoc.Builder(new File(inputFile)).addMatcher(matcher).build();
 		
 		Map<IMatcher, Collection<IDocItem>> result =  lineTex.getDocItems();
 		
@@ -82,7 +111,34 @@ public class LinedTextFileDocTest extends TestCase {
 		Collection<IDocItem> docItems = result.get(result.keySet().iterator().next());
 		assertEquals(1, docItems.size());
 		
-		assertEquals(new DefaultDocItem("baa"), docItems.iterator().next());
+		assertEquals(new DefaultDocItem("omomomo"), docItems.iterator().next());
+	}
+	
+	public void testGetDocItemsWithMultipleMatchers() throws IOException{
+		fail();
+		
+		
+		/**
+		 * avvva 
+		 * omomomo
+		 * CaasC
+		 * 123Hei
+		 */
+		IMatcher matcher = new RegexMatcher(".*om.*");
+		IMatcher matcher2 = new RegexMatcher(".*123.*");
+		
+		LinedTextFileDoc lineTex = new LinedTextFileDoc.Builder(new File(inputFile))
+															.addMatcher(matcher)
+															.addMatcher(matcher2)
+															.build();
+		
+		Map<IMatcher, Collection<IDocItem>> result =  lineTex.getDocItems();
+		
+		assertEquals(1, result.keySet().size());
+		Collection<IDocItem> docItems = result.get(result.keySet().iterator().next());
+		assertEquals(1, docItems.size());
+		
+		assertEquals(new DefaultDocItem("omomomo"), docItems.iterator().next());
 	}
 
 }
