@@ -30,7 +30,19 @@ public class DefaultDocItem implements IDocItem {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return new EqualsBuilder().reflectionEquals(this, obj);
+		
+		if (obj instanceof DefaultDocItem == false) {
+			return false;
+		}
+		if (this == obj) {
+			return true;
+		}
+		
+		DefaultDocItem rhs = (DefaultDocItem) obj;
+		
+		return new EqualsBuilder()
+	        .append(source, rhs.source)
+	        .isEquals();
 	}
 	
 	@Override

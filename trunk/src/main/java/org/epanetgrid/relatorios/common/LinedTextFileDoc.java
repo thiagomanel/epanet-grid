@@ -51,7 +51,7 @@ public class LinedTextFileDoc{
 			
 			for (IMatcher matcher : matchers) {
 				if(matcher.match(lineMatched)) {
-					addDocItem(result, matcher, new DefaultDocItem(lineMatched));
+					addDocItem(result, matcher, new DefaultDocItem(lineMatched.trim()));
 				}
 			}
 			

@@ -114,9 +114,27 @@ public class LinedTextFileDocTest extends TestCase {
 		assertEquals(new DefaultDocItem("omomomo"), docItems.iterator().next());
 	}
 	
-	public void testGetDocItemsWithMultipleMatchers() throws IOException{
-		fail();
+	public void testGetDocItemsNumericPattern() throws IOException{
+		/**
+		 * avvva 
+		 * omomomo
+		 * CaasC
+		 * 123Hei
+		 */
+		IMatcher matcher = new RegexMatcher(".*123.*");
 		
+		LinedTextFileDoc lineTex = new LinedTextFileDoc.Builder(new File(inputFile)).addMatcher(matcher).build();
+		
+		Map<IMatcher, Collection<IDocItem>> result =  lineTex.getDocItems();
+		
+		assertEquals(1, result.keySet().size());
+		Collection<IDocItem> docItems = result.get(result.keySet().iterator().next());
+		assertEquals(1, docItems.size());
+		
+		assertEquals(new DefaultDocItem("123Hei"), docItems.iterator().next());
+	}
+	
+	public void testGetDocItemsWithMultipleMatchers() throws IOException{
 		
 		/**
 		 * avvva 
@@ -134,11 +152,15 @@ public class LinedTextFileDocTest extends TestCase {
 		
 		Map<IMatcher, Collection<IDocItem>> result =  lineTex.getDocItems();
 		
-		assertEquals(1, result.keySet().size());
-		Collection<IDocItem> docItems = result.get(result.keySet().iterator().next());
-		assertEquals(1, docItems.size());
+		assertEquals(2, result.keySet().size());
 		
-		assertEquals(new DefaultDocItem("omomomo"), docItems.iterator().next());
+		for (IMatcher tempMatcher : result.keySet()) {
+			Collection<IDocItem> docItems = result.get(tempMatcher);
+			assertEquals(1, docItems.size());
+		}
+		
+		assertEquals(new DefaultDocItem("omomomo"), result.get(matcher).iterator().next());
+		assertEquals(new DefaultDocItem("123Hei"), result.get(matcher2).iterator().next());
 	}
 
 }
