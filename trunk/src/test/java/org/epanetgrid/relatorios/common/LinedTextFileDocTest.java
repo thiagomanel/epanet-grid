@@ -53,6 +53,8 @@ public class LinedTextFileDocTest extends TestCase {
 	
 	public void testGetDocItems(){
 		
+		fail();
+		
 		Iterable<String> source = EasyMock.createMock(Iterable.class);
 		Iterator<String> iter = EasyMock.createMock(Iterator.class);
 		
