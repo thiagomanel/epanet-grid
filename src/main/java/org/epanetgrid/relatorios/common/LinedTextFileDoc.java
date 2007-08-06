@@ -5,6 +5,7 @@ package org.epanetgrid.relatorios.common;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
@@ -46,7 +47,7 @@ public class LinedTextFileDoc{
 		BufferedReader rd = new BufferedReader(new FileReader(file));
 		
 		String lineMatched;
-		while ((lineMatched = rd.readLine()) == null) {
+		while ((lineMatched = rd.readLine()) != null) {
 			
 			for (IMatcher matcher : matchers) {
 				if(matcher.match(lineMatched)) {
@@ -81,7 +82,7 @@ public class LinedTextFileDoc{
 		
 		public Builder(File file) {
 			
-			if(source == null) throw new IllegalArgumentException("The source must not be null");
+			if(file == null) throw new IllegalArgumentException("The file must not be null");
 			
 			this.source = source;
 			this.file = file;
@@ -96,6 +97,8 @@ public class LinedTextFileDoc{
 			
 			if(matcher == null) throw new IllegalArgumentException("The matcher must not be null");
 			
+			if(matchers.contains(matcher)) throw new IllegalArgumentException("Builder already contains this matcher.");
+			
 			matchers.add(matcher);
 			return this;
 		}
@@ -103,7 +106,10 @@ public class LinedTextFileDoc{
 		/**
 		 * @return
 		 */
-		public LinedTextFileDoc build() {
+		public LinedTextFileDoc build() throws FileNotFoundException{
+			
+			if(! file.exists()) throw new FileNotFoundException("File: "+file.getName()+" does not exist.");
+			
 			return new LinedTextFileDoc(file, matchers);
 		}
 		
