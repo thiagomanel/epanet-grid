@@ -1,6 +1,14 @@
 package org.epanetgrid.relatorios.outPutRelatorios;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
+
+import org.epanetgrid.relatorios.common.IDocItem;
+import org.epanetgrid.relatorios.common.IMatcher;
 import org.epanetgrid.relatorios.common.LinedTextFileDoc;
+import org.epanetgrid.relatorios.common.RegexMatcher;
 import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
 
 /**
@@ -18,16 +26,27 @@ import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
  */
 public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 
-	private final LinedTextFileDoc.Builder linedTextBuilder;
+	private final LinedTextFileDoc linedText;
+	private final IMatcher totalAlarmesMatcher;
+	private Map<IMatcher, Collection<IDocItem>> docItems; //final
 
 	/**
-	 * @param linedTextBuilder
+	 * @param linedText
 	 */
-	private DefaultOutPutRelatorio(LinedTextFileDoc.Builder linedTextBuilder) {
+	private DefaultOutPutRelatorio(LinedTextFileDoc linedText, IMatcher totalAlarmesMatcher) {
 		
-		if(linedTextBuilder == null) throw new IllegalArgumentException("The linedText must not be null");
+		this.linedText = linedText;
+		this.totalAlarmesMatcher = totalAlarmesMatcher;
+
+		if(linedText == null) throw new IllegalArgumentException("The linedText must not be null");
 		
-		this.linedTextBuilder = linedTextBuilder;
+		//fazer o parse uma vez apenas
+		try {
+			this.docItems = this.linedText.getDocItems();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -41,7 +60,8 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#getNumTotalAlarmes()
 	 */
 	public int getNumTotalAlarmes() {
-		return 0;
+		//se naum houve matche deve existir uma colceao vazia
+		return (this.totalAlarmesMatcher != null ? docItems.get(totalAlarmesMatcher).size() : 0 ) ;
 	}
 
 	/* (non-Javadoc)
@@ -113,15 +133,39 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 		 * atribuido, caso contrario lanca <code>IllegalStateException</code>.
 		 * @param linedTextBuilder
 		 * @return
+		 * @throws FileNotFoundException 
 		 */
-		public DefaultOutPutRelatorio build(LinedTextFileDoc.Builder linedTextBuilder){
+		public DefaultOutPutRelatorio build(LinedTextFileDoc.Builder linedTextBuilder) throws FileNotFoundException{
+
+			
 			
 			if( (this.pressaoMaximaPattern != null ) ||
 					(this.pressaoMinimaPattern != null) ||
 					(this.pressaoNegativaAlarmPattern != null) ||
 					(this.totalAlarmesPattern != null) ) {
 				
-				return new DefaultOutPutRelatorio(linedTextBuilder);
+				if(linedTextBuilder == null) throw new IllegalArgumentException("The linedTextBuilder must not be null");
+				
+				if (pressaoMaximaPattern != null) {
+					linedTextBuilder.addMatcher(new RegexMatcher(pressaoMaximaPattern));
+				}
+				
+				if (pressaoMinimaPattern != null) {
+					linedTextBuilder.addMatcher(new RegexMatcher(pressaoMinimaPattern));
+				}
+				
+				if (pressaoNegativaAlarmPattern != null) {
+					linedTextBuilder.addMatcher(new RegexMatcher(pressaoNegativaAlarmPattern));
+				}
+				
+				RegexMatcher totalAlarmsRegexMatcher = null;
+				
+				if (totalAlarmesPattern != null) {
+					totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
+					linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
+				}
+				
+				return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher);
 			}
 			
 			throw new IllegalStateException("Nenhum padrao foi atribuido");
