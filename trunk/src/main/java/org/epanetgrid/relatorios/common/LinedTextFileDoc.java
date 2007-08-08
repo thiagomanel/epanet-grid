@@ -15,8 +15,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-import org.epanetgrid.util.RegexReader;
-
 /**
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  * since 31/07/2007
@@ -24,14 +22,12 @@ import org.epanetgrid.util.RegexReader;
 public class LinedTextFileDoc{
 	
 	private final Set<IMatcher> matchers;
-	private RegexReader source;
 	private final File file;
 
 	/**
 	 * @param matchers
 	 */
 	private LinedTextFileDoc(File file, Set<IMatcher> matchers){
-		this.source = source;
 		this.matchers = matchers;
 		this.file = file;
 	}
@@ -76,7 +72,6 @@ public class LinedTextFileDoc{
 	//static factory
 	public static class Builder{
 		
-		private Iterable<String> source;
 		private Set<IMatcher> matchers;
 		private File file;
 		
@@ -84,7 +79,6 @@ public class LinedTextFileDoc{
 			
 			if(file == null) throw new IllegalArgumentException("The file must not be null");
 			
-			this.source = source;
 			this.file = file;
 			this.matchers = new HashSet<IMatcher>();
 		}

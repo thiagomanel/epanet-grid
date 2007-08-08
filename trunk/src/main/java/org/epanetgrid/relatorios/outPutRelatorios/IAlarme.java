@@ -14,7 +14,7 @@ public interface IAlarme {
 	 * since 18/07/2007
 	 */
 	public enum Tipo {
-		PRESSAO_MINIMA_NO
+		PRESSAO_NEGATIVA_NO
 	}
 
 }
