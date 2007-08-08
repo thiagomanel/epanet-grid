@@ -10,6 +10,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * <code>IMatcher</code> implementation using regular expressions.
+ * 
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  * since 31/07/2007
  */
