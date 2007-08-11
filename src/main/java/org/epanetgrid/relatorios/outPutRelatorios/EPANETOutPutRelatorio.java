@@ -4,6 +4,9 @@
 package org.epanetgrid.relatorios.outPutRelatorios;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.epanetgrid.relatorios.common.LinedTextFileDoc;
 
 
 /**
@@ -11,11 +14,17 @@ import java.io.File;
  * @author Vinicius Ferraz
  * since 18/07/2007
  */
-public interface EPANETOutPutRelatorio {
+public class EPANETOutPutRelatorio {
 
 	/**
 	 * @param output
 	 * @return
+	 * @throws FileNotFoundException 
 	 */
-	public IOutPutRelatorio generateOutPutRelatorio(File output);
+	public IOutPutRelatorio generateOutPutRelatorio(File output) throws FileNotFoundException{
+		return new DefaultOutPutRelatorio.Builder()
+						.setPressaoNegativaAlarmPattern("Negative pressures")
+						.setTotalAlarmesPattern("WARNING")
+						.build(new LinedTextFileDoc.Builder(output));
+	}
 }
