@@ -15,6 +15,7 @@ import org.epanetgrid.relatorios.common.IDocItem;
 import org.epanetgrid.relatorios.common.IMatcher;
 import org.epanetgrid.relatorios.common.LinedTextFileDoc;
 import org.epanetgrid.relatorios.common.RegexMatcher;
+import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
 
 import junit.framework.TestCase;
 
@@ -52,9 +53,41 @@ public class DefaultOutPutRelatorioTest extends TestCase {
 	/**
 	 * Test method for {@link org.epanetgrid.relatorios.outPutRelatorios.DefaultOutPutRelatorio#getNumAlarmes(org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo)}.
 	 * @throws IOException 
+	 * @throws IOException 
 	 */
-	public final void testGetNumAlarmes(){
-		fail("Not yet implemented"); // TODO
+	public final void testGetNumAlarmes() throws IOException{
+		
+		LinedTextFileDoc linetxt = EasyMock.createMock(LinedTextFileDoc.class);
+		
+		IDocItem doc1 = EasyMock.createMock(IDocItem.class);
+		IDocItem doc2 = EasyMock.createMock(IDocItem.class);
+
+		String numAlarmsPattern = "Negative pressures";
+		IMatcher matcher = new RegexMatcher(numAlarmsPattern);
+		
+		EasyMock.replay(doc1);
+		EasyMock.replay(doc2);
+		
+		Map<IMatcher, Collection<IDocItem>> result = new HashMap<IMatcher, Collection<IDocItem>>();
+		
+		Collection<IDocItem> docs = new LinkedList<IDocItem>();
+		docs.add(doc1);
+		docs.add(doc2);
+		
+		result.put(matcher, docs);
+		
+		EasyMock.expect(linetxt.getDocItems()).andReturn(result);
+		EasyMock.replay(linetxt);
+		
+		LinedTextFileDoc.Builder linedtxtBuilder = EasyMock.createNiceMock(LinedTextFileDoc.Builder.class);
+		
+		EasyMock.expect(linedtxtBuilder.build()).andReturn(linetxt).once();
+		EasyMock.replay(linedtxtBuilder);
+		
+		DefaultOutPutRelatorio outRel = new DefaultOutPutRelatorio.Builder().setPressaoNegativaAlarmPattern(numAlarmsPattern)
+											.build(linedtxtBuilder);
+		
+		assertEquals(2, outRel.getNumAlarmes(Tipo.PRESSAO_NEGATIVA_NO));
 	}
 
 	/**

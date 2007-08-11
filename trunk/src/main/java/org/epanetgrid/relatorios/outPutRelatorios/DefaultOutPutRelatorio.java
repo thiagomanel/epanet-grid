@@ -21,22 +21,28 @@ import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
  *	Velocidade minima dos dutos em toda a simulacao
  *	Velocidade maxima dos dutos em toda a simulacao
  * 
- * @author
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  * since 18/07/2007
  */
 public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 
 	private final LinedTextFileDoc linedText;
 	private final IMatcher totalAlarmesMatcher;
+	private final IMatcher alarmePressaoNegativaMatcher;
+
 	private Map<IMatcher, Collection<IDocItem>> docItems; //final
 
 	/**
 	 * @param linedText
+	 * @param totalAlarmesMatcher
+	 * @param pressaoNegativaMatcher
 	 */
-	private DefaultOutPutRelatorio(LinedTextFileDoc linedText, IMatcher totalAlarmesMatcher) {
+	private DefaultOutPutRelatorio(LinedTextFileDoc linedText, IMatcher totalAlarmesMatcher, 
+										IMatcher pressaoNegativaMatcher) {
 		
 		this.linedText = linedText;
 		this.totalAlarmesMatcher = totalAlarmesMatcher;
+		this.alarmePressaoNegativaMatcher = pressaoNegativaMatcher; 
 
 		if(linedText == null) throw new IllegalArgumentException("The linedText must not be null");
 		
@@ -53,7 +59,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#getNumAlarmes(org.epanetgrid.relatorios.IAlarme.Tipo)
 	 */
 	public int getNumAlarmes(Tipo tipo) {
-		return 0;
+		return (alarmePressaoNegativaMatcher != null ? docItems.get(alarmePressaoNegativaMatcher).size() : 0 );
 	}
 
 	/* (non-Javadoc)
@@ -61,7 +67,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 */
 	public int getNumTotalAlarmes() {
 		//se naum houve matche deve existir uma colceao vazia
-		return (this.totalAlarmesMatcher != null ? docItems.get(totalAlarmesMatcher).size() : 0 ) ;
+		return (totalAlarmesMatcher != null ? docItems.get(totalAlarmesMatcher).size() : 0 ) ;
 	}
 
 	/* (non-Javadoc)
@@ -159,13 +165,18 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 				}
 				
 				RegexMatcher totalAlarmsRegexMatcher = null;
-				
 				if (totalAlarmesPattern != null) {
 					totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
 					linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
 				}
 				
-				return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher);
+				RegexMatcher pressaoNegativaMatcher = null;
+				if (pressaoNegativaAlarmPattern != null) {
+					pressaoNegativaMatcher = new RegexMatcher(pressaoNegativaAlarmPattern);
+					linedTextBuilder.addMatcher(pressaoNegativaMatcher);
+				}
+				
+				return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher, pressaoNegativaMatcher);
 			}
 			
 			throw new IllegalStateException("Nenhum padrao foi atribuido");
