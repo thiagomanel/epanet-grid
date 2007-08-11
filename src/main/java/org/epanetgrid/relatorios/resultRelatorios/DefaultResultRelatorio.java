@@ -7,7 +7,7 @@ import org.jscience.economics.money.Money;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author
+ * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
  * since 18/07/2007
  */
 public class DefaultResultRelatorio implements IResultRelatorio{
