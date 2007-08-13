@@ -1,7 +1,6 @@
 package org.epanetgrid.relatorios.resultRelatorios;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -48,9 +47,7 @@ public class DefaultResultRelatorio implements IResultRelatorio{
 	}
 
 	private Date parseDate(String poorString) throws ParseException {
-		System.out.println("poor string "+poorString);
 		StringTokenizer tokenizer = new StringTokenizer(poorString);
-		//Thu Aug 24 19:17:46 2006
 		//ignore the 2 first
 		tokenizer.nextToken();
 		tokenizer.nextToken();
@@ -60,8 +57,6 @@ public class DefaultResultRelatorio implements IResultRelatorio{
 		String dayOfMonth = tokenizer.nextToken();
 		String completeHour = tokenizer.nextToken();
 		String year = tokenizer.nextToken();
-		
-		//"EEE, d MMM yyyy HH:mm:ss Z"  	Wed, 4 Jul 2001 12:08:56 -0700
 		
 		String mount = day+" "+month+" "+dayOfMonth+" "+completeHour+" "+year;
 		return new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy", Locale.US).parse(mount, new ParsePosition(0));
