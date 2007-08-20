@@ -1,7 +1,7 @@
-Data da simulacao - RESULT
-Custo total - RESULT
-Quantidade de alarmes de pressao negativa - SAIDA
-Quantidade total de alarmes - SAIDA
+Data da simulacao - RESULT - OK
+Custo total - RESULT - OK
+Quantidade de alarmes de pressao negativa - SAIDA - OK
+Quantidade total de alarmes - SAIDA - OK
 pressao minima nos nos em toda a simulacao - SAIDA
 Pressao maxima por no em toda a simulacao - SAIDA 
 Velocidade minima dos tubos em toda a simulacao - SAIDA

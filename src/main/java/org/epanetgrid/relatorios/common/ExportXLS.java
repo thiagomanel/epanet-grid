@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 public class ExportXLS {
 
 	private void exportResults(List testes, String absolutePath) {
+		/**
 		HSSFWorkbook wb = new HSSFWorkbook();
 
 		for (Iterator it = testes.iterator(); it.hasNext(); ) {
@@ -41,6 +42,7 @@ public class ExportXLS {
 			e.printStackTrace();
 			throw new IllegalArgumentException(e.getMessage());
 		}
+		*/
 	}
 	
 }
