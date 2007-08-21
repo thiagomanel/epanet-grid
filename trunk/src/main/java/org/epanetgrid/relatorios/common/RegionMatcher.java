@@ -9,16 +9,26 @@ package org.epanetgrid.relatorios.common;
  */
 public class RegionMatcher implements IMatcher {
 
-	public RegionMatcher(String source) {
-		// TODO Auto-generated constructor stub
+	private final String pattern;
+
+	/**
+	 * @param pattern
+	 */
+	public RegionMatcher(String pattern) {
+		
+		if(pattern == null) throw new IllegalArgumentException("The pattern must not be a null reference.");
+		
+		this.pattern = pattern;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.relatorios.common.IMatcher#match(java.lang.String)
 	 */
 	public boolean match(String source) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if(source == null) throw new IllegalArgumentException("The source must not be a null reference.");
+		
+		return source.contains(pattern);
 	}
 
 }
