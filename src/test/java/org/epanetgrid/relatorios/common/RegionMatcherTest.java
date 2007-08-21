@@ -40,15 +40,30 @@ public class RegionMatcherTest extends TestCase {
 	 * Test method for 'org.epanetgrid.relatorios.common.RegionMatcher.match(String)'
 	 */
 	public final void testMatch() {
-		fail();
+		
+		IMatcher matcher = new RegionMatcher("foo result");
+		assertFalse(matcher.match(text1+text2));
+		
+		matcher = new RegionMatcher("Link Results");
+		assertTrue(matcher.match(text1+text2));
+	}
+	
+	public final void testIllegalMatches(){
+		
+		IMatcher matcher = new RegionMatcher("foo result");
+		
+		try {
+			matcher.match(null);
+			fail();
+		} catch (IllegalArgumentException e) {}
+		
 	}
 
 	public final void testWrongConstructions(){
 		
 		try {
-			IMatcher badMatcher = new RegionMatcher(null);
+			new RegionMatcher(null);
 			fail();
 		} catch (IllegalArgumentException e) { }
-		 
 	}
 }
