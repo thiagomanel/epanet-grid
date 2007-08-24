@@ -31,49 +31,27 @@ public class RegionMatcherTest extends TestCase {
 	 */
 	public final void testMatch() {
 		
-		IMatcher matcher = new RegionMatcher("Node Results", "\n");
-		assertTrue(matcher.match(text1L1));
-		assertTrue(matcher.match(text1L2));
-		assertTrue(matcher.match(text1L3));
-		assertTrue(matcher.match(text1L4));
-		assertTrue(matcher.match(text1L5));
+		IMatcher matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1).setEscapeSequence("\n").build();
+		assertFalse(matcher.match(text1L1));
+		assertFalse(matcher.match(text1L2));
+		assertFalse(matcher.match(text1L3));
+		assertFalse(matcher.match(text1L4));
+		assertFalse(matcher.match(text1L5));
 		assertTrue(matcher.match(text1L6));
 		assertTrue(matcher.match(text1L7));
-		assertFalse(matcher.match(text1L8));
 		
-		matcher = new RegionMatcher("Link Results", "\n");
-		assertTrue(matcher.match(text2L1));
-		assertTrue(matcher.match(text2L2));
-		assertTrue(matcher.match(text2L3));
-		assertTrue(matcher.match(text2L4));
-		assertTrue(matcher.match(text2L5));
+		matcher = new RegionMatcher.Builder().addRecognizeSequence("Link Results", 1).setEscapeSequence("\n").build();
 		assertTrue(matcher.match(text2L6));
 		assertTrue(matcher.match(text2L7));
-		assertFalse(matcher.match(text2L8));
 		
-		matcher = new RegionMatcher("Node Results", "\n");
-		assertTrue(matcher.match(text1L1));
-		assertTrue(matcher.match(text1L2));
-		assertTrue(matcher.match(text1L3));
-		assertTrue(matcher.match(text1L4));
-		assertTrue(matcher.match(text1L5));
+		matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1).setEscapeSequence("\n").build();
 		assertTrue(matcher.match(text1L6));
 		assertTrue(matcher.match(text1L7));
-		assertFalse(matcher.match(text1L8));
-		assertFalse(matcher.match(text2L1));
-		assertFalse(matcher.match(text2L2));
-		assertFalse(matcher.match(text2L3));
-		assertFalse(matcher.match(text2L4));
-		assertFalse(matcher.match(text2L5));
-		assertFalse(matcher.match(text2L6));
-		assertFalse(matcher.match(text2L7));
-		assertFalse(matcher.match(text2L8));
-		
 	}
 	
 	public final void testIllegalMatches(){
 		
-		IMatcher matcher = new RegionMatcher("foo result", "\n");
+		IMatcher matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1).setEscapeSequence("\n").build();
 		
 		try {
 			matcher.match(null);
@@ -85,7 +63,7 @@ public class RegionMatcherTest extends TestCase {
 	public final void testWrongConstructions(){
 		
 		try {
-			new RegionMatcher(null, "\n");
+//			new RegionMatcher(null, "\n");
 			fail();
 		} catch (IllegalArgumentException e) { }
 	}

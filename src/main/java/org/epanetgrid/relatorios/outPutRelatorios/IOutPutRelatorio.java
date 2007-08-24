@@ -25,8 +25,8 @@ public interface IOutPutRelatorio {
 	
 	public int getNumTotalAlarmes();
 	
-	public PressaoMinimaNode pressaoMinimaNode();
+	public PressaoNode pressaoMinimaNode();
 	
-	public PressaoMaximaNode pressaoMaximaNode();
+	public PressaoNode pressaoMaximaNode();
 	
 }

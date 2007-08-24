@@ -3,13 +3,21 @@ package org.epanetgrid.relatorios.outPutRelatorios;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
+
+import javax.quantities.Pressure;
 
 import org.epanetgrid.relatorios.common.IDocItem;
 import org.epanetgrid.relatorios.common.IMatcher;
 import org.epanetgrid.relatorios.common.LinedTextFileDoc;
 import org.epanetgrid.relatorios.common.RegexMatcher;
+import org.epanetgrid.relatorios.common.RegionMatcher;
 import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
+import org.jscience.physics.measures.Measure;
 
 /**
  * Este relatorio contem informacoes sobre:
@@ -29,6 +37,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	private final LinedTextFileDoc linedText;
 	private final IMatcher totalAlarmesMatcher;
 	private final IMatcher alarmePressaoNegativaMatcher;
+	private final IMatcher pressaoMatcher;
 
 	private Map<IMatcher, Collection<IDocItem>> docItems; //final
 
@@ -38,11 +47,13 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @param pressaoNegativaMatcher
 	 */
 	private DefaultOutPutRelatorio(LinedTextFileDoc linedText, IMatcher totalAlarmesMatcher, 
-										IMatcher pressaoNegativaMatcher) {
+										IMatcher pressaoNegativaMatcher,
+										IMatcher pressaoMatcher) {
 		
 		this.linedText = linedText;
 		this.totalAlarmesMatcher = totalAlarmesMatcher;
 		this.alarmePressaoNegativaMatcher = pressaoNegativaMatcher; 
+		this.pressaoMatcher = pressaoMatcher; 
 
 		if(linedText == null) throw new IllegalArgumentException("The linedText must not be null");
 		
@@ -50,7 +61,6 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 		try {
 			this.docItems = this.linedText.getDocItems();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -73,15 +83,47 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#pressaoMinimaNode()
 	 */
-	public PressaoMinimaNode pressaoMinimaNode() {
-		return null;
+	public PressaoNode pressaoMinimaNode() {
+		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
+		Collections.sort(pressoes);
+		return pressoes.get(0);//optimize
 	}
 
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#pressaoMaximaNode()
 	 */
-	public PressaoMaximaNode pressaoMaximaNode() {
-		return null;
+	public PressaoNode pressaoMaximaNode() {
+		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
+		Collections.sort(pressoes);
+		return pressoes.get(pressoes.size() - 1);//optimize
+	}
+	
+	private List<PressaoNode> parsePressoes(Collection<IDocItem> collection) {
+		
+		List<PressaoNode> pressoes = new LinkedList<PressaoNode>();
+		
+		for (IDocItem docItem : collection) {
+			pressoes.add(parsePressao(docItem.getSource()));
+		}
+		
+		return pressoes;
+	}
+
+	/**
+	 * Seguindo o padrao definido pelo EPANET, o primeiro token eh a descricao
+	 * do elemento e o quarto token eh a pressao 
+	 */
+	private PressaoNode parsePressao(String source) {
+
+		StringTokenizer tokenizer = new StringTokenizer(source);
+
+		String node = tokenizer.nextToken();
+
+		tokenizer.nextToken();//ignored
+		tokenizer.nextToken();
+		String pressure = tokenizer.nextToken();
+		
+		return new PressaoNode(Measure.valueOf(Long.parseLong(pressure), Pressure.SI_UNIT), node);
 	}
 
 	/**
@@ -143,43 +185,36 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 		 */
 		public DefaultOutPutRelatorio build(LinedTextFileDoc.Builder linedTextBuilder) throws FileNotFoundException{
 
+			if(linedTextBuilder == null) throw new IllegalArgumentException("The linedTextBuilder must not be null");
 			
-			
-			if( (this.pressaoMaximaPattern != null ) ||
-					(this.pressaoMinimaPattern != null) ||
-					(this.pressaoNegativaAlarmPattern != null) ||
-					(this.totalAlarmesPattern != null) ) {
-				
-				if(linedTextBuilder == null) throw new IllegalArgumentException("The linedTextBuilder must not be null");
-				
-				if (pressaoMaximaPattern != null) {
-					linedTextBuilder.addMatcher(new RegexMatcher(pressaoMaximaPattern));
-				}
-				
-				if (pressaoMinimaPattern != null) {
-					linedTextBuilder.addMatcher(new RegexMatcher(pressaoMinimaPattern));
-				}
-				
-				if (pressaoNegativaAlarmPattern != null) {
-					linedTextBuilder.addMatcher(new RegexMatcher(pressaoNegativaAlarmPattern));
-				}
-				
-				RegexMatcher totalAlarmsRegexMatcher = null;
-				if (totalAlarmesPattern != null) {
-					totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
-					linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
-				}
-				
-				RegexMatcher pressaoNegativaMatcher = null;
-				if (pressaoNegativaAlarmPattern != null) {
-					pressaoNegativaMatcher = new RegexMatcher(pressaoNegativaAlarmPattern);
-					linedTextBuilder.addMatcher(pressaoNegativaMatcher);
-				}
-				
-				return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher, pressaoNegativaMatcher);
+			if (pressaoMaximaPattern != null) {
+				linedTextBuilder.addMatcher(new RegexMatcher(pressaoMaximaPattern));
 			}
 			
-			throw new IllegalStateException("Nenhum padrao foi atribuido");
+			if (pressaoMinimaPattern != null) {
+				linedTextBuilder.addMatcher(new RegexMatcher(pressaoMinimaPattern));
+			}
+			
+			if (pressaoNegativaAlarmPattern != null) {
+				linedTextBuilder.addMatcher(new RegexMatcher(pressaoNegativaAlarmPattern));
+			}
+			
+			RegexMatcher totalAlarmsRegexMatcher = null;
+			if (totalAlarmesPattern != null) {
+				totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
+				linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
+			}
+			
+			RegexMatcher pressaoNegativaMatcher = null;
+			if (pressaoNegativaAlarmPattern != null) {
+				pressaoNegativaMatcher = new RegexMatcher(pressaoNegativaAlarmPattern);
+				linedTextBuilder.addMatcher(pressaoNegativaMatcher);
+			}
+			
+			IMatcher pressaoMaximaMinimaMatcher = new RegionMatcher.Builder().build();
+			
+			return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher, pressaoNegativaMatcher, 
+					pressaoMaximaMinimaMatcher);
 		}
 	}
 
