@@ -28,5 +28,9 @@ public interface IOutPutRelatorio {
 	public PressaoNode pressaoMinimaNode();
 	
 	public PressaoNode pressaoMaximaNode();
+
+	public VelocidadeNode velocidadeMaximaNode();
+	
+	public VelocidadeNode velocidadeMinimaNode();
 	
 }

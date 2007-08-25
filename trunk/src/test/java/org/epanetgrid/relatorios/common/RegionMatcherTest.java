@@ -31,7 +31,9 @@ public class RegionMatcherTest extends TestCase {
 	 */
 	public final void testMatch() {
 		
-		IMatcher matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1).setEscapeSequence("\n").build();
+		IMatcher matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1)
+														.addRecognizeSequence("-----------", 2)
+														.setEscapeSequence("\n").build();
 		assertFalse(matcher.match(text1L1));
 		assertFalse(matcher.match(text1L2));
 		assertFalse(matcher.match(text1L3));
@@ -40,13 +42,17 @@ public class RegionMatcherTest extends TestCase {
 		assertTrue(matcher.match(text1L6));
 		assertTrue(matcher.match(text1L7));
 		
-		matcher = new RegionMatcher.Builder().addRecognizeSequence("Link Results", 1).setEscapeSequence("\n").build();
+		matcher = new RegionMatcher.Builder().addRecognizeSequence("Link Results", 1)
+												.addRecognizeSequence("-----------", 2)
+												.setEscapeSequence("\n").build();
+		
+		assertFalse(matcher.match(text2L1));
+		assertFalse(matcher.match(text2L2));
+		assertFalse(matcher.match(text2L3));
+		assertFalse(matcher.match(text2L4));
+		assertFalse(matcher.match(text2L5));
 		assertTrue(matcher.match(text2L6));
 		assertTrue(matcher.match(text2L7));
-		
-		matcher = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1).setEscapeSequence("\n").build();
-		assertTrue(matcher.match(text1L6));
-		assertTrue(matcher.match(text1L7));
 	}
 	
 	public final void testIllegalMatches(){
@@ -58,13 +64,5 @@ public class RegionMatcherTest extends TestCase {
 			fail();
 		} catch (IllegalArgumentException e) {}
 		
-	}
-
-	public final void testWrongConstructions(){
-		
-		try {
-//			new RegionMatcher(null, "\n");
-			fail();
-		} catch (IllegalArgumentException e) { }
 	}
 }
