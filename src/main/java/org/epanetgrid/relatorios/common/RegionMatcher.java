@@ -121,13 +121,11 @@ public class RegionMatcher implements IMatcher {
 				recogStart = true;
 			}else {
 				recogSequence = sequence.remove(0);
+				patternOccurrence = recogSequence.occurrences;
 			}
 		}
 
 		public boolean recognize(String linedSource) {
-			
-			checkEscapePattern(linedSource);
-			checkRecogPattern(linedSource);
 			
 			if(escapePatternDetected) {
 				return false;
@@ -137,6 +135,9 @@ public class RegionMatcher implements IMatcher {
 				return true; 
 			}
 			
+			checkEscapePattern(linedSource);
+			checkRecogPattern(linedSource);
+			
 			return false;
 		}
 
@@ -145,18 +146,25 @@ public class RegionMatcher implements IMatcher {
 			if(escapePatternDetected) return;
 			
 			if(recognizeRecogSentence(linedSource)) {//compil
-				--this.patternOccurrence;
+				--patternOccurrence;
 			}
 			
 			if(patternOccurrence == 0){
-				if(!this.sequence.isEmpty()){
-					this.recogSequence = this.sequence.remove(0);
+				if(!sequence.isEmpty()){
+					fowardPattern();
 				}else {
 					recogStart = true;
 					escapePatternDetected = false;
 				}
 			}
-			
+		}
+
+		/**
+		 * 
+		 */
+		private void fowardPattern() {
+			recogSequence = sequence.remove(0);
+			patternOccurrence = recogSequence.occurrences;
 		}
 
 		/**
@@ -195,7 +203,81 @@ public class RegionMatcher implements IMatcher {
 			this.pattern = pattern;
 			this.occurrences = occurrences;
 		}
+
+		/* (non-Javadoc)
+		 * @see java.lang.Object#hashCode()
+		 */
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + occurrences;
+			result = prime * result
+					+ ((pattern == null) ? 0 : pattern.hashCode());
+			return result;
+		}
+
+		/* (non-Javadoc)
+		 * @see java.lang.Object#equals(java.lang.Object)
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final RecognizeSequence other = (RecognizeSequence) obj;
+			if (occurrences != other.occurrences)
+				return false;
+			if (pattern == null) {
+				if (other.pattern != null)
+					return false;
+			} else if (!pattern.equals(other.pattern))
+				return false;
+			return true;
+		}
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((escapePattern == null) ? 0 : escapePattern.hashCode());
+		result = prime * result
+				+ ((sequence == null) ? 0 : sequence.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final RegionMatcher other = (RegionMatcher) obj;
+		if (escapePattern == null) {
+			if (other.escapePattern != null)
+				return false;
+		} else if (!escapePattern.equals(other.escapePattern))
+			return false;
+		if (sequence == null) {
+			if (other.sequence != null)
+				return false;
+		} else if (!sequence.equals(other.sequence))
+			return false;
+		return true;
 	}
 
 }

@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.quantities.Pressure;
+import javax.quantities.Velocity;
 
 import org.epanetgrid.relatorios.common.IDocItem;
 import org.epanetgrid.relatorios.common.IMatcher;
 import org.epanetgrid.relatorios.common.LinedTextFileDoc;
 import org.epanetgrid.relatorios.common.RegexMatcher;
-import org.epanetgrid.relatorios.common.RegionMatcher;
 import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
 import org.jscience.physics.measures.Measure;
 
@@ -38,6 +38,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	private final IMatcher totalAlarmesMatcher;
 	private final IMatcher alarmePressaoNegativaMatcher;
 	private final IMatcher pressaoMatcher;
+	private final IMatcher velocidadeMatcher;
 
 	private Map<IMatcher, Collection<IDocItem>> docItems; //final
 
@@ -45,15 +46,17 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @param linedText
 	 * @param totalAlarmesMatcher
 	 * @param pressaoNegativaMatcher
+	 * @param velocidadeMatcher 
 	 */
 	private DefaultOutPutRelatorio(LinedTextFileDoc linedText, IMatcher totalAlarmesMatcher, 
 										IMatcher pressaoNegativaMatcher,
-										IMatcher pressaoMatcher) {
+										IMatcher pressaoMatcher, IMatcher velocidadeMatcher) {
 		
 		this.linedText = linedText;
 		this.totalAlarmesMatcher = totalAlarmesMatcher;
 		this.alarmePressaoNegativaMatcher = pressaoNegativaMatcher; 
-		this.pressaoMatcher = pressaoMatcher; 
+		this.pressaoMatcher = pressaoMatcher;
+		this.velocidadeMatcher = velocidadeMatcher;
 
 		if(linedText == null) throw new IllegalArgumentException("The linedText must not be null");
 		
@@ -76,8 +79,56 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#getNumTotalAlarmes()
 	 */
 	public int getNumTotalAlarmes() {
-		//se naum houve matche deve existir uma colceao vazia
 		return (totalAlarmesMatcher != null ? docItems.get(totalAlarmesMatcher).size() : 0 ) ;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.relatorios.outPutRelatorios.IOutPutRelatorio#velocidadeMaximaNode()
+	 */
+	public VelocidadeNode velocidadeMaximaNode() {
+		List<VelocidadeNode> velocidades = parseVelocidades(docItems.get(velocidadeMatcher));
+		Collections.sort(velocidades);
+		return velocidades.get(velocidades.size() - 1);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.relatorios.outPutRelatorios.IOutPutRelatorio#velocidadeMinimaNode()
+	 */
+	public VelocidadeNode velocidadeMinimaNode() {
+		List<VelocidadeNode> velocidades = parseVelocidades(docItems.get(velocidadeMatcher));
+		Collections.sort(velocidades);
+		return velocidades.get(0);
+	}
+	
+	/**
+	 * @param collection
+	 * @return
+	 */
+	private List<VelocidadeNode> parseVelocidades(Collection<IDocItem> collection) {
+		
+		List<VelocidadeNode> velocidades = new LinkedList<VelocidadeNode>();
+		
+		for (IDocItem docItem : collection) {
+			velocidades.add(parseVelocidade(docItem.getSource()));
+		}
+		
+		return velocidades;
+	}
+
+	/**
+	 * Seguindo o padrao definido pelo EPANET, o primeiro token eh a descricao
+	 * do elemento e o terceiro token eh a velocidade 
+	 */
+	private VelocidadeNode parseVelocidade(String source) {
+		
+		StringTokenizer tokenizer = new StringTokenizer(source);
+
+		String node = tokenizer.nextToken();
+
+		tokenizer.nextToken();//ignored
+		String pressure = tokenizer.nextToken();
+		
+		return new VelocidadeNode(Measure.valueOf(Double.parseDouble(pressure), Velocity.SI_UNIT), node);
 	}
 
 	/* (non-Javadoc)
@@ -86,7 +137,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	public PressaoNode pressaoMinimaNode() {
 		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
 		Collections.sort(pressoes);
-		return pressoes.get(0);//optimize
+		return pressoes.get(0);
 	}
 
 	/* (non-Javadoc)
@@ -95,7 +146,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	public PressaoNode pressaoMaximaNode() {
 		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
 		Collections.sort(pressoes);
-		return pressoes.get(pressoes.size() - 1);//optimize
+		return pressoes.get(pressoes.size() - 1);
 	}
 	
 	private List<PressaoNode> parsePressoes(Collection<IDocItem> collection) {
@@ -123,7 +174,7 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 		tokenizer.nextToken();
 		String pressure = tokenizer.nextToken();
 		
-		return new PressaoNode(Measure.valueOf(Long.parseLong(pressure), Pressure.SI_UNIT), node);
+		return new PressaoNode(Measure.valueOf(Double.parseDouble(pressure), Pressure.SI_UNIT), node);
 	}
 
 	/**
@@ -134,27 +185,26 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 */
 	public static class Builder{
 		
-		private String pressaoMinimaPattern;
-		private String pressaoMaximaPattern;
+		private IMatcher velocidadeMatcher;
+		private IMatcher pressaoMatcher;
 		private String totalAlarmesPattern;
 		private String pressaoNegativaAlarmPattern;
 		
 		/**
-		 * @param pressaoMinimaPattern
+		 * @param pressaoMatcher
 		 * @return
 		 */
-		public Builder setPressaoMinimaPattern(String pressaoMinimaPattern){
-			//test null;
-			this.pressaoMaximaPattern = pressaoMinimaPattern;
+		public Builder setPressaoMatcher(IMatcher pressaoMatcher){
+			this.pressaoMatcher = pressaoMatcher;
 			return this;
 		}
 
 		/**
-		 * @param pressaoMaximaPattern
+		 * @param velocidadeMatcher
 		 * @return
 		 */
-		public Builder setPressaoMaximaPattern(String pressaoMaximaPattern) {
-			this.pressaoMaximaPattern = pressaoMaximaPattern;
+		public Builder setVelocidadeMatcher(IMatcher velocidadeMatcher) {
+			this.velocidadeMatcher = velocidadeMatcher;
 			return this;
 		}
 
@@ -187,34 +237,28 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 
 			if(linedTextBuilder == null) throw new IllegalArgumentException("The linedTextBuilder must not be null");
 			
-			if (pressaoMaximaPattern != null) {
-				linedTextBuilder.addMatcher(new RegexMatcher(pressaoMaximaPattern));
+			if (velocidadeMatcher != null) {
+				linedTextBuilder.addMatcher(velocidadeMatcher);
 			}
 			
-			if (pressaoMinimaPattern != null) {
-				linedTextBuilder.addMatcher(new RegexMatcher(pressaoMinimaPattern));
+			if (pressaoMatcher != null) {
+				linedTextBuilder.addMatcher(pressaoMatcher);
 			}
-			
-			if (pressaoNegativaAlarmPattern != null) {
-				linedTextBuilder.addMatcher(new RegexMatcher(pressaoNegativaAlarmPattern));
-			}
-			
-			RegexMatcher totalAlarmsRegexMatcher = null;
-			if (totalAlarmesPattern != null) {
-				totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
-				linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
-			}
-			
-			RegexMatcher pressaoNegativaMatcher = null;
+
+			IMatcher pressaoNegativaMatcher = null;
 			if (pressaoNegativaAlarmPattern != null) {
 				pressaoNegativaMatcher = new RegexMatcher(pressaoNegativaAlarmPattern);
 				linedTextBuilder.addMatcher(pressaoNegativaMatcher);
 			}
 			
-			IMatcher pressaoMaximaMinimaMatcher = new RegionMatcher.Builder().build();
+			IMatcher totalAlarmsRegexMatcher = null;
+			if (totalAlarmesPattern != null) {
+				totalAlarmsRegexMatcher = new RegexMatcher(totalAlarmesPattern);
+				linedTextBuilder.addMatcher(totalAlarmsRegexMatcher);
+			}
 			
 			return new DefaultOutPutRelatorio(linedTextBuilder.build(), totalAlarmsRegexMatcher, pressaoNegativaMatcher, 
-					pressaoMaximaMinimaMatcher);
+					pressaoMatcher, velocidadeMatcher);
 		}
 	}
 
