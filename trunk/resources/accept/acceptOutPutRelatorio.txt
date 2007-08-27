@@ -1,0 +1,32 @@
+#	Relatorios de saida
+#
+setArquivoSaida file="resources/accept/Relatorio-1.txt"
+setArquivoResultado file="resources/accept/Relatorio-1.txt"
+
+expect 0 getTotalAlarmes
+
+expect 6 getDiaSemanaSimulacao
+expect 7 getMesSimulacao
+expect 25 getDiaSimulacao
+expect 17 getHoraSimulacao
+expect 47 getMinSimulacao
+expect 16 getSecsSimulacao
+expect 2007 getAnoSimulacao
+
+expect 11003.16 getCustoTotal
+
+expect -1 getNumAlarmesPressaoNegativa
+
+expect M1 getNodePressaoMinima
+expect 0.0 getPressaoMinima
+
+expect N14 getNodePressaoMaxima
+expect 148.04 getPressaoMaxima
+
+#pode ter mais de um ?
+expect B1 getElementVelocidadeMinima
+expect 0.0 getVelocidadeMinima
+
+expect T9 getElementVelocidadeMaxima
+expect 1.48 getVelocidadeMaxima
+
