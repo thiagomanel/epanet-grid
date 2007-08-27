@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import org.epanetgrid.relatorios.common.LinedTextFileDoc;
+import org.epanetgrid.relatorios.common.RegionMatcher;
 
 
 /**
@@ -25,6 +26,12 @@ public class EPANETOutPutRelatorio {
 		return new DefaultOutPutRelatorio.Builder()
 						.setPressaoNegativaAlarmPattern("Negative pressures")
 						.setTotalAlarmesPattern("WARNING")
+						.setPressaoMatcher(new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1)
+												.addRecognizeSequence("-----------", 2)
+												.setEscapeSequence("\n").build())
+						.setVelocidadeMatcher(new RegionMatcher.Builder().addRecognizeSequence("Link Results", 1)
+												.addRecognizeSequence("-----------", 2)
+												.setEscapeSequence("\n").build())
 						.build(new LinedTextFileDoc.Builder(output));
 	}
 }
