@@ -3,6 +3,7 @@
  */
 package org.epanetgrid.relatorios.common;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,9 +50,11 @@ public class RegionMatcher implements IMatcher {
 	 * @param escape
 	 */
 	private RegionMatcher(List<RecognizeSequence> sequence, String escape) {
-		this.sequence = sequence;
+		this.sequence = Collections.unmodifiableList(sequence);
 		this.escapePattern = escape;
-		this.recognizer = new Recognizer(this.sequence);
+		List<RecognizeSequence> stubList = new LinkedList<RecognizeSequence>();
+		stubList.addAll(this.sequence);
+		this.recognizer = new Recognizer(stubList);
 	}
 
 	/* (non-Javadoc)
@@ -68,6 +71,62 @@ public class RegionMatcher implements IMatcher {
 		return recognizer.recognize(linedSource);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((escapePattern == null) ? 0 : escapePattern.hashCode());
+		result = prime * result
+				+ ((sequence == null) ? 0 : sequence.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj){
+			return true;
+		}
+		
+		if (obj == null) {
+			return false;
+		}
+		
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		
+		final RegionMatcher other = (RegionMatcher) obj;
+		if (escapePattern == null) {
+			if (other.escapePattern != null) {
+				return false;
+			}
+		} else if (!escapePattern.equals(other.escapePattern)) {
+			return false;
+		}
+		
+		if (sequence == null) {
+			if (other.sequence != null) {
+				return false;
+			}
+		} else if (!sequence.equals(other.sequence)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
+	 * since 27/08/2007
+	 */
 	public static class Builder {
 		
 		private List<RecognizeSequence> sequence = new LinkedList<RecognizeSequence>();
@@ -99,6 +158,10 @@ public class RegionMatcher implements IMatcher {
 		
 	}
 	
+	/**
+	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
+	 * since 27/08/2007
+	 */
 	private class Recognizer {
 
 		private final List<RecognizeSequence> sequence;
@@ -190,6 +253,10 @@ public class RegionMatcher implements IMatcher {
 		}
 	}
 	
+	/**
+	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
+	 * since 27/08/2007
+	 */
 	private class RecognizeSequence {
 		
 		public final String pattern;
@@ -222,62 +289,38 @@ public class RegionMatcher implements IMatcher {
 		 */
 		@Override
 		public boolean equals(Object obj) {
-			if (this == obj)
+			
+			if (this == obj) {
 				return true;
-			if (obj == null)
+			}
+			if (obj == null) {
 				return false;
-			if (getClass() != obj.getClass())
+			}
+			if (getClass() != obj.getClass()) {
 				return false;
+			}
+			
 			final RecognizeSequence other = (RecognizeSequence) obj;
-			if (occurrences != other.occurrences)
+			
+			if (occurrences != other.occurrences) {
 				return false;
+			}
+			
 			if (pattern == null) {
-				if (other.pattern != null)
+				if (other.pattern != null) {
 					return false;
-			} else if (!pattern.equals(other.pattern))
+				}
+			}else if (!pattern.equals(other.pattern)) {
 				return false;
+			}
+
 			return true;
+		}
+
+		@Override
+		public String toString() {
+			return getClass()+" pattern: "+pattern+" ocurrences: "+occurrences;
 		}
 		
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((escapePattern == null) ? 0 : escapePattern.hashCode());
-		result = prime * result
-				+ ((sequence == null) ? 0 : sequence.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final RegionMatcher other = (RegionMatcher) obj;
-		if (escapePattern == null) {
-			if (other.escapePattern != null)
-				return false;
-		} else if (!escapePattern.equals(other.escapePattern))
-			return false;
-		if (sequence == null) {
-			if (other.sequence != null)
-				return false;
-		} else if (!sequence.equals(other.sequence))
-			return false;
-		return true;
-	}
-
 }

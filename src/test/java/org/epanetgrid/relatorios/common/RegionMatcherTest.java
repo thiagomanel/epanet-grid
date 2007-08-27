@@ -65,4 +65,20 @@ public class RegionMatcherTest extends TestCase {
 		} catch (IllegalArgumentException e) {}
 		
 	}
+	
+	public final void testEquals(){
+		
+		//this test was created in reason of a bug detected in acceptance test.
+		
+		RegionMatcher matcher1 = new RegionMatcher.Builder()
+								.addRecognizeSequence("Node Results", 1)
+								.addRecognizeSequence("-----------", 2)
+								.setEscapeSequence("\n").build();
+		RegionMatcher matcher2 = new RegionMatcher.Builder()
+								.addRecognizeSequence("Link Results", 1)
+								.addRecognizeSequence("-----------", 2)
+								.setEscapeSequence("\n").build();
+		
+		assertFalse(matcher1.equals(matcher2));
+	}
 }

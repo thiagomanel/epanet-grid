@@ -44,6 +44,32 @@ public class DefaultOutPutRelatorioTest extends TestCase {
 		} catch (IllegalArgumentException e) { }
 	}
 
+	public final void testIllegalStateOnGetMethods() throws FileNotFoundException{
+		
+		IMatcher pressaoMatcher = EasyMock.createNiceMock(IMatcher.class);
+		IMatcher velocidadeMatcher = EasyMock.createNiceMock(IMatcher.class);
+		
+		LinedTextFileDoc.Builder linedtxtBuilder = EasyMock.createNiceMock(LinedTextFileDoc.Builder.class);
+		LinedTextFileDoc linetxt = EasyMock.createMock(LinedTextFileDoc.class);
+		EasyMock.expect(linedtxtBuilder.build()).andReturn(linetxt).once();
+		EasyMock.replay(linedtxtBuilder);
+		
+		DefaultOutPutRelatorio outNoPressureMatcherAssigned = new DefaultOutPutRelatorio.Builder().
+											setVelocidadeMatcher(velocidadeMatcher).
+											build(linedtxtBuilder);
+		
+		try {
+			outNoPressureMatcherAssigned.pressaoMaximaNode();
+			fail();
+		} catch (IllegalStateException e) { }
+		
+		try {
+			outNoPressureMatcherAssigned.pressaoMinimaNode();
+			fail();
+		} catch (IllegalStateException e) { }
+		
+	}
+	
 	/**
 	 * Test method for {@link org.epanetgrid.relatorios.outPutRelatorios.DefaultOutPutRelatorio#getNumAlarmes(org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo)}.
 	 * @throws IOException 

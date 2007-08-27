@@ -3,7 +3,11 @@
  */
 package org.epanetgrid;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.epanetgrid.data.DataFacade;
@@ -19,17 +23,32 @@ import org.epanetgrid.perturbador.PertubadorFacade;
 import org.epanetgrid.perturbador.PerturbationType;
 import org.epanetgrid.perturbador.valueProvider.SimpleValueProvider;
 import org.epanetgrid.perturbador.valueProvider.ValueProvider;
+import org.epanetgrid.relatorios.outPutRelatorios.EPANETOutPutRelatorio;
+import org.epanetgrid.relatorios.outPutRelatorios.IOutPutRelatorio;
+import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
+import org.epanetgrid.relatorios.resultRelatorios.EPANETResultRelatorio;
+import org.epanetgrid.relatorios.resultRelatorios.IResultRelatorio;
 import org.jscience.physics.measures.Measure;
+
+import sun.util.calendar.BaseCalendar.Date;
 
 /**
  * @author thiagoepdc
  *
+ */
+/**
+ * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
+ * since 25/08/2007
+ * 
  */
 public class AcceptFacade {
 
 	private PertubadorFacade perturbFacade = new PertubadorFacade();
 	private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 	private List<NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>> malhasGeradas;
+	private File outputfile;
+	private IOutPutRelatorio outputRelatorio;
+	private IResultRelatorio resultRelatorio;
 	
 	/**
 	 * @param file
@@ -112,4 +131,100 @@ public class AcceptFacade {
 		}
 		return null;
 	}
+	
+	/** Teste gerador de relatórios */ 
+	 
+	/**
+	 * @param file
+	 * @throws FileNotFoundException
+	 */
+	public void setArquivoSaida(String file) throws FileNotFoundException{
+		this.outputfile = new File(file);
+		try {
+			this.outputRelatorio= new EPANETOutPutRelatorio().generateOutPutRelatorio(outputfile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setArquivoResultado(String file) throws IOException, ParseException{
+		try {
+			this.resultRelatorio = new EPANETResultRelatorio().generateRelatorio(new File(file));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String getNodePressaoMinima(){
+		return outputRelatorio.pressaoMinimaNode().getNodeName();
+	}
+	
+	public double getPressaoMinima(){
+		return outputRelatorio.pressaoMinimaNode().getPressao().getEstimatedValue();
+	}
+	
+	public String getNodePressaoMaxima(){
+		return outputRelatorio.pressaoMaximaNode().getNodeName();
+	}
+	
+	public double getPressaoMaxima(){
+		return outputRelatorio.pressaoMinimaNode().getPressao().getEstimatedValue();
+	}
+	
+	public String getElementVelocidadeMinima(){
+		return outputRelatorio.velocidadeMinimaNode().getNodeName();
+	}
+	
+	public String getElementVelocidadeMaxima(){
+		return outputRelatorio.velocidadeMaximaNode().getNodeName();
+	}
+	
+	public double getVelocidadeMaxima(){
+		return outputRelatorio.velocidadeMinimaNode().getVelocidade().getEstimatedValue();
+	}
+	
+	public double getVelocidadeMinima(){
+		return outputRelatorio.velocidadeMaximaNode().getVelocidade().getEstimatedValue();
+	}
+	
+	public int  getTotalAlarmes(){
+		return outputRelatorio.getNumTotalAlarmes();
+	}
+
+	public int getDiaSemanaSimulacao(){
+		return resultRelatorio.getDataSimulacao().getDay();
+	}
+	
+	public int getMesSimulacao(){
+		return resultRelatorio.getDataSimulacao().getMonth();
+	}
+	
+	public int getDiaSimulacao(){
+		return resultRelatorio.getDataSimulacao().getDate();
+	}
+	
+	public int getHoraSimulacao(){
+		return resultRelatorio.getDataSimulacao().getHours();
+	}
+	
+	public int getMinSimulacao(){
+		return resultRelatorio.getDataSimulacao().getMinutes();
+	}
+	
+	public int getSecsSimulacao(){
+		return resultRelatorio.getDataSimulacao().getSeconds();
+	}
+	
+	public int getAnoSimulacao(){
+		return resultRelatorio.getDataSimulacao().getYear()+1900;
+	}
+
+	public double getCustoTotal(){
+		return resultRelatorio.getCusto().getEstimatedValue();
+	}
+
+	public int getNumAlarmesPressaoNegativa(){
+		return outputRelatorio.getNumAlarmes(Tipo.PRESSAO_NEGATIVA_NO);
+	}
+	
 }

@@ -12,6 +12,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.easymock.classextension.EasyMock;
+import org.epanetgrid.relatorios.outPutRelatorios.DefaultOutPutRelatorio;
 
 /**
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
@@ -91,6 +92,23 @@ public class LinedTextFileDocTest extends TestCase {
 			fail();
 			
 		} catch (IllegalArgumentException e) { }
+		
+	}
+	
+	public final void testAddMatcher(){
+		
+		//this test was created in reason of a bug detected in acceptance test.
+		
+		RegionMatcher matcher1 = new RegionMatcher.Builder().addRecognizeSequence("Node Results", 1)
+								.addRecognizeSequence("-----------", 2)
+								.setEscapeSequence("\n").build();
+		RegionMatcher matcher2 = new RegionMatcher.Builder().addRecognizeSequence("Link Results", 1)
+								.addRecognizeSequence("-----------", 2)
+								.setEscapeSequence("\n").build();
+		
+		new LinedTextFileDoc.Builder(new File("xpto"))
+						.addMatcher(matcher1)
+						.addMatcher(matcher2);
 	}
 	
 	public void testGetDocItems() throws IOException{

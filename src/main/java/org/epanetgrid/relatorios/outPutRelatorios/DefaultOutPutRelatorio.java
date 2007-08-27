@@ -72,14 +72,26 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#getNumAlarmes(org.epanetgrid.relatorios.IAlarme.Tipo)
 	 */
 	public int getNumAlarmes(Tipo tipo) {
-		return (alarmePressaoNegativaMatcher != null ? docItems.get(alarmePressaoNegativaMatcher).size() : 0 );
+		
+		if(alarmePressaoNegativaMatcher == null) throw new IllegalStateException("A IMatcher should be assigned for" +
+			"use the getNumAlarmes method. See the Builder methods");
+
+		Collection<IDocItem> alarmes = docItems.get(alarmePressaoNegativaMatcher);
+	
+		return (alarmes != null) ? alarmes.size() : 0;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#getNumTotalAlarmes()
 	 */
 	public int getNumTotalAlarmes() {
-		return (totalAlarmesMatcher != null ? docItems.get(totalAlarmesMatcher).size() : 0 ) ;
+		
+		if(totalAlarmesMatcher == null) throw new IllegalStateException("A IMatcher should be assigned for" +
+				"use the getNumTotalAlarmes method. See the Builder methods");
+		
+		Collection<IDocItem> alarmes = docItems.get(totalAlarmesMatcher);
+			
+		return (alarmes != null) ? alarmes.size() : 0;
 	}
 
 	/* (non-Javadoc)
@@ -135,6 +147,10 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#pressaoMinimaNode()
 	 */
 	public PressaoNode pressaoMinimaNode() {
+		
+		if(pressaoMatcher == null) throw new IllegalStateException("A IMatcher should be assigned for" +
+		"use the pressaoMinimaNode method. See the Builder methods");
+		
 		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
 		Collections.sort(pressoes);
 		return pressoes.get(0);
@@ -144,6 +160,10 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 	 * @see org.epanetgrid.relatorios.IOutPutRelatorio#pressaoMaximaNode()
 	 */
 	public PressaoNode pressaoMaximaNode() {
+		
+		if(pressaoMatcher == null) throw new IllegalStateException("A IMatcher should be assigned for" +
+		"use the pressaoMaximaNode method. See the Builder methods");
+		
 		List<PressaoNode> pressoes = parsePressoes(docItems.get(pressaoMatcher));
 		Collections.sort(pressoes);
 		return pressoes.get(pressoes.size() - 1);
