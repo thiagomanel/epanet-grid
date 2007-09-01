@@ -1,0 +1,2829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1188681198341" clover="1.3.13">
+   <project timestamp="1188681195492" name="Maven Cloverreport">
+      <metrics classes="126" methods="416" conditionals="570" files="80" packages="23" coveredstatements="1013" loc="6509" ncloc="3668" coveredmethods="311" coveredconditionals="270" statements="1465" coveredelements="1594" elements="2451"/>
+      <package name="org.epanetgrid.perturbador.perturbadores.junctions">
+         <metrics conditionals="0" methods="4" classes="2" files="2" ncloc="30" coveredstatements="6" coveredmethods="4" coveredconditionals="0" statements="6" loc="68" coveredelements="10" elements="10"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/junctions/JunctionElevationPerturbador.java">
+            <class name="JunctionElevationPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="34" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/junctions/JunctionBaseDemandFlowPerturbador.java">
+            <class name="JunctionBaseDemandFlowPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="34" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.util">
+         <metrics conditionals="76" methods="24" classes="8" files="8" ncloc="352" coveredstatements="103" coveredmethods="12" coveredconditionals="34" statements="174" loc="707" coveredelements="149" elements="274"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/FileUtils.java">
+            <class name="FileUtils">
+               <metrics conditionals="8" methods="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="20" coveredelements="0" elements="32"/>
+            </class>
+            <metrics conditionals="8" methods="4" classes="1" ncloc="50" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="20" loc="89" coveredelements="0" elements="32"/>
+            <line num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="36" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="48" count="0" type="stmt"/>
+            <line num="48" falsecount="0" type="cond" truecount="0"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="56" falsecount="0" type="cond" truecount="0"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="73" falsecount="0" type="cond" truecount="0"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="83" count="0" type="method"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="85" falsecount="0" type="cond" truecount="0"/>
+            <line num="86" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/ZipUtil.java">
+            <class name="ZipUtil">
+               <metrics conditionals="6" methods="3" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="12" coveredelements="0" elements="21"/>
+            </class>
+            <metrics conditionals="6" methods="3" classes="1" ncloc="29" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="12" loc="73" coveredelements="0" elements="21"/>
+            <line num="33" count="0" type="method"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="40" count="0" type="method"/>
+            <line num="42" count="0" type="stmt"/>
+            <line num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="58" falsecount="0" type="cond" truecount="0"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="60" falsecount="0" type="cond" truecount="0"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="64" falsecount="0" type="cond" truecount="0"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/NetWorkComponentStringComparator.java">
+            <class name="NetWorkComponentStringComparator">
+               <metrics conditionals="6" methods="1" coveredstatements="13" coveredmethods="1" coveredconditionals="6" statements="13" coveredelements="20" elements="20"/>
+            </class>
+            <metrics conditionals="6" methods="1" classes="1" ncloc="23" coveredstatements="13" coveredmethods="1" coveredconditionals="6" statements="13" loc="41" coveredelements="20" elements="20"/>
+            <line num="20" count="1841" type="method"/>
+            <line num="21" count="1841" type="stmt"/>
+            <line num="22" count="1841" type="stmt"/>
+            <line num="23" count="1841" type="stmt"/>
+            <line num="24" count="1841" type="stmt"/>
+            <line num="26" count="1841" type="stmt"/>
+            <line num="27" count="1841" type="stmt"/>
+            <line num="29" count="1841" type="stmt"/>
+            <line num="31" count="1841" type="stmt"/>
+            <line num="31" falsecount="52" type="cond" truecount="1789"/>
+            <line num="32" count="1789" type="stmt"/>
+            <line num="32" falsecount="18" type="cond" truecount="1771"/>
+            <line num="33" count="1771" type="stmt"/>
+            <line num="35" count="18" type="stmt"/>
+            <line num="35" falsecount="4" type="cond" truecount="14"/>
+            <line num="36" count="14" type="stmt"/>
+            <line num="39" count="56" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/RegexReader.java">
+            <class name="RegexReader">
+               <metrics conditionals="18" methods="5" coveredstatements="28" coveredmethods="3" coveredconditionals="13" statements="34" coveredelements="44" elements="57"/>
+            </class>
+            <metrics conditionals="18" methods="5" classes="1" ncloc="65" coveredstatements="28" coveredmethods="3" coveredconditionals="13" statements="34" loc="131" coveredelements="44" elements="57"/>
+            <line num="46" count="2" type="method"/>
+            <line num="47" count="2" type="stmt"/>
+            <line num="48" count="2" type="stmt"/>
+            <line num="49" count="2" type="stmt"/>
+            <line num="55" count="4" type="method"/>
+            <line num="59" count="4" type="stmt"/>
+            <line num="59" falsecount="0" type="cond" truecount="4"/>
+            <line num="60" count="4" type="stmt"/>
+            <line num="64" count="4" type="stmt"/>
+            <line num="64" falsecount="2" type="cond" truecount="2"/>
+            <line num="65" count="2" type="stmt"/>
+            <line num="68" count="2" type="stmt"/>
+            <line num="68" falsecount="2" type="cond" truecount="11"/>
+            <line num="69" count="11" type="stmt"/>
+            <line num="73" count="2" type="stmt"/>
+            <line num="73" falsecount="0" type="cond" truecount="2"/>
+            <line num="74" count="2" type="stmt"/>
+            <line num="77" count="2" type="stmt"/>
+            <line num="77" falsecount="0" type="cond" truecount="2"/>
+            <line num="78" count="2" type="stmt"/>
+            <line num="79" count="2" type="stmt"/>
+            <line num="80" count="2" type="stmt"/>
+            <line num="85" count="2" type="stmt"/>
+            <line num="86" count="2" type="stmt"/>
+            <line num="86" falsecount="2" type="cond" truecount="0"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="2" type="stmt"/>
+            <line num="91" falsecount="0" type="cond" truecount="2"/>
+            <line num="92" count="2" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+            <line num="102" count="4" type="method"/>
+            <line num="103" count="4" type="stmt"/>
+            <line num="104" count="4" type="stmt"/>
+            <line num="104" falsecount="2" type="cond" truecount="8"/>
+            <line num="105" count="8" type="stmt"/>
+            <line num="106" count="8" type="stmt"/>
+            <line num="106" falsecount="6" type="cond" truecount="2"/>
+            <line num="107" count="2" type="stmt"/>
+            <line num="108" count="2" type="stmt"/>
+            <line num="109" count="2" type="stmt"/>
+            <line num="111" count="6" type="stmt"/>
+            <line num="113" count="2" type="stmt"/>
+            <line num="119" count="0" type="method"/>
+            <line num="120" count="0" type="stmt"/>
+            <line num="126" count="0" type="method"/>
+            <line num="127" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/StringUtils.java">
+            <class name="StringUtils">
+               <metrics conditionals="8" methods="2" coveredstatements="14" coveredmethods="2" coveredconditionals="7" statements="14" coveredelements="23" elements="24"/>
+            </class>
+            <metrics conditionals="8" methods="2" classes="1" ncloc="26" coveredstatements="14" coveredmethods="2" coveredconditionals="7" statements="14" loc="38" coveredelements="23" elements="24"/>
+            <line num="12" count="3683" type="method"/>
+            <line num="13" count="3683" type="stmt"/>
+            <line num="14" count="3683" type="stmt"/>
+            <line num="14" falsecount="0" type="cond" truecount="8954"/>
+            <line num="15" count="8954" type="stmt"/>
+            <line num="16" count="8954" type="stmt"/>
+            <line num="16" falsecount="5271" type="cond" truecount="3683"/>
+            <line num="17" count="3683" type="stmt"/>
+            <line num="18" count="3683" type="stmt"/>
+            <line num="21" count="3683" type="stmt"/>
+            <line num="24" count="3684" type="method"/>
+            <line num="25" count="3684" type="stmt"/>
+            <line num="26" count="3684" type="stmt"/>
+            <line num="26" falsecount="22" type="cond" truecount="7472"/>
+            <line num="27" count="7472" type="stmt"/>
+            <line num="28" count="7472" type="stmt"/>
+            <line num="28" falsecount="3662" type="cond" truecount="3810"/>
+            <line num="29" count="3810" type="stmt"/>
+            <line num="31" count="3662" type="stmt"/>
+            <line num="34" count="3684" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/TextFileReaderByLine.java">
+            <class name="TextFileReaderByLine">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" coveredelements="0" elements="2"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="6" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" loc="21" coveredelements="0" elements="2"/>
+            <line num="16" count="0" type="method"/>
+            <line num="17" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/SimpleZip.java">
+            <class name="SimpleZip">
+               <metrics conditionals="14" methods="4" coveredstatements="25" coveredmethods="3" coveredconditionals="3" statements="36" coveredelements="31" elements="54"/>
+            </class>
+            <metrics conditionals="14" methods="4" classes="1" ncloc="71" coveredstatements="25" coveredmethods="3" coveredconditionals="3" statements="36" loc="138" coveredelements="31" elements="54"/>
+            <line num="41" count="2" type="method"/>
+            <line num="42" count="2" type="stmt"/>
+            <line num="45" count="1" type="method"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="63" count="2" type="stmt"/>
+            <line num="66" count="2" type="stmt"/>
+            <line num="66" falsecount="2" type="cond" truecount="0"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="2" type="stmt"/>
+            <line num="71" count="2" type="stmt"/>
+            <line num="73" count="2" type="stmt"/>
+            <line num="74" count="2" type="stmt"/>
+            <line num="77" count="2" type="stmt"/>
+            <line num="78" count="2" type="stmt"/>
+            <line num="78" falsecount="0" type="cond" truecount="0"/>
+            <line num="79" count="2" type="stmt"/>
+            <line num="83" count="2" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="86" falsecount="0" type="cond" truecount="1"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="89" falsecount="0" type="cond" truecount="1"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="98" count="2" type="method"/>
+            <line num="107" count="2" type="stmt"/>
+            <line num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="122" count="0" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="123" falsecount="0" type="cond" truecount="0"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="125" falsecount="0" type="cond" truecount="0"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="128" count="0" type="stmt"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="129" falsecount="0" type="cond" truecount="0"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="134" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/util/BaseZip.java">
+            <class name="BaseZip">
+               <metrics conditionals="16" methods="4" coveredstatements="23" coveredmethods="3" coveredconditionals="5" statements="44" coveredelements="31" elements="64"/>
+            </class>
+            <metrics conditionals="16" methods="4" classes="1" ncloc="82" coveredstatements="23" coveredmethods="3" coveredconditionals="5" statements="44" loc="176" coveredelements="31" elements="64"/>
+            <line num="44" count="2" type="method"/>
+            <line num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="77" falsecount="0" type="cond" truecount="0"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="85" falsecount="0" type="cond" truecount="0"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="88" falsecount="0" type="cond" truecount="0"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="104" count="1" type="method"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="108" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="109" falsecount="1" type="cond" truecount="2"/>
+            <line num="110" count="2" type="stmt"/>
+            <line num="116" count="2" type="stmt"/>
+            <line num="121" count="2" type="stmt"/>
+            <line num="125" count="2" type="stmt"/>
+            <line num="125" falsecount="0" type="cond" truecount="2"/>
+            <line num="126" count="2" type="stmt"/>
+            <line num="149" count="2" type="method"/>
+            <line num="151" count="2" type="stmt"/>
+            <line num="152" count="2" type="stmt"/>
+            <line num="153" count="2" type="stmt"/>
+            <line num="154" count="2" type="stmt"/>
+            <line num="155" count="2" type="stmt"/>
+            <line num="157" count="2" type="stmt"/>
+            <line num="158" count="2" type="stmt"/>
+            <line num="161" count="2" type="stmt"/>
+            <line num="162" count="2" type="stmt"/>
+            <line num="163" count="2" type="stmt"/>
+            <line num="163" falsecount="0" type="cond" truecount="0"/>
+            <line num="164" count="2" type="stmt"/>
+            <line num="167" count="2" type="stmt"/>
+            <line num="167" falsecount="0" type="cond" truecount="2"/>
+            <line num="168" count="2" type="stmt"/>
+            <line num="170" count="2" type="stmt"/>
+            <line num="170" falsecount="0" type="cond" truecount="2"/>
+            <line num="171" count="2" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores.reservoir">
+         <metrics conditionals="0" methods="2" classes="1" files="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/reservoir/ReservoirHeadPerturbador.java">
+            <class name="ReservoirHeadPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores.valves">
+         <metrics conditionals="0" methods="4" classes="2" files="2" ncloc="32" coveredstatements="6" coveredmethods="4" coveredconditionals="0" statements="6" loc="70" coveredelements="10" elements="10"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/valves/ValveLossCoefPerturbador.java">
+            <class name="ValveLossCoefPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/valves/ValveDiameterPerturbador.java">
+            <class name="ValveDiameterPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.relatorios.resultRelatorios">
+         <metrics conditionals="26" methods="11" classes="4" files="3" ncloc="133" coveredstatements="49" coveredmethods="10" coveredconditionals="20" statements="55" loc="229" coveredelements="79" elements="92"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/resultRelatorios/IResultRelatorio.java">
+            <class name="IResultRelatorio">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="8" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="21" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/resultRelatorios/EPANETResultRelatorio.java">
+            <class name="EPANETResultRelatorio">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" coveredelements="0" elements="2"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="13" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" loc="33" coveredelements="0" elements="2"/>
+            <line num="26" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/resultRelatorios/DefaultResultRelatorio.java">
+            <class name="DefaultResultRelatorio">
+               <metrics conditionals="18" methods="7" coveredstatements="38" coveredmethods="7" coveredconditionals="12" statements="43" coveredelements="57" elements="68"/>
+            </class>
+            <class name="DefaultResultRelatorio.Builder">
+               <metrics conditionals="8" methods="3" coveredstatements="11" coveredmethods="3" coveredconditionals="8" statements="11" coveredelements="22" elements="22"/>
+            </class>
+            <metrics conditionals="26" methods="10" classes="2" ncloc="112" coveredstatements="49" coveredmethods="10" coveredconditionals="20" statements="54" loc="175" coveredelements="79" elements="90"/>
+            <line num="38" count="2" type="method"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="41" falsecount="1" type="cond" truecount="1"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="42" falsecount="1" type="cond" truecount="1"/>
+            <line num="44" count="2" type="stmt"/>
+            <line num="45" count="2" type="stmt"/>
+            <line num="47" count="2" type="stmt"/>
+            <line num="50" count="1" type="method"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="54" falsecount="1" type="cond" truecount="0"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="59" falsecount="0" type="cond" truecount="1"/>
+            <line num="62" count="1" type="method"/>
+            <line num="64" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="66" falsecount="1" type="cond" truecount="0"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line num="71" falsecount="0" type="cond" truecount="1"/>
+            <line num="74" count="1" type="method"/>
+            <line num="75" count="1" type="stmt"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="78" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="93" count="1" type="method"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="95" falsecount="0" type="cond" truecount="1"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="111" count="1" type="method"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="113" falsecount="0" type="cond" truecount="1"/>
+            <line num="114" count="1" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="121" count="1" type="stmt"/>
+            <line num="124" count="1" type="method"/>
+            <line num="126" count="1" type="stmt"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="130" count="1" type="stmt"/>
+            <line num="130" falsecount="1" type="cond" truecount="3"/>
+            <line num="131" count="3" type="stmt"/>
+            <line num="134" count="1" type="stmt"/>
+            <line num="146" count="2" type="method"/>
+            <line num="147" count="2" type="stmt"/>
+            <line num="148" count="2" type="stmt"/>
+            <line num="151" count="4" type="method"/>
+            <line num="153" count="4" type="stmt"/>
+            <line num="153" falsecount="1" type="cond" truecount="3"/>
+            <line num="155" count="1" type="stmt"/>
+            <line num="155" falsecount="2" type="cond" truecount="1"/>
+            <line num="157" count="2" type="stmt"/>
+            <line num="157" falsecount="1" type="cond" truecount="1"/>
+            <line num="160" count="2" type="stmt"/>
+            <line num="160" falsecount="1" type="cond" truecount="1"/>
+            <line num="163" count="2" type="stmt"/>
+            <line num="166" count="1" type="stmt"/>
+            <line num="169" count="1" type="method"/>
+            <line num="170" count="1" type="stmt"/>
+            <line num="171" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores">
+         <metrics conditionals="0" methods="3" classes="2" files="2" ncloc="23" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" loc="68" coveredelements="7" elements="7"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/AbstractPerturbador.java">
+            <class name="AbstractPerturbador">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <metrics conditionals="0" methods="3" classes="1" ncloc="17" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" loc="44" coveredelements="7" elements="7"/>
+            <line num="20" count="23" type="method"/>
+            <line num="21" count="23" type="stmt"/>
+            <line num="22" count="23" type="stmt"/>
+            <line num="28" count="23" type="method"/>
+            <line num="29" count="23" type="stmt"/>
+            <line num="40" count="23" type="method"/>
+            <line num="41" count="23" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/IPerturbador.java">
+            <class name="IPerturbador">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="6" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="24" coveredelements="0" elements="0"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid">
+         <metrics conditionals="8" methods="29" classes="1" files="1" ncloc="151" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="46" loc="230" coveredelements="0" elements="83"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/AcceptFacade.java">
+            <class name="AcceptFacade">
+               <metrics conditionals="8" methods="29" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="46" coveredelements="0" elements="83"/>
+            </class>
+            <metrics conditionals="8" methods="29" classes="1" ncloc="151" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="46" loc="230" coveredelements="0" elements="83"/>
+            <line num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="68" count="0" type="method"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="82" count="0" type="method"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="86" count="0" type="method"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="89" falsecount="0" type="cond" truecount="0"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="96" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="100" count="0" type="stmt"/>
+            <line num="100" falsecount="0" type="cond" truecount="0"/>
+            <line num="101" count="0" type="stmt"/>
+            <line num="101" falsecount="0" type="cond" truecount="0"/>
+            <line num="102" count="0" type="stmt"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="113" count="0" type="method"/>
+            <line num="114" count="0" type="stmt"/>
+            <line num="120" count="0" type="method"/>
+            <line num="121" count="0" type="stmt"/>
+            <line num="124" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="128" count="0" type="method"/>
+            <line num="129" count="0" type="stmt"/>
+            <line num="129" falsecount="0" type="cond" truecount="0"/>
+            <line num="130" count="0" type="stmt"/>
+            <line num="132" count="0" type="stmt"/>
+            <line num="141" count="0" type="method"/>
+            <line num="142" count="0" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="144" count="0" type="stmt"/>
+            <line num="146" count="0" type="stmt"/>
+            <line num="150" count="0" type="method"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="154" count="0" type="stmt"/>
+            <line num="158" count="0" type="method"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="162" count="0" type="method"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="166" count="0" type="method"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="170" count="0" type="method"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="174" count="0" type="method"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="178" count="0" type="method"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="190" count="0" type="method"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="194" count="0" type="method"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="198" count="0" type="method"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="202" count="0" type="method"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="206" count="0" type="method"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="210" count="0" type="method"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="214" count="0" type="method"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="218" count="0" type="method"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="222" count="0" type="method"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="226" count="0" type="method"/>
+            <line num="227" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.model.nodes">
+         <metrics conditionals="70" methods="41" classes="9" files="6" ncloc="314" coveredstatements="92" coveredmethods="41" coveredconditionals="9" statements="138" loc="503" coveredelements="142" elements="249"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/DefaultTank.java">
+            <class name="DefaultTank">
+               <metrics conditionals="70" methods="11" coveredstatements="29" coveredmethods="11" coveredconditionals="9" statements="75" coveredelements="49" elements="156"/>
+            </class>
+            <class name="DefaultTank.Builder">
+               <metrics conditionals="0" methods="10" coveredstatements="25" coveredmethods="10" coveredconditionals="0" statements="25" coveredelements="35" elements="35"/>
+            </class>
+            <metrics conditionals="70" methods="21" classes="2" ncloc="170" coveredstatements="54" coveredmethods="21" coveredconditionals="9" statements="100" loc="235" coveredelements="84" elements="191"/>
+            <line num="30" count="25" type="method"/>
+            <line num="31" count="25" type="stmt"/>
+            <line num="37" count="26" type="method"/>
+            <line num="38" count="26" type="stmt"/>
+            <line num="44" count="26" type="method"/>
+            <line num="45" count="26" type="stmt"/>
+            <line num="51" count="19" type="method"/>
+            <line num="52" count="19" type="stmt"/>
+            <line num="58" count="26" type="method"/>
+            <line num="59" count="26" type="stmt"/>
+            <line num="65" count="26" type="method"/>
+            <line num="66" count="26" type="stmt"/>
+            <line num="72" count="19" type="method"/>
+            <line num="73" count="19" type="stmt"/>
+            <line num="79" count="205" type="method"/>
+            <line num="80" count="205" type="stmt"/>
+            <line num="83" count="43" type="method"/>
+            <line num="84" count="43" type="stmt"/>
+            <line num="85" count="43" type="stmt"/>
+            <line num="86" count="43" type="stmt"/>
+            <line num="87" count="43" type="stmt"/>
+            <line num="88" count="43" type="stmt"/>
+            <line num="89" count="43" type="stmt"/>
+            <line num="90" count="43" type="stmt"/>
+            <line num="91" count="43" type="stmt"/>
+            <line num="106" count="43" type="method"/>
+            <line num="107" count="43" type="stmt"/>
+            <line num="108" count="43" type="stmt"/>
+            <line num="111" count="18" type="method"/>
+            <line num="112" count="18" type="stmt"/>
+            <line num="113" count="18" type="stmt"/>
+            <line num="114" count="18" type="stmt"/>
+            <line num="115" count="18" type="stmt"/>
+            <line num="116" count="18" type="stmt"/>
+            <line num="117" count="18" type="stmt"/>
+            <line num="118" count="18" type="stmt"/>
+            <line num="119" count="18" type="stmt"/>
+            <line num="122" count="19" type="method"/>
+            <line num="123" count="19" type="stmt"/>
+            <line num="124" count="19" type="stmt"/>
+            <line num="127" count="44" type="method"/>
+            <line num="128" count="44" type="stmt"/>
+            <line num="129" count="44" type="stmt"/>
+            <line num="132" count="20" type="method"/>
+            <line num="133" count="20" type="stmt"/>
+            <line num="134" count="20" type="stmt"/>
+            <line num="137" count="44" type="method"/>
+            <line num="138" count="44" type="stmt"/>
+            <line num="139" count="44" type="stmt"/>
+            <line num="142" count="44" type="method"/>
+            <line num="143" count="44" type="stmt"/>
+            <line num="144" count="44" type="stmt"/>
+            <line num="147" count="44" type="method"/>
+            <line num="148" count="44" type="stmt"/>
+            <line num="149" count="44" type="stmt"/>
+            <line num="152" count="43" type="method"/>
+            <line num="153" count="43" type="stmt"/>
+            <line num="154" count="43" type="stmt"/>
+            <line num="157" count="43" type="method"/>
+            <line num="158" count="43" type="stmt"/>
+            <line num="165" count="179" type="method"/>
+            <line num="167" count="179" type="stmt"/>
+            <line num="168" count="179" type="stmt"/>
+            <line num="169" count="179" type="stmt"/>
+            <line num="169" falsecount="179" type="cond" truecount="0"/>
+            <line num="170" count="179" type="stmt"/>
+            <line num="170" falsecount="179" type="cond" truecount="0"/>
+            <line num="171" count="179" type="stmt"/>
+            <line num="171" falsecount="179" type="cond" truecount="0"/>
+            <line num="172" count="179" type="stmt"/>
+            <line num="172" falsecount="179" type="cond" truecount="0"/>
+            <line num="173" count="179" type="stmt"/>
+            <line num="173" falsecount="0" type="cond" truecount="179"/>
+            <line num="174" count="179" type="stmt"/>
+            <line num="174" falsecount="179" type="cond" truecount="0"/>
+            <line num="175" count="179" type="stmt"/>
+            <line num="175" falsecount="179" type="cond" truecount="0"/>
+            <line num="176" count="179" type="stmt"/>
+            <line num="176" falsecount="0" type="cond" truecount="179"/>
+            <line num="177" count="179" type="stmt"/>
+            <line num="183" count="2" type="method"/>
+            <line num="185" count="2" type="stmt"/>
+            <line num="185" falsecount="0" type="cond" truecount="2"/>
+            <line num="186" count="2" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="187" falsecount="0" type="cond" truecount="0"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="189" falsecount="0" type="cond" truecount="0"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="192" falsecount="0" type="cond" truecount="0"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="193" falsecount="0" type="cond" truecount="0"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="195" falsecount="0" type="cond" truecount="0"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="197" falsecount="0" type="cond" truecount="0"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="198" falsecount="0" type="cond" truecount="0"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="200" falsecount="0" type="cond" truecount="0"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="202" count="0" type="stmt"/>
+            <line num="202" falsecount="0" type="cond" truecount="0"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="203" falsecount="0" type="cond" truecount="0"/>
+            <line num="204" count="0" type="stmt"/>
+            <line num="205" count="0" type="stmt"/>
+            <line num="205" falsecount="0" type="cond" truecount="0"/>
+            <line num="206" count="0" type="stmt"/>
+            <line num="207" count="0" type="stmt"/>
+            <line num="207" falsecount="0" type="cond" truecount="0"/>
+            <line num="208" count="0" type="stmt"/>
+            <line num="208" falsecount="0" type="cond" truecount="0"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="210" count="0" type="stmt"/>
+            <line num="210" falsecount="0" type="cond" truecount="0"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="212" falsecount="0" type="cond" truecount="0"/>
+            <line num="213" count="0" type="stmt"/>
+            <line num="213" falsecount="0" type="cond" truecount="0"/>
+            <line num="214" count="0" type="stmt"/>
+            <line num="215" count="0" type="stmt"/>
+            <line num="215" falsecount="0" type="cond" truecount="0"/>
+            <line num="216" count="0" type="stmt"/>
+            <line num="217" count="0" type="stmt"/>
+            <line num="217" falsecount="0" type="cond" truecount="0"/>
+            <line num="218" count="0" type="stmt"/>
+            <line num="218" falsecount="0" type="cond" truecount="0"/>
+            <line num="219" count="0" type="stmt"/>
+            <line num="220" count="0" type="stmt"/>
+            <line num="220" falsecount="0" type="cond" truecount="0"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="222" count="0" type="stmt"/>
+            <line num="222" falsecount="0" type="cond" truecount="0"/>
+            <line num="223" count="0" type="stmt"/>
+            <line num="223" falsecount="0" type="cond" truecount="0"/>
+            <line num="224" count="0" type="stmt"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="225" falsecount="0" type="cond" truecount="0"/>
+            <line num="226" count="0" type="stmt"/>
+            <line num="227" count="0" type="stmt"/>
+            <line num="227" falsecount="0" type="cond" truecount="0"/>
+            <line num="228" count="0" type="stmt"/>
+            <line num="228" falsecount="0" type="cond" truecount="0"/>
+            <line num="229" count="0" type="stmt"/>
+            <line num="230" count="0" type="stmt"/>
+            <line num="230" falsecount="0" type="cond" truecount="0"/>
+            <line num="231" count="0" type="stmt"/>
+            <line num="232" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/IReservoir.java">
+            <class name="IReservoir">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="8" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="25" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/DefaultReservoir.java">
+            <class name="DefaultReservoir">
+               <metrics conditionals="0" methods="4" coveredstatements="7" coveredmethods="4" coveredconditionals="0" statements="7" coveredelements="11" elements="11"/>
+            </class>
+            <class name="DefaultReservoir.Builder">
+               <metrics conditionals="0" methods="5" coveredstatements="10" coveredmethods="5" coveredconditionals="0" statements="10" coveredelements="15" elements="15"/>
+            </class>
+            <metrics conditionals="0" methods="9" classes="2" ncloc="51" coveredstatements="17" coveredmethods="9" coveredconditionals="0" statements="17" loc="82" coveredelements="26" elements="26"/>
+            <line num="25" count="9" type="method"/>
+            <line num="26" count="9" type="stmt"/>
+            <line num="32" count="7" type="method"/>
+            <line num="33" count="7" type="stmt"/>
+            <line num="39" count="42" type="method"/>
+            <line num="40" count="42" type="stmt"/>
+            <line num="43" count="14" type="method"/>
+            <line num="44" count="14" type="stmt"/>
+            <line num="45" count="14" type="stmt"/>
+            <line num="46" count="14" type="stmt"/>
+            <line num="47" count="14" type="stmt"/>
+            <line num="57" count="14" type="method"/>
+            <line num="58" count="14" type="stmt"/>
+            <line num="59" count="14" type="stmt"/>
+            <line num="62" count="5" type="method"/>
+            <line num="63" count="5" type="stmt"/>
+            <line num="64" count="5" type="stmt"/>
+            <line num="65" count="5" type="stmt"/>
+            <line num="68" count="15" type="method"/>
+            <line num="69" count="15" type="stmt"/>
+            <line num="70" count="15" type="stmt"/>
+            <line num="73" count="6" type="method"/>
+            <line num="74" count="6" type="stmt"/>
+            <line num="75" count="6" type="stmt"/>
+            <line num="78" count="14" type="method"/>
+            <line num="79" count="14" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/ITank.java">
+            <class name="ITank">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="14" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="31" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/IJunction.java">
+            <class name="IJunction">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="10" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="33" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/nodes/DefaultJuntion.java">
+            <class name="DefaultJuntion">
+               <metrics conditionals="0" methods="5" coveredstatements="8" coveredmethods="5" coveredconditionals="0" statements="8" coveredelements="13" elements="13"/>
+            </class>
+            <class name="DefaultJuntion.Builder">
+               <metrics conditionals="0" methods="6" coveredstatements="13" coveredmethods="6" coveredconditionals="0" statements="13" coveredelements="19" elements="19"/>
+            </class>
+            <metrics conditionals="0" methods="11" classes="2" ncloc="61" coveredstatements="21" coveredmethods="11" coveredconditionals="0" statements="21" loc="97" coveredelements="32" elements="32"/>
+            <line num="25" count="110" type="method"/>
+            <line num="26" count="110" type="stmt"/>
+            <line num="32" count="100" type="method"/>
+            <line num="33" count="100" type="stmt"/>
+            <line num="39" count="99" type="method"/>
+            <line num="40" count="99" type="stmt"/>
+            <line num="46" count="2333" type="method"/>
+            <line num="47" count="2333" type="stmt"/>
+            <line num="51" count="208" type="method"/>
+            <line num="52" count="208" type="stmt"/>
+            <line num="53" count="208" type="stmt"/>
+            <line num="54" count="208" type="stmt"/>
+            <line num="55" count="208" type="stmt"/>
+            <line num="66" count="208" type="method"/>
+            <line num="67" count="208" type="stmt"/>
+            <line num="68" count="208" type="stmt"/>
+            <line num="71" count="71" type="method"/>
+            <line num="72" count="71" type="stmt"/>
+            <line num="73" count="71" type="stmt"/>
+            <line num="74" count="71" type="stmt"/>
+            <line num="75" count="71" type="stmt"/>
+            <line num="78" count="210" type="method"/>
+            <line num="79" count="210" type="stmt"/>
+            <line num="80" count="210" type="stmt"/>
+            <line num="83" count="150" type="method"/>
+            <line num="84" count="150" type="stmt"/>
+            <line num="85" count="150" type="stmt"/>
+            <line num="88" count="149" type="method"/>
+            <line num="89" count="149" type="stmt"/>
+            <line num="90" count="149" type="stmt"/>
+            <line num="93" count="208" type="method"/>
+            <line num="94" count="208" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.relatorios">
+         <metrics conditionals="0" methods="1" classes="1" files="1" ncloc="8" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" loc="13" coveredelements="0" elements="2"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/DefaultAnalisadorResultados.java">
+            <class name="DefaultAnalisadorResultados">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" coveredelements="0" elements="2"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="8" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" loc="13" coveredelements="0" elements="2"/>
+            <line num="9" count="0" type="method"/>
+            <line num="10" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores.pumps">
+         <metrics conditionals="0" methods="4" classes="2" files="2" ncloc="32" coveredstatements="6" coveredmethods="4" coveredconditionals="0" statements="6" loc="71" coveredelements="10" elements="10"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pumps/PumpPowerPerturbador.java">
+            <class name="PumpPowerPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="36" coveredelements="5" elements="5"/>
+            <line num="23" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="30" count="1" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pumps/PumpRelativeSpeedPerturbador.java">
+            <class name="PumpRelativeSpeedPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador">
+         <metrics conditionals="2" methods="15" classes="5" files="5" ncloc="201" coveredstatements="25" coveredmethods="6" coveredconditionals="0" statements="80" loc="373" coveredelements="31" elements="97"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/PertubadorRunner.java">
+            <class name="PertubadorRunner">
+               <metrics conditionals="0" methods="6" coveredstatements="25" coveredmethods="6" coveredconditionals="0" statements="25" coveredelements="31" elements="31"/>
+            </class>
+            <metrics conditionals="0" methods="6" classes="1" ncloc="64" coveredstatements="25" coveredmethods="6" coveredconditionals="0" statements="25" loc="109" coveredelements="31" elements="31"/>
+            <line num="38" count="1" type="method"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="45" count="1" type="stmt"/>
+            <line num="46" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="3" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="69" count="1" type="method"/>
+            <line num="72" count="1" type="stmt"/>
+            <line num="73" count="1" type="stmt"/>
+            <line num="74" count="1" type="stmt"/>
+            <line num="76" count="1" type="stmt"/>
+            <line num="85" count="2" type="method"/>
+            <line num="86" count="2" type="stmt"/>
+            <line num="87" count="2" type="stmt"/>
+            <line num="88" count="6" type="stmt"/>
+            <line num="90" count="2" type="stmt"/>
+            <line num="93" count="3" type="method"/>
+            <line num="94" count="3" type="stmt"/>
+            <line num="95" count="3" type="stmt"/>
+            <line num="96" count="3" type="stmt"/>
+            <line num="99" count="3" type="method"/>
+            <line num="100" count="3" type="stmt"/>
+            <line num="101" count="3" type="stmt"/>
+            <line num="102" count="3" type="stmt"/>
+            <line num="105" count="3" type="method"/>
+            <line num="106" count="3" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/DefaultVariavelPerturbada.java">
+            <class name="DefaultVariavelPerturbada">
+               <metrics conditionals="0" methods="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="6" coveredelements="0" elements="10"/>
+            </class>
+            <metrics conditionals="0" methods="4" classes="1" ncloc="21" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="6" loc="50" coveredelements="0" elements="10"/>
+            <line num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="25" count="0" type="stmt"/>
+            <line num="26" count="0" type="stmt"/>
+            <line num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="39" count="0" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="46" count="0" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/PerturbationType.java">
+            <class name="PerturbationType">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="38" coveredelements="0" elements="39"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="68" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="38" loc="96" coveredelements="0" elements="39"/>
+            <line num="45" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="51" count="0" type="stmt"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="83" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="86" count="0" type="stmt"/>
+            <line num="87" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="94" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/IVariavelPerturbada.java">
+            <class name="IVariavelPerturbada">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="7" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="30" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/PertubadorFacade.java">
+            <class name="PertubadorFacade">
+               <metrics conditionals="2" methods="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="11" coveredelements="0" elements="17"/>
+            </class>
+            <metrics conditionals="2" methods="4" classes="1" ncloc="41" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="11" loc="88" coveredelements="0" elements="17"/>
+            <line num="41" count="0" type="method"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="53" count="0" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="65" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="77" count="0" type="method"/>
+            <line num="79" count="0" type="stmt"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="80" falsecount="0" type="cond" truecount="0"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.model.epanetNetWork">
+         <metrics conditionals="38" methods="46" classes="3" files="2" ncloc="348" coveredstatements="121" coveredmethods="41" coveredconditionals="18" statements="152" loc="532" coveredelements="180" elements="236"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/epanetNetWork/NetWork.java">
+            <class name="NetWork">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="35" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="64" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/epanetNetWork/DefaultNetWork.java">
+            <class name="DefaultNetWork">
+               <metrics conditionals="38" methods="43" coveredstatements="118" coveredmethods="38" coveredconditionals="18" statements="149" coveredelements="174" elements="230"/>
+            </class>
+            <class name="DefaultNetWork.Builder">
+               <metrics conditionals="0" methods="3" coveredstatements="3" coveredmethods="3" coveredconditionals="0" statements="3" coveredelements="6" elements="6"/>
+            </class>
+            <metrics conditionals="38" methods="46" classes="2" ncloc="313" coveredstatements="121" coveredmethods="41" coveredconditionals="18" statements="152" loc="468" coveredelements="180" elements="236"/>
+            <line num="65" count="12" type="method"/>
+            <line num="66" count="12" type="stmt"/>
+            <line num="67" count="12" type="stmt"/>
+            <line num="67" falsecount="8" type="cond" truecount="4"/>
+            <line num="68" count="4" type="stmt"/>
+            <line num="76" count="4" type="method"/>
+            <line num="77" count="4" type="stmt"/>
+            <line num="78" count="4" type="stmt"/>
+            <line num="81" count="4" type="method"/>
+            <line num="83" count="4" type="stmt"/>
+            <line num="84" count="68" type="stmt"/>
+            <line num="85" count="68" type="stmt"/>
+            <line num="86" count="68" type="stmt"/>
+            <line num="89" count="4" type="stmt"/>
+            <line num="90" count="12" type="stmt"/>
+            <line num="91" count="12" type="stmt"/>
+            <line num="92" count="12" type="stmt"/>
+            <line num="96" count="4" type="method"/>
+            <line num="98" count="4" type="stmt"/>
+            <line num="99" count="68" type="stmt"/>
+            <line num="102" count="4" type="stmt"/>
+            <line num="103" count="4" type="stmt"/>
+            <line num="106" count="4" type="stmt"/>
+            <line num="107" count="12" type="stmt"/>
+            <line num="114" count="12" type="method"/>
+            <line num="116" count="4" type="method"/>
+            <line num="117" count="4" type="stmt"/>
+            <line num="118" count="4" type="stmt"/>
+            <line num="121" count="12" type="method"/>
+            <line num="122" count="12" type="stmt"/>
+            <line num="129" count="18" type="method"/>
+            <line num="130" count="18" type="stmt"/>
+            <line num="133" count="0" type="method"/>
+            <line num="134" count="0" type="stmt"/>
+            <line num="137" count="0" type="method"/>
+            <line num="138" count="0" type="stmt"/>
+            <line num="144" count="342" type="method"/>
+            <line num="145" count="342" type="stmt"/>
+            <line num="148" count="208" type="method"/>
+            <line num="149" count="208" type="stmt"/>
+            <line num="149" falsecount="208" type="cond" truecount="0"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="152" count="208" type="stmt"/>
+            <line num="153" count="208" type="stmt"/>
+            <line num="154" count="208" type="stmt"/>
+            <line num="155" count="208" type="stmt"/>
+            <line num="156" count="208" type="stmt"/>
+            <line num="157" count="208" type="stmt"/>
+            <line num="163" count="7" type="method"/>
+            <line num="164" count="7" type="stmt"/>
+            <line num="167" count="36" type="method"/>
+            <line num="168" count="36" type="stmt"/>
+            <line num="168" falsecount="36" type="cond" truecount="0"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="171" count="36" type="stmt"/>
+            <line num="172" count="36" type="stmt"/>
+            <line num="173" count="36" type="stmt"/>
+            <line num="174" count="36" type="stmt"/>
+            <line num="175" count="36" type="stmt"/>
+            <line num="176" count="36" type="stmt"/>
+            <line num="182" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="186" count="0" type="method"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="187" falsecount="0" type="cond" truecount="0"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="201" count="16" type="method"/>
+            <line num="202" count="16" type="stmt"/>
+            <line num="210" count="205" type="method"/>
+            <line num="211" count="205" type="stmt"/>
+            <line num="211" falsecount="205" type="cond" truecount="0"/>
+            <line num="212" count="0" type="stmt"/>
+            <line num="214" count="205" type="stmt"/>
+            <line num="215" count="205" type="stmt"/>
+            <line num="216" count="205" type="stmt"/>
+            <line num="217" count="205" type="stmt"/>
+            <line num="220" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="227" count="542" type="method"/>
+            <line num="228" count="542" type="stmt"/>
+            <line num="234" count="14" type="method"/>
+            <line num="235" count="14" type="stmt"/>
+            <line num="238" count="12" type="method"/>
+            <line num="239" count="12" type="stmt"/>
+            <line num="239" falsecount="12" type="cond" truecount="0"/>
+            <line num="240" count="0" type="stmt"/>
+            <line num="242" count="12" type="stmt"/>
+            <line num="243" count="12" type="stmt"/>
+            <line num="244" count="12" type="stmt"/>
+            <line num="245" count="12" type="stmt"/>
+            <line num="251" count="14" type="method"/>
+            <line num="252" count="14" type="stmt"/>
+            <line num="255" count="36" type="method"/>
+            <line num="256" count="36" type="stmt"/>
+            <line num="256" falsecount="36" type="cond" truecount="0"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="259" count="36" type="stmt"/>
+            <line num="260" count="36" type="stmt"/>
+            <line num="261" count="36" type="stmt"/>
+            <line num="262" count="36" type="stmt"/>
+            <line num="268" count="111" type="method"/>
+            <line num="269" count="111" type="stmt"/>
+            <line num="275" count="111" type="method"/>
+            <line num="276" count="111" type="stmt"/>
+            <line num="282" count="5" type="method"/>
+            <line num="284" count="5" type="stmt"/>
+            <line num="284" falsecount="4" type="cond" truecount="1"/>
+            <line num="286" count="1" type="stmt"/>
+            <line num="287" count="1" type="stmt"/>
+            <line num="288" count="1" type="stmt"/>
+            <line num="290" count="1" type="stmt"/>
+            <line num="291" count="1" type="stmt"/>
+            <line num="294" count="1" type="stmt"/>
+            <line num="294" falsecount="1" type="cond" truecount="0"/>
+            <line num="295" count="0" type="stmt"/>
+            <line num="296" count="0" type="stmt"/>
+            <line num="297" count="1" type="stmt"/>
+            <line num="297" falsecount="1" type="cond" truecount="0"/>
+            <line num="298" count="0" type="stmt"/>
+            <line num="299" count="0" type="stmt"/>
+            <line num="300" count="1" type="stmt"/>
+            <line num="300" falsecount="0" type="cond" truecount="1"/>
+            <line num="301" count="1" type="stmt"/>
+            <line num="302" count="1" type="stmt"/>
+            <line num="305" count="1" type="stmt"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="307" count="0" type="stmt"/>
+            <line num="310" count="1" type="stmt"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="312" count="0" type="stmt"/>
+            <line num="315" count="4" type="stmt"/>
+            <line num="315" falsecount="0" type="cond" truecount="4"/>
+            <line num="317" count="4" type="stmt"/>
+            <line num="318" count="4" type="stmt"/>
+            <line num="319" count="4" type="stmt"/>
+            <line num="322" count="4" type="stmt"/>
+            <line num="322" falsecount="0" type="cond" truecount="4"/>
+            <line num="323" count="4" type="stmt"/>
+            <line num="324" count="4" type="stmt"/>
+            <line num="325" count="0" type="stmt"/>
+            <line num="325" falsecount="0" type="cond" truecount="0"/>
+            <line num="326" count="0" type="stmt"/>
+            <line num="327" count="0" type="stmt"/>
+            <line num="328" count="0" type="stmt"/>
+            <line num="328" falsecount="0" type="cond" truecount="0"/>
+            <line num="329" count="0" type="stmt"/>
+            <line num="330" count="0" type="stmt"/>
+            <line num="336" count="6" type="method"/>
+            <line num="337" count="6" type="stmt"/>
+            <line num="338" count="6" type="stmt"/>
+            <line num="338" falsecount="0" type="cond" truecount="6"/>
+            <line num="339" count="6" type="stmt"/>
+            <line num="341" count="6" type="stmt"/>
+            <line num="342" count="6" type="stmt"/>
+            <line num="342" falsecount="0" type="cond" truecount="6"/>
+            <line num="343" count="6" type="stmt"/>
+            <line num="346" count="6" type="stmt"/>
+            <line num="347" count="6" type="stmt"/>
+            <line num="349" count="6" type="stmt"/>
+            <line num="350" count="6" type="stmt"/>
+            <line num="351" count="6" type="stmt"/>
+            <line num="353" count="6" type="stmt"/>
+            <line num="356" count="1" type="method"/>
+            <line num="357" count="1" type="stmt"/>
+            <line num="358" count="1" type="stmt"/>
+            <line num="359" count="1" type="stmt"/>
+            <line num="361" count="1" type="stmt"/>
+            <line num="362" count="1" type="stmt"/>
+            <line num="365" count="1" type="stmt"/>
+            <line num="366" count="1" type="stmt"/>
+            <line num="369" count="1" type="stmt"/>
+            <line num="373" count="4" type="method"/>
+            <line num="374" count="4" type="stmt"/>
+            <line num="375" count="4" type="stmt"/>
+            <line num="375" falsecount="4" type="cond" truecount="0"/>
+            <line num="379" count="5" type="method"/>
+            <line num="380" count="5" type="stmt"/>
+            <line num="381" count="5" type="stmt"/>
+            <line num="381" falsecount="5" type="cond" truecount="0"/>
+            <line num="388" count="2" type="method"/>
+            <line num="389" count="2" type="stmt"/>
+            <line num="392" count="2" type="method"/>
+            <line num="393" count="2" type="stmt"/>
+            <line num="396" count="9" type="method"/>
+            <line num="397" count="9" type="stmt"/>
+            <line num="403" count="3" type="method"/>
+            <line num="404" count="3" type="stmt"/>
+            <line num="407" count="6" type="method"/>
+            <line num="408" count="6" type="stmt"/>
+            <line num="414" count="3" type="method"/>
+            <line num="415" count="3" type="stmt"/>
+            <line num="418" count="6" type="method"/>
+            <line num="419" count="6" type="stmt"/>
+            <line num="425" count="3" type="method"/>
+            <line num="426" count="3" type="stmt"/>
+            <line num="429" count="21" type="method"/>
+            <line num="430" count="21" type="stmt"/>
+            <line num="436" count="1" type="method"/>
+            <line num="437" count="1" type="stmt"/>
+            <line num="440" count="60" type="method"/>
+            <line num="441" count="60" type="stmt"/>
+            <line num="447" count="3" type="method"/>
+            <line num="448" count="3" type="stmt"/>
+            <line num="451" count="12" type="method"/>
+            <line num="452" count="12" type="stmt"/>
+            <line num="458" count="3" type="method"/>
+            <line num="459" count="3" type="stmt"/>
+            <line num="462" count="69" type="method"/>
+            <line num="463" count="69" type="stmt"/>
+            <line num="464" count="69" type="stmt"/>
+            <line num="465" count="69" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.model">
+         <metrics conditionals="0" methods="0" classes="4" files="4" ncloc="18" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="59" coveredelements="0" elements="0"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/INode.java">
+            <class name="INode">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="3" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="13" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/IEmitters.java">
+            <class name="IEmitters">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="6" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="17" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/NetworkComponent.java">
+            <class name="NetworkComponent">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="13" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/ILink.java">
+            <class name="ILink">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="5" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="16" coveredelements="0" elements="0"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.model.report">
+         <metrics conditionals="0" methods="3" classes="2" files="2" ncloc="23" coveredstatements="2" coveredmethods="2" coveredconditionals="0" statements="3" loc="70" coveredelements="4" elements="6"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/report/IReport.java">
+            <class name="IReport">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="7" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="31" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/report/Report.java">
+            <class name="Report">
+               <metrics conditionals="0" methods="3" coveredstatements="2" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="4" elements="6"/>
+            </class>
+            <metrics conditionals="0" methods="3" classes="1" ncloc="16" coveredstatements="2" coveredmethods="2" coveredconditionals="0" statements="3" loc="39" coveredelements="4" elements="6"/>
+            <line num="21" count="3" type="method"/>
+            <line num="22" count="3" type="stmt"/>
+            <line num="28" count="21" type="method"/>
+            <line num="29" count="21" type="stmt"/>
+            <line num="35" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.grid">
+         <metrics conditionals="8" methods="23" classes="4" files="1" ncloc="183" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="74" loc="291" coveredelements="0" elements="105"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/grid/GridFacade.java">
+            <class name="GridFacade">
+               <metrics conditionals="2" methods="5" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="11" coveredelements="0" elements="18"/>
+            </class>
+            <class name="GridFacade.Builder">
+               <metrics conditionals="0" methods="5" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="10" coveredelements="0" elements="15"/>
+            </class>
+            <class name="GridFacade.EpanetGridRunnable">
+               <metrics conditionals="6" methods="5" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="39" coveredelements="0" elements="50"/>
+            </class>
+            <class name="GridFacade.EpanetGridRunnableResult">
+               <metrics conditionals="0" methods="8" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="14" coveredelements="0" elements="22"/>
+            </class>
+            <metrics conditionals="8" methods="23" classes="4" ncloc="183" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="74" loc="291" coveredelements="0" elements="105"/>
+            <line num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="42" count="0" type="method"/>
+            <line num="43" count="0" type="stmt"/>
+            <line num="43" falsecount="0" type="cond" truecount="0"/>
+            <line num="44" count="0" type="stmt"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="55" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="63" count="0" type="method"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="0" type="method"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="70" count="0" type="stmt"/>
+            <line num="71" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="89" count="0" type="method"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="98" count="0" type="method"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="106" count="0" type="method"/>
+            <line num="107" count="0" type="stmt"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="115" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="124" count="0" type="method"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="126" count="0" type="stmt"/>
+            <line num="146" count="0" type="method"/>
+            <line num="148" count="0" type="stmt"/>
+            <line num="149" count="0" type="stmt"/>
+            <line num="150" count="0" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="152" count="0" type="stmt"/>
+            <line num="155" count="0" type="method"/>
+            <line num="157" count="0" type="stmt"/>
+            <line num="159" count="0" type="stmt"/>
+            <line num="161" count="0" type="stmt"/>
+            <line num="162" count="0" type="stmt"/>
+            <line num="163" count="0" type="stmt"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="181" count="0" type="method"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="185" falsecount="0" type="cond" truecount="0"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="190" falsecount="0" type="cond" truecount="0"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="199" falsecount="0" type="cond" truecount="0"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+            <line num="203" count="0" type="stmt"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="220" count="0" type="method"/>
+            <line num="221" count="0" type="stmt"/>
+            <line num="224" count="0" type="method"/>
+            <line num="225" count="0" type="stmt"/>
+            <line num="250" count="0" type="method"/>
+            <line num="252" count="0" type="stmt"/>
+            <line num="253" count="0" type="stmt"/>
+            <line num="254" count="0" type="stmt"/>
+            <line num="255" count="0" type="stmt"/>
+            <line num="256" count="0" type="stmt"/>
+            <line num="257" count="0" type="stmt"/>
+            <line num="258" count="0" type="stmt"/>
+            <line num="262" count="0" type="method"/>
+            <line num="263" count="0" type="stmt"/>
+            <line num="266" count="0" type="method"/>
+            <line num="267" count="0" type="stmt"/>
+            <line num="270" count="0" type="method"/>
+            <line num="271" count="0" type="stmt"/>
+            <line num="274" count="0" type="method"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="278" count="0" type="method"/>
+            <line num="279" count="0" type="stmt"/>
+            <line num="282" count="0" type="method"/>
+            <line num="283" count="0" type="stmt"/>
+            <line num="286" count="0" type="method"/>
+            <line num="287" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores.tank">
+         <metrics conditionals="0" methods="12" classes="6" files="6" ncloc="96" coveredstatements="18" coveredmethods="12" coveredconditionals="0" statements="18" loc="213" coveredelements="30" elements="30"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankMaximumWaterLevel.java">
+            <class name="TankMaximumWaterLevel">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="36" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="30" count="1" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankElevationPerturbador.java">
+            <class name="TankElevationPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankMinimunVolume.java">
+            <class name="TankMinimunVolume">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankNominalDiameter.java">
+            <class name="TankNominalDiameter">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="36" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="30" count="1" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankInitialWaterLevelPerturbador.java">
+            <class name="TankInitialWaterLevelPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/tank/TankMinimunWaterLevel.java">
+            <class name="TankMinimunWaterLevel">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="16" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="36" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="30" count="1" type="method"/>
+            <line num="32" count="1" type="stmt"/>
+            <line num="33" count="1" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.valueProvider">
+         <metrics conditionals="32" methods="15" classes="5" files="5" ncloc="140" coveredstatements="42" coveredmethods="8" coveredconditionals="16" statements="71" loc="298" coveredelements="66" elements="118"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/valueProvider/RandomSeed.java">
+            <class name="RandomSeed">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="20" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/valueProvider/AnaliseSensibilidadeValueProvider.java">
+            <class name="AnaliseSensibilidadeValueProvider">
+               <metrics conditionals="16" methods="4" coveredstatements="29" coveredmethods="4" coveredconditionals="12" statements="30" coveredelements="45" elements="50"/>
+            </class>
+            <metrics conditionals="16" methods="4" classes="1" ncloc="55" coveredstatements="29" coveredmethods="4" coveredconditionals="12" statements="30" loc="97" coveredelements="45" elements="50"/>
+            <line num="26" count="6" type="method"/>
+            <line num="27" count="6" type="stmt"/>
+            <line num="27" falsecount="5" type="cond" truecount="1"/>
+            <line num="28" count="1" type="stmt"/>
+            <line num="32" count="5" type="stmt"/>
+            <line num="32" falsecount="5" type="cond" truecount="0"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="36" count="5" type="stmt"/>
+            <line num="37" count="5" type="stmt"/>
+            <line num="38" count="5" type="stmt"/>
+            <line num="39" count="5" type="stmt"/>
+            <line num="40" count="5" type="stmt"/>
+            <line num="49" count="6" type="method"/>
+            <line num="51" count="6" type="stmt"/>
+            <line num="51" falsecount="5" type="cond" truecount="1"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="55" count="5" type="stmt"/>
+            <line num="55" falsecount="3" type="cond" truecount="2"/>
+            <line num="56" count="2" type="stmt"/>
+            <line num="59" count="3" type="stmt"/>
+            <line num="60" count="3" type="stmt"/>
+            <line num="61" count="3" type="stmt"/>
+            <line num="62" count="3" type="stmt"/>
+            <line num="68" count="4" type="method"/>
+            <line num="70" count="4" type="stmt"/>
+            <line num="72" count="4" type="stmt"/>
+            <line num="74" count="4" type="stmt"/>
+            <line num="74" falsecount="4" type="cond" truecount="33"/>
+            <line num="75" count="33" type="stmt"/>
+            <line num="76" count="33" type="stmt"/>
+            <line num="79" count="4" type="stmt"/>
+            <line num="80" count="4" type="stmt"/>
+            <line num="81" count="4" type="stmt"/>
+            <line num="82" count="37" type="stmt"/>
+            <line num="84" count="4" type="stmt"/>
+            <line num="90" count="3" type="method"/>
+            <line num="91" count="3" type="stmt"/>
+            <line num="91" falsecount="0" type="cond" truecount="3"/>
+            <line num="92" count="3" type="stmt"/>
+            <line num="92" falsecount="0" type="cond" truecount="3"/>
+            <line num="93" count="3" type="stmt"/>
+            <line num="93" falsecount="0" type="cond" truecount="3"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/valueProvider/ValueProvider.java">
+            <class name="ValueProvider">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="21" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/valueProvider/MonteCarloValueProvider.java">
+            <class name="MonteCarloValueProvider">
+               <metrics conditionals="8" methods="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="22" coveredelements="0" elements="34"/>
+            </class>
+            <metrics conditionals="8" methods="4" classes="1" ncloc="43" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="22" loc="82" coveredelements="0" elements="34"/>
+            <line num="25" count="0" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="27" falsecount="0" type="cond" truecount="0"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="33" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+            <line num="37" count="0" type="stmt"/>
+            <line num="47" count="0" type="method"/>
+            <line num="49" count="0" type="stmt"/>
+            <line num="49" falsecount="0" type="cond" truecount="0"/>
+            <line num="50" count="0" type="stmt"/>
+            <line num="53" count="0" type="stmt"/>
+            <line num="54" count="0" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="63" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line num="66" falsecount="0" type="cond" truecount="0"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="75" count="0" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="76" falsecount="0" type="cond" truecount="0"/>
+            <line num="77" count="0" type="stmt"/>
+            <line num="78" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/valueProvider/SimpleValueProvider.java">
+            <class name="SimpleValueProvider">
+               <metrics conditionals="8" methods="7" coveredstatements="13" coveredmethods="4" coveredconditionals="4" statements="19" coveredelements="21" elements="34"/>
+            </class>
+            <metrics conditionals="8" methods="7" classes="1" ncloc="34" coveredstatements="13" coveredmethods="4" coveredconditionals="4" statements="19" loc="78" coveredelements="21" elements="34"/>
+            <line num="15" count="0" type="method"/>
+            <line num="26" count="1" type="method"/>
+            <line num="27" count="0" type="stmt"/>
+            <line num="27" falsecount="1" type="cond" truecount="0"/>
+            <line num="28" count="1" type="stmt"/>
+            <line num="29" count="1" type="stmt"/>
+            <line num="39" count="1" type="method"/>
+            <line num="40" count="0" type="stmt"/>
+            <line num="40" falsecount="1" type="cond" truecount="0"/>
+            <line num="41" count="1" type="stmt"/>
+            <line num="42" count="1" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="54" count="1" type="method"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="55" falsecount="1" type="cond" truecount="0"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="66" count="1" type="method"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="67" falsecount="1" type="cond" truecount="0"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="method"/>
+            <line num="74" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.main">
+         <metrics conditionals="0" methods="1" classes="1" files="1" ncloc="23" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="6" loc="39" coveredelements="0" elements="7"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/main/EpanetGridMain.java">
+            <class name="EpanetGridMain">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="6" coveredelements="0" elements="7"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="23" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="6" loc="39" coveredelements="0" elements="7"/>
+            <line num="19" count="0" type="method"/>
+            <line num="21" count="0" type="stmt"/>
+            <line num="23" count="0" type="stmt"/>
+            <line num="32" count="0" type="stmt"/>
+            <line num="34" count="0" type="stmt"/>
+            <line num="35" count="0" type="stmt"/>
+            <line num="36" count="0" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.model.link">
+         <metrics conditionals="54" methods="44" classes="10" files="6" ncloc="316" coveredstatements="80" coveredmethods="36" coveredconditionals="7" statements="125" loc="540" coveredelements="123" elements="223"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/DefaultPipe.java">
+            <class name="DefaultPipe">
+               <metrics conditionals="54" methods="11" coveredstatements="20" coveredmethods="7" coveredconditionals="7" statements="61" coveredelements="34" elements="126"/>
+            </class>
+            <class name="DefaultPipe.Builder">
+               <metrics conditionals="0" methods="7" coveredstatements="16" coveredmethods="7" coveredconditionals="0" statements="16" coveredelements="23" elements="23"/>
+            </class>
+            <metrics conditionals="54" methods="18" classes="2" ncloc="137" coveredstatements="36" coveredmethods="14" coveredconditionals="7" statements="77" loc="204" coveredelements="57" elements="149"/>
+            <line num="29" count="137" type="method"/>
+            <line num="30" count="137" type="stmt"/>
+            <line num="36" count="115" type="method"/>
+            <line num="37" count="115" type="stmt"/>
+            <line num="43" count="115" type="method"/>
+            <line num="44" count="115" type="stmt"/>
+            <line num="50" count="80" type="method"/>
+            <line num="51" count="80" type="stmt"/>
+            <line num="57" count="0" type="method"/>
+            <line num="58" count="0" type="stmt"/>
+            <line num="64" count="0" type="method"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="71" count="0" type="method"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="78" count="2396" type="method"/>
+            <line num="79" count="2396" type="stmt"/>
+            <line num="83" count="216" type="method"/>
+            <line num="84" count="216" type="stmt"/>
+            <line num="85" count="216" type="stmt"/>
+            <line num="86" count="216" type="stmt"/>
+            <line num="87" count="216" type="stmt"/>
+            <line num="88" count="216" type="stmt"/>
+            <line num="89" count="216" type="stmt"/>
+            <line num="105" count="216" type="method"/>
+            <line num="106" count="216" type="stmt"/>
+            <line num="107" count="216" type="stmt"/>
+            <line num="110" count="79" type="method"/>
+            <line num="111" count="79" type="stmt"/>
+            <line num="112" count="79" type="stmt"/>
+            <line num="113" count="79" type="stmt"/>
+            <line num="114" count="79" type="stmt"/>
+            <line num="115" count="79" type="stmt"/>
+            <line num="118" count="217" type="method"/>
+            <line num="119" count="217" type="stmt"/>
+            <line num="120" count="217" type="stmt"/>
+            <line num="123" count="224" type="method"/>
+            <line num="124" count="224" type="stmt"/>
+            <line num="125" count="224" type="stmt"/>
+            <line num="128" count="81" type="method"/>
+            <line num="129" count="81" type="stmt"/>
+            <line num="130" count="81" type="stmt"/>
+            <line num="133" count="217" type="method"/>
+            <line num="134" count="217" type="stmt"/>
+            <line num="135" count="217" type="stmt"/>
+            <line num="138" count="216" type="method"/>
+            <line num="139" count="216" type="stmt"/>
+            <line num="146" count="1280" type="method"/>
+            <line num="148" count="1280" type="stmt"/>
+            <line num="149" count="1280" type="stmt"/>
+            <line num="150" count="1280" type="stmt"/>
+            <line num="150" falsecount="1280" type="cond" truecount="0"/>
+            <line num="151" count="1280" type="stmt"/>
+            <line num="151" falsecount="1280" type="cond" truecount="0"/>
+            <line num="152" count="1280" type="stmt"/>
+            <line num="152" falsecount="1280" type="cond" truecount="0"/>
+            <line num="153" count="1280" type="stmt"/>
+            <line num="153" falsecount="0" type="cond" truecount="1280"/>
+            <line num="154" count="1280" type="stmt"/>
+            <line num="154" falsecount="1265" type="cond" truecount="15"/>
+            <line num="155" count="1280" type="stmt"/>
+            <line num="155" falsecount="1280" type="cond" truecount="0"/>
+            <line num="156" count="1280" type="stmt"/>
+            <line num="162" count="0" type="method"/>
+            <line num="164" count="0" type="stmt"/>
+            <line num="164" falsecount="0" type="cond" truecount="0"/>
+            <line num="165" count="0" type="stmt"/>
+            <line num="166" count="0" type="stmt"/>
+            <line num="166" falsecount="0" type="cond" truecount="0"/>
+            <line num="167" count="0" type="stmt"/>
+            <line num="168" count="0" type="stmt"/>
+            <line num="168" falsecount="0" type="cond" truecount="0"/>
+            <line num="169" count="0" type="stmt"/>
+            <line num="170" count="0" type="stmt"/>
+            <line num="171" count="0" type="stmt"/>
+            <line num="171" falsecount="0" type="cond" truecount="0"/>
+            <line num="172" count="0" type="stmt"/>
+            <line num="172" falsecount="0" type="cond" truecount="0"/>
+            <line num="173" count="0" type="stmt"/>
+            <line num="174" count="0" type="stmt"/>
+            <line num="174" falsecount="0" type="cond" truecount="0"/>
+            <line num="175" count="0" type="stmt"/>
+            <line num="176" count="0" type="stmt"/>
+            <line num="176" falsecount="0" type="cond" truecount="0"/>
+            <line num="177" count="0" type="stmt"/>
+            <line num="177" falsecount="0" type="cond" truecount="0"/>
+            <line num="178" count="0" type="stmt"/>
+            <line num="179" count="0" type="stmt"/>
+            <line num="179" falsecount="0" type="cond" truecount="0"/>
+            <line num="180" count="0" type="stmt"/>
+            <line num="181" count="0" type="stmt"/>
+            <line num="181" falsecount="0" type="cond" truecount="0"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="182" falsecount="0" type="cond" truecount="0"/>
+            <line num="183" count="0" type="stmt"/>
+            <line num="184" count="0" type="stmt"/>
+            <line num="184" falsecount="0" type="cond" truecount="0"/>
+            <line num="185" count="0" type="stmt"/>
+            <line num="186" count="0" type="stmt"/>
+            <line num="186" falsecount="0" type="cond" truecount="0"/>
+            <line num="187" count="0" type="stmt"/>
+            <line num="187" falsecount="0" type="cond" truecount="0"/>
+            <line num="188" count="0" type="stmt"/>
+            <line num="189" count="0" type="stmt"/>
+            <line num="189" falsecount="0" type="cond" truecount="0"/>
+            <line num="190" count="0" type="stmt"/>
+            <line num="191" count="0" type="stmt"/>
+            <line num="191" falsecount="0" type="cond" truecount="0"/>
+            <line num="192" count="0" type="stmt"/>
+            <line num="192" falsecount="0" type="cond" truecount="0"/>
+            <line num="193" count="0" type="stmt"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="194" falsecount="0" type="cond" truecount="0"/>
+            <line num="195" count="0" type="stmt"/>
+            <line num="196" count="0" type="stmt"/>
+            <line num="196" falsecount="0" type="cond" truecount="0"/>
+            <line num="197" count="0" type="stmt"/>
+            <line num="197" falsecount="0" type="cond" truecount="0"/>
+            <line num="198" count="0" type="stmt"/>
+            <line num="199" count="0" type="stmt"/>
+            <line num="199" falsecount="0" type="cond" truecount="0"/>
+            <line num="200" count="0" type="stmt"/>
+            <line num="201" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/IPipe.java">
+            <class name="IPipe">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <class name="IPipe.Status">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="2" ncloc="13" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="30" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/IValve.java">
+            <class name="IValve">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="9" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="24" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/DefaultValve.java">
+            <class name="DefaultValve">
+               <metrics conditionals="0" methods="6" coveredstatements="7" coveredmethods="4" coveredconditionals="0" statements="9" coveredelements="11" elements="15"/>
+            </class>
+            <class name="DefaultValve.Builder">
+               <metrics conditionals="0" methods="5" coveredstatements="10" coveredmethods="5" coveredconditionals="0" statements="10" coveredelements="15" elements="15"/>
+            </class>
+            <metrics conditionals="0" methods="11" classes="2" ncloc="62" coveredstatements="17" coveredmethods="9" coveredconditionals="0" statements="19" loc="106" coveredelements="26" elements="30"/>
+            <line num="30" count="3" type="method"/>
+            <line num="31" count="3" type="stmt"/>
+            <line num="37" count="3" type="method"/>
+            <line num="38" count="3" type="stmt"/>
+            <line num="44" count="0" type="method"/>
+            <line num="45" count="0" type="stmt"/>
+            <line num="51" count="0" type="method"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="58" count="2" type="method"/>
+            <line num="59" count="2" type="stmt"/>
+            <line num="62" count="3" type="method"/>
+            <line num="63" count="3" type="stmt"/>
+            <line num="64" count="3" type="stmt"/>
+            <line num="65" count="3" type="stmt"/>
+            <line num="66" count="3" type="stmt"/>
+            <line num="80" count="3" type="method"/>
+            <line num="81" count="3" type="stmt"/>
+            <line num="82" count="3" type="stmt"/>
+            <line num="85" count="2" type="method"/>
+            <line num="86" count="2" type="stmt"/>
+            <line num="87" count="2" type="stmt"/>
+            <line num="88" count="2" type="stmt"/>
+            <line num="91" count="4" type="method"/>
+            <line num="92" count="4" type="stmt"/>
+            <line num="93" count="4" type="stmt"/>
+            <line num="96" count="4" type="method"/>
+            <line num="97" count="4" type="stmt"/>
+            <line num="98" count="4" type="stmt"/>
+            <line num="101" count="3" type="method"/>
+            <line num="102" count="3" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/DefaultPump.java">
+            <class name="DefaultPump">
+               <metrics conditionals="0" methods="8" coveredstatements="11" coveredmethods="6" coveredconditionals="0" statements="13" coveredelements="17" elements="21"/>
+            </class>
+            <class name="DefaultPump.Builder">
+               <metrics conditionals="0" methods="7" coveredstatements="16" coveredmethods="7" coveredconditionals="0" statements="16" coveredelements="23" elements="23"/>
+            </class>
+            <metrics conditionals="0" methods="15" classes="2" ncloc="84" coveredstatements="27" coveredmethods="13" coveredconditionals="0" statements="29" loc="140" coveredelements="40" elements="44"/>
+            <line num="32" count="24" type="method"/>
+            <line num="33" count="24" type="stmt"/>
+            <line num="39" count="15" type="method"/>
+            <line num="40" count="15" type="stmt"/>
+            <line num="46" count="15" type="method"/>
+            <line num="47" count="15" type="stmt"/>
+            <line num="53" count="15" type="method"/>
+            <line num="54" count="15" type="stmt"/>
+            <line num="60" count="131" type="method"/>
+            <line num="61" count="131" type="stmt"/>
+            <line num="67" count="0" type="method"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="74" count="0" type="method"/>
+            <line num="75" count="0" type="stmt"/>
+            <line num="81" count="39" type="method"/>
+            <line num="82" count="39" type="stmt"/>
+            <line num="83" count="39" type="stmt"/>
+            <line num="84" count="39" type="stmt"/>
+            <line num="85" count="39" type="stmt"/>
+            <line num="86" count="39" type="stmt"/>
+            <line num="87" count="39" type="stmt"/>
+            <line num="103" count="39" type="method"/>
+            <line num="104" count="39" type="stmt"/>
+            <line num="105" count="39" type="stmt"/>
+            <line num="108" count="14" type="method"/>
+            <line num="109" count="14" type="stmt"/>
+            <line num="110" count="14" type="stmt"/>
+            <line num="111" count="14" type="stmt"/>
+            <line num="112" count="14" type="stmt"/>
+            <line num="113" count="14" type="stmt"/>
+            <line num="116" count="39" type="method"/>
+            <line num="117" count="39" type="stmt"/>
+            <line num="118" count="39" type="stmt"/>
+            <line num="121" count="16" type="method"/>
+            <line num="122" count="16" type="stmt"/>
+            <line num="123" count="16" type="stmt"/>
+            <line num="126" count="16" type="method"/>
+            <line num="127" count="16" type="stmt"/>
+            <line num="128" count="16" type="stmt"/>
+            <line num="131" count="15" type="method"/>
+            <line num="132" count="15" type="stmt"/>
+            <line num="133" count="15" type="stmt"/>
+            <line num="136" count="39" type="method"/>
+            <line num="137" count="39" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/model/link/IPump.java">
+            <class name="IPump">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="11" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="36" coveredelements="0" elements="0"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.relatorios.outPutRelatorios">
+         <metrics conditionals="28" methods="25" classes="8" files="6" ncloc="224" coveredstatements="84" coveredmethods="24" coveredconditionals="21" statements="91" loc="482" coveredelements="129" elements="144"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/IAlarme.java">
+            <class name="IAlarme">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <class name="IAlarme.Tipo">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="2" ncloc="6" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="20" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/VelocidadeNode.java">
+            <class name="VelocidadeNode">
+               <metrics conditionals="2" methods="4" coveredstatements="6" coveredmethods="4" coveredconditionals="1" statements="7" coveredelements="11" elements="13"/>
+            </class>
+            <metrics conditionals="2" methods="4" classes="1" ncloc="21" coveredstatements="6" coveredmethods="4" coveredconditionals="1" statements="7" loc="52" coveredelements="11" elements="13"/>
+            <line num="23" count="8" type="method"/>
+            <line num="24" count="8" type="stmt"/>
+            <line num="25" count="8" type="stmt"/>
+            <line num="31" count="2" type="method"/>
+            <line num="32" count="2" type="stmt"/>
+            <line num="38" count="2" type="method"/>
+            <line num="39" count="2" type="stmt"/>
+            <line num="45" count="4" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="47" falsecount="4" type="cond" truecount="0"/>
+            <line num="49" count="4" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/DefaultOutPutRelatorio.java">
+            <class name="DefaultOutPutRelatorio">
+               <metrics conditionals="14" methods="11" coveredstatements="49" coveredmethods="11" coveredconditionals="9" statements="53" coveredelements="69" elements="78"/>
+            </class>
+            <class name="DefaultOutPutRelatorio.Builder">
+               <metrics conditionals="10" methods="5" coveredstatements="23" coveredmethods="5" coveredconditionals="10" statements="23" coveredelements="38" elements="38"/>
+            </class>
+            <metrics conditionals="24" methods="16" classes="2" ncloc="148" coveredstatements="72" coveredmethods="16" coveredconditionals="19" statements="76" loc="285" coveredelements="107" elements="116"/>
+            <line num="51" count="5" type="method"/>
+            <line num="55" count="5" type="stmt"/>
+            <line num="56" count="5" type="stmt"/>
+            <line num="57" count="5" type="stmt"/>
+            <line num="58" count="5" type="stmt"/>
+            <line num="59" count="5" type="stmt"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="61" falsecount="5" type="cond" truecount="0"/>
+            <line num="64" count="5" type="stmt"/>
+            <line num="65" count="5" type="stmt"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="74" count="1" type="method"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="76" falsecount="1" type="cond" truecount="0"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="81" falsecount="0" type="cond" truecount="1"/>
+            <line num="87" count="1" type="method"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="89" falsecount="1" type="cond" truecount="0"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="94" falsecount="0" type="cond" truecount="1"/>
+            <line num="100" count="2" type="method"/>
+            <line num="101" count="2" type="stmt"/>
+            <line num="102" count="2" type="stmt"/>
+            <line num="103" count="2" type="stmt"/>
+            <line num="109" count="2" type="method"/>
+            <line num="110" count="2" type="stmt"/>
+            <line num="111" count="2" type="stmt"/>
+            <line num="112" count="2" type="stmt"/>
+            <line num="119" count="4" type="method"/>
+            <line num="121" count="4" type="stmt"/>
+            <line num="123" count="4" type="stmt"/>
+            <line num="124" count="8" type="stmt"/>
+            <line num="127" count="4" type="stmt"/>
+            <line num="134" count="8" type="method"/>
+            <line num="136" count="8" type="stmt"/>
+            <line num="138" count="8" type="stmt"/>
+            <line num="140" count="8" type="stmt"/>
+            <line num="141" count="8" type="stmt"/>
+            <line num="143" count="8" type="stmt"/>
+            <line num="149" count="3" type="method"/>
+            <line num="151" count="1" type="stmt"/>
+            <line num="151" falsecount="2" type="cond" truecount="1"/>
+            <line num="154" count="2" type="stmt"/>
+            <line num="155" count="2" type="stmt"/>
+            <line num="156" count="2" type="stmt"/>
+            <line num="162" count="3" type="method"/>
+            <line num="164" count="1" type="stmt"/>
+            <line num="164" falsecount="2" type="cond" truecount="1"/>
+            <line num="167" count="2" type="stmt"/>
+            <line num="168" count="2" type="stmt"/>
+            <line num="169" count="2" type="stmt"/>
+            <line num="172" count="4" type="method"/>
+            <line num="174" count="4" type="stmt"/>
+            <line num="176" count="4" type="stmt"/>
+            <line num="177" count="8" type="stmt"/>
+            <line num="180" count="4" type="stmt"/>
+            <line num="187" count="8" type="method"/>
+            <line num="189" count="8" type="stmt"/>
+            <line num="191" count="8" type="stmt"/>
+            <line num="193" count="8" type="stmt"/>
+            <line num="194" count="8" type="stmt"/>
+            <line num="195" count="8" type="stmt"/>
+            <line num="197" count="8" type="stmt"/>
+            <line num="217" count="1" type="method"/>
+            <line num="218" count="1" type="stmt"/>
+            <line num="219" count="1" type="stmt"/>
+            <line num="226" count="2" type="method"/>
+            <line num="227" count="2" type="stmt"/>
+            <line num="228" count="2" type="stmt"/>
+            <line num="235" count="1" type="method"/>
+            <line num="236" count="1" type="stmt"/>
+            <line num="237" count="1" type="stmt"/>
+            <line num="244" count="1" type="method"/>
+            <line num="245" count="1" type="stmt"/>
+            <line num="246" count="1" type="stmt"/>
+            <line num="256" count="6" type="method"/>
+            <line num="258" count="1" type="stmt"/>
+            <line num="258" falsecount="5" type="cond" truecount="1"/>
+            <line num="260" count="5" type="stmt"/>
+            <line num="260" falsecount="3" type="cond" truecount="2"/>
+            <line num="261" count="2" type="stmt"/>
+            <line num="264" count="5" type="stmt"/>
+            <line num="264" falsecount="4" type="cond" truecount="1"/>
+            <line num="265" count="1" type="stmt"/>
+            <line num="268" count="5" type="stmt"/>
+            <line num="269" count="5" type="stmt"/>
+            <line num="269" falsecount="4" type="cond" truecount="1"/>
+            <line num="270" count="1" type="stmt"/>
+            <line num="271" count="1" type="stmt"/>
+            <line num="274" count="5" type="stmt"/>
+            <line num="275" count="5" type="stmt"/>
+            <line num="275" falsecount="4" type="cond" truecount="1"/>
+            <line num="276" count="1" type="stmt"/>
+            <line num="277" count="1" type="stmt"/>
+            <line num="280" count="5" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/EPANETOutPutRelatorio.java">
+            <class name="EPANETOutPutRelatorio">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" coveredelements="0" elements="2"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="19" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="1" loc="37" coveredelements="0" elements="2"/>
+            <line num="25" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/PressaoNode.java">
+            <class name="PressaoNode">
+               <metrics conditionals="2" methods="4" coveredstatements="6" coveredmethods="4" coveredconditionals="1" statements="7" coveredelements="11" elements="13"/>
+            </class>
+            <metrics conditionals="2" methods="4" classes="1" ncloc="21" coveredstatements="6" coveredmethods="4" coveredconditionals="1" statements="7" loc="52" coveredelements="11" elements="13"/>
+            <line num="23" count="8" type="method"/>
+            <line num="24" count="8" type="stmt"/>
+            <line num="25" count="8" type="stmt"/>
+            <line num="31" count="2" type="method"/>
+            <line num="32" count="2" type="stmt"/>
+            <line num="38" count="2" type="method"/>
+            <line num="39" count="2" type="stmt"/>
+            <line num="45" count="4" type="method"/>
+            <line num="47" count="0" type="stmt"/>
+            <line num="47" falsecount="4" type="cond" truecount="0"/>
+            <line num="49" count="4" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/outPutRelatorios/IOutPutRelatorio.java">
+            <class name="IOutPutRelatorio">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="9" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="36" coveredelements="0" elements="0"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.perturbador.perturbadores.pipes">
+         <metrics conditionals="0" methods="8" classes="4" files="4" ncloc="60" coveredstatements="12" coveredmethods="8" coveredconditionals="0" statements="12" loc="137" coveredelements="20" elements="20"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pipes/PipeLossCoefPerturbador.java">
+            <class name="PipeLossCoefPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="34" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pipes/PipeDiameterPerturbador.java">
+            <class name="PipeDiameterPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="35" coveredelements="5" elements="5"/>
+            <line num="23" count="1" type="method"/>
+            <line num="24" count="1" type="stmt"/>
+            <line num="30" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line num="32" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pipes/PipeRoughnessCoefPerturbador.java">
+            <class name="PipeRoughnessCoefPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="34" coveredelements="5" elements="5"/>
+            <line num="22" count="1" type="method"/>
+            <line num="23" count="1" type="stmt"/>
+            <line num="29" count="1" type="method"/>
+            <line num="30" count="1" type="stmt"/>
+            <line num="31" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/perturbador/perturbadores/pipes/PipeLengthPerturbador.java">
+            <class name="PipeLengthPerturbador">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="15" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" loc="34" coveredelements="5" elements="5"/>
+            <line num="22" count="7" type="method"/>
+            <line num="23" count="7" type="stmt"/>
+            <line num="29" count="7" type="method"/>
+            <line num="30" count="7" type="stmt"/>
+            <line num="31" count="7" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.relatorios.common">
+         <metrics conditionals="88" methods="34" classes="11" files="7" ncloc="330" coveredstatements="115" coveredmethods="31" coveredconditionals="56" statements="140" loc="643" coveredelements="202" elements="262"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/ExportXLS.java">
+            <class name="ExportXLS">
+               <metrics conditionals="0" methods="1" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="1"/>
+            </class>
+            <metrics conditionals="0" methods="1" classes="1" ncloc="13" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="48" coveredelements="0" elements="1"/>
+            <line num="16" count="0" type="method"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/IDocItem.java">
+            <class name="IDocItem">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="21" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/IMatcher.java">
+            <class name="IMatcher">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <metrics conditionals="0" methods="0" classes="1" ncloc="4" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" loc="16" coveredelements="0" elements="0"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/LinedTextFileDoc.java">
+            <class name="LinedTextFileDoc">
+               <metrics conditionals="6" methods="3" coveredstatements="13" coveredmethods="3" coveredconditionals="3" statements="13" coveredelements="19" elements="22"/>
+            </class>
+            <class name="LinedTextFileDoc.Builder">
+               <metrics conditionals="8" methods="3" coveredstatements="13" coveredmethods="3" coveredconditionals="8" statements="13" coveredelements="24" elements="24"/>
+            </class>
+            <metrics conditionals="14" methods="6" classes="2" ncloc="58" coveredstatements="26" coveredmethods="6" coveredconditionals="11" statements="26" loc="111" coveredelements="43" elements="46"/>
+            <line num="30" count="3" type="method"/>
+            <line num="31" count="3" type="stmt"/>
+            <line num="32" count="3" type="stmt"/>
+            <line num="39" count="3" type="method"/>
+            <line num="41" count="3" type="stmt"/>
+            <line num="43" count="3" type="stmt"/>
+            <line num="45" count="3" type="stmt"/>
+            <line num="46" count="3" type="stmt"/>
+            <line num="46" falsecount="0" type="cond" truecount="0"/>
+            <line num="48" count="12" type="stmt"/>
+            <line num="49" count="16" type="stmt"/>
+            <line num="49" falsecount="12" type="cond" truecount="4"/>
+            <line num="50" count="4" type="stmt"/>
+            <line num="55" count="3" type="stmt"/>
+            <line num="63" count="4" type="method"/>
+            <line num="65" count="4" type="stmt"/>
+            <line num="65" falsecount="0" type="cond" truecount="4"/>
+            <line num="66" count="4" type="stmt"/>
+            <line num="69" count="4" type="stmt"/>
+            <line num="78" count="10" type="method"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="80" falsecount="9" type="cond" truecount="1"/>
+            <line num="82" count="9" type="stmt"/>
+            <line num="83" count="9" type="stmt"/>
+            <line num="90" count="13" type="method"/>
+            <line num="92" count="2" type="stmt"/>
+            <line num="92" falsecount="11" type="cond" truecount="2"/>
+            <line num="94" count="2" type="stmt"/>
+            <line num="94" falsecount="9" type="cond" truecount="2"/>
+            <line num="96" count="9" type="stmt"/>
+            <line num="97" count="9" type="stmt"/>
+            <line num="103" count="4" type="method"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="105" falsecount="3" type="cond" truecount="1"/>
+            <line num="107" count="3" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/RegionMatcher.java">
+            <class name="RegionMatcher">
+               <metrics conditionals="26" methods="5" coveredstatements="24" coveredmethods="5" coveredconditionals="12" statements="34" coveredelements="41" elements="65"/>
+            </class>
+            <class name="RegionMatcher.Builder">
+               <metrics conditionals="0" methods="3" coveredstatements="5" coveredmethods="3" coveredconditionals="0" statements="5" coveredelements="8" elements="8"/>
+            </class>
+            <class name="RegionMatcher.Recognizer">
+               <metrics conditionals="20" methods="7" coveredstatements="25" coveredmethods="7" coveredconditionals="15" statements="30" coveredelements="47" elements="57"/>
+            </class>
+            <class name="RegionMatcher.RecognizeSequence">
+               <metrics conditionals="16" methods="4" coveredstatements="15" coveredmethods="3" coveredconditionals="7" statements="23" coveredelements="25" elements="43"/>
+            </class>
+            <metrics conditionals="62" methods="19" classes="4" ncloc="185" coveredstatements="69" coveredmethods="18" coveredconditionals="34" statements="92" loc="326" coveredelements="121" elements="173"/>
+            <line num="44" count="7" type="method"/>
+            <line num="45" count="7" type="stmt"/>
+            <line num="52" count="14" type="method"/>
+            <line num="53" count="14" type="stmt"/>
+            <line num="54" count="14" type="stmt"/>
+            <line num="55" count="14" type="stmt"/>
+            <line num="56" count="14" type="stmt"/>
+            <line num="57" count="14" type="stmt"/>
+            <line num="63" count="15" type="method"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="65" falsecount="14" type="cond" truecount="1"/>
+            <line num="67" count="14" type="stmt"/>
+            <line num="67" falsecount="14" type="cond" truecount="0"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="71" count="14" type="stmt"/>
+            <line num="77" count="4" type="method"/>
+            <line num="79" count="4" type="stmt"/>
+            <line num="80" count="4" type="stmt"/>
+            <line num="81" count="4" type="stmt"/>
+            <line num="82" falsecount="4" type="cond" truecount="0"/>
+            <line num="83" count="4" type="stmt"/>
+            <line num="84" falsecount="4" type="cond" truecount="0"/>
+            <line num="85" count="4" type="stmt"/>
+            <line num="91" count="1" type="method"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="94" falsecount="1" type="cond" truecount="0"/>
+            <line num="95" count="0" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="98" falsecount="1" type="cond" truecount="0"/>
+            <line num="99" count="0" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="102" falsecount="1" type="cond" truecount="0"/>
+            <line num="103" count="0" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+            <line num="107" falsecount="1" type="cond" truecount="0"/>
+            <line num="108" count="0" type="stmt"/>
+            <line num="108" falsecount="0" type="cond" truecount="0"/>
+            <line num="109" count="0" type="stmt"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="111" falsecount="1" type="cond" truecount="0"/>
+            <line num="112" count="0" type="stmt"/>
+            <line num="115" count="1" type="stmt"/>
+            <line num="115" falsecount="1" type="cond" truecount="0"/>
+            <line num="116" count="0" type="stmt"/>
+            <line num="116" falsecount="0" type="cond" truecount="0"/>
+            <line num="117" count="0" type="stmt"/>
+            <line num="119" count="1" type="stmt"/>
+            <line num="119" falsecount="0" type="cond" truecount="1"/>
+            <line num="120" count="1" type="stmt"/>
+            <line num="123" count="0" type="stmt"/>
+            <line num="141" count="13" type="method"/>
+            <line num="142" count="13" type="stmt"/>
+            <line num="143" count="13" type="stmt"/>
+            <line num="150" count="7" type="method"/>
+            <line num="151" count="7" type="stmt"/>
+            <line num="152" count="7" type="stmt"/>
+            <line num="155" count="7" type="method"/>
+            <line num="156" count="7" type="stmt"/>
+            <line num="176" count="14" type="method"/>
+            <line num="177" count="14" type="stmt"/>
+            <line num="178" count="14" type="stmt"/>
+            <line num="181" count="14" type="method"/>
+            <line num="183" count="14" type="stmt"/>
+            <line num="183" falsecount="7" type="cond" truecount="7"/>
+            <line num="184" count="7" type="stmt"/>
+            <line num="186" count="7" type="stmt"/>
+            <line num="187" count="7" type="stmt"/>
+            <line num="191" count="14" type="method"/>
+            <line num="193" count="14" type="stmt"/>
+            <line num="193" falsecount="14" type="cond" truecount="0"/>
+            <line num="194" count="0" type="stmt"/>
+            <line num="197" count="14" type="stmt"/>
+            <line num="197" falsecount="10" type="cond" truecount="4"/>
+            <line num="198" count="4" type="stmt"/>
+            <line num="201" count="10" type="stmt"/>
+            <line num="202" count="10" type="stmt"/>
+            <line num="204" count="10" type="stmt"/>
+            <line num="207" count="10" type="method"/>
+            <line num="209" count="0" type="stmt"/>
+            <line num="209" falsecount="10" type="cond" truecount="0"/>
+            <line num="211" count="10" type="stmt"/>
+            <line num="211" falsecount="4" type="cond" truecount="6"/>
+            <line num="212" count="6" type="stmt"/>
+            <line num="215" count="10" type="stmt"/>
+            <line num="215" falsecount="6" type="cond" truecount="4"/>
+            <line num="216" count="4" type="stmt"/>
+            <line num="216" falsecount="2" type="cond" truecount="2"/>
+            <line num="217" count="2" type="stmt"/>
+            <line num="219" count="2" type="stmt"/>
+            <line num="220" count="2" type="stmt"/>
+            <line num="228" count="2" type="method"/>
+            <line num="229" count="2" type="stmt"/>
+            <line num="230" count="2" type="stmt"/>
+            <line num="237" count="10" type="method"/>
+            <line num="239" count="0" type="stmt"/>
+            <line num="239" falsecount="10" type="cond" truecount="0"/>
+            <line num="241" count="10" type="stmt"/>
+            <line num="241" falsecount="0" type="cond" truecount="10"/>
+            <line num="248" count="10" type="method"/>
+            <line num="249" count="10" type="stmt"/>
+            <line num="249" falsecount="10" type="cond" truecount="0"/>
+            <line num="250" count="0" type="stmt"/>
+            <line num="251" count="0" type="stmt"/>
+            <line num="269" count="13" type="method"/>
+            <line num="270" count="13" type="stmt"/>
+            <line num="271" count="13" type="stmt"/>
+            <line num="277" count="8" type="method"/>
+            <line num="279" count="8" type="stmt"/>
+            <line num="280" count="8" type="stmt"/>
+            <line num="281" count="8" type="stmt"/>
+            <line num="282" count="8" type="stmt"/>
+            <line num="283" falsecount="8" type="cond" truecount="0"/>
+            <line num="284" count="8" type="stmt"/>
+            <line num="290" count="1" type="method"/>
+            <line num="293" count="1" type="stmt"/>
+            <line num="293" falsecount="1" type="cond" truecount="0"/>
+            <line num="294" count="0" type="stmt"/>
+            <line num="296" count="1" type="stmt"/>
+            <line num="296" falsecount="1" type="cond" truecount="0"/>
+            <line num="297" count="0" type="stmt"/>
+            <line num="299" count="1" type="stmt"/>
+            <line num="299" falsecount="1" type="cond" truecount="0"/>
+            <line num="300" count="0" type="stmt"/>
+            <line num="303" count="1" type="stmt"/>
+            <line num="305" count="1" type="stmt"/>
+            <line num="305" falsecount="1" type="cond" truecount="0"/>
+            <line num="306" count="0" type="stmt"/>
+            <line num="309" count="1" type="stmt"/>
+            <line num="309" falsecount="1" type="cond" truecount="0"/>
+            <line num="310" count="0" type="stmt"/>
+            <line num="310" falsecount="0" type="cond" truecount="0"/>
+            <line num="311" count="0" type="stmt"/>
+            <line num="313" count="1" type="stmt"/>
+            <line num="313" falsecount="0" type="cond" truecount="1"/>
+            <line num="314" count="1" type="stmt"/>
+            <line num="317" count="0" type="stmt"/>
+            <line num="320" count="0" type="method"/>
+            <line num="322" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/DefaultDocItem.java">
+            <class name="DefaultDocItem">
+               <metrics conditionals="4" methods="4" coveredstatements="8" coveredmethods="3" coveredconditionals="4" statements="9" coveredelements="15" elements="17"/>
+            </class>
+            <metrics conditionals="4" methods="4" classes="1" ncloc="31" coveredstatements="8" coveredmethods="3" coveredconditionals="4" statements="9" loc="56" coveredelements="15" elements="17"/>
+            <line num="20" count="12" type="method"/>
+            <line num="21" count="12" type="stmt"/>
+            <line num="27" count="0" type="method"/>
+            <line num="28" count="0" type="stmt"/>
+            <line num="31" count="7" type="method"/>
+            <line num="34" count="7" type="stmt"/>
+            <line num="34" falsecount="6" type="cond" truecount="1"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="37" count="6" type="stmt"/>
+            <line num="37" falsecount="5" type="cond" truecount="1"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="41" count="5" type="stmt"/>
+            <line num="43" count="5" type="stmt"/>
+            <line num="48" count="4" type="method"/>
+            <line num="51" count="4" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/relatorios/common/RegexMatcher.java">
+            <class name="RegexMatcher">
+               <metrics conditionals="8" methods="4" coveredstatements="12" coveredmethods="4" coveredconditionals="7" statements="13" coveredelements="23" elements="25"/>
+            </class>
+            <metrics conditionals="8" methods="4" classes="1" ncloc="35" coveredstatements="12" coveredmethods="4" coveredconditionals="7" statements="13" loc="65" coveredelements="23" elements="25"/>
+            <line num="24" count="26" type="method"/>
+            <line num="26" count="1" type="stmt"/>
+            <line num="26" falsecount="25" type="cond" truecount="1"/>
+            <line num="29" count="25" type="stmt"/>
+            <line num="35" count="24" type="method"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="37" falsecount="23" type="cond" truecount="1"/>
+            <line num="39" count="23" type="stmt"/>
+            <line num="42" count="7" type="method"/>
+            <line num="45" count="7" type="stmt"/>
+            <line num="45" falsecount="7" type="cond" truecount="0"/>
+            <line num="46" count="0" type="stmt"/>
+            <line num="48" count="7" type="stmt"/>
+            <line num="48" falsecount="6" type="cond" truecount="1"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="52" count="6" type="stmt"/>
+            <line num="54" count="6" type="stmt"/>
+            <line num="59" count="40" type="method"/>
+            <line num="61" count="40" type="stmt"/>
+         </file>
+      </package>
+      <package name="org.epanetgrid.data">
+         <metrics conditionals="140" methods="67" classes="31" files="3" ncloc="615" coveredstatements="245" coveredmethods="63" coveredconditionals="89" statements="254" loc="838" coveredelements="397" elements="461"/>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/data/DataFacade.java">
+            <class name="DataFacade">
+               <metrics conditionals="0" methods="2" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="2" coveredelements="0" elements="4"/>
+            </class>
+            <metrics conditionals="0" methods="2" classes="1" ncloc="11" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="2" loc="36" coveredelements="0" elements="4"/>
+            <line num="23" count="0" type="method"/>
+            <line num="24" count="0" type="stmt"/>
+            <line num="32" count="0" type="method"/>
+            <line num="33" count="0" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/data/EpaFileWriter.java">
+            <class name="EpaFileWriter">
+               <metrics conditionals="2" methods="2" coveredstatements="21" coveredmethods="2" coveredconditionals="1" statements="22" coveredelements="24" elements="26"/>
+            </class>
+            <class name="EpaFileWriter.ComponentWriter">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <class name="EpaFileWriter.CompositeComponentWriter">
+               <metrics conditionals="0" methods="2" coveredstatements="3" coveredmethods="2" coveredconditionals="0" statements="3" coveredelements="5" elements="5"/>
+            </class>
+            <class name="EpaFileWriter.AbstractComponentWriter">
+               <metrics conditionals="0" methods="1" coveredstatements="2" coveredmethods="1" coveredconditionals="0" statements="2" coveredelements="3" elements="3"/>
+            </class>
+            <class name="EpaFileWriter.JuncaoWriter">
+               <metrics conditionals="6" methods="4" coveredstatements="10" coveredmethods="4" coveredconditionals="5" statements="10" coveredelements="19" elements="20"/>
+            </class>
+            <class name="EpaFileWriter.ReservoirsWriter">
+               <metrics conditionals="4" methods="4" coveredstatements="9" coveredmethods="4" coveredconditionals="2" statements="9" coveredelements="15" elements="17"/>
+            </class>
+            <class name="EpaFileWriter.TankWriter">
+               <metrics conditionals="10" methods="4" coveredstatements="12" coveredmethods="4" coveredconditionals="5" statements="12" coveredelements="21" elements="26"/>
+            </class>
+            <class name="EpaFileWriter.PipeWriter">
+               <metrics conditionals="6" methods="4" coveredstatements="12" coveredmethods="4" coveredconditionals="3" statements="12" coveredelements="19" elements="22"/>
+            </class>
+            <class name="EpaFileWriter.PumpWriter">
+               <metrics conditionals="2" methods="4" coveredstatements="10" coveredmethods="4" coveredconditionals="1" statements="10" coveredelements="15" elements="16"/>
+            </class>
+            <class name="EpaFileWriter.PatternsWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <class name="EpaFileWriter.OptionsWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <class name="EpaFileWriter.TimeWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <class name="EpaFileWriter.ReportWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="5" coveredmethods="3" coveredconditionals="0" statements="5" coveredelements="8" elements="8"/>
+            </class>
+            <class name="EpaFileWriter.EnergyWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <class name="EpaFileWriter.CurveWriter">
+               <metrics conditionals="0" methods="3" coveredstatements="4" coveredmethods="3" coveredconditionals="0" statements="4" coveredelements="7" elements="7"/>
+            </class>
+            <metrics conditionals="30" methods="43" classes="15" ncloc="301" coveredstatements="104" coveredmethods="43" coveredconditionals="17" statements="105" loc="392" coveredelements="164" elements="178"/>
+            <line num="33" count="1" type="method"/>
+            <line num="34" count="1" type="stmt"/>
+            <line num="35" count="1" type="stmt"/>
+            <line num="36" count="1" type="stmt"/>
+            <line num="37" count="1" type="stmt"/>
+            <line num="38" count="1" type="stmt"/>
+            <line num="39" count="1" type="stmt"/>
+            <line num="41" count="0" type="stmt"/>
+            <line num="43" count="1" type="stmt"/>
+            <line num="43" falsecount="0" type="cond" truecount="1"/>
+            <line num="44" count="1" type="stmt"/>
+            <line num="49" count="1" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="76" count="11" type="method"/>
+            <line num="77" count="11" type="stmt"/>
+            <line num="80" count="1" type="method"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="11" type="stmt"/>
+            <line num="89" count="11" type="method"/>
+            <line num="90" count="11" type="stmt"/>
+            <line num="91" count="11" type="stmt"/>
+            <line num="103" count="1" type="method"/>
+            <line num="104" count="1" type="stmt"/>
+            <line num="107" count="1" type="method"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="110" count="17" type="stmt"/>
+            <line num="114" count="17" type="method"/>
+            <line num="115" count="17" type="stmt"/>
+            <line num="116" count="17" type="stmt"/>
+            <line num="116" falsecount="17" type="cond" truecount="0"/>
+            <line num="117" count="17" type="stmt"/>
+            <line num="117" falsecount="9" type="cond" truecount="8"/>
+            <line num="118" count="17" type="stmt"/>
+            <line num="118" falsecount="9" type="cond" truecount="8"/>
+            <line num="119" count="17" type="stmt"/>
+            <line num="120" count="17" type="stmt"/>
+            <line num="123" count="1" type="method"/>
+            <line num="125" count="1" type="stmt"/>
+            <line num="133" count="1" type="method"/>
+            <line num="134" count="1" type="stmt"/>
+            <line num="137" count="1" type="method"/>
+            <line num="139" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line num="144" count="1" type="method"/>
+            <line num="145" count="1" type="stmt"/>
+            <line num="146" count="1" type="stmt"/>
+            <line num="146" falsecount="0" type="cond" truecount="1"/>
+            <line num="147" count="1" type="stmt"/>
+            <line num="147" falsecount="1" type="cond" truecount="0"/>
+            <line num="148" count="1" type="stmt"/>
+            <line num="149" count="1" type="stmt"/>
+            <line num="152" count="1" type="method"/>
+            <line num="154" count="1" type="stmt"/>
+            <line num="162" count="1" type="method"/>
+            <line num="163" count="1" type="stmt"/>
+            <line num="166" count="1" type="method"/>
+            <line num="168" count="1" type="stmt"/>
+            <line num="169" count="3" type="stmt"/>
+            <line num="173" count="3" type="method"/>
+            <line num="174" count="3" type="stmt"/>
+            <line num="175" count="3" type="stmt"/>
+            <line num="175" falsecount="3" type="cond" truecount="0"/>
+            <line num="176" count="3" type="stmt"/>
+            <line num="176" falsecount="3" type="cond" truecount="0"/>
+            <line num="177" count="3" type="stmt"/>
+            <line num="177" falsecount="3" type="cond" truecount="0"/>
+            <line num="178" count="3" type="stmt"/>
+            <line num="178" falsecount="3" type="cond" truecount="0"/>
+            <line num="179" count="3" type="stmt"/>
+            <line num="179" falsecount="3" type="cond" truecount="0"/>
+            <line num="180" count="3" type="stmt"/>
+            <line num="181" count="3" type="stmt"/>
+            <line num="184" count="1" type="method"/>
+            <line num="186" count="1" type="stmt"/>
+            <line num="194" count="1" type="method"/>
+            <line num="195" count="1" type="stmt"/>
+            <line num="198" count="1" type="method"/>
+            <line num="200" count="1" type="stmt"/>
+            <line num="201" count="17" type="stmt"/>
+            <line num="206" count="17" type="method"/>
+            <line num="207" count="17" type="stmt"/>
+            <line num="208" count="17" type="stmt"/>
+            <line num="209" count="17" type="stmt"/>
+            <line num="210" count="17" type="stmt"/>
+            <line num="210" falsecount="17" type="cond" truecount="0"/>
+            <line num="211" count="17" type="stmt"/>
+            <line num="211" falsecount="17" type="cond" truecount="0"/>
+            <line num="212" count="17" type="stmt"/>
+            <line num="212" falsecount="17" type="cond" truecount="0"/>
+            <line num="213" count="17" type="stmt"/>
+            <line num="214" count="17" type="stmt"/>
+            <line num="217" count="1" type="method"/>
+            <line num="219" count="1" type="stmt"/>
+            <line num="227" count="1" type="method"/>
+            <line num="228" count="1" type="stmt"/>
+            <line num="231" count="1" type="method"/>
+            <line num="233" count="1" type="stmt"/>
+            <line num="234" count="3" type="stmt"/>
+            <line num="239" count="3" type="method"/>
+            <line num="240" count="3" type="stmt"/>
+            <line num="241" count="3" type="stmt"/>
+            <line num="242" count="3" type="stmt"/>
+            <line num="243" count="3" type="stmt"/>
+            <line num="243" falsecount="3" type="cond" truecount="0"/>
+            <line num="244" count="3" type="stmt"/>
+            <line num="245" count="3" type="stmt"/>
+            <line num="248" count="1" type="method"/>
+            <line num="250" count="1" type="stmt"/>
+            <line num="259" count="1" type="method"/>
+            <line num="260" count="1" type="stmt"/>
+            <line num="263" count="1" type="method"/>
+            <line num="265" count="1" type="stmt"/>
+            <line num="266" count="2" type="stmt"/>
+            <line num="270" count="1" type="method"/>
+            <line num="272" count="1" type="stmt"/>
+            <line num="282" count="1" type="method"/>
+            <line num="283" count="1" type="stmt"/>
+            <line num="286" count="1" type="method"/>
+            <line num="288" count="1" type="stmt"/>
+            <line num="289" count="2" type="stmt"/>
+            <line num="293" count="1" type="method"/>
+            <line num="295" count="1" type="stmt"/>
+            <line num="305" count="1" type="method"/>
+            <line num="306" count="1" type="stmt"/>
+            <line num="309" count="1" type="method"/>
+            <line num="311" count="1" type="stmt"/>
+            <line num="312" count="4" type="stmt"/>
+            <line num="316" count="1" type="method"/>
+            <line num="318" count="1" type="stmt"/>
+            <line num="328" count="1" type="method"/>
+            <line num="329" count="1" type="stmt"/>
+            <line num="332" count="1" type="method"/>
+            <line num="334" count="1" type="stmt"/>
+            <line num="335" count="1" type="stmt"/>
+            <line num="336" count="7" type="stmt"/>
+            <line num="340" count="1" type="method"/>
+            <line num="342" count="1" type="stmt"/>
+            <line num="352" count="1" type="method"/>
+            <line num="353" count="1" type="stmt"/>
+            <line num="356" count="1" type="method"/>
+            <line num="358" count="1" type="stmt"/>
+            <line num="359" count="3" type="stmt"/>
+            <line num="363" count="1" type="method"/>
+            <line num="365" count="1" type="stmt"/>
+            <line num="375" count="1" type="method"/>
+            <line num="376" count="1" type="stmt"/>
+            <line num="379" count="1" type="method"/>
+            <line num="381" count="1" type="stmt"/>
+            <line num="382" count="20" type="stmt"/>
+            <line num="386" count="1" type="method"/>
+            <line num="388" count="1" type="stmt"/>
+         </file>
+         <file name="/local/thiago/workspace/epa-svn/src/main/java/org/epanetgrid/data/EpaFileReader.java">
+            <class name="EpaFileReader">
+               <metrics conditionals="4" methods="1" coveredstatements="10" coveredmethods="1" coveredconditionals="2" statements="10" coveredelements="13" elements="15"/>
+            </class>
+            <class name="EpaFileReader.Parser">
+               <metrics conditionals="0" methods="0" coveredstatements="0" coveredmethods="0" coveredconditionals="0" statements="0" coveredelements="0" elements="0"/>
+            </class>
+            <class name="EpaFileReader.BaseParser">
+               <metrics conditionals="24" methods="8" coveredstatements="40" coveredmethods="6" coveredconditionals="23" statements="41" coveredelements="69" elements="73"/>
+            </class>
+            <class name="EpaFileReader.JunctionParser">
+               <metrics conditionals="16" methods="1" coveredstatements="14" coveredmethods="1" coveredconditionals="12" statements="15" coveredelements="27" elements="32"/>
+            </class>
+            <class name="EpaFileReader.ReservoirParser">
+               <metrics conditionals="8" methods="1" coveredstatements="8" coveredmethods="1" coveredconditionals="4" statements="9" coveredelements="13" elements="18"/>
+            </class>
+            <class name="EpaFileReader.TankParser">
+               <metrics conditionals="24" methods="1" coveredstatements="20" coveredmethods="1" coveredconditionals="12" statements="21" coveredelements="33" elements="46"/>
+            </class>
+            <class name="EpaFileReader.PipeParser">
+               <metrics conditionals="20" methods="1" coveredstatements="19" coveredmethods="1" coveredconditionals="10" statements="20" coveredelements="30" elements="41"/>
+            </class>
+            <class name="EpaFileReader.PumpParser">
+               <metrics conditionals="12" methods="1" coveredstatements="16" coveredmethods="1" coveredconditionals="7" statements="17" coveredelements="24" elements="30"/>
+            </class>
+            <class name="EpaFileReader.SimpleLineParser">
+               <metrics conditionals="2" methods="2" coveredstatements="4" coveredmethods="2" coveredconditionals="2" statements="4" coveredelements="8" elements="8"/>
+            </class>
+            <class name="EpaFileReader.PatterdIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="1" coveredmethods="1" coveredconditionals="0" statements="1" coveredelements="2" elements="2"/>
+            </class>
+            <class name="EpaFileReader.TimeIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="1" coveredmethods="1" coveredconditionals="0" statements="1" coveredelements="2" elements="2"/>
+            </class>
+            <class name="EpaFileReader.OptionIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="1" coveredmethods="1" coveredconditionals="0" statements="1" coveredelements="2" elements="2"/>
+            </class>
+            <class name="EpaFileReader.ReportIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="5" coveredmethods="1" coveredconditionals="0" statements="5" coveredelements="6" elements="6"/>
+            </class>
+            <class name="EpaFileReader.EnergyIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="1" coveredmethods="1" coveredconditionals="0" statements="1" coveredelements="2" elements="2"/>
+            </class>
+            <class name="EpaFileReader.CurvesIDParser">
+               <metrics conditionals="0" methods="1" coveredstatements="1" coveredmethods="1" coveredconditionals="0" statements="1" coveredelements="2" elements="2"/>
+            </class>
+            <metrics conditionals="110" methods="22" classes="15" ncloc="303" coveredstatements="141" coveredmethods="20" coveredconditionals="72" statements="147" loc="410" coveredelements="233" elements="279"/>
+            <line num="42" count="4" type="method"/>
+            <line num="44" count="4" type="stmt"/>
+            <line num="45" count="4" type="stmt"/>
+            <line num="46" count="3" type="stmt"/>
+            <line num="47" count="3" type="stmt"/>
+            <line num="49" count="3" type="stmt"/>
+            <line num="49" falsecount="0" type="cond" truecount="0"/>
+            <line num="50" count="342" type="stmt"/>
+            <line num="50" falsecount="28" type="cond" truecount="314"/>
+            <line num="51" count="314" type="stmt"/>
+            <line num="55" count="3" type="stmt"/>
+            <line num="56" count="3" type="stmt"/>
+            <line num="58" count="3" type="stmt"/>
+            <line num="99" count="0" type="method"/>
+            <line num="100" count="0" type="method"/>
+            <line num="105" count="3" type="method"/>
+            <line num="106" count="3" type="stmt"/>
+            <line num="109" count="314" type="method"/>
+            <line num="110" count="314" type="stmt"/>
+            <line num="113" count="314" type="method"/>
+            <line num="114" count="314" type="stmt"/>
+            <line num="115" count="314" type="stmt"/>
+            <line num="118" count="314" type="method"/>
+            <line num="119" count="314" type="stmt"/>
+            <line num="119" falsecount="281" type="cond" truecount="33"/>
+            <line num="120" count="33" type="stmt"/>
+            <line num="122" count="281" type="stmt"/>
+            <line num="126" count="33" type="method"/>
+            <line num="128" count="33" type="stmt"/>
+            <line num="128" falsecount="30" type="cond" truecount="3"/>
+            <line num="129" count="3" type="stmt"/>
+            <line num="130" count="30" type="stmt"/>
+            <line num="130" falsecount="27" type="cond" truecount="3"/>
+            <line num="131" count="3" type="stmt"/>
+            <line num="132" count="27" type="stmt"/>
+            <line num="132" falsecount="24" type="cond" truecount="3"/>
+            <line num="133" count="3" type="stmt"/>
+            <line num="134" count="24" type="stmt"/>
+            <line num="134" falsecount="21" type="cond" truecount="3"/>
+            <line num="135" count="3" type="stmt"/>
+            <line num="136" count="21" type="stmt"/>
+            <line num="136" falsecount="18" type="cond" truecount="3"/>
+            <line num="137" count="3" type="stmt"/>
+            <line num="138" count="18" type="stmt"/>
+            <line num="138" falsecount="15" type="cond" truecount="3"/>
+            <line num="139" count="3" type="stmt"/>
+            <line num="140" count="15" type="stmt"/>
+            <line num="140" falsecount="12" type="cond" truecount="3"/>
+            <line num="141" count="3" type="stmt"/>
+            <line num="142" count="12" type="stmt"/>
+            <line num="142" falsecount="9" type="cond" truecount="3"/>
+            <line num="143" count="3" type="stmt"/>
+            <line num="144" count="9" type="stmt"/>
+            <line num="144" falsecount="6" type="cond" truecount="3"/>
+            <line num="145" count="3" type="stmt"/>
+            <line num="146" count="6" type="stmt"/>
+            <line num="146" falsecount="3" type="cond" truecount="3"/>
+            <line num="147" count="3" type="stmt"/>
+            <line num="148" count="3" type="stmt"/>
+            <line num="148" falsecount="0" type="cond" truecount="3"/>
+            <line num="149" count="3" type="stmt"/>
+            <line num="151" count="0" type="stmt"/>
+            <line num="155" count="3" type="method"/>
+            <line num="156" count="3" type="stmt"/>
+            <line num="157" count="3" type="stmt"/>
+            <line num="158" count="3" type="stmt"/>
+            <line num="159" count="3" type="stmt"/>
+            <line num="160" count="3" type="stmt"/>
+            <line num="161" count="3" type="stmt"/>
+            <line num="162" count="3" type="stmt"/>
+            <line num="163" count="3" type="stmt"/>
+            <line num="164" count="3" type="stmt"/>
+            <line num="165" count="3" type="stmt"/>
+            <line num="166" count="3" type="stmt"/>
+            <line num="172" count="51" type="method"/>
+            <line num="175" count="51" type="stmt"/>
+            <line num="177" count="51" type="stmt"/>
+            <line num="177" falsecount="0" type="cond" truecount="51"/>
+            <line num="178" count="51" type="stmt"/>
+            <line num="178" falsecount="0" type="cond" truecount="51"/>
+            <line num="179" count="51" type="stmt"/>
+            <line num="179" falsecount="24" type="cond" truecount="27"/>
+            <line num="180" count="51" type="stmt"/>
+            <line num="180" falsecount="24" type="cond" truecount="27"/>
+            <line num="182" count="0" type="stmt"/>
+            <line num="182" falsecount="51" type="cond" truecount="0"/>
+            <line num="184" count="51" type="stmt"/>
+            <line num="186" count="51" type="stmt"/>
+            <line num="186" falsecount="0" type="cond" truecount="51"/>
+            <line num="187" count="51" type="stmt"/>
+            <line num="190" count="51" type="stmt"/>
+            <line num="190" falsecount="24" type="cond" truecount="27"/>
+            <line num="191" count="27" type="stmt"/>
+            <line num="194" count="51" type="stmt"/>
+            <line num="194" falsecount="24" type="cond" truecount="27"/>
+            <line num="195" count="27" type="stmt"/>
+            <line num="198" count="51" type="stmt"/>
+            <line num="203" count="3" type="method"/>
+            <line num="206" count="3" type="stmt"/>
+            <line num="208" count="3" type="stmt"/>
+            <line num="208" falsecount="0" type="cond" truecount="3"/>
+            <line num="209" count="3" type="stmt"/>
+            <line num="209" falsecount="0" type="cond" truecount="3"/>
+            <line num="211" count="0" type="stmt"/>
+            <line num="211" falsecount="3" type="cond" truecount="0"/>
+            <line num="212" count="3" type="stmt"/>
+            <line num="213" count="3" type="stmt"/>
+            <line num="213" falsecount="0" type="cond" truecount="3"/>
+            <line num="214" count="3" type="stmt"/>
+            <line num="216" count="3" type="stmt"/>
+            <line num="222" count="9" type="method"/>
+            <line num="225" count="9" type="stmt"/>
+            <line num="227" count="9" type="stmt"/>
+            <line num="227" falsecount="0" type="cond" truecount="9"/>
+            <line num="228" count="9" type="stmt"/>
+            <line num="228" falsecount="0" type="cond" truecount="9"/>
+            <line num="229" count="9" type="stmt"/>
+            <line num="229" falsecount="0" type="cond" truecount="9"/>
+            <line num="230" count="9" type="stmt"/>
+            <line num="230" falsecount="0" type="cond" truecount="9"/>
+            <line num="231" count="9" type="stmt"/>
+            <line num="231" falsecount="0" type="cond" truecount="9"/>
+            <line num="232" count="9" type="stmt"/>
+            <line num="232" falsecount="0" type="cond" truecount="9"/>
+            <line num="234" count="0" type="stmt"/>
+            <line num="234" falsecount="9" type="cond" truecount="0"/>
+            <line num="235" count="9" type="stmt"/>
+            <line num="237" count="9" type="stmt"/>
+            <line num="237" falsecount="0" type="cond" truecount="9"/>
+            <line num="238" count="9" type="stmt"/>
+            <line num="241" count="9" type="stmt"/>
+            <line num="241" falsecount="0" type="cond" truecount="9"/>
+            <line num="242" count="9" type="stmt"/>
+            <line num="245" count="9" type="stmt"/>
+            <line num="245" falsecount="0" type="cond" truecount="9"/>
+            <line num="246" count="9" type="stmt"/>
+            <line num="249" count="9" type="stmt"/>
+            <line num="249" falsecount="0" type="cond" truecount="9"/>
+            <line num="250" count="9" type="stmt"/>
+            <line num="253" count="9" type="stmt"/>
+            <line num="253" falsecount="0" type="cond" truecount="9"/>
+            <line num="254" count="9" type="stmt"/>
+            <line num="257" count="9" type="stmt"/>
+            <line num="263" count="51" type="method"/>
+            <line num="266" count="51" type="stmt"/>
+            <line num="268" count="51" type="stmt"/>
+            <line num="268" falsecount="0" type="cond" truecount="51"/>
+            <line num="269" count="51" type="stmt"/>
+            <line num="269" falsecount="0" type="cond" truecount="51"/>
+            <line num="270" count="51" type="stmt"/>
+            <line num="270" falsecount="0" type="cond" truecount="51"/>
+            <line num="271" count="51" type="stmt"/>
+            <line num="271" falsecount="0" type="cond" truecount="51"/>
+            <line num="272" count="51" type="stmt"/>
+            <line num="272" falsecount="0" type="cond" truecount="51"/>
+            <line num="273" count="51" type="stmt"/>
+            <line num="273" falsecount="0" type="cond" truecount="51"/>
+            <line num="275" count="0" type="stmt"/>
+            <line num="275" falsecount="51" type="cond" truecount="0"/>
+            <line num="276" count="51" type="stmt"/>
+            <line num="278" count="51" type="stmt"/>
+            <line num="278" falsecount="0" type="cond" truecount="51"/>
+            <line num="279" count="51" type="stmt"/>
+            <line num="282" count="51" type="stmt"/>
+            <line num="282" falsecount="0" type="cond" truecount="51"/>
+            <line num="283" count="51" type="stmt"/>
+            <line num="286" count="51" type="stmt"/>
+            <line num="286" falsecount="0" type="cond" truecount="51"/>
+            <line num="287" count="51" type="stmt"/>
+            <line num="290" count="51" type="stmt"/>
+            <line num="291" count="51" type="stmt"/>
+            <line num="293" count="51" type="stmt"/>
+            <line num="295" count="51" type="stmt"/>
+            <line num="301" count="9" type="method"/>
+            <line num="304" count="9" type="stmt"/>
+            <line num="306" count="9" type="stmt"/>
+            <line num="306" falsecount="0" type="cond" truecount="9"/>
+            <line num="307" count="9" type="stmt"/>
+            <line num="307" falsecount="0" type="cond" truecount="9"/>
+            <line num="308" count="9" type="stmt"/>
+            <line num="308" falsecount="0" type="cond" truecount="9"/>
+            <line num="310" count="9" type="stmt"/>
+            <line num="312" count="9" type="stmt"/>
+            <line num="312" falsecount="9" type="cond" truecount="18"/>
+            <line num="313" count="18" type="stmt"/>
+            <line num="316" count="9" type="stmt"/>
+            <line num="318" count="0" type="stmt"/>
+            <line num="318" falsecount="9" type="cond" truecount="0"/>
+            <line num="319" count="9" type="stmt"/>
+            <line num="321" count="9" type="stmt"/>
+            <line num="321" falsecount="0" type="cond" truecount="9"/>
+            <line num="322" count="9" type="stmt"/>
+            <line num="325" count="9" type="stmt"/>
+            <line num="326" count="9" type="stmt"/>
+            <line num="328" count="9" type="stmt"/>
+            <line num="330" count="9" type="stmt"/>
+            <line num="341" count="314" type="method"/>
+            <line num="342" count="314" type="stmt"/>
+            <line num="342" falsecount="77" type="cond" truecount="237"/>
+            <line num="343" count="237" type="stmt"/>
+            <line num="350" count="33" type="method"/>
+            <line num="351" count="33" type="stmt"/>
+            <line num="352" count="237" type="stmt"/>
+            <line num="364" count="6" type="method"/>
+            <line num="366" count="6" type="stmt"/>
+            <line num="371" count="12" type="method"/>
+            <line num="373" count="12" type="stmt"/>
+            <line num="378" count="6" type="method"/>
+            <line num="380" count="6" type="stmt"/>
+            <line num="385" count="21" type="method"/>
+            <line num="387" count="21" type="stmt"/>
+            <line num="388" count="21" type="stmt"/>
+            <line num="389" count="21" type="stmt"/>
+            <line num="390" count="21" type="stmt"/>
+            <line num="391" count="21" type="stmt"/>
+            <line num="396" count="9" type="method"/>
+            <line num="398" count="9" type="stmt"/>
+            <line num="403" count="60" type="method"/>
+            <line num="405" count="60" type="stmt"/>
+         </file>
+      </package>
+   </project>
+</coverage>
