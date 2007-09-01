@@ -1,0 +1,1893 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Maven Clover report</title>
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../style.css" TITLE="Style">
+</head>
+<body>
+<TABLE cellspacing="0" cellpadding="2"><TBODY>
+    <!-- / local/ thiago/ workspace/ epa-svn/ src/ main/ java/ org/ epanetgrid/ data/ EpaFileReader.java -->
+  <TR>
+    <TD colspan="6" class="reportHeader">
+    <TABLE width="100%"><TR>
+    <TD valign="top" class="titleText">Clover coverage report -   Maven Clover report <DIV class="timestamp"><b>Coverage timestamp:</b>&nbsp;Sáb Set 1 2007 18:13:15 GMT-03:00</DIV>
+            <DIV class="navBar"><a href="../../../pkgs-summary.html"><b>Overview</b></a>&nbsp;&nbsp;&nbsp;<a href="pkg-summary.html"><b>Package</b></a>&nbsp;&nbsp;&nbsp;<font class="navBarCurrent">File</font></DIV>
+    
+<DIV class="navBarLink">
+&nbsp;&nbsp;&nbsp;
+    <A HREF="../../../index.html" TARGET="_top">FRAMES</A>&nbsp;&nbsp;
+<A HREF="EpaFileReader.html" TARGET="_top">NO FRAMES</A>&nbsp;&nbsp;
+    </DIV>
+
+</TD>
+         <td class="headerStats" valign="top" width="40%" align="right">
+        <table align="right">
+         <tr>
+           <td nowrap><b>file stats:</b></td>
+           <td align="right"><b>LOC:</b></td>
+           <td align="right">410</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Methods:</b></td>
+           <td align="right">22</td>
+         </tr>
+         <tr>
+           <td></td>
+           <td align="right"><b>NCLOC:</b></td>
+           <td align="right">303</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Classes:</b></td>
+           <td align="right">15</td>
+         </tr>
+      </table>
+     </td>
+    </TR></TABLE>
+   </TD>
+  </TR>
+
+<TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+  <TR>
+    <TD class="graphHeaderLeft"><b>&nbsp;Source file</b></TD>
+    <TD class="graphHeader">Conditionals</TD>
+    <TD class="graphHeader">Statements</TD>
+    <TD class="graphHeader">Methods</TD>
+    <TD class="graphHeader" align="left" colspan="2"><B>TOTAL</B></TD>
+  </TR>   
+  <TR>
+    <TD class="graphItem">
+        	   EpaFileReader.java
+	    </TD>
+   
+    <TD class="graphPercent" align="center">65,5%</TD>
+    <TD class="graphPercent" align="center">95,9%</TD>
+    <TD class="graphPercent" align="center">90,9%</TD>
+    <TD class="graphBarLeft" align="center"><B>83,5%</B></TD>
+    <TD class="graphBar">
+            <TABLE class="barGraph" cellspacing="0">
+        <TBODY>
+          <TR>
+	               <TD class="covered"><img alt="coverage" src="../../../img/trans.gif"
+                   width="167" height="12"></TD>
+            <TD class="uncovered"><img alt="coverage" src="../../../img/trans.gif"
+                   width="33" height="12"></TD>
+	   	  </TR>
+	</TBODY>
+      </TABLE>
+          </TD>
+  </TR> 
+</TBODY></TABLE><TABLE cellspacing="0" cellpadding="0" class="srcView"><TBODY>
+<TR><TD align="right" class="lineCount">
+&nbsp;1</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;2</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;3</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;4</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">package</span> org.epanetgrid.data;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;5</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;6</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.BufferedReader;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;7</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.File;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;8</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.FileReader;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;9</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.IOException;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;10</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.LinkedList;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;11</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.List;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;12</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.Scanner;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;13</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.StringTokenizer;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;14</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;15</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.quantities.Dimensionless;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;16</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.quantities.Length;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;17</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.quantities.VolumetricFlowRate;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;18</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;19</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.INode;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;20</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.epanetNetWork.DefaultNetWork;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;21</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.epanetNetWork.NetWork;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;22</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.link.DefaultPipe;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;23</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.link.DefaultPump;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;24</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.link.IPipe;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;25</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.link.IPump;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;26</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.nodes.DefaultJuntion;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;27</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.nodes.DefaultReservoir;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;28</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.nodes.DefaultTank;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;29</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.epanetgrid.model.nodes.DefaultJuntion.Builder;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;30</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.jscience.physics.measures.Measure;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;31</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;32</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;33</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span> Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;34</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="EpaFileReader">&nbsp;35</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">class</span> EpaFileReader {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;36</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;37</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;38</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> filePath</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;39</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span></span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;40</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@throws</span> IOException </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;41</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;42</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 42: method entered 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 42: method entered 4 times.">    <span class="keyword">public</span> NetWork read(String filePath) <span class="keyword">throws</span> IOException{</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;43</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;44</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 44: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 44: statement executed 4 times.">        File inpFile = <span class="keyword">new</span> File(filePath);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;45</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 45: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 45: statement executed 4 times.">        BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(inpFile));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;46</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 46: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 46: statement executed 3 times.">        Parser parser = <span class="keyword">new</span> BaseParser();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;47</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 47: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 47: statement executed 3 times.">        String line = <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;48</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;49</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 49: no coverage info gathered for expression.">&nbsp;?</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 49: no coverage info gathered for expression.">        <span class="keyword">while</span>((line = reader.readLine()) != <span class="keyword">null</span>){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;50</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 50: statement executed 342 times.">&nbsp;342</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 50: statement executed 342 times.">            <span class="keyword">if</span>(!line.trim().equals(<span class="string">""</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;51</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 51: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 51: statement executed 314 times.">                parser.parse(line);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;52</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;53</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;54</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;55</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 55: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 55: statement executed 3 times.">        DefaultNetWork network = <span class="keyword">new</span> DefaultNetWork.Builder().build();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;56</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 56: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 56: statement executed 3 times.">        parser.collectResult(network);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;57</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;58</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 58: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 58: statement executed 3 times.">        <span class="keyword">return</span> network;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;59</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;60</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="Parser">&nbsp;61</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">interface</span> Parser {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;62</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;63</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">static</span> final String COMMENTS_ID = <span class="string">";"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;64</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">static</span> final String TYPE_DESCRIPT_ID = <span class="string">"["</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;65</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;66</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">void</span> parse(String line);</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;67</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;68</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">void</span> collectResult(DefaultNetWork netWork);</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;69</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;70</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="BaseParser">&nbsp;71</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> BaseParser <span class="keyword">implements</span> Parser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;72</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;73</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String JUNCTION_ID = <span class="string">"JUNCTIONS"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;74</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String VALVE_ID = <span class="string">"VALVES"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;75</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String PIPE_ID = <span class="string">"PIPES"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;76</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String PUMP_ID = <span class="string">"PUMPS"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;77</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String RESERVOIR_ID = <span class="string">"RESERVOIRS"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;78</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String TANK_ID = <span class="string">"TANK"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;79</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String PATTERN_ID = <span class="string">"PATTERN"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;80</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String TIME_ID = <span class="string">"TIMES"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;81</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String OPTION_ID = <span class="string">"OPTIONS"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;82</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String REPORT_ID = <span class="string">"REPORT"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;83</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String ENERGY_ID = <span class="string">"ENERGY"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;84</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">static</span> final String CURVES_ID = <span class="string">"CURVES"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;85</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;86</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser junctionParse = <span class="keyword">new</span> JunctionParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;87</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser reservoirsParser = <span class="keyword">new</span> ReservoirParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;88</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser tanksParser = <span class="keyword">new</span> TankParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;89</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser pipeParser = <span class="keyword">new</span> PipeParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;90</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser pumpParser = <span class="keyword">new</span> PumpParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;91</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser patternParser = <span class="keyword">new</span> PatterdIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;92</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser timeParser = <span class="keyword">new</span> TimeIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;93</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser reportParser = <span class="keyword">new</span> ReportIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;94</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser optionParser = <span class="keyword">new</span> OptionIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;95</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser energyParser = <span class="keyword">new</span> EnergyIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;96</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser curvesParser = <span class="keyword">new</span> CurvesIDParser();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;97</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;98</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final Parser NOPParser = <span class="keyword">new</span> Parser(){</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;99</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 99: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 99: method not entered.">            <span class="keyword">public</span> <span class="keyword">void</span> parse(String line) {}</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;100</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 100: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 100: method not entered.">            <span class="keyword">public</span> <span class="keyword">void</span> collectResult(DefaultNetWork netWork) {}</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;101</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        };</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;102</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;103</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> Parser expertParse;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;104</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;105</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 105: method entered 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 105: method entered 3 times.">        <span class="keyword">public</span> BaseParser() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;106</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 106: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 106: statement executed 3 times.">            expertParse = NOPParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;107</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;108</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;109</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 109: method entered 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 109: method entered 314 times.">        <span class="keyword">public</span> <span class="keyword">void</span> parse(String line) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;110</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 110: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 110: statement executed 314 times.">            getExpertParser(line).parse(line);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;111</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;112</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;113</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 113: method entered 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 113: method entered 314 times.">        <span class="keyword">private</span> Parser getExpertParser(String line){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;114</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 114: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 114: statement executed 314 times.">            expertParse = decideExpertParser(line);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;115</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 115: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 115: statement executed 314 times.">            <span class="keyword">return</span> expertParse;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;116</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;117</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;118</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 118: method entered 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 118: method entered 314 times.">        <span class="keyword">private</span> Parser decideExpertParser(String line) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;119</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 119: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 119: statement executed 314 times.">            <span class="keyword">if</span>(line.contains(<span class="string">"["</span>)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;120</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 120: statement executed 33 times.">&nbsp;33</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 120: statement executed 33 times.">                <span class="keyword">return</span> decideActionParser(line);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;121</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }<span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;122</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 122: statement executed 281 times.">&nbsp;281</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 122: statement executed 281 times.">                <span class="keyword">return</span> expertParse;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;123</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;124</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;125</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;126</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 126: method entered 33 times.">&nbsp;33</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 126: method entered 33 times.">        <span class="keyword">private</span> Parser decideActionParser(String line) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;127</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//bug</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;128</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 128: statement executed 33 times.">&nbsp;33</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 128: statement executed 33 times.">            <span class="keyword">if</span>(line.contains(JUNCTION_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;129</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 129: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 129: statement executed 3 times.">                <span class="keyword">return</span> junctionParse;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;130</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 130: statement executed 30 times.">&nbsp;30</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 130: statement executed 30 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(RESERVOIR_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;131</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 131: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 131: statement executed 3 times.">                <span class="keyword">return</span> reservoirsParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;132</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 132: statement executed 27 times.">&nbsp;27</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 132: statement executed 27 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(TANK_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;133</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 133: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 133: statement executed 3 times.">                <span class="keyword">return</span> tanksParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;134</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 134: statement executed 24 times.">&nbsp;24</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 134: statement executed 24 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(PIPE_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;135</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 135: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 135: statement executed 3 times.">                <span class="keyword">return</span> pipeParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;136</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 136: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 136: statement executed 21 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(PUMP_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;137</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 137: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 137: statement executed 3 times.">                <span class="keyword">return</span> pumpParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;138</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 138: statement executed 18 times.">&nbsp;18</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 138: statement executed 18 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(PATTERN_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;139</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 139: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 139: statement executed 3 times.">                <span class="keyword">return</span> patternParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;140</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 140: statement executed 15 times.">&nbsp;15</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 140: statement executed 15 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(TIME_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;141</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 141: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 141: statement executed 3 times.">                <span class="keyword">return</span> timeParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;142</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 142: statement executed 12 times.">&nbsp;12</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 142: statement executed 12 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(REPORT_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;143</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 143: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 143: statement executed 3 times.">                <span class="keyword">return</span> reportParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;144</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 144: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 144: statement executed 9 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(OPTION_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;145</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 145: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 145: statement executed 3 times.">                <span class="keyword">return</span> optionParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;146</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 146: statement executed 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 146: statement executed 6 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(ENERGY_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;147</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 147: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 147: statement executed 3 times.">                <span class="keyword">return</span> energyParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;148</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 148: expression evaluated to true 3 times, false 0 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 148: expression evaluated to true 3 times, false 0 times.">            }<span class="keyword">else</span> <span class="keyword">if</span>(line.contains(CURVES_ID)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;149</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 149: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 149: statement executed 3 times.">                <span class="keyword">return</span> curvesParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;150</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }<span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;151</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 151: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 151: statement not executed.">                <span class="keyword">return</span> NOPParser;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;152</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;153</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;154</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;155</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 155: method entered 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 155: method entered 3 times.">        <span class="keyword">public</span> <span class="keyword">void</span> collectResult(DefaultNetWork netWork) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;156</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 156: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 156: statement executed 3 times.">            junctionParse.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;157</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 157: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 157: statement executed 3 times.">            reservoirsParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;158</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 158: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 158: statement executed 3 times.">            tanksParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;159</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 159: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 159: statement executed 3 times.">            pipeParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;160</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 160: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 160: statement executed 3 times.">            pumpParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;161</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 161: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 161: statement executed 3 times.">            patternParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;162</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 162: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 162: statement executed 3 times.">            timeParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;163</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 163: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 163: statement executed 3 times.">            reportParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;164</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 164: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 164: statement executed 3 times.">            optionParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;165</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 165: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 165: statement executed 3 times.">            energyParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;166</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 166: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 166: statement executed 3 times.">            curvesParser.collectResult(netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;167</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;168</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;169</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="JunctionParser">&nbsp;170</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> JunctionParser <span class="keyword">extends</span> SimpleLineParser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;171</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;172</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 172: method entered 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 172: method entered 51 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;173</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;174</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">//            ID     Elevation    Demand     Pattern</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;175</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 175: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 175: statement executed 51 times.">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;176</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//ugly!</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;177</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 177: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 177: expression evaluated to true 51 times, false 0 times.">            String junctID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;178</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 178: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 178: expression evaluated to true 51 times, false 0 times.">            String elevation = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;179</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 179: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 179: statement executed 51 times.">            String demand = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;180</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 180: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 180: statement executed 51 times.">            String pattern = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;181</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;182</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 182: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 182: statement not executed.">            <span class="keyword">if</span>(junctID == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"As junções devem ter um ID. "</span>+command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;183</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;184</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 184: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 184: statement executed 51 times.">            Builder junctionBuilder = <span class="keyword">new</span> DefaultJuntion.Builder(junctID, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;185</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;186</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 186: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 186: expression evaluated to true 51 times, false 0 times.">            <span class="keyword">if</span>(elevation != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;187</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 187: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 187: statement executed 51 times.">                junctionBuilder.elevation(Measure.valueOf(Double.valueOf(elevation), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;188</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;189</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;190</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 190: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 190: statement executed 51 times.">            <span class="keyword">if</span>(demand != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;191</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 191: statement executed 27 times.">&nbsp;27</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 191: statement executed 27 times.">                junctionBuilder.baseDemandFlow(Measure.valueOf(Double.valueOf(elevation), VolumetricFlowRate.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;192</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;193</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;194</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 194: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 194: statement executed 51 times.">            <span class="keyword">if</span>(pattern != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;195</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 195: statement executed 27 times.">&nbsp;27</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 195: statement executed 27 times.">                junctionBuilder.demandPatternID(pattern);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;196</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;197</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;198</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 198: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 198: statement executed 51 times.">            netWork.addJuncao(junctionBuilder.build());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;199</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;200</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;201</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="ReservoirParser">&nbsp;202</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> ReservoirParser <span class="keyword">extends</span> SimpleLineParser{</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;203</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 203: method entered 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 203: method entered 3 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;204</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;205</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">//            ID     Head   </span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;206</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 206: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 206: statement executed 3 times.">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;207</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//ugly!</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;208</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 208: expression evaluated to true 3 times, false 0 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 208: expression evaluated to true 3 times, false 0 times.">            String reservID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;209</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 209: expression evaluated to true 3 times, false 0 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 209: expression evaluated to true 3 times, false 0 times.">            String head = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;210</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;211</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 211: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 211: statement not executed.">            <span class="keyword">if</span>(reservID == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Os reservatórios devem ter um ID. "</span>+command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;212</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 212: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 212: statement executed 3 times.">            org.epanetgrid.model.nodes.DefaultReservoir.Builder reservBuilder = <span class="keyword">new</span> DefaultReservoir.Builder(reservID, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;213</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 213: expression evaluated to true 3 times, false 0 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 213: expression evaluated to true 3 times, false 0 times.">            <span class="keyword">if</span>(head != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;214</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 214: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 214: statement executed 3 times.">                reservBuilder.head(Measure.valueOf(Double.valueOf(head), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;215</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;216</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 216: statement executed 3 times.">&nbsp;3</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 216: statement executed 3 times.">            netWork.addReservoir(reservBuilder.build());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;217</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;218</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;219</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="TankParser">&nbsp;220</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> TankParser <span class="keyword">extends</span> SimpleLineParser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;221</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;222</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 222: method entered 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 222: method entered 9 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;223</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;224</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">//            ;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.  </span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;225</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 225: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 225: statement executed 9 times.">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;226</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//ugly!</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;227</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 227: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 227: expression evaluated to true 9 times, false 0 times.">            String tankID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;228</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 228: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 228: expression evaluated to true 9 times, false 0 times.">            String elevation = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;229</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 229: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 229: expression evaluated to true 9 times, false 0 times.">            String initialWLevel = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;230</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 230: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 230: expression evaluated to true 9 times, false 0 times.">            String minimWaterLevel = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;231</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 231: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 231: expression evaluated to true 9 times, false 0 times.">            String maxiWaterLevel = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;232</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 232: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 232: expression evaluated to true 9 times, false 0 times.">            String diameter = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;233</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;234</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 234: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 234: statement not executed.">            <span class="keyword">if</span>(tankID == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Os tanques devem ter um ID. "</span>+command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;235</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 235: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 235: statement executed 9 times.">            DefaultTank.Builder tankBuilder = <span class="keyword">new</span> DefaultTank.Builder(tankID, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;236</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;237</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 237: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 237: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(elevation != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;238</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 238: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 238: statement executed 9 times.">                tankBuilder.elevation(Measure.valueOf(Double.valueOf(elevation), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;239</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;240</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;241</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 241: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 241: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(initialWLevel != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;242</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 242: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 242: statement executed 9 times.">                tankBuilder.initialWaterLevel(Measure.valueOf(Double.valueOf(initialWLevel), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;243</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;244</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;245</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 245: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 245: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(minimWaterLevel != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;246</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 246: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 246: statement executed 9 times.">                tankBuilder.minimumWaterLevel(Measure.valueOf(Double.valueOf(minimWaterLevel), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;247</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;248</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;249</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 249: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 249: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(maxiWaterLevel != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;250</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 250: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 250: statement executed 9 times.">                tankBuilder.maximumWaterLevel(Measure.valueOf(Double.valueOf(maxiWaterLevel), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;251</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;252</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;253</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 253: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 253: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(diameter != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;254</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 254: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 254: statement executed 9 times.">                tankBuilder.nominalDiameter(Measure.valueOf(Double.valueOf(diameter), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;255</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;256</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;257</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 257: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 257: statement executed 9 times.">            netWork.addTanks(tankBuilder.build());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;258</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;259</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;260</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="PipeParser">&nbsp;261</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> PipeParser <span class="keyword">extends</span> SimpleLineParser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;262</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;263</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 263: method entered 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 263: method entered 51 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;264</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;265</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">//            ;ID     Node1     Node2     Length     Diam.     Roughness </span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;266</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 266: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 266: statement executed 51 times.">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;267</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//ugly!</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;268</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 268: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 268: expression evaluated to true 51 times, false 0 times.">            String pipeID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;269</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 269: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 269: expression evaluated to true 51 times, false 0 times.">            String montNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;270</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 270: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 270: expression evaluated to true 51 times, false 0 times.">            String jusaNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;271</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 271: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 271: expression evaluated to true 51 times, false 0 times.">            String lenght = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;272</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 272: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 272: expression evaluated to true 51 times, false 0 times.">            String diameter = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;273</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 273: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 273: expression evaluated to true 51 times, false 0 times.">            String roughness = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;274</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;275</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 275: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 275: statement not executed.">            <span class="keyword">if</span>(pipeID == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Os pipes devem ter um ID. "</span>+command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;276</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 276: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 276: statement executed 51 times.">            DefaultPipe.Builder pipeBuilder = <span class="keyword">new</span> DefaultPipe.Builder(pipeID, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;277</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;278</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 278: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 278: expression evaluated to true 51 times, false 0 times.">            <span class="keyword">if</span>(lenght != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;279</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 279: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 279: statement executed 51 times.">                pipeBuilder.length(Measure.valueOf(Double.valueOf(lenght), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;280</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;281</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;282</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 282: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 282: expression evaluated to true 51 times, false 0 times.">            <span class="keyword">if</span>(diameter != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;283</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 283: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 283: statement executed 51 times.">                pipeBuilder.diameter(Measure.valueOf(Double.valueOf(diameter), Length.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;284</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;285</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;286</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 286: expression evaluated to true 51 times, false 0 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 286: expression evaluated to true 51 times, false 0 times.">            <span class="keyword">if</span>(roughness != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;287</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 287: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 287: statement executed 51 times.">                pipeBuilder.roughnessCoefficient(Measure.valueOf(Double.valueOf(roughness), Dimensionless.SI_UNIT));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;288</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;289</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;290</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 290: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 290: statement executed 51 times.">            INode montanteNode = (INode) netWork.getElemento(montNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;291</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 291: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 291: statement executed 51 times.">            INode jusanteNode = (INode) netWork.getElemento(jusaNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;292</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;293</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 293: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 293: statement executed 51 times.">            IPipe pipe = pipeBuilder.build();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;294</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;295</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 295: statement executed 51 times.">&nbsp;51</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 295: statement executed 51 times.">            netWork.addPipe(pipe, montanteNode, jusanteNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;296</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;297</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;298</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="PumpParser">&nbsp;299</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> PumpParser <span class="keyword">extends</span> SimpleLineParser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;300</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;301</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 301: method entered 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 301: method entered 9 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;302</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;303</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">//            ;ID     Node1     Node2     Properties    </span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;304</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 304: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 304: statement executed 9 times.">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;305</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">//ugly!</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;306</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 306: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 306: expression evaluated to true 9 times, false 0 times.">            String pipeID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;307</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 307: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 307: expression evaluated to true 9 times, false 0 times.">            String montNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;308</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 308: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 308: expression evaluated to true 9 times, false 0 times.">            String jusaNode = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;309</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;310</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 310: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 310: statement executed 9 times.">            StringBuffer propBuffer = <span class="keyword">new</span> StringBuffer();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;311</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;312</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 312: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 312: statement executed 9 times.">            <span class="keyword">while</span>(tokenizer.hasMoreTokens()){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;313</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 313: statement executed 18 times.">&nbsp;18</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 313: statement executed 18 times.">                propBuffer.append(tokenizer.nextToken()+<span class="string">" "</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;314</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;315</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;316</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 316: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 316: statement executed 9 times.">            String properties = propBuffer.toString();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;317</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;318</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 318: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 318: statement not executed.">            <span class="keyword">if</span>(pipeID == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"As bombas devem ter um ID. "</span>+command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;319</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 319: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 319: statement executed 9 times.">            DefaultPump.Builder pumpBuilder = <span class="keyword">new</span> DefaultPump.Builder(pipeID, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;320</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;321</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 321: expression evaluated to true 9 times, false 0 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 321: expression evaluated to true 9 times, false 0 times.">            <span class="keyword">if</span>(properties != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;322</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 322: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 322: statement executed 9 times.">                pumpBuilder.headCurveID(properties);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;323</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;324</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;325</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 325: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 325: statement executed 9 times.">            INode montanteNode = (INode) netWork.getElemento(montNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;326</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 326: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 326: statement executed 9 times.">            INode jusanteNode = (INode) netWork.getElemento(jusaNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;327</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;328</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 328: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 328: statement executed 9 times.">            IPump pump = pumpBuilder.build();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;329</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;330</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 330: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 330: statement executed 9 times.">            netWork.addPump(pump, montanteNode, jusanteNode);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;331</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;332</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;333</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="SimpleLineParser">&nbsp;334</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> abstract <span class="keyword">class</span> SimpleLineParser <span class="keyword">implements</span> Parser{</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;335</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;336</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final List&lt;String&gt; commands = <span class="keyword">new</span> LinkedList&lt;String&gt;();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;337</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;338</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;339</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@see</span> org.epanetgrid.data.EpaFileReader.Parser#parse(java.lang.String)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;340</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;341</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 341: method entered 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 341: method entered 314 times.">        <span class="keyword">public</span> <span class="keyword">void</span> parse(String line) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;342</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 342: statement executed 314 times.">&nbsp;314</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 342: statement executed 314 times.">            <span class="keyword">if</span>( (!line.startsWith(COMMENTS_ID) &amp;&amp; (!line.startsWith(TYPE_DESCRIPT_ID)))) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;343</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 343: statement executed 237 times.">&nbsp;237</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 343: statement executed 237 times.">                commands.add(line);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;344</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;345</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;346</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;347</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;348</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@see</span> org.epanetgrid.data.EpaFileReader.Parser#collectResult(org.epanetgrid.model.epanetNetWork.DefaultNetWork)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;349</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;350</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 350: method entered 33 times.">&nbsp;33</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 350: method entered 33 times.">        <span class="keyword">public</span> <span class="keyword">void</span> collectResult(DefaultNetWork netWork) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;351</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 351: statement executed 33 times.">&nbsp;33</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 351: statement executed 33 times.">            <span class="keyword">for</span> (String command : commands) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;352</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 352: statement executed 237 times.">&nbsp;237</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 352: statement executed 237 times.">                collectResult(command, netWork);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;353</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;354</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;355</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;356</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;357</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> command</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;358</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> netWork</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;359</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;360</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> abstract <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork);</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;361</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;362</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="PatterdIDParser">&nbsp;363</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> PatterdIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;364</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 364: method entered 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 364: method entered 6 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;365</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;366</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 366: statement executed 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 366: statement executed 6 times.">            netWork.addPattern(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;367</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;368</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;369</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="TimeIDParser">&nbsp;370</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> TimeIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;371</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 371: method entered 12 times.">&nbsp;12</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 371: method entered 12 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;372</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;373</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 373: statement executed 12 times.">&nbsp;12</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 373: statement executed 12 times.">            netWork.addTime(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;374</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;375</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;376</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="OptionIDParser">&nbsp;377</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> OptionIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;378</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 378: method entered 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 378: method entered 6 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;379</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;380</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 380: statement executed 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 380: statement executed 6 times.">            netWork.addOption(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;381</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;382</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;383</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="ReportIDParser">&nbsp;384</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> ReportIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;385</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 385: method entered 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 385: method entered 21 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;386</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;387</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 387: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 387: statement executed 21 times.">            Scanner scanner = <span class="keyword">new</span> Scanner(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;388</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 388: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 388: statement executed 21 times.">            String key = scanner.next();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;389</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 389: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 389: statement executed 21 times.">            scanner.useDelimiter(key);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;390</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 390: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 390: statement executed 21 times.">            String value = scanner.next();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;391</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 391: statement executed 21 times.">&nbsp;21</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 391: statement executed 21 times.">            netWork.addReport(key, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;392</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;393</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;394</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="EnergyIDParser">&nbsp;395</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> EnergyIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;396</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 396: method entered 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 396: method entered 9 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;397</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;398</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 398: statement executed 9 times.">&nbsp;9</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 398: statement executed 9 times.">            netWork.addEnergy(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;399</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;400</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;401</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="CurvesIDParser">&nbsp;402</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> CurvesIDParser <span class="keyword">extends</span> SimpleLineParser {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;403</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 403: method entered 60 times.">&nbsp;60</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 403: method entered 60 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;404</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">protected</span> <span class="keyword">void</span> collectResult(String command, DefaultNetWork netWork) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;405</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 405: statement executed 60 times.">&nbsp;60</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 405: statement executed 60 times.">            netWork.addCurve(command);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;406</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;407</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;408</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;409</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">}</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;410</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR></TBODY></TABLE>
+<TABLE width="100%"><TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+<TR><TD class="footer" colspan="6">
+<table>
+<tr>
+ <td><a target="_new" href="http://www.cenqua.com/clover?5Jn"><img alt="Clover" src="../../../img/logo.gif" border="0"></a></td><td nowrap><i>Report generated by </i><a target="_new" href="http://www.cenqua.com/clover?5Jn">Clover Code Coverage v1.3.13</a><i><BR>Sáb Set 1 2007 18:13:17 GMT-03:00</i>.</td>
+<td>&nbsp;</td><td style="BORDER-LEFT: #9c9c9c 1px solid;">&nbsp;</td><td>30 day Evaluation Version distributed via the Maven Jar Repository. Clover is not free. You have 30 days to evaluate it. After this, please visit http://www.cenqua.com to obtain a licensed version of Clover</td>
+</tr>
+</table>
+</td>
+</tr></TABLE>

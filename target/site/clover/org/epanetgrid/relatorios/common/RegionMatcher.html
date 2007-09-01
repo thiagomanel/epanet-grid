@@ -1,0 +1,1504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Maven Clover report</title>
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../style.css" TITLE="Style">
+</head>
+<body>
+<TABLE cellspacing="0" cellpadding="2"><TBODY>
+    <!-- / local/ thiago/ workspace/ epa-svn/ src/ main/ java/ org/ epanetgrid/ relatorios/ common/ RegionMatcher.java -->
+  <TR>
+    <TD colspan="6" class="reportHeader">
+    <TABLE width="100%"><TR>
+    <TD valign="top" class="titleText">Clover coverage report -   Maven Clover report <DIV class="timestamp"><b>Coverage timestamp:</b>&nbsp;Sáb Set 1 2007 18:13:15 GMT-03:00</DIV>
+            <DIV class="navBar"><a href="../../../../pkgs-summary.html"><b>Overview</b></a>&nbsp;&nbsp;&nbsp;<a href="pkg-summary.html"><b>Package</b></a>&nbsp;&nbsp;&nbsp;<font class="navBarCurrent">File</font></DIV>
+    
+<DIV class="navBarLink">
+&nbsp;&nbsp;&nbsp;
+    <A HREF="../../../../index.html" TARGET="_top">FRAMES</A>&nbsp;&nbsp;
+<A HREF="RegionMatcher.html" TARGET="_top">NO FRAMES</A>&nbsp;&nbsp;
+    </DIV>
+
+</TD>
+         <td class="headerStats" valign="top" width="40%" align="right">
+        <table align="right">
+         <tr>
+           <td nowrap><b>file stats:</b></td>
+           <td align="right"><b>LOC:</b></td>
+           <td align="right">326</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Methods:</b></td>
+           <td align="right">19</td>
+         </tr>
+         <tr>
+           <td></td>
+           <td align="right"><b>NCLOC:</b></td>
+           <td align="right">185</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Classes:</b></td>
+           <td align="right">4</td>
+         </tr>
+      </table>
+     </td>
+    </TR></TABLE>
+   </TD>
+  </TR>
+
+<TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+  <TR>
+    <TD class="graphHeaderLeft"><b>&nbsp;Source file</b></TD>
+    <TD class="graphHeader">Conditionals</TD>
+    <TD class="graphHeader">Statements</TD>
+    <TD class="graphHeader">Methods</TD>
+    <TD class="graphHeader" align="left" colspan="2"><B>TOTAL</B></TD>
+  </TR>   
+  <TR>
+    <TD class="graphItem">
+        	   RegionMatcher.java
+	    </TD>
+   
+    <TD class="graphPercent" align="center">54,8%</TD>
+    <TD class="graphPercent" align="center">75%</TD>
+    <TD class="graphPercent" align="center">94,7%</TD>
+    <TD class="graphBarLeft" align="center"><B>69,9%</B></TD>
+    <TD class="graphBar">
+            <TABLE class="barGraph" cellspacing="0">
+        <TBODY>
+          <TR>
+	               <TD class="covered"><img alt="coverage" src="../../../../img/trans.gif"
+                   width="139" height="12"></TD>
+            <TD class="uncovered"><img alt="coverage" src="../../../../img/trans.gif"
+                   width="61" height="12"></TD>
+	   	  </TR>
+	</TBODY>
+      </TABLE>
+          </TD>
+  </TR> 
+</TBODY></TABLE><TABLE cellspacing="0" cellpadding="0" class="srcView"><TBODY>
+<TR><TD align="right" class="lineCount">
+&nbsp;1</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;2</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;3</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;4</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">package</span> org.epanetgrid.relatorios.common;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;5</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;6</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.Collections;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;7</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.LinkedList;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;8</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.List;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;9</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;10</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;11</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;12</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Esta implementacao de &lt;code&gt;IMatcher&lt;/code&gt; guarda estado. Ou seja</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;13</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * a resposta de uma chamada de método depende das chamadas anteriores.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;14</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Certas regras de matching so sao ativadas devido ao disparo ou ausencia</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;15</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * de disparo em regras anteriores.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;16</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Este matcher e usado durante o parse linha por linha de um arquivo texto, por </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;17</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * exemplo:</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;18</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;19</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;20</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Important Node ---------------</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;21</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto-----------</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;22</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto-----------</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;23</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto-----------</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;24</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Important Node-----------</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;25</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;26</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * xpto-xpto-xpto-xpto</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;27</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;28</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Este matcher pode ser usado para implementar o reconhecimento de elementos entre</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;29</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * as linhas Important Node.  </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;30</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;31</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span> Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;32</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * since 19/08/2007</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;33</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="RegionMatcher">&nbsp;34</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">public</span> <span class="keyword">class</span> RegionMatcher <span class="keyword">implements</span> IMatcher {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;35</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;36</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final String escapePattern;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;37</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final List&lt;RecognizeSequence&gt; sequence;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;38</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final <span class="keyword">static</span> String NEW_LINE = <span class="string">"\n"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;39</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final Recognizer recognizer;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;40</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;41</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;42</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;43</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;44</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 44: method entered 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 44: method entered 7 times.">    <span class="keyword">private</span> RegionMatcher() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;45</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 45: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 45: statement executed 7 times.">        <span class="keyword">this</span>(<span class="keyword">new</span> LinkedList&lt;RecognizeSequence&gt;(), <span class="string">""</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;46</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;47</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;48</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;49</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> sequence</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;50</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> escape</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;51</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;52</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 52: method entered 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 52: method entered 14 times.">    <span class="keyword">private</span> RegionMatcher(List&lt;RecognizeSequence&gt; sequence, String escape) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;53</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 53: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 53: statement executed 14 times.">        <span class="keyword">this</span>.sequence = Collections.unmodifiableList(sequence);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;54</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 54: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 54: statement executed 14 times.">        <span class="keyword">this</span>.escapePattern = escape;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;55</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 55: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 55: statement executed 14 times.">        List&lt;RecognizeSequence&gt; stubList = <span class="keyword">new</span> LinkedList&lt;RecognizeSequence&gt;();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;56</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 56: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 56: statement executed 14 times.">        stubList.addAll(<span class="keyword">this</span>.sequence);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;57</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 57: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 57: statement executed 14 times.">        <span class="keyword">this</span>.recognizer = <span class="keyword">new</span> Recognizer(stubList);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;58</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;59</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;60</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;61</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> org.epanetgrid.relatorios.common.IMatcher#match(java.lang.String)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;62</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;63</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 63: method entered 15 times.">&nbsp;15</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 63: method entered 15 times.">    <span class="keyword">public</span> <span class="keyword">boolean</span> match(String linedSource) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;64</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;65</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 65: statement executed 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 65: statement executed 1 time.">        <span class="keyword">if</span>(linedSource == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"The source must not be a null reference."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;66</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;67</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 67: expression evaluated to true 0 times, false 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 67: expression evaluated to true 0 times, false 14 times.">        <span class="keyword">if</span>(linedSource.trim().equals(<span class="string">""</span>)){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;68</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 68: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 68: statement not executed.">            linedSource = NEW_LINE;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;69</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;70</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;71</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 71: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 71: statement executed 14 times.">        <span class="keyword">return</span> recognizer.recognize(linedSource);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;72</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;73</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;74</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;75</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> java.lang.Object#hashCode()</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;76</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;77</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 77: method entered 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 77: method entered 4 times.">    @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;78</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">int</span> hashCode() {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;79</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 79: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 79: statement executed 4 times.">        final <span class="keyword">int</span> prime = 31;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;80</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 80: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 80: statement executed 4 times.">        <span class="keyword">int</span> result = 1;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;81</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 81: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 81: statement executed 4 times.">        result = prime * result</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;82</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 82: expression evaluated to true 0 times, false 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 82: expression evaluated to true 0 times, false 4 times.">                + ((escapePattern == <span class="keyword">null</span>) ? 0 : escapePattern.hashCode());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;83</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 83: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 83: statement executed 4 times.">        result = prime * result</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;84</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 84: expression evaluated to true 0 times, false 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 84: expression evaluated to true 0 times, false 4 times.">                + ((sequence == <span class="keyword">null</span>) ? 0 : sequence.hashCode());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;85</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 85: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 85: statement executed 4 times.">        <span class="keyword">return</span> result;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;86</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;87</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;88</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;89</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> java.lang.Object#equals(java.lang.Object)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;90</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;91</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 91: method entered 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 91: method entered 1 time.">    @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;92</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;93</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;94</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 94: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 94: expression evaluated to true 0 times, false 1 time.">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;95</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 95: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 95: statement not executed.">            <span class="keyword">return</span> <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;96</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;97</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;98</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 98: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 98: expression evaluated to true 0 times, false 1 time.">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;99</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 99: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 99: statement not executed.">            <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;100</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;101</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;102</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 102: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 102: expression evaluated to true 0 times, false 1 time.">        <span class="keyword">if</span> (getClass() != obj.getClass()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;103</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 103: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 103: statement not executed.">            <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;104</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;105</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;106</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 106: statement executed 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 106: statement executed 1 time.">        final RegionMatcher other = (RegionMatcher) obj;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;107</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 107: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 107: expression evaluated to true 0 times, false 1 time.">        <span class="keyword">if</span> (escapePattern == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;108</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 108: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 108: statement not executed.">            <span class="keyword">if</span> (other.escapePattern != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;109</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 109: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 109: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;110</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;111</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 111: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 111: expression evaluated to true 0 times, false 1 time.">        } <span class="keyword">else</span> <span class="keyword">if</span> (!escapePattern.equals(other.escapePattern)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;112</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 112: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 112: statement not executed.">            <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;113</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;114</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;115</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 115: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 115: expression evaluated to true 0 times, false 1 time.">        <span class="keyword">if</span> (sequence == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;116</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 116: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 116: statement not executed.">            <span class="keyword">if</span> (other.sequence != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;117</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 117: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 117: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;118</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;119</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 119: expression evaluated to true 1 time, false 0 times.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 119: expression evaluated to true 1 time, false 0 times.">        } <span class="keyword">else</span> <span class="keyword">if</span> (!sequence.equals(other.sequence)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;120</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 120: statement executed 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 120: statement executed 1 time.">            <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;121</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;122</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;123</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 123: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 123: statement not executed.">        <span class="keyword">return</span> <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;124</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;125</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;126</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;127</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@author</span> Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;128</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * since 27/08/2007</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;129</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="Builder">&nbsp;130</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> Builder {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;131</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;132</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> List&lt;RecognizeSequence&gt; sequence = <span class="keyword">new</span> LinkedList&lt;RecognizeSequence&gt;();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;133</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> RegionMatcher stub = <span class="keyword">new</span> RegionMatcher();</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;134</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> String escape;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;135</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;136</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;137</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> pattern</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;138</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> occurrences</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;139</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@return</span></span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;140</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;141</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 141: method entered 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 141: method entered 13 times.">        <span class="keyword">public</span> Builder addRecognizeSequence(String pattern, <span class="keyword">int</span> occurrences){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;142</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 142: statement executed 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 142: statement executed 13 times.">            sequence.add(stub.<span class="keyword">new</span> RecognizeSequence(pattern, occurrences));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;143</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 143: statement executed 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 143: statement executed 13 times.">            <span class="keyword">return</span> <span class="keyword">this</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;144</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;145</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;146</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;147</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> pattern</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;148</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@return</span></span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;149</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;150</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 150: method entered 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 150: method entered 7 times.">        <span class="keyword">public</span> Builder setEscapeSequence(String pattern){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;151</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 151: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 151: statement executed 7 times.">            <span class="keyword">this</span>.escape = pattern;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;152</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 152: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 152: statement executed 7 times.">            <span class="keyword">return</span> <span class="keyword">this</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;153</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;154</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;155</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 155: method entered 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 155: method entered 7 times.">        <span class="keyword">public</span> RegionMatcher build(){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;156</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 156: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 156: statement executed 7 times.">            <span class="keyword">return</span> <span class="keyword">new</span> RegionMatcher(sequence, escape);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;157</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;158</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;159</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;160</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;161</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;162</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@author</span> Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;163</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * since 27/08/2007</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;164</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="Recognizer">&nbsp;165</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> Recognizer {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;166</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;167</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> final List&lt;RecognizeSequence&gt; sequence;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;168</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">int</span> patternOccurrence;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;169</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">boolean</span> escapePatternDetected;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;170</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> <span class="keyword">boolean</span> recogStart;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;171</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">private</span> RecognizeSequence recogSequence;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;172</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;173</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;174</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> sequence</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;175</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;176</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 176: method entered 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 176: method entered 14 times.">        <span class="keyword">public</span> Recognizer(List&lt;RecognizeSequence&gt; sequence) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;177</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 177: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 177: statement executed 14 times.">            <span class="keyword">this</span>.sequence = sequence;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;178</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 178: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 178: statement executed 14 times.">            initializeRecog();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;179</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;180</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;181</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 181: method entered 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 181: method entered 14 times.">        <span class="keyword">private</span> <span class="keyword">void</span> initializeRecog() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;182</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;183</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 183: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 183: statement executed 14 times.">            <span class="keyword">if</span>(sequence.isEmpty()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;184</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 184: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 184: statement executed 7 times.">                recogStart = <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;185</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }<span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;186</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 186: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 186: statement executed 7 times.">                recogSequence = sequence.remove(0);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;187</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 187: statement executed 7 times.">&nbsp;7</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 187: statement executed 7 times.">                patternOccurrence = recogSequence.occurrences;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;188</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;189</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;190</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;191</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 191: method entered 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 191: method entered 14 times.">        <span class="keyword">public</span> <span class="keyword">boolean</span> recognize(String linedSource) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;192</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;193</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 193: expression evaluated to true 0 times, false 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 193: expression evaluated to true 0 times, false 14 times.">            <span class="keyword">if</span>(escapePatternDetected) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;194</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 194: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 194: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;195</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;196</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;197</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 197: statement executed 14 times.">&nbsp;14</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 197: statement executed 14 times.">            <span class="keyword">if</span>(recogStart){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;198</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 198: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 198: statement executed 4 times.">                <span class="keyword">return</span> <span class="keyword">true</span>; </A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;199</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;200</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;201</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 201: statement executed 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 201: statement executed 10 times.">            checkEscapePattern(linedSource);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;202</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 202: statement executed 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 202: statement executed 10 times.">            checkRecogPattern(linedSource);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;203</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;204</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 204: statement executed 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 204: statement executed 10 times.">            <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;205</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;206</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;207</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 207: method entered 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 207: method entered 10 times.">        <span class="keyword">private</span> <span class="keyword">void</span> checkRecogPattern(String linedSource) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;208</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;209</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 209: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 209: statement not executed.">            <span class="keyword">if</span>(escapePatternDetected) <span class="keyword">return</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;210</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;211</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 211: statement executed 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 211: statement executed 10 times.">            <span class="keyword">if</span>(recognizeRecogSentence(linedSource)) {<span class="comment">//compil</span></A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;212</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 212: statement executed 6 times.">&nbsp;6</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 212: statement executed 6 times.">                --patternOccurrence;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;213</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;214</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;215</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 215: statement executed 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 215: statement executed 10 times.">            <span class="keyword">if</span>(patternOccurrence == 0){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;216</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 216: statement executed 4 times.">&nbsp;4</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 216: statement executed 4 times.">                <span class="keyword">if</span>(!sequence.isEmpty()){</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;217</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 217: statement executed 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 217: statement executed 2 times.">                    fowardPattern();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;218</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }<span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;219</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 219: statement executed 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 219: statement executed 2 times.">                    recogStart = <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;220</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 220: statement executed 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 220: statement executed 2 times.">                    escapePatternDetected = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;221</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;222</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;223</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;224</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;225</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;226</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;227</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;228</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 228: method entered 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 228: method entered 2 times.">        <span class="keyword">private</span> <span class="keyword">void</span> fowardPattern() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;229</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 229: statement executed 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 229: statement executed 2 times.">            recogSequence = sequence.remove(0);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;230</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 230: statement executed 2 times.">&nbsp;2</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 230: statement executed 2 times.">            patternOccurrence = recogSequence.occurrences;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;231</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;232</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;233</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;234</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> linedSource</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;235</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@return</span></span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;236</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;237</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 237: method entered 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 237: method entered 10 times.">        <span class="keyword">private</span> <span class="keyword">boolean</span> recognizeRecogSentence(String linedSource) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;238</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;239</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 239: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 239: statement not executed.">            <span class="keyword">if</span> (recogStart) <span class="keyword">return</span> <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;240</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;241</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 241: expression evaluated to true 10 times, false 0 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 241: expression evaluated to true 10 times, false 0 times.">            <span class="keyword">return</span> (<span class="keyword">this</span>.recogSequence != <span class="keyword">null</span>) ? linedSource.contains(<span class="keyword">this</span>.recogSequence.pattern) </A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;242</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                    : <span class="keyword">true</span>; </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;243</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;244</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;245</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;246</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> linedSource</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;247</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;248</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 248: method entered 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 248: method entered 10 times.">        <span class="keyword">private</span> <span class="keyword">void</span> checkEscapePattern(String linedSource) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;249</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 249: expression evaluated to true 0 times, false 10 times.">&nbsp;10</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 249: expression evaluated to true 0 times, false 10 times.">            <span class="keyword">if</span>(linedSource.contains(escapePattern)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;250</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 250: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 250: statement not executed.">                escapePatternDetected = <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;251</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 251: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 251: statement not executed.">                recogStart = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;252</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;253</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;254</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;255</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;256</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;257</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@author</span> Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;258</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * since 27/08/2007</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;259</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="RecognizeSequence">&nbsp;260</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">class</span> RecognizeSequence {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;261</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;262</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> final String pattern;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;263</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">int</span> occurrences;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;264</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;265</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;266</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> pattern</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;267</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@param</span> occurrences</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;268</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;269</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 269: method entered 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 269: method entered 13 times.">        <span class="keyword">public</span> RecognizeSequence(String pattern, <span class="keyword">int</span> occurrences) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;270</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 270: statement executed 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 270: statement executed 13 times.">            <span class="keyword">this</span>.pattern = pattern;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;271</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 271: statement executed 13 times.">&nbsp;13</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 271: statement executed 13 times.">            <span class="keyword">this</span>.occurrences = occurrences;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;272</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;273</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;274</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;275</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@see</span> java.lang.Object#hashCode()</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;276</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;277</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 277: method entered 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 277: method entered 8 times.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;278</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">int</span> hashCode() {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;279</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 279: statement executed 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 279: statement executed 8 times.">            final <span class="keyword">int</span> prime = 31;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;280</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 280: statement executed 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 280: statement executed 8 times.">            <span class="keyword">int</span> result = 1;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;281</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 281: statement executed 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 281: statement executed 8 times.">            result = prime * result + occurrences;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;282</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 282: statement executed 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 282: statement executed 8 times.">            result = prime * result</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;283</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 283: expression evaluated to true 0 times, false 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 283: expression evaluated to true 0 times, false 8 times.">                    + ((pattern == <span class="keyword">null</span>) ? 0 : pattern.hashCode());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;284</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 284: statement executed 8 times.">&nbsp;8</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 284: statement executed 8 times.">            <span class="keyword">return</span> result;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;285</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;286</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;287</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">/* (non-Javadoc)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;288</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         * <span class="javadoc">@see</span> java.lang.Object#equals(java.lang.Object)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;289</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">         */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;290</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 290: method entered 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 290: method entered 1 time.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;291</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;292</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;293</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 293: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 293: expression evaluated to true 0 times, false 1 time.">            <span class="keyword">if</span> (<span class="keyword">this</span> == obj) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;294</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 294: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 294: statement not executed.">                <span class="keyword">return</span> <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;295</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;296</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 296: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 296: expression evaluated to true 0 times, false 1 time.">            <span class="keyword">if</span> (obj == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;297</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 297: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 297: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;298</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;299</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 299: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 299: expression evaluated to true 0 times, false 1 time.">            <span class="keyword">if</span> (getClass() != obj.getClass()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;300</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 300: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 300: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;301</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;302</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;303</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 303: statement executed 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 303: statement executed 1 time.">            final RecognizeSequence other = (RecognizeSequence) obj;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;304</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;305</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 305: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 305: expression evaluated to true 0 times, false 1 time.">            <span class="keyword">if</span> (occurrences != other.occurrences) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;306</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 306: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 306: statement not executed.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;307</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;308</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;309</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 309: expression evaluated to true 0 times, false 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 309: expression evaluated to true 0 times, false 1 time.">            <span class="keyword">if</span> (pattern == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;310</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 310: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 310: statement not executed.">                <span class="keyword">if</span> (other.pattern != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;311</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 311: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 311: statement not executed.">                    <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;312</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;313</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 313: expression evaluated to true 1 time, false 0 times.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 313: expression evaluated to true 1 time, false 0 times.">            }<span class="keyword">else</span> <span class="keyword">if</span> (!pattern.equals(other.pattern)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;314</TD>
+<TD align="right" class="lineCountHilight">
+<A title="Line 314: statement executed 1 time.">&nbsp;1</A>
+</TD><TD class="srcCell"><SPAN class="srcLine"><A title="Line 314: statement executed 1 time.">                <span class="keyword">return</span> <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;315</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;316</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;317</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 317: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 317: statement not executed.">            <span class="keyword">return</span> <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;318</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;319</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;320</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 320: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 320: method not entered.">        @Override</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;321</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="keyword">public</span> String toString() {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;322</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 322: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 322: statement not executed.">            <span class="keyword">return</span> getClass()+<span class="string">" pattern: "</span>+pattern+<span class="string">" ocurrences: "</span>+occurrences;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;323</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;324</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;325</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;326</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">}</SPAN></TD></TR></TBODY></TABLE>
+<TABLE width="100%"><TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+<TR><TD class="footer" colspan="6">
+<table>
+<tr>
+ <td><a target="_new" href="http://www.cenqua.com/clover?5Jn"><img alt="Clover" src="../../../../img/logo.gif" border="0"></a></td><td nowrap><i>Report generated by </i><a target="_new" href="http://www.cenqua.com/clover?5Jn">Clover Code Coverage v1.3.13</a><i><BR>Sáb Set 1 2007 18:13:17 GMT-03:00</i>.</td>
+<td>&nbsp;</td><td style="BORDER-LEFT: #9c9c9c 1px solid;">&nbsp;</td><td>30 day Evaluation Version distributed via the Maven Jar Repository. Clover is not free. You have 30 days to evaluate it. After this, please visit http://www.cenqua.com to obtain a licensed version of Clover</td>
+</tr>
+</table>
+</td>
+</tr></TABLE>
