@@ -21,6 +21,10 @@ class DefaultVariavelPerturbada implements IVariavelPerturbada {
 	 * @param samples
 	 */
 	public DefaultVariavelPerturbada(String label, ValueProvider vp) {
+		
+		if(label == null) throw new IllegalArgumentException("The label must be not null");
+		if(vp == null) throw new IllegalArgumentException("The ValueProvider must be not null");
+		
 		componentLabel = label;
 		this.vp = vp;
 		numSamples = vp.getValorPerturbado().length;
