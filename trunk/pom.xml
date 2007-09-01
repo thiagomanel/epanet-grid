@@ -55,6 +55,11 @@
       <artifactId>xstream</artifactId>
       <version>1.1.2</version>
     </dependency>
+    <dependency>
+    	<groupId>gridfaith</groupId>
+  		<artifactId>gridfaith</artifactId>
+  		<version>1.3</version>
+    </dependency>    
     <dependency>    
     	<groupId>poi</groupId>
 		<artifactId>poi</artifactId>
@@ -71,4 +76,26 @@
    	<version>2.3</version>
    </dependency>
   </dependencies>
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clover-plugin</artifactId>
+        <configuration>
+          <jdk>1.5</jdk>
+          <cloverDatabase>${project.build.directory}/customclover/myclover.db</cloverDatabase>
+          <cloverOutputDirectory>${project.build.directory}/customclover/output</cloverOutputDirectory>          
+          <!-- Verify that we can generate all types of Clover reports -->
+          <generateHtml>true</generateHtml>
+          <generatePdf>true</generatePdf>
+          <generateXml>true</generateXml>
+          <!-- We ask the Clover plugin to generate a historical report but we don't have any historical data saved.
+               This is to verify it doesn't error out when this is the case. -->
+          <generateHistorical>true</generateHistorical>
+
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
