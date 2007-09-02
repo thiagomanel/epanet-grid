@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -223,68 +222,6 @@ public class GridFacade {
 		
 		private String[] javaCommand(String epanetGridNetworkFile, String outputName, String logName) {
 			return new String[] {"sh", "executa.sh" , epanetGridNetworkFile};
-		}
-	}
-	
-	/**
-	 * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
-	 */
-	public class EpanetGridRunnableResult implements Serializable{
-		
-		private final String outputFileName;
-		private final List<String> logMessage;
-		private final List<String> errorMessage;
-		private final List<String> conteudoArquivo;
-		private final String relatorioName;
-		private final List<String> saidaMessage;
-		private final int taskNumber;
-		
-		/**
-		 * 
-		 * @param outputFileName
-		 * @param outPutFileContent
-		 * @param logMessage
-		 * @param errorMessage
-		 * @param relatorioName
-		 */
-		public EpanetGridRunnableResult(String outputFileName, List<String> outPutFileContent, List<String> logMessage, 
-				List<String> errorMessage, String relatorioName, List<String> saidaMessage, int taskNumber) {
-			this.outputFileName = outputFileName;
-			this.conteudoArquivo = outPutFileContent;
-			this.logMessage = logMessage;
-			this.errorMessage = errorMessage;
-			this.relatorioName = relatorioName;
-			this.saidaMessage = saidaMessage;
-			this.taskNumber = taskNumber;
-			
-		}
-		
-		public List<String> getLogMessage(){
-			return logMessage;
-		}
-		
-		public List<String> getErrorMessage(){
-			return errorMessage;
-		}
-
-		public List<String> getConteudoArquivo() {
-			return conteudoArquivo;
-		}
-
-		public String getOutputFileName() {
-			return outputFileName;
-		}
-
-		public String getRelatorioName() {
-			return relatorioName;
-		}
-
-		public List<String> getSaidaMessage() {
-			return saidaMessage;
-		}
-
-		public int getTaskNumber() {
-			return taskNumber;
 		}
 	}
 	
