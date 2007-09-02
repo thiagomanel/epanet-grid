@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 
-	private double extremoInferior, extremoSuperior;
-	private double faixaVariacao;
-	private double valorMedio;
-	private Double discretizacao;
+	private final double extremoInferior, extremoSuperior;
+	private final double faixaVariacao;
+	private final double valorMedio;
+	private final Double discretizacao;
 	
 	 /** 
 	 * @param extremoInferior
@@ -59,7 +59,8 @@ public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 		this.discretizacao = discretizacao;
 		this.faixaVariacao = faixaVariacao;
 		this.valorMedio = valorMedio;
-		calculaExtremos();
+		this.extremoInferior = calculaExtremoInferior(valorMedio, faixaVariacao);
+		this.extremoSuperior = calculaExtremoInferior(valorMedio, faixaVariacao);
 	}
 	
 	/* (non-Javadoc)
@@ -87,11 +88,25 @@ public class AnaliseSensibilidadeValueProvider implements ValueProvider {
 	/**
 	 * Calcula os extremos caso, use a opo com faixa de variao e valorMedio. 
 	 */
-	private void calculaExtremos(){
+	private double calculaExtremoSuperior(double valorMedio, double faixaVariacao){
+		
 		if(valorMedio != Double.NaN){//usando a opcao com faixa de variao
-			extremoInferior = (valorMedio) * (1 - ((valorMedio >= 0) ? faixaVariacao : - faixaVariacao));
-			extremoSuperior = (valorMedio) * (1 + ((valorMedio >= 0) ? faixaVariacao : - faixaVariacao));
-		}				
+			return (valorMedio) * (1 + ((valorMedio >= 0) ? faixaVariacao : - faixaVariacao));
+		}
+		throw new IllegalArgumentException("Was not possible assign the extreme value, the" +
+				"average value is a NaN value");
 	}
 
+	/**
+	 * Calcula os extremos caso, use a opo com faixa de variao e valorMedio. 
+	 */
+	private double calculaExtremoInferior(double valorMedio, double faixaVariacao){
+		
+		if(valorMedio != Double.NaN){//usando a opcao com faixa de variao
+			return (valorMedio) * (1 - ((valorMedio >= 0) ? faixaVariacao : - faixaVariacao));
+		}				
+		
+		throw new IllegalArgumentException("Was not possible assign the extreme value, the" +
+			"average value is a NaN value");
+	}
 }

@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.List;
 
 import org.epanetgrid.data.DataFacade;
@@ -29,8 +28,6 @@ import org.epanetgrid.relatorios.outPutRelatorios.IAlarme.Tipo;
 import org.epanetgrid.relatorios.resultRelatorios.EPANETResultRelatorio;
 import org.epanetgrid.relatorios.resultRelatorios.IResultRelatorio;
 import org.jscience.physics.measures.Measure;
-
-import sun.util.calendar.BaseCalendar.Date;
 
 /**
  * @author thiagoepdc

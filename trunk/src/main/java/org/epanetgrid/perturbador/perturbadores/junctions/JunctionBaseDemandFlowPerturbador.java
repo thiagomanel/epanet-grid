@@ -30,5 +30,5 @@ public class JunctionBaseDemandFlowPerturbador extends AbstractPerturbador<IJunc
 		Measure<VolumetricFlowRate> newBaseDemandFlow = Measure.valueOf(getNewValue(), VolumetricFlowRate.SI_UNIT);
 		return new DefaultJuntion.Builder(getComponentLabel(), null).copy(component).baseDemandFlow(newBaseDemandFlow).build();
 	}
-
+	
 }

@@ -61,7 +61,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.ILink#getStarNode()
 	 */
-	public INode getStarNode() {
+	public INode getStartNode() {
 		return this.network.getAnterior(this);
 	}
 
@@ -146,7 +146,8 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
-		int result = super.hashCode();
+		int result = 1;
+		
 		result = PRIME * result + ((diameter == null) ? 0 : diameter.hashCode());
 		result = PRIME * result + ((label == null) ? 0 : label.hashCode());
 		result = PRIME * result + ((length == null) ? 0 : length.hashCode());
@@ -161,43 +162,68 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
+		
 		final DefaultPipe other = (DefaultPipe) obj;
+
 		if (diameter == null) {
-			if (other.diameter != null)
+			if (other.diameter != null) {
 				return false;
-		} else if (!diameter.equals(other.diameter))
+			}
+		} else if (!diameter.equals(other.diameter)) {
 			return false;
+		}
+		
 		if (label == null) {
-			if (other.label != null)
+			if (other.label != null) {
 				return false;
-		} else if (!label.equals(other.label))
+			}
+		} else if (!label.equals(other.label)) {
 			return false;
+		}
+		
 		if (length == null) {
-			if (other.length != null)
+			if (other.length != null) {
 				return false;
-		} else if (!length.equals(other.length))
+			}
+		} else if (!length.equals(other.length)) {
 			return false;
+		}
+		
 		if (lossCoefficient == null) {
-			if (other.lossCoefficient != null)
+			if (other.lossCoefficient != null) {
 				return false;
-		} else if (!lossCoefficient.equals(other.lossCoefficient))
+			}
+		} else if (!lossCoefficient.equals(other.lossCoefficient)) {
 			return false;
+		}
+		
 		if (network == null) {
-			if (other.network != null)
+			if (other.network != null) {
 				return false;
-		} else if (!network.equals(other.network))
+			}
+		} else if (!network.equals(other.network)) {
 			return false;
+		}
 		if (roughnessCoefficient == null) {
-			if (other.roughnessCoefficient != null)
+			if (other.roughnessCoefficient != null) {
 				return false;
-		} else if (!roughnessCoefficient.equals(other.roughnessCoefficient))
+			}
+		} else if (!roughnessCoefficient.equals(other.roughnessCoefficient)) {
 			return false;
+		}
+		
 		return true;
 	}
 	

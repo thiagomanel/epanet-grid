@@ -71,7 +71,8 @@ public class EpaFileReaderTest extends TestCase {
 		assertEquals(7, reports.size());
 		
 		assertTrue(reports.containsKey("FILE"));
-		assertEquals("Relatorio-1.txt", reports.get("FILE").trim());
+
+		assertEquals("Relatorio-1.txt" , netWork.getReports().getValue("FILE").trim());
 	}
 
 }

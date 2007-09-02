@@ -10,7 +10,7 @@ package org.epanetgrid.model;
  */
 public interface ILink<L extends ILink> extends NetworkComponent<ILink> {
 
-	public INode getStarNode();
+	public INode getStartNode();
 	
 	public INode getEndNode();
 }
