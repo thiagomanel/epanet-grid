@@ -165,7 +165,7 @@ public class DefaultTank implements ITank<DefaultTank> {
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
-		int result = super.hashCode();
+		int result = 1;
 		result = PRIME * result + ((elevation == null) ? 0 : elevation.hashCode());
 		result = PRIME * result + ((initialWaterLevel == null) ? 0 : initialWaterLevel.hashCode());
 		result = PRIME * result + ((label == null) ? 0 : label.hashCode());
@@ -182,53 +182,85 @@ public class DefaultTank implements ITank<DefaultTank> {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
+		
 		final DefaultTank other = (DefaultTank) obj;
+		
 		if (elevation == null) {
-			if (other.elevation != null)
+			if (other.elevation != null) {
 				return false;
-		} else if (!elevation.equals(other.elevation))
+			}
+		} else if (!elevation.equals(other.elevation)) {
 			return false;
+		}
+
 		if (initialWaterLevel == null) {
-			if (other.initialWaterLevel != null)
+			if (other.initialWaterLevel != null) {
 				return false;
-		} else if (!initialWaterLevel.equals(other.initialWaterLevel))
+			}
+		} else if (!initialWaterLevel.equals(other.initialWaterLevel)) {
 			return false;
+		}
+		
 		if (label == null) {
-			if (other.label != null)
+			if (other.label != null) {
 				return false;
-		} else if (!label.equals(other.label))
+			}
+		} else if (!label.equals(other.label)) {
 			return false;
+		}
+		
 		if (maximumWaterLevel == null) {
-			if (other.maximumWaterLevel != null)
+			if (other.maximumWaterLevel != null) {
 				return false;
-		} else if (!maximumWaterLevel.equals(other.maximumWaterLevel))
+			}
+		} else if (!maximumWaterLevel.equals(other.maximumWaterLevel)) {
 			return false;
+		}
+		
 		if (minimumVolume == null) {
-			if (other.minimumVolume != null)
+			if (other.minimumVolume != null) {
 				return false;
-		} else if (!minimumVolume.equals(other.minimumVolume))
+			}
+		} else if (!minimumVolume.equals(other.minimumVolume)) {
 			return false;
+		}
+	
 		if (minimumWaterLevel == null) {
-			if (other.minimumWaterLevel != null)
+			if (other.minimumWaterLevel != null) {
 				return false;
-		} else if (!minimumWaterLevel.equals(other.minimumWaterLevel))
+			}
+		} else if (!minimumWaterLevel.equals(other.minimumWaterLevel)) {
 			return false;
+		}
+		
 		if (nominalDiameter == null) {
-			if (other.nominalDiameter != null)
+			if (other.nominalDiameter != null) {
 				return false;
-		} else if (!nominalDiameter.equals(other.nominalDiameter))
+			}
+		} else if (!nominalDiameter.equals(other.nominalDiameter)) {
 			return false;
+		}
+		
 		if (volumeCurveID == null) {
-			if (other.volumeCurveID != null)
+			if (other.volumeCurveID != null) {
 				return false;
-		} else if (!volumeCurveID.equals(other.volumeCurveID))
+			}
+		} else if (!volumeCurveID.equals(other.volumeCurveID)) {
 			return false;
+		}
+		
 		return true;
 	}
 

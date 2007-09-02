@@ -48,7 +48,7 @@ public class DefaultValve implements IValve<DefaultValve> {
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.ILink#getStarNode()
 	 */
-	public INode getStarNode() {
+	public INode getStartNode() {
 		return this.network.getAnterior(this);
 	}
 

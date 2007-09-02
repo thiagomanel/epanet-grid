@@ -44,5 +44,37 @@ public class JunctionBaseDemandFlowPerturbadorTest extends TestCase {
 		assertEquals(Measure.valueOf(newValue, VolumetricFlowRate.SI_UNIT).getEstimatedValue(), 
 				junctPert.getBaseDemandFlow().getEstimatedValue());
 	}
+	
+	public final void testEquals(){
+		
+		JunctionBaseDemandFlowPerturbador pert = new JunctionBaseDemandFlowPerturbador("label", 1);
+		JunctionBaseDemandFlowPerturbador pert2 = new JunctionBaseDemandFlowPerturbador("label", 1);
+		JunctionBaseDemandFlowPerturbador pert3 = new JunctionBaseDemandFlowPerturbador(null, 1);
+		JunctionBaseDemandFlowPerturbador pert4 = new JunctionBaseDemandFlowPerturbador(null, 1);
+		JunctionBaseDemandFlowPerturbador pert5 = new JunctionBaseDemandFlowPerturbador("label", 2);
+		
+		assertEquals(pert, pert);
+		assertEquals(pert, pert2);
+		assertEquals(pert2, pert);
+		assertEquals(pert3, pert4);
+		
+		assertFalse(pert2.equals(new Object()));
+		assertFalse(pert2.equals(null));
+		
+		assertFalse(pert2.equals(pert3));
+		assertFalse(pert3.equals(pert2));
+		assertFalse(pert.equals(pert5));
+	}
+	
+	public final void testHashCode(){
+		JunctionBaseDemandFlowPerturbador pert = new JunctionBaseDemandFlowPerturbador("label", 1);
+		JunctionBaseDemandFlowPerturbador pert2 = new JunctionBaseDemandFlowPerturbador("label", 1);
+		JunctionBaseDemandFlowPerturbador pert3 = new JunctionBaseDemandFlowPerturbador("label", 2);
+		JunctionBaseDemandFlowPerturbador pert4 = new JunctionBaseDemandFlowPerturbador(null, 2);
+		
+		assertTrue(pert.hashCode() == pert2.hashCode());
+		assertFalse(pert.hashCode() == pert3.hashCode());
+		assertFalse(pert.hashCode() == pert4.hashCode());
+	}
 
 }

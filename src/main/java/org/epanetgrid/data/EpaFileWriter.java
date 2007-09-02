@@ -31,6 +31,9 @@ class EpaFileWriter {
 	 * @throws IOException 
 	 */
 	public void write(NetWork netWork, String filePath) throws IOException{
+		
+		if(netWork == null) throw new IllegalArgumentException("The networks must be not null");
+		
 		File outFile = new File(filePath);
 		PrintWriter writer = null;
 		try {
