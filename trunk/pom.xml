@@ -7,6 +7,13 @@
   <name>org-epanetgrid</name>
   <url>http://maven.apache.org</url>
   <build>
+  <extensions>
+        <extension>
+          <groupId>org.apache.maven.wagon</groupId>
+          <artifactId>wagon-ssh-external</artifactId>
+          <version>1.0-beta-2</version>
+        </extension>
+  </extensions>
   <plugins>
   	<plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -26,7 +33,14 @@
       </plugin>
    </plugins>
     </build>
- 	<dependencies>
+    <distributionManagement>
+	<snapshotRepository>
+     		<id>lsd</id>
+    		<name>LSD Repository</name>
+        	<url>scp://www.lsd.ufcg.edu.br/home/thiagoepdc/public_html/repository/maven2</url>
+  	</snapshotRepository>
+    </distributionManagement>
+    <dependencies>
     	<dependency>
     		<groupId>junit</groupId>
       		<artifactId>junit</artifactId>
@@ -43,51 +57,56 @@
   		<artifactId>ant</artifactId>
   		<version>1.7.0</version>
   	</dependency>
-    <dependency>
-    	<groupId>easymock</groupId>
-    	<artifactId>easymockclassextension</artifactId>   
-    	<version>2.2</version>
-    </dependency>
-    <dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.8</version>
-    </dependency>
-    <dependency>
-    	<groupId>jscience</groupId>
-      	<artifactId>jscience-1.5</artifactId>
-      	<version>3.1.5</version>
-    </dependency>
+    	<dependency>
+    		<groupId>easymock</groupId>
+	    	<artifactId>easymockclassextension</artifactId>   
+    		<version>2.2</version>
+	    </dependency>
+        <dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+	    	<version>1.2.8</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>jscience</groupId>
+	      	<artifactId>jscience-1.5</artifactId>
+      		<version>3.1.5</version>
+	</dependency>
 	<dependency>
-      	<groupId>easyaccept</groupId>
+      		<groupId>easyaccept</groupId>
 	  	<artifactId>easyaccept</artifactId>
   	  	<version>1.0</version>
-    </dependency>
-    <dependency>
-      	<groupId>xstream</groupId>
-      	<artifactId>xstream</artifactId>
-      	<version>1.1.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>gridfaith</groupId>
+    	</dependency>
+    	<dependency>
+      		<groupId>xstream</groupId>
+      		<artifactId>xstream</artifactId>
+      		<version>1.1.2</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>gridfaith</groupId>
   		<artifactId>gridfaith</artifactId>
   		<version>1.3</version>
-    </dependency>    
-    <dependency>    
-    	<groupId>poi</groupId>
+    	</dependency>    
+    	<dependency>    
+    		<groupId>poi</groupId>
 		<artifactId>poi</artifactId>
 		<version>2.5.1</version>
-    </dependency>
-    <dependency>
-      	<groupId>xstream</groupId>
-      	<artifactId>xpp3</artifactId>
-      	<version>1.1.3.4d_b4_min</version>
-    </dependency>
-    <dependency>
+    	</dependency>
+    	<dependency>
+      		<groupId>xstream</groupId>
+      		<artifactId>xpp3</artifactId>
+      		<version>1.1.3.4d_b4_min</version>
+    	</dependency>
+    	<dependency>
    		<groupId>commons-lang</groupId>
    		<artifactId>commons-lang</artifactId>
    		<version>2.3</version>
-   </dependency>
+   	</dependency>
+   	<dependency>
+   		<groupId>org.ourgrid</groupId>
+  		<artifactId>ourgrid</artifactId>
+  		<version>3.3.2</version>
+  	</dependency>
   </dependencies>
   <reporting>
     <excludeDefaults>true</excludeDefaults>
@@ -99,14 +118,10 @@
           <jdk>1.5</jdk>
           <cloverDatabase>${project.build.directory}/customclover/myclover.db</cloverDatabase>
           <cloverOutputDirectory>${project.build.directory}/customclover/output</cloverOutputDirectory>          
-          <!-- Verify that we can generate all types of Clover reports -->
           <generateHtml>true</generateHtml>
           <generatePdf>true</generatePdf>
           <generateXml>true</generateXml>
-          <!-- We ask the Clover plugin to generate a historical report but we don't have any historical data saved.
-               This is to verify it doesn't error out when this is the case. -->
           <generateHistorical>true</generateHistorical>
-
         </configuration>
       </plugin>
     </plugins>
