@@ -130,14 +130,6 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return (Set<IPipe<?>>) sortSet(pipes);
 	}
 
-	private void addComponent(NetworkComponent component){
-		this.component.put(component.label(), component);
-	}
-	
-	private void removeComponent(String label){
-		this.component.remove(label);
-	}
-	
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getElemento(java.lang.String)
 	 */
@@ -217,10 +209,6 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		component.put(juncao.label(), juncao);
 	}
 
-	public boolean contains(NetworkComponent component) {
-		return contains(component.label());
-	}
-	
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#contains(java.lang.String)
 	 */

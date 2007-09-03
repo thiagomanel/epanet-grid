@@ -36,11 +36,16 @@ public class GridFacade {
 	 * Adds a epanet's network file and a name for its output for
 	 * grid execution.
 	 * @param netWorkFile
-	 * @param nomeRelatorio Simulation outputName
+	 * @param reportName Simulation outputName
 	 */
-	public void addNetWorkFile(File netWorkFile, String nomeRelatorio){
+	public void addNetWorkFile(File netWorkFile, String reportName){
+		
+		if(netWorkFile == null) throw new IllegalArgumentException("The networkFile must be not null");
+		
+		if(reportName == null) throw new IllegalArgumentException("The reportName must be not null");
+		
 		if(!netWorkFiles.containsKey(netWorkFile)) {
-			netWorkFiles.put(netWorkFile, nomeRelatorio);
+			netWorkFiles.put(netWorkFile, reportName);
 			gridService.addResource(netWorkFile);
 		}
 	}
@@ -48,11 +53,14 @@ public class GridFacade {
 	/**
 	 * Adds a epanet's network file and a name for its output for
 	 * grid execution.
-	 * @param netWorkFile
+	 * @param netWorkFilePath
 	 * @param nomeRelatorio Simulation outputName.
 	 */
-	public void addNetWorkFile(String netWorkFile, String nomeRelatorio){
-		addNetWorkFile(new File(netWorkFile), nomeRelatorio);
+	public void addNetWorkFile(String netWorkFilePath, String nomeRelatorio){
+		
+		if(netWorkFilePath == null) throw new IllegalArgumentException("The netWorkFilePath must be not null");
+		
+		addNetWorkFile(new File(netWorkFilePath), nomeRelatorio);
 	}
 	
 	/**
@@ -86,6 +94,9 @@ public class GridFacade {
 		 * @param basePath
 		 */
 		public Builder(String basePath) {
+			
+			if(basePath == null) throw new IllegalArgumentException("The base path must be not null");
+			
 			this.basePath = basePath;
 			gridService = GridFaithPool.getInstance().getService(GridFaithPool.GRIDSERVICE_EXECUTOR);
 			gridService.setApplicationJar(new File(basePath+File.separator+"gridfaith-1.3.jar"));
@@ -112,6 +123,9 @@ public class GridFacade {
 		 * @return
 		 */
 		public Builder addResource(File resource){
+			
+			if(resource == null) throw new IllegalArgumentException("The resource must be not null");
+			
 			gridService.addResource(resource);
 			return this;
 		}
@@ -121,6 +135,9 @@ public class GridFacade {
 		 * @return
 		 */
 		public Builder setRequirements(String requirements){
+			
+			if(requirements == null) throw new IllegalArgumentException("The requirements must be not null");
+			
 			gridService.setRequirements(requirements);
 			return this;
 		}
