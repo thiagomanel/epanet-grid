@@ -17,7 +17,6 @@
  */
 package org.epanetgrid.util.packagemanager;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,7 +28,6 @@ import java.util.zip.ZipOutputStream;
 
 import org.apache.tools.tar.TarEntry;
 import org.apache.tools.tar.TarInputStream;
-import org.apache.tools.tar.TarOutputStream;
 
 /**
  * This class provides the operations of compressing and decompressing 
@@ -43,37 +41,10 @@ public class TarPackageManager {
 	 */
 	private static final int BUFFER_SIZE = 4096; // 4 Kb
 
-
 	public void packIt(String zipFileName, String fileToCompress) throws IOException {
 		compress(zipFileName, fileToCompress);
 	}
 
-	private void addToTARGZ(File fileToZip, TarOutputStream out, String extractPath) 
-	throws IOException {
-		if (fileToZip.isDirectory()) {
-			File[] files = fileToZip.listFiles();
-			
-			out.putNextEntry(new TarEntry(fileToZip.getAbsolutePath()));
-			out.closeEntry();
-			
-			for (File toAdd : files) {
-				addToTARGZ(toAdd.getAbsoluteFile(), out, extractPath);
-			}
-		} else {
-			BufferedInputStream in = new BufferedInputStream(
-					new FileInputStream(fileToZip));
-			String newPath = fileToZip.getAbsolutePath().substring(extractPath.length()+1);
-			out.putNextEntry(new TarEntry(newPath));
-			int len;
-			byte[] buf = new byte[BUFFER_SIZE];
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-			out.closeEntry();
-			in.close();
-		}
-	}
-	
 	/**
 	 * This method provides an operation of decompressing a standard 
 	 * TAR.GZ file to the specified directory.
@@ -121,22 +92,17 @@ public class TarPackageManager {
 	 */
 	public static boolean isTarGzFile(File fileToVerify) {
 		try {
-			TarInputStream tin = 
-				new TarInputStream(
-						new GZIPInputStream(
-								new FileInputStream(fileToVerify)));
+			new TarInputStream(
+					new GZIPInputStream(
+							new FileInputStream(fileToVerify)));
 		} catch (Exception e) {
 			return false;
 		}
 		return true;
 	}
 	
-	
-	/***********/
-
-	ZipOutputStream out;
-
-	FileInputStream in;
+	private ZipOutputStream out;
+	private FileInputStream in;
 
 	private void compress(String compressedFile, String directoryPath){
 		
@@ -174,7 +140,6 @@ public class TarPackageManager {
 
 	private void compressDirectory(String directoryPath) {
 		byte[] buffer = new byte[4096];
-		byte [] extra = new byte[0];
 		File dir = new File(directoryPath);
 		int bytes_read;
 		try {

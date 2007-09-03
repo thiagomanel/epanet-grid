@@ -12,6 +12,8 @@
  */
 package org.epanetgrid.grid;
 
+import java.io.File;
+
 import junit.framework.TestCase;
 
 /**
@@ -20,49 +22,80 @@ import junit.framework.TestCase;
  */
 public class BuilderTest extends TestCase {
 
+	private static final String fs = File.separator;
+	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
-
+	
 	/**
 	 * Test method for {@link org.epanetgrid.grid.GridFacade.Builder#Builder(java.lang.String)}.
 	 */
 	public final void testBuilder() {
-//		try {
-//			new GridFacade.Builder(null);
-//			fail();
-//		} catch (IllegalArgumentException e) { }
+	
+		try {
+			new GridFacade.Builder(null);
+			fail();
+		} catch (IllegalArgumentException e) { }
 	}
 
 	/**
 	 * Test method for {@link org.epanetgrid.grid.GridFacade.Builder#build()}.
 	 */
 	public final void testBuild() {
-		fail("Not yet implemented"); // TODO
+		
+		try {
+			new GridFacade.Builder(".").addLibrary("foo").setRequirements("requirements").build();
+			fail();
+		} catch (IllegalArgumentException e) { }
+	
+		
+		try {
+			new GridFacade.Builder(".").addLibrary("resources"+fs+"epanetgrid_source"+fs+"log4j-1.2.8.jar")
+			.setRequirements("requirements").addResource(new File("fooResource")).build();
+			fail();
+		} catch (IllegalArgumentException e) { }
+		
+		new GridFacade.Builder(".").addLibrary("resources"+fs+"epanetgrid_source"+fs+"log4j-1.2.8.jar").
+									setRequirements("requirements").
+									addResource(new File("resources"+fs+"epanetgrid_source"+fs+"log4j-1.2.8.jar")).
+									build();
 	}
 
 	/**
 	 * Test method for {@link org.epanetgrid.grid.GridFacade.Builder#addLibrary(java.lang.String)}.
 	 */
 	public final void testAddLibrary() {
-		fail("Not yet implemented"); // TODO
+		
+		try {
+			new GridFacade.Builder("foopath").addLibrary(null);
+			fail();
+		} catch (IllegalArgumentException e) { }
 	}
 
 	/**
 	 * Test method for {@link org.epanetgrid.grid.GridFacade.Builder#addResource(java.io.File)}.
 	 */
 	public final void testAddResource() {
-		fail("Not yet implemented"); // TODO
+
+		try {
+			new GridFacade.Builder("foopath").addResource(null);
+			fail();
+		} catch (IllegalArgumentException e) { }
 	}
 
 	/**
 	 * Test method for {@link org.epanetgrid.grid.GridFacade.Builder#setRequirements(java.lang.String)}.
 	 */
 	public final void testSetRequirements() {
-		fail("Not yet implemented"); // TODO
+		
+		try {
+			new GridFacade.Builder("foopath").setRequirements(null);
+			fail();
+		} catch (IllegalArgumentException e) { }
 	}
 
 }

@@ -14,7 +14,6 @@ import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
-import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
@@ -556,6 +555,27 @@ public class DefaultNetWorkTest extends TestCase {
 		 B3       50       5.19
 		 */
 
+		//testing adds with already added elements
+		try {
+			 network.addJuncao(n1);
+		} catch (IllegalArgumentException e) { }
+		
+		try {
+			 network.addReservoir(m1);
+		} catch (IllegalArgumentException e) { }
+		
+		try {
+			 network.addTanks(R1);
+		} catch (IllegalArgumentException e) { }
+		
+		try {
+			 network.addPipe(p1, n1, R1);
+		} catch (IllegalArgumentException e) { }
+		
+		try {
+			network.addPump(b1, m1, n1);
+		} catch (IllegalArgumentException e) { }
+		
 		return network;
 	}
 
