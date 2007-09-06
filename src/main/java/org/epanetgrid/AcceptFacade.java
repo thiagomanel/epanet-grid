@@ -30,13 +30,8 @@ import org.epanetgrid.relatorios.resultRelatorios.IResultRelatorio;
 import org.jscience.physics.measures.Measure;
 
 /**
- * @author thiagoepdc
- *
- */
-/**
  * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
  * since 25/08/2007
- * 
  */
 public class AcceptFacade {
 
