@@ -44,13 +44,11 @@ public class LinedTextFileDoc{
 		
 		String lineMatched;
 		while ((lineMatched = rd.readLine()) != null) {
-			
 			for (IMatcher matcher : matchers) {
 				if(matcher.match(lineMatched)) {
-					addDocItem(result, matcher, new DefaultDocItem(lineMatched.trim()));
+ 					addDocItem(result, matcher, new DefaultDocItem(lineMatched.trim()));
 				}
 			}
-			
 		}
 		return result;
 	}

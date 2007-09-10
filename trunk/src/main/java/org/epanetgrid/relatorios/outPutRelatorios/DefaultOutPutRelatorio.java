@@ -63,8 +63,6 @@ public class DefaultOutPutRelatorio implements IOutPutRelatorio{
 		//fazer o parse uma vez apenas
 		try {
 			this.docItems = this.linedText.getDocItems();
-			System.out
-					.println("DefaultOutPutRelatorio.DefaultOutPutRelatorio() - docItems "+docItems.size());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

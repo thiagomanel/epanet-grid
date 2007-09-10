@@ -127,41 +127,6 @@ public class RegionMatcher implements IMatcher {
 	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
 	 * since 27/08/2007
 	 */
-	public static class Builder {
-		
-		private List<RecognizeSequence> sequence = new LinkedList<RecognizeSequence>();
-		private RegionMatcher stub = new RegionMatcher();
-		private String escape;
-		
-		/**
-		 * @param pattern
-		 * @param occurrences
-		 * @return
-		 */
-		public Builder addRecognizeSequence(String pattern, int occurrences){
-			sequence.add(stub.new RecognizeSequence(pattern, occurrences));
-			return this;
-		}
-		
-		/**
-		 * @param pattern
-		 * @return
-		 */
-		public Builder setEscapeSequence(String pattern){
-			this.escape = pattern;
-			return this;
-		}
-		
-		public RegionMatcher build(){
-			return new RegionMatcher(sequence, escape);
-		}
-		
-	}
-	
-	/**
-	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
-	 * since 27/08/2007
-	 */
 	private class Recognizer {
 
 		private final List<RecognizeSequence> sequence;
@@ -169,64 +134,69 @@ public class RegionMatcher implements IMatcher {
 		private boolean escapePatternDetected;
 		private boolean recogStart;
 		private RecognizeSequence recogSequence;
+		private int recogPoint;
 		
 		/**
 		 * @param sequence
 		 */
 		public Recognizer(List<RecognizeSequence> sequence) {
 			this.sequence = sequence;
-			initializeRecog();
+			resetState();
 		}
 		
-		private void initializeRecog() {
+		private boolean finishOfRecogSequence() {
+			return recogPoint >= (sequence.size() - 1);
+		}
+		
+		private void resetState() {
+
+			recogPoint = 0;
+			recogStart = false;
+			escapePatternDetected = false;
 			
-			if(sequence.isEmpty()) {
-				recogStart = true;
-			}else {
-				recogSequence = sequence.remove(0);
-				patternOccurrence = recogSequence.occurrences;
-			}
+			recogSequence = sequence.get(recogPoint);
+			patternOccurrence = recogSequence.occurrences;
 		}
 
+		/**
+		 * @param linedSource
+		 * @return
+		 */
 		public boolean recognize(String linedSource) {
 			
-			if(escapePatternDetected) {
+			if(checkScapePattern(linedSource)) {
 				return false;
 			}
 			
-			if(recogStart){
-				return true; 
-			}
-			
-			checkEscapePattern(linedSource);
-			checkRecogPattern(linedSource);
-			
-			return false;
+			return checkRecogPattern(linedSource);
 		}
 
-		private void checkRecogPattern(String linedSource) {
+		private boolean checkRecogPattern(String linedSource) {
 			
-			if(escapePatternDetected) return;
+			if(recogStart) return true;
 			
 			if(recognizeRecogSentence(linedSource)) {//compil
-				--patternOccurrence;
+				--patternOccurrence;//ugly
 			}
 			
-			if(patternOccurrence == 0){
-				if(!sequence.isEmpty()){
+			if(patternOccurrence == 0){//ugly
+				if(!finishOfRecogSequence()){
 					fowardPattern();
 				}else {
-					recogStart = true;
-					escapePatternDetected = false;
+					recogStart = true;//ugly
+					escapePatternDetected = false;//ugly
 				}
+				
 			}
+			
+			return false;
 		}
 
 		/**
 		 * 
 		 */
 		private void fowardPattern() {
-			recogSequence = sequence.remove(0);
+			recogSequence = sequence.get(++recogPoint);
 			patternOccurrence = recogSequence.occurrences;
 		}
 
@@ -238,18 +208,21 @@ public class RegionMatcher implements IMatcher {
 			
 			if (recogStart) return true;
 			
-			return (this.recogSequence != null) ? linedSource.contains(this.recogSequence.pattern) 
+			return (recogSequence != null) ? linedSource.contains(recogSequence.pattern) 
 					: true; 
 		}
 
 		/**
 		 * @param linedSource
 		 */
-		private void checkEscapePattern(String linedSource) {
+		private boolean checkScapePattern(String linedSource) {//compil regex
+			
 			if(linedSource.contains(escapePattern)) {
-				escapePatternDetected = true;
-				recogStart = false;
+				resetState();
+				return true;
 			}
+			
+			return false;
 		}
 	}
 	
@@ -257,7 +230,7 @@ public class RegionMatcher implements IMatcher {
 	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
 	 * since 27/08/2007
 	 */
-	private class RecognizeSequence {
+	private static class RecognizeSequence {
 		
 		public final String pattern;
 		public int occurrences;
@@ -266,9 +239,13 @@ public class RegionMatcher implements IMatcher {
 		 * @param pattern
 		 * @param occurrences
 		 */
-		public RecognizeSequence(String pattern, int occurrences) {
+		private RecognizeSequence(String pattern, int occurrences) {
 			this.pattern = pattern;
 			this.occurrences = occurrences;
+		}
+		
+		public static RecognizeSequence createRecognizeSequence(String pattern, int occurrences) {
+			return new RecognizeSequence(pattern, occurrences);
 		}
 
 		/* (non-Javadoc)
@@ -320,6 +297,39 @@ public class RegionMatcher implements IMatcher {
 		@Override
 		public String toString() {
 			return getClass()+" pattern: "+pattern+" ocurrences: "+occurrences;
+		}
+	}
+	
+	/**
+	 * @author Thiago Emmanuel Pereira da Cunha Silva, thiago.manel@gmail.com
+	 * since 27/08/2007
+	 */
+	public static class Builder {
+		
+		private List<RecognizeSequence> sequence = new LinkedList<RecognizeSequence>();
+		private String escape;
+		
+		/**
+		 * @param pattern
+		 * @param occurrences
+		 * @return
+		 */
+		public Builder addRecognizeSequence(String pattern, int occurrences){
+			sequence.add(RecognizeSequence.createRecognizeSequence(pattern, occurrences));
+			return this;
+		}
+		
+		/**
+		 * @param pattern
+		 * @return
+		 */
+		public Builder setEscapeSequence(String pattern){
+			this.escape = pattern;
+			return this;
+		}
+		
+		public RegionMatcher build(){
+			return new RegionMatcher(sequence, escape);
 		}
 		
 	}
