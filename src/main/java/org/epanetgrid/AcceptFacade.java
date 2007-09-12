@@ -160,7 +160,7 @@ public class AcceptFacade {
 	}
 	
 	public double getPressaoMaxima(){
-		return outputRelatorio.pressaoMinimaNode().getPressao().getEstimatedValue();
+		return outputRelatorio.pressaoMaximaNode().getPressao().getEstimatedValue();
 	}
 	
 	public String getElementVelocidadeMinima(){
@@ -172,11 +172,11 @@ public class AcceptFacade {
 	}
 	
 	public double getVelocidadeMaxima(){
-		return outputRelatorio.velocidadeMinimaNode().getVelocidade().getEstimatedValue();
+		return outputRelatorio.velocidadeMaximaNode().getVelocidade().getEstimatedValue();
 	}
 	
 	public double getVelocidadeMinima(){
-		return outputRelatorio.velocidadeMaximaNode().getVelocidade().getEstimatedValue();
+		return outputRelatorio.velocidadeMinimaNode().getVelocidade().getEstimatedValue();
 	}
 	
 	public int  getTotalAlarmes(){
