@@ -15,18 +15,18 @@ expect 2007 getAnoSimulacao
 
 expect 11003.16 getCustoTotal
 
-expect -1 getNumAlarmesPressaoNegativa
+expect 0 getNumAlarmesPressaoNegativa
 
 expect M1 getNodePressaoMinima
-expect 0.0 getPressaoMinima
+expectwithin .01 0.0 getPressaoMinima
 
 expect N14 getNodePressaoMaxima
-expect 148.04 getPressaoMaxima
+expectwithin .01  251.41 getPressaoMaxima
 
 #pode ter mais de um ?
 expect B1 getElementVelocidadeMinima
-expect 0.0 getVelocidadeMinima
+expectwithin .01 0.0 getVelocidadeMinima
 
-expect T9 getElementVelocidadeMaxima
-expect 1.48 getVelocidadeMaxima
+expect T15 getElementVelocidadeMaxima
+expectwithin .01 2.48 getVelocidadeMaxima
 
