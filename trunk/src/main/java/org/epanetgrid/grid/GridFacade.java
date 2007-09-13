@@ -13,6 +13,7 @@ import java.util.Map;
 import org.gridfaith.GridFaithPool;
 import org.gridfaith.interfaces.GridRunnable;
 import org.gridfaith.interfaces.GridService;
+import org.gridfaith.services.statistics.GridStatistics;
 
 /**
  * Grid execution facade for EPANET simulations.
@@ -67,7 +68,7 @@ public class GridFacade {
 	 * Fires the grid execution.
 	 * @return
 	 */
-	public List execute(){
+	public GridStatistics execute(){
 		addGridExecutor(this.gridService, this.netWorkFiles);
 		return gridService.executeAll();
 	}
