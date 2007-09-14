@@ -38,14 +38,14 @@ public class ExportXLSTest extends TestCase {
 		EasyMock.expect(report.getNumAlarmes(Tipo.PRESSAO_NEGATIVA_NO)).andReturn(2);
 		
 		EasyMock.expect(report.pressaoMaximaNode()).andReturn(
-				new PressaoNode(Measure.valueOf(1, Pressure.SI_UNIT),"nodeX"));
+				new PressaoNode(Measure.valueOf(2, Pressure.SI_UNIT),"nodeX"));
 		EasyMock.expect(report.pressaoMinimaNode()).andReturn(
-				new PressaoNode(Measure.valueOf(2, Pressure.SI_UNIT),"nodeX1"));
+				new PressaoNode(Measure.valueOf(1, Pressure.SI_UNIT),"nodeX1"));
 		
 		EasyMock.expect(report.velocidadeMaximaNode()).andReturn(
-				new VelocidadeNode(Measure.valueOf(5, Velocity.SI_UNIT),"nodeX2"));
-		EasyMock.expect(report.velocidadeMinimaNode()).andReturn(
 				new VelocidadeNode(Measure.valueOf(6.5, Velocity.SI_UNIT),"nodeX2"));
+		EasyMock.expect(report.velocidadeMinimaNode()).andReturn(
+				new VelocidadeNode(Measure.valueOf(5, Velocity.SI_UNIT),"nodeX3"));
 		
 		EasyMock.replay(report);
 		
@@ -57,6 +57,9 @@ public class ExportXLSTest extends TestCase {
 		EasyMock.replay(resultReport);
 		
 		HSSFWorkbook book = new ExportXLS().createSheet(report, resultReport);
+		
+		
+		/** Pressure Sheet */
 		
 		HSSFSheet sheet1 = book.getSheetAt(0);
 		assertEquals(2, sheet1.getPhysicalNumberOfRows());
@@ -72,21 +75,50 @@ public class ExportXLSTest extends TestCase {
 		assertEquals(2, pressureSheet.getPhysicalNumberOfRows());
 		
 		Iterator rowIterator2 = pressureSheet.rowIterator();
+		HSSFRow pressureRow1 = (HSSFRow) rowIterator2.next(); 
 		
-		while( rowIterator2.hasNext() ) {
-			HSSFRow row = (HSSFRow) rowIterator2.next();
-			assertEquals(5, row.getPhysicalNumberOfCells());
-		}
+		assertEquals(5, pressureRow1.getPhysicalNumberOfCells());
+		//Malha	Pressão mínima [m]	Elemento	Pressão máxima [m]	Elemento
+		assertEquals("Malha", pressureRow1.getCell((short) 0).getStringCellValue());
+		assertEquals("Pressão mínima [m]", pressureRow1.getCell((short) 1).getStringCellValue());
+		assertEquals("Elemento", pressureRow1.getCell((short) 2).getStringCellValue());
+		assertEquals("Pressão máxima [m]", pressureRow1.getCell((short) 3).getStringCellValue());
+		assertEquals("Elemento", pressureRow1.getCell((short) 4).getStringCellValue());
+		
+		HSSFRow pressureRow2 = (HSSFRow) rowIterator2.next();
+		assertEquals(5, pressureRow2.getPhysicalNumberOfCells());
+		
+		assertEquals("Malha 1", pressureRow2.getCell((short) 0).getStringCellValue());
+		assertEquals("2", pressureRow2.getCell((short) 1).getStringCellValue());
+		assertEquals("nodeX", pressureRow2.getCell((short) 2).getStringCellValue());
+		assertEquals("1", pressureRow2.getCell((short) 3).getStringCellValue());
+		assertEquals("nodeX1", pressureRow2.getCell((short) 4).getStringCellValue());
+		
+		/** Velocity sheet */
 		
 		HSSFSheet velocitySheet = book.getSheetAt(1);
 		assertEquals(2, velocitySheet.getPhysicalNumberOfRows());
 		
 		rowIterator2 = velocitySheet.rowIterator();
 		
-		while( rowIterator2.hasNext() ) {
-			HSSFRow row = (HSSFRow) rowIterator2.next();
-			assertEquals(5, row.getPhysicalNumberOfCells());
-		}
+		HSSFRow velocityRow1 = (HSSFRow) rowIterator2.next();
+		assertEquals(5, velocityRow1.getPhysicalNumberOfCells());
+		
+		//malha velo_min. elem. velo_max. elem.
+		assertEquals("Malha", velocityRow1.getCell((short) 0).getStringCellValue());
+		assertEquals("Velocidade mínima [m/s]", velocityRow1.getCell((short) 1).getStringCellValue());
+		assertEquals("Elemento", velocityRow1.getCell((short) 2).getStringCellValue());
+		assertEquals("Velocidade máxima [m/s]", velocityRow1.getCell((short) 3).getStringCellValue());
+		assertEquals("Elemento", velocityRow1.getCell((short) 4).getStringCellValue());
+		
+		HSSFRow velocityRow2 = (HSSFRow) rowIterator2.next();
+		assertEquals(5, velocityRow2.getPhysicalNumberOfCells());
+		
+		assertEquals("Malha 1", velocityRow2.getCell((short) 0).getStringCellValue());
+		assertEquals("5", velocityRow2.getCell((short) 1).getStringCellValue());
+		assertEquals("nodeX3", velocityRow2.getCell((short) 2).getStringCellValue());
+		assertEquals("6.5", velocityRow2.getCell((short) 3).getStringCellValue());
+		assertEquals("nodeX2", velocityRow2.getCell((short) 4).getStringCellValue());
 	}
 
 }
