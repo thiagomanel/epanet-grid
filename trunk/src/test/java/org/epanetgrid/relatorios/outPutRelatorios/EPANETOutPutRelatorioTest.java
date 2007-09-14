@@ -46,7 +46,7 @@ public class EPANETOutPutRelatorioTest extends TestCase {
 		assertEquals(1.48, report.velocidadeMaximaNode().getVelocidade().getEstimatedValue());
 		assertEquals(0.0, report.velocidadeMinimaNode().getVelocidade().getEstimatedValue());
 		assertEquals("B1", report.velocidadeMinimaNode().getNodeName());
-		assertEquals("T9", report.velocidadeMaximaNode().getNodeName());
+		assertEquals("T10", report.velocidadeMaximaNode().getNodeName());
 	}
 	
 	public final void testFileNotFoundTest() {
@@ -57,29 +57,4 @@ public class EPANETOutPutRelatorioTest extends TestCase {
 			fail();
 		} catch (FileNotFoundException e) {	}
 	}
-	
-	public final void testPrint() throws FileNotFoundException {
-		
-		EPANETOutPutRelatorio outReport = new EPANETOutPutRelatorio();
-		
-		IOutPutRelatorio report = outReport.generateOutPutRelatorio(new File("resources"+fs+"accept"+fs+"Relatorio-1.txt"));
-		
-		System.out.println(report.getNumTotalAlarmes());
-		System.out.println(report.getNumAlarmes(Tipo.PRESSAO_NEGATIVA_NO));
-
-		//148,95 n14
-		//0 m1
-		System.out.println(report.pressaoMaximaNode().getNodeName());
-		System.out.println(report.pressaoMaximaNode().getPressao());
-		System.out.println(report.pressaoMinimaNode().getNodeName());
-		System.out.println(report.pressaoMinimaNode().getPressao());
-		System.out.println("veloc");
-		//t9 t10 1.48
-		//b1 b2 b3 0 
-		System.out.println(report.velocidadeMaximaNode().getNodeName());
-		System.out.println(report.velocidadeMaximaNode().getVelocidade());
-		System.out.println(report.velocidadeMinimaNode().getNodeName());
-		System.out.println(report.velocidadeMinimaNode().getVelocidade());
-	}
-
 }
