@@ -26,6 +26,7 @@ import org.epanetgrid.model.link.IPump;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
+import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
 import org.jscience.physics.measures.Measure;
 
@@ -58,6 +59,15 @@ class EpaFileReader {
 		return network;
 	}
 
+	public static void main(String args[]) throws IOException {
+		
+		for (Object junction : new EpaFileReader().read(args[0]).getJunctions()) {
+			
+			System.out.println("junc "+((IJunction)junction).label()+" elevation "+((IJunction)junction).getElevation()+" demand "+((IJunction)junction).getBaseDemandFlow());
+		};
+		
+	}
+	
 	private interface Parser {
 		
 		public static final String COMMENTS_ID = ";";
@@ -188,7 +198,7 @@ class EpaFileReader {
 			}
 			
 			if(demand != null) {
-				junctionBuilder.baseDemandFlow(Measure.valueOf(Double.valueOf(elevation), VolumetricFlowRate.SI_UNIT));
+				junctionBuilder.baseDemandFlow(Measure.valueOf(Double.valueOf(demand), VolumetricFlowRate.SI_UNIT));
 			}
 			
 			if(pattern != null) {
