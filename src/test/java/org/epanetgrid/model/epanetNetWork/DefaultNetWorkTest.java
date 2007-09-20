@@ -1,5 +1,6 @@
 package org.epanetgrid.model.epanetNetWork;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.quantities.Dimensionless;
@@ -238,6 +239,43 @@ public class DefaultNetWorkTest extends TestCase {
 		
 		assertEquals(copiedNetwork.getElemento("N13"), copiedNetwork.getAnterior(b3));
 		assertEquals(copiedNetwork.getElemento("N14"), copiedNetwork.getProximo(b3));
+		
+		/*
+		[CURVES]
+		 ;ID     Flow     Head
+		 ;Curvas das bombas
+		 ;-------------------------
+		 B1       0        102.6 ok
+		 B1       10       102.06 ok
+		 B1       20       98.41 ok
+		 B1       30       91.67 ok
+		 B1       40       81.83 ok
+		 B1       50       68.69 ok
+		 B1       60       52.84 ok
+		 ;---------------------------
+		 B2       0        102.42 ok
+		 B2       10       100.28 ok
+		 B2       20       95.90 ok
+		 B2       30       89.28 ok
+		 B2       40       80.42 ok
+		 B2       50       69.32 ok
+		 B2       60       55.97 ok
+		 ;---------------------------
+		 B3       0        124.71
+		 B3       10       122.05
+		 B3       20       108.76
+		 B3       30       80.88
+		 B3       40       50.33
+		 B3       50       5.19
+		 */
+		
+		
+		List<String> curves = copiedNetwork.getCurves();
+		List<String> originalCurves = baseNetWork.getCurves();
+		
+		for (String curve : originalCurves) {
+			assertTrue(curves.contains(curve));
+		}
 	}
 	
 	/**
@@ -531,21 +569,21 @@ public class DefaultNetWorkTest extends TestCase {
 		 ;ID     Flow     Head
 		 ;Curvas das bombas
 		 ;-------------------------
-		 B1       0        102.6
-		 B1       10       102.06
-		 B1       20       98.41
-		 B1       30       91.67
-		 B1       40       81.83
-		 B1       50       68.69
-		 B1       60       52.84
+		 B1       0        102.6 ok
+		 B1       10       102.06 ok
+		 B1       20       98.41 ok
+		 B1       30       91.67 ok
+		 B1       40       81.83 ok
+		 B1       50       68.69 ok
+		 B1       60       52.84 ok
 		 ;---------------------------
-		 B2       0        102.42
-		 B2       10       100.28
-		 B2       20       95.90
-		 B2       30       89.28
-		 B2       40       80.42
-		 B2       50       69.32
-		 B2       60       55.97
+		 B2       0        102.42 ok
+		 B2       10       100.28 ok
+		 B2       20       95.90 ok
+		 B2       30       89.28 ok
+		 B2       40       80.42 ok
+		 B2       50       69.32 ok
+		 B2       60       55.97 ok
 		 ;---------------------------
 		 B3       0        124.71
 		 B3       10       122.05
@@ -555,6 +593,29 @@ public class DefaultNetWorkTest extends TestCase {
 		 B3       50       5.19
 		 */
 
+		network.addCurve("B1       0        102.6");
+		network.addCurve("B1       10       102.06");
+		network.addCurve("B1       20       98.41");
+		network.addCurve("B1       30       91.67");
+		network.addCurve("B1       40       81.83");
+		network.addCurve("B1       50       68.69");
+		network.addCurve("B1       60       52.84");
+		
+		network.addCurve("B2       0        102.42");
+		network.addCurve("B2       10       100.28");
+		network.addCurve("B2       20       95.90");
+		network.addCurve("B2       30       89.28");
+		network.addCurve("B2       40       80.42");
+		network.addCurve("B2       50       69.32");
+		network.addCurve("B2       60       55.97");
+		
+		network.addCurve("B3       0        124.71");
+		network.addCurve("B3       10       122.05");
+		network.addCurve("B3       20       108.76");
+		network.addCurve("B3       30       80.88");
+		network.addCurve("B3       40       50.33");
+		network.addCurve("B3       50       5.19");
+		
 		//testing adds with already added elements
 		try {
 			 network.addJuncao(n1);

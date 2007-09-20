@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.Map.Entry;
 
 import org.epanetgrid.model.ILink;
 import org.epanetgrid.model.INode;
@@ -66,9 +67,82 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork = builder.baseNetWork;
 		if(baseNetWork != null) {
 			copyComponents(baseNetWork);
+			copyCurves(baseNetWork);
+			copyPatterns(baseNetWork);
+			copyEnergy(baseNetWork);
+			copyOptions(baseNetWork);
+			copyReports(baseNetWork);
+			copyTime(baseNetWork);
 		}
 	}
 		
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyTime(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		
+		for (String time : baseNetWork.getTimes()) {
+			addTime(time);
+		}
+	}
+
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyReports(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+
+		IReport report = baseNetWork.getReports();
+		for (Entry<String, String> reportValue : report.getValues().entrySet()) {
+			addReport(reportValue.getKey(), reportValue.getValue());
+		}
+	}
+
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyPatterns(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		
+		for (String pattern : baseNetWork.getPattern()) {
+			addPattern(pattern);
+		}
+	}
+	
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyEnergy(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		
+		for (String baseEnergy : baseNetWork.getEnergy()) {
+			addEnergy(baseEnergy);
+		}
+	}
+	
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyOptions(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		
+		for (String option : baseNetWork.getOptions()) {
+			addOption(option);
+		}
+	}
+
+	/**
+	 * @param baseNetWork
+	 */
+	private void copyCurves(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		
+		for (String curve : baseNetWork.getCurves()) {
+			addCurve(curve);
+		}
+	}
+
 	/**
 	 * @param baseNetWork
 	 * @param work
