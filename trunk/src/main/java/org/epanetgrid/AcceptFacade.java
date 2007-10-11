@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.epanetgrid.data.DataFacade;
 import org.epanetgrid.model.NetworkComponent;
+import org.epanetgrid.model.epanetNetWork.DefaultNetWork;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
@@ -219,4 +220,9 @@ public class AcceptFacade {
 		return outputRelatorio.getNumAlarmes(Tipo.PRESSAO_NEGATIVA_NO);
 	}
 	
+	public static void main(String[] args) throws IOException {
+		
+		new DataFacade().saveNetWork(new DefaultNetWork.Builder().copy(
+				new DataFacade().createNetWorkFromFile(args[0])).build(), args[1]);
+	}
 }
