@@ -92,6 +92,7 @@ class EpaFileWriter {
 		public void write(PrintWriter writer) {
 			printHeader(writer);
 			printCore(writer);
+			writer.append("\n");
 		}
 
 		protected abstract void printCore(PrintWriter writer);
