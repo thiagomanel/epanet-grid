@@ -12,7 +12,6 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.easymock.classextension.EasyMock;
-import org.epanetgrid.relatorios.outPutRelatorios.DefaultOutPutRelatorio;
 
 /**
  * @author Thiago Emmanuel Pereira, thiago.manel@gmail.com
