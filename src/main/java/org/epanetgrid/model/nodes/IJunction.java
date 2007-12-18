@@ -4,6 +4,7 @@
 package org.epanetgrid.model.nodes;
 
 import javax.quantities.Length;
+import javax.quantities.Pressure;
 import javax.quantities.VolumetricFlowRate;
 
 import org.epanetgrid.model.INode;
@@ -30,4 +31,15 @@ public interface IJunction<T extends IJunction> extends INode<T> {
 	 * @return
 	 */
 	public String getDemandPatternID();
+	
+	/**
+	 * @return
+	 */
+	public Measure<Pressure> getMaxPressure();
+	
+	/**
+	 * @return
+	 */
+	public Measure<Pressure> getMinPressure();
+
 }

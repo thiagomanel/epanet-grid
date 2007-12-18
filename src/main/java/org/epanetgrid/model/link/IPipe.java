@@ -5,6 +5,7 @@ package org.epanetgrid.model.link;
 
 import javax.quantities.Dimensionless;
 import javax.quantities.Length;
+import javax.quantities.Velocity;
 
 import org.epanetgrid.model.ILink;
 import org.jscience.physics.measures.Measure;
@@ -27,4 +28,7 @@ public interface IPipe<T extends IPipe> extends ILink<T> {
 	
 	public Status getStatus();
 	
+	public Measure<Velocity> getMaxVelocity();
+	
+	public Measure<Velocity> getMinVelocity();
 }
