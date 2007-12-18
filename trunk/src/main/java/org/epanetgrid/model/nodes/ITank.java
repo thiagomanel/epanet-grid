@@ -23,6 +23,10 @@ public interface ITank<T extends ITank> extends INode<T> {
 	
 	public Measure<Length> getMaximumWaterLevel();
 	
+	public Measure<Length> getMinimumSecurityLevel();
+	
+	public Measure<Length> getMaximumSecurityLevel();
+	
 	public Measure<Length> getNominalDiameter();
 	
 	public Measure<Volume> getMinimumVolume();

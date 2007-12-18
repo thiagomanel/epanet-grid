@@ -18,8 +18,10 @@ public class DefaultTank implements ITank<DefaultTank> {
 	private final Measure<Length> elevation;
 	private final Measure<Length> initialWaterLevel;
 	private final Measure<Length> maximumWaterLevel;
-	private final Measure<Volume> minimumVolume;
 	private final Measure<Length> minimumWaterLevel;
+	private final Measure<Length> maximumSecurityLevel;
+	private final Measure<Length> minimumSecurityLevel;
+	private final Measure<Volume> minimumVolume;
 	private final Measure<Length> nominalDiameter;
 	private final String volumeCurveID;
 	private final String label;
@@ -46,17 +48,31 @@ public class DefaultTank implements ITank<DefaultTank> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.epanetgrid.model.nodes.ITank#getMinimuVolume()
-	 */
-	public Measure<Volume> getMinimumVolume() {
-		return this.minimumVolume;
-	}
-
-	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.nodes.ITank#getMinimumWaterLevel()
 	 */
 	public Measure<Length> getMinimumWaterLevel() {
 		return this.minimumWaterLevel;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.nodes.ITank#getMaximumSecurityLevel()
+	 */
+	public Measure<Length> getMaximumSecurityLevel() {
+		return this.maximumSecurityLevel;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.nodes.ITank#getMinimumSecurityLevel()
+	 */
+	public Measure<Length> getMinimumSecurityLevel() {
+		return this.minimumSecurityLevel;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.nodes.ITank#getMinimuVolume()
+	 */
+	public Measure<Volume> getMinimumVolume() {
+		return this.minimumVolume;
 	}
 
 	/* (non-Javadoc)
@@ -86,6 +102,8 @@ public class DefaultTank implements ITank<DefaultTank> {
 		this.label = builder.label;
 		this.maximumWaterLevel = builder.maximumWaterLevel;
 		this.minimumWaterLevel = builder.minimumWaterLevel;
+		this.maximumSecurityLevel = builder.maximumSecurityLevel;
+		this.minimumSecurityLevel = builder.minimumSecurityLevel;
 		this.minimumVolume = builder.minimumVolume;
 		this.nominalDiameter = builder.nominalDiameter;
 		this.volumeCurveID = builder.volumeCurveID;
@@ -98,6 +116,8 @@ public class DefaultTank implements ITank<DefaultTank> {
 		private Measure<Volume> minimumVolume;
 		private Measure<Length> minimumWaterLevel;
 		private Measure<Length> maximumWaterLevel;
+		private Measure<Length> minimumSecurityLevel;
+		private Measure<Length> maximumSecurityLevel;
 		private String label;
 		private Measure<Length> initialWaterLevel;
 		private Measure<Length> elevation;
@@ -114,6 +134,8 @@ public class DefaultTank implements ITank<DefaultTank> {
 			minimumVolume(tank.getMinimumVolume());
 			minimumWaterLevel(tank.getMinimumWaterLevel());
 			maximumWaterLevel(tank.getMaximumWaterLevel());
+			minimumSecurityLevel(tank.getMinimumSecurityLevel());
+			maximumSecurityLevel(tank.getMaximumSecurityLevel());
 			initialWaterLevel(tank.getInitialWaterLevel());
 			elevation(tank.getElevation());
 			return this;
@@ -141,6 +163,16 @@ public class DefaultTank implements ITank<DefaultTank> {
 		
 		public Builder maximumWaterLevel(Measure<Length> maximumWaterLevel) {
 			this.maximumWaterLevel = maximumWaterLevel;
+			return this;
+		}
+
+		public Builder minimumSecurityLevel(Measure<Length> minimumSecurityLevel) {
+			this.minimumSecurityLevel = minimumSecurityLevel;
+			return this;
+		}
+
+		public Builder maximumSecurityLevel(Measure<Length> maximumSecurityLevel) {
+			this.maximumSecurityLevel = maximumSecurityLevel;
 			return this;
 		}
 		
@@ -172,6 +204,8 @@ public class DefaultTank implements ITank<DefaultTank> {
 		result = PRIME * result + ((maximumWaterLevel == null) ? 0 : maximumWaterLevel.hashCode());
 		result = PRIME * result + ((minimumVolume == null) ? 0 : minimumVolume.hashCode());
 		result = PRIME * result + ((minimumWaterLevel == null) ? 0 : minimumWaterLevel.hashCode());
+		result = PRIME * result + ((minimumSecurityLevel == null) ? 0 : minimumSecurityLevel.hashCode());
+		result = PRIME * result + ((maximumSecurityLevel == null) ? 0 : maximumSecurityLevel.hashCode());
 		result = PRIME * result + ((nominalDiameter == null) ? 0 : nominalDiameter.hashCode());
 		result = PRIME * result + ((volumeCurveID == null) ? 0 : volumeCurveID.hashCode());
 		return result;
@@ -242,6 +276,22 @@ public class DefaultTank implements ITank<DefaultTank> {
 				return false;
 			}
 		} else if (!minimumWaterLevel.equals(other.minimumWaterLevel)) {
+			return false;
+		}
+		
+		if (minimumSecurityLevel == null) {
+			if (other.minimumSecurityLevel != null) {
+				return false;
+			}
+		} else if (!minimumSecurityLevel.equals(other.minimumSecurityLevel)) {
+			return false;
+		}
+		
+		if (maximumSecurityLevel == null) {
+			if (other.maximumSecurityLevel != null) {
+				return false;
+			}
+		} else if (!maximumSecurityLevel.equals(other.maximumSecurityLevel)) {
 			return false;
 		}
 		

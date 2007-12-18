@@ -346,11 +346,11 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		if(isNodeComponent(oldComponentLabel)){
 			
 			INode oldComponent = (INode)getElemento(oldComponentLabel);
-			Set<ILink<?>> elosMontante = getAnteriores(oldComponent);
-			elosMontante.remove(oldComponent);
+			Set<ILink<?>> elosMontante = new HashSet<ILink<?>>(getAnteriores(oldComponent));
+//			elosMontante.remove(oldComponent);
 			
-			Set<ILink<?>> elosJusante = getProximos(oldComponent);
-			elosJusante.remove(oldComponent);
+			Set<ILink<?>> elosJusante = new HashSet<ILink<?>>(getProximos(oldComponent));
+//			elosJusante.remove(oldComponent);
 			
 			//ugly!!
 			if(getTanks().contains(oldComponent)){
@@ -367,11 +367,15 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			for (ILink<?> link : elosJusante) {
 				nosAMontante.remove(link);
 				nosAMontante.put(link, (INode<?>) newComponent);
+				elosAJusante.get((INode<?>) newComponent).add(link);
+				component.put(link.label(), link);
 			}
 			
 			for (ILink<?> link : elosMontante) {
 				nosAJusante.remove(link);
 				nosAJusante.put(link, (INode<?>) newComponent);
+				elosAMontante.get((INode<?>) newComponent).add(link);
+				component.put(link.label(), link);
 			}
 			
 		}else if(isLinkComponent(oldComponentLabel)){

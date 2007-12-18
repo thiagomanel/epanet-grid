@@ -40,7 +40,7 @@ class EpaFileReader {
 	 * @return
 	 * @throws IOException 
 	 */
-	public NetWork read(String filePath) throws IOException{
+	public NetWork read(String filePath) throws IOException {
 		
 		File inpFile = new File(filePath);
 		BufferedReader reader = new BufferedReader(new FileReader(inpFile));

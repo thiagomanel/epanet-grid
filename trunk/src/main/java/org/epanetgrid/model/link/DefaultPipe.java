@@ -5,6 +5,7 @@ package org.epanetgrid.model.link;
 
 import javax.quantities.Dimensionless;
 import javax.quantities.Length;
+import javax.quantities.Velocity;
 
 import org.epanetgrid.model.INode;
 import org.epanetgrid.model.epanetNetWork.NetWork;
@@ -18,6 +19,8 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 
 	private final Measure<Length> length;
 	private final Measure<Length> diameter;
+	private final Measure<Velocity> maxVelocity;
+	private final Measure<Velocity> minVelocity;
 	private final Measure<Dimensionless> roughnessCoefficient;
 	private final Measure<Dimensionless> lossCoefficient;
 	private final NetWork network;
@@ -49,6 +52,20 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	 */
 	public Measure<Dimensionless> getLossCoefficient() {
 		return this.lossCoefficient;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.link.IPipe#getMaxVelocity()
+	 */
+	public Measure<Velocity> getMaxVelocity() {
+		return this.maxVelocity;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.link.IPipe#getMinVelocity()
+	 */
+	public Measure<Velocity> getMinVelocity() {
+		return this.minVelocity;
 	}
 
 	/* (non-Javadoc)
@@ -87,12 +104,16 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		this.network = builder.network;
 		this.label = builder.label;
 		this.length = builder.length;
+		this.maxVelocity = builder.maxVelocity;
+		this.minVelocity = builder.minVelocity;
 	}
 	
 	public static class Builder {
 		
 		protected Measure<Length> length;
 		protected Measure<Length> diameter;
+		protected Measure<Velocity> maxVelocity;
+		protected Measure<Velocity> minVelocity;
 		protected Measure<Dimensionless> roughnessCoefficient;
 		protected Measure<Dimensionless> lossCoefficient;
 		protected NetWork network;
@@ -112,6 +133,18 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 			length(pipe.getLength());
 			lossCoefficient(pipe.getLossCoefficient());
 			roughnessCoefficient(pipe.getRoughnessCoefficient());
+			maxVelocity(pipe.getMaxVelocity());
+			minVelocity(pipe.getMinVelocity());
+			return this;
+		}
+
+		public Builder minVelocity(Measure<Velocity> minVelocity) {
+			this.minVelocity = minVelocity;
+			return this;
+		}
+
+		public Builder maxVelocity(Measure<Velocity> maxVelocity) {
+			this.maxVelocity = maxVelocity;
 			return this;
 		}
 
@@ -154,6 +187,8 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		result = PRIME * result + ((lossCoefficient == null) ? 0 : lossCoefficient.hashCode());
 		result = PRIME * result + ((network == null) ? 0 : network.hashCode());
 		result = PRIME * result + ((roughnessCoefficient == null) ? 0 : roughnessCoefficient.hashCode());
+		result = PRIME * result + ((maxVelocity == null) ? 0 : maxVelocity.hashCode());
+		result = PRIME * result + ((minVelocity == null) ? 0 : minVelocity.hashCode());
 		return result;
 	}
 
@@ -216,6 +251,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		} else if (!network.equals(other.network)) {
 			return false;
 		}
+
 		if (roughnessCoefficient == null) {
 			if (other.roughnessCoefficient != null) {
 				return false;
@@ -223,7 +259,23 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		} else if (!roughnessCoefficient.equals(other.roughnessCoefficient)) {
 			return false;
 		}
-		
+
+		if (maxVelocity == null) {
+			if (other.maxVelocity != null) {
+				return false;
+			}
+		} else if (!maxVelocity.equals(other.maxVelocity)) {
+			return false;
+		}
+
+		if (minVelocity == null) {
+			if (other.minVelocity != null) {
+				return false;
+			}
+		} else if (!minVelocity.equals(other.minVelocity)) {
+			return false;
+		}
+
 		return true;
 	}
 	
