@@ -72,6 +72,11 @@
 	      	<artifactId>jscience-1.5</artifactId>
       		<version>3.1.5</version>
 		</dependency>
+    	<dependency>
+    		<groupId>joda-time</groupId>
+	      	<artifactId>joda-time</artifactId>
+      		<version>1.2.1</version>
+		</dependency>
 		<dependency>
       		<groupId>easyaccept</groupId>
 	  		<artifactId>easyaccept</artifactId>
