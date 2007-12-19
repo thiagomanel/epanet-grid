@@ -338,7 +338,10 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return nosAJusante.get(link);
 	}
 
-	/* (non-Javadoc)
+	/* 
+	 * TODO: REFATORAR ESTE MÉTODO!
+	 * 
+	 * (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#replaceComponent(java.lang.String, org.epanetgrid.model.NetworkComponent)
 	 */
 	public void replaceComponent(String oldComponentLabel, NetworkComponent newComponent) {
@@ -347,35 +350,32 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			
 			INode oldComponent = (INode)getElemento(oldComponentLabel);
 			Set<ILink<?>> elosMontante = new HashSet<ILink<?>>(getAnteriores(oldComponent));
-//			elosMontante.remove(oldComponent);
-			
 			Set<ILink<?>> elosJusante = new HashSet<ILink<?>>(getProximos(oldComponent));
-//			elosJusante.remove(oldComponent);
+			
+			elosAJusante.remove(oldComponent);
+			elosAMontante.remove(oldComponent);			
+			component.remove(oldComponentLabel);
 			
 			//ugly!!
 			if(getTanks().contains(oldComponent)){
-				removeNode(oldComponent);
+				tanks.remove(oldComponent);
 				addTanks((ITank<?>) newComponent);
 			}else if(getReservoirs().contains(oldComponent)){
-				removeNode(oldComponent);
+				reservoirs.remove(oldComponent);
 				addReservoir((IReservoir) newComponent);
 			}else if(getJunctions().contains(oldComponent)){
-				removeNode(oldComponent);
+				junctions.remove(oldComponent);
 				addJuncao((IJunction) newComponent);
 			}
 			
 			for (ILink<?> link : elosJusante) {
-				nosAMontante.remove(link);
 				nosAMontante.put(link, (INode<?>) newComponent);
 				elosAJusante.get((INode<?>) newComponent).add(link);
-				component.put(link.label(), link);
 			}
 			
 			for (ILink<?> link : elosMontante) {
-				nosAJusante.remove(link);
 				nosAJusante.put(link, (INode<?>) newComponent);
 				elosAMontante.get((INode<?>) newComponent).add(link);
-				component.put(link.label(), link);
 			}
 			
 		}else if(isLinkComponent(oldComponentLabel)){
