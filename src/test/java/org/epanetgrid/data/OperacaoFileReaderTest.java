@@ -88,11 +88,11 @@ public class OperacaoFileReaderTest extends TestCase {
 		assertTrue(r1.getMinimumSecurityLevel().approximates(Measure.valueOf(1, Length.SI_UNIT)));
 		
 		ITank<?> r2 = (ITank<?>) network.getElemento("R2");
-		assertTrue(r2.getMaximumSecurityLevel().approximates(Measure.valueOf(2, Length.SI_UNIT)));
+		assertTrue(r2.getMaximumSecurityLevel().approximates(Measure.valueOf(3, Length.SI_UNIT)));
 		assertTrue(r2.getMinimumSecurityLevel().approximates(Measure.valueOf(1, Length.SI_UNIT)));
 		
 		ITank<?> r3 = (ITank<?>) network.getElemento("R3");
-		assertTrue(r3.getMaximumSecurityLevel().approximates(Measure.valueOf(2, Length.SI_UNIT)));
+		assertTrue(r3.getMaximumSecurityLevel().approximates(Measure.valueOf(3, Length.SI_UNIT)));
 		assertTrue(r3.getMinimumSecurityLevel().approximates(Measure.valueOf(1, Length.SI_UNIT)));
 	}
 
