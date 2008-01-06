@@ -63,7 +63,65 @@ public class DefaultJuntion implements IJunction<DefaultJuntion> {
 	public String label() {
 		return this.label;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if(obj instanceof DefaultJuntion){
+			DefaultJuntion other = (DefaultJuntion) obj;
+			if (this.elevation == null) {
+				if(other.elevation != null){
+					return false;
+				}
+			} else if(!this.elevation.equals(other.elevation)) {
+				return false;
+			}
+			if (this.maxPressure == null) {
+				if(other.maxPressure != null){
+					return false;
+				}
+			} else if(!this.maxPressure.equals(other.maxPressure)) {
+				return false;
+			}
+			if (this.minPressure == null) {
+				if(other.minPressure != null){
+					return false;
+				}
+			} else if(!this.minPressure.equals(other.minPressure)) {
+				return false;
+			}
+			if (this.baseDemandFlow == null) {
+				if(other.baseDemandFlow != null){
+					return false;
+				}
+			} else if(!this.baseDemandFlow.equals(other.baseDemandFlow)) {
+				return false;
+			}
+			if (this.demandPatternID == null) {
+				if(other.demandPatternID != null){
+					return false;
+				}
+			} else if(!this.demandPatternID.equals(other.demandPatternID)) {
+				return false;
+			}
+			if (this.label == null) {
+				if(other.label() != null){
+					return false;
+				}
+			} else if(!this.label.equals(other.label())) {
+				return false;
+			}
+			
+			return true;
+		}
+		return false;
+	}
+
 //	avoiding extern call
 	private DefaultJuntion(Builder builder){
 		this.elevation = builder.elevation;

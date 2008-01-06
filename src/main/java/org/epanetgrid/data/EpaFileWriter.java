@@ -30,7 +30,7 @@ class EpaFileWriter {
 	 * @throws IOException 
 	 * @throws IOException 
 	 */
-	public void write(NetWork netWork, String filePath) throws IOException{
+	public void write(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork, String filePath) throws IOException{
 		
 		if(netWork == null) throw new IllegalArgumentException("The networks must be not null");
 		
@@ -49,7 +49,7 @@ class EpaFileWriter {
 		}
 	}
 	
-	private ComponentWriter createComponentWriter(NetWork netWork) {
+	private ComponentWriter createComponentWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 		CompositeComponentWriter compositeWriter = new CompositeComponentWriter();
 		compositeWriter.addWriter(new JuncaoWriter(netWork));
 		compositeWriter.addWriter(new ReservoirsWriter(netWork));
@@ -63,6 +63,7 @@ class EpaFileWriter {
 		compositeWriter.addWriter(new EnergyWriter(netWork));
 		compositeWriter.addWriter(new CurveWriter(netWork));
 		compositeWriter.addWriter(new PatternsWriter(netWork));
+		compositeWriter.addWriter(new ControlsWriter(netWork));
 		return compositeWriter;
 	}
 
@@ -104,18 +105,18 @@ class EpaFileWriter {
 		private static final String HEADER = "[JUNCTIONS]\n;ID     Elevation    Demand     Pattern\n;-------------------------------------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public JuncaoWriter(NetWork netWork){
+		public JuncaoWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
 			this.netWork = netWork;
 		}
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (IJunction junction : netWork.getJunctions()) {
+			for (IJunction<?> junction : netWork.getJunctions()) {
 				printJunction(junction, writer);
 			}
 		}
 		
-		private void printJunction(IJunction junction, PrintWriter writer) {
+		private void printJunction(IJunction<?> junction, PrintWriter writer) {
 			String id = junction.label();
 			String elevation = (junction.getElevation() == null ) ? "" : junction.getElevation().getEstimatedValue()+"";
 			String demand = (junction.getBaseDemandFlow() == null ) ? "" : junction.getBaseDemandFlow().getEstimatedValue()+"";
@@ -134,18 +135,18 @@ class EpaFileWriter {
 		private static final String HEADER = "[RESERVOIRS]\n;ID     Head\n;---------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public ReservoirsWriter(NetWork netWork){
+		public ReservoirsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
 			this.netWork = netWork;
 		}
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (IReservoir reservoir : netWork.getReservoirs()) {
+			for (IReservoir<?> reservoir : netWork.getReservoirs()) {
 				printReservoir(reservoir, writer);
 			}
 		}
 		
-		private void printReservoir(IReservoir reservoir, PrintWriter writer) {
+		private void printReservoir(IReservoir<?> reservoir, PrintWriter writer) {
 			String id = reservoir.label();
 			String headPatternID = (reservoir.getHeadPatternID() == null ) ? "" : reservoir.getHeadPatternID();
 			String head = (reservoir.getHead() == null ) ? "" : reservoir.getHead().getEstimatedValue()+"";
@@ -163,18 +164,18 @@ class EpaFileWriter {
 		private static final String HEADER = "[TANKS]\n;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.\n;---------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public TankWriter(NetWork netWork){
+		public TankWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
 			this.netWork = netWork;
 		}
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (ITank reservoir : netWork.getTanks()) {
+			for (ITank<?> reservoir : netWork.getTanks()) {
 				printTank(reservoir, writer);
 			}
 		}
 		//;ID     Elev.     InitLvl     MinLvl     MaxLvl     Diam.
-		private void printTank(ITank tank, PrintWriter writer) {
+		private void printTank(ITank<?> tank, PrintWriter writer) {
 			String id = tank.label();
 			String elevation = (tank.getElevation() == null ) ? "" : tank.getElevation().getEstimatedValue()+"";
 			String initLev = (tank.getInitialWaterLevel() == null ) ? "" : tank.getInitialWaterLevel().getEstimatedValue()+"";
@@ -195,19 +196,19 @@ class EpaFileWriter {
 		private static final String HEADER = "[PIPES]\n;ID     Node1     Node2     Length     Diam.     Roughness.\n;---------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public PipeWriter(NetWork netWork){
+		public PipeWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
 			this.netWork = netWork;
 		}
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (IPipe pipe : netWork.getPipes()) {
+			for (IPipe<?> pipe : netWork.getPipes()) {
 				printPipe(pipe, writer);
 			}
 		}
 
 		//ID     Node1     Node2     Length     Diam.     Roughness 
-		private void printPipe(IPipe pipe, PrintWriter writer) {
+		private void printPipe(IPipe<?> pipe, PrintWriter writer) {
 			String id = pipe.label();
 			String node1 = netWork.getAnterior(pipe).label();
 			String node2 = netWork.getProximo(pipe).label();
@@ -228,19 +229,19 @@ class EpaFileWriter {
 		private static final String HEADER = "[PUMPS]\n;ID     Node1     Node2     Properties.\n;---------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public PumpWriter(NetWork netWork){
+		public PumpWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
 			this.netWork = netWork;
 		}
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (IPump pipe : netWork.getPumps()) {
+			for (IPump<?> pipe : netWork.getPumps()) {
 				printPipe(pipe, writer);
 			}
 		}
 
 		//ID     Node1     Node2     Properties   
-		private void printPipe(IPump pump, PrintWriter writer) {
+		private void printPipe(IPump<?> pump, PrintWriter writer) {
 			String id = pump.label();
 			String node1 = netWork.getAnterior(pump).label();
 			String node2 = netWork.getProximo(pump).label();
@@ -260,7 +261,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[PATTERNS]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public PatternsWriter(NetWork netWork) {
+		public PatternsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -283,7 +284,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[OPTIONS]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public OptionsWriter(NetWork netWork) {
+		public OptionsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -306,7 +307,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[TIMES]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public TimeWriter(NetWork netWork) {
+		public TimeWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -329,7 +330,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[REPORT]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public ReportWriter(NetWork netWork) {
+		public ReportWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -353,7 +354,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[ENERGY]";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public EnergyWriter(NetWork netWork) {
+		public EnergyWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -376,7 +377,7 @@ class EpaFileWriter {
 		private static final String HEADER = "[CURVES]";//FIXME COLOCAR ESTAS CONSTANTES NUM PONTO UNICO
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
 		
-		public CurveWriter(NetWork netWork) {
+		public CurveWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
 			this.netWork = netWork;
 		}
 		
@@ -384,6 +385,37 @@ class EpaFileWriter {
 		protected void printCore(PrintWriter writer) {
 			for (String curve : netWork.getCurves()) {
 				writer.println(curve);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class ControlsWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[CONTROLS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public ControlsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
+			for (Map.Entry<String, Map<Integer, Boolean>> entry : controls.entrySet()) {
+				for (Map.Entry<Integer, Boolean> control : entry.getValue().entrySet()) {
+					StringBuffer sb = new StringBuffer("LINK ");
+					sb.append(entry.getKey() + " ");
+					sb.append(control.getValue() ? "OPEN" : "CLOSED");
+					sb.append(" AT TIME " + control.getKey());
+					writer.println(sb.toString());
+				}
+				
 			}
 		}
 

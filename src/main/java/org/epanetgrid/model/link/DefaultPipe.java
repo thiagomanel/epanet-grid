@@ -244,13 +244,13 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 			return false;
 		}
 		
-		if (network == null) {
-			if (other.network != null) {
-				return false;
-			}
-		} else if (!network.equals(other.network)) {
-			return false;
-		}
+//		if (network == null) {
+//			if (other.network != null) {
+//				return false;
+//			}
+//		} else if (!network.equals(other.network)) {
+//			return false;
+//		}
 
 		if (roughnessCoefficient == null) {
 			if (other.roughnessCoefficient != null) {
@@ -275,7 +275,20 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		} else if (!minVelocity.equals(other.minVelocity)) {
 			return false;
 		}
-
+		if (getStartNode() == null) {
+			if (other.getStartNode() != null) {
+				return false;
+			}
+		} else if(!getStartNode().equals(other.getStartNode())){
+			return false;
+		}
+		if (getEndNode() == null) {
+			if (other.getEndNode() != null) {
+				return false;
+			}
+		} else if(!getEndNode().equals(other.getEndNode())){
+			return false;
+		}
 		return true;
 	}
 	

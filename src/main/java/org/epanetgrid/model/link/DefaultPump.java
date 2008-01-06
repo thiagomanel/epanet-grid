@@ -64,15 +64,80 @@ public class DefaultPump implements IPump<DefaultPump> {
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.ILink#getEndNode()
 	 */
-	public INode getEndNode() {
+	public INode<?> getEndNode() {
 		return this.network.getProximo(this);
 	}
 
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.ILink#getStarNode()
 	 */
-	public INode getStartNode() {
+	public INode<?> getStartNode() {
 		return this.network.getAnterior(this);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+
+		if(obj instanceof DefaultPump){
+			DefaultPump other = (DefaultPump) obj;
+			if (this.headCurveID == null) {
+				if(other.headCurveID != null){
+					return false;
+				}
+			} else if(!this.headCurveID.equals(other.headCurveID)) {
+				return false;
+			}
+			if (this.power == null) {
+				if(other.power != null){
+					return false;
+				}
+			} else if(!this.power.equals(other.power)) {
+				return false;
+			}
+			if (this.relativeSped == null) {
+				if(other.relativeSped != null){
+					return false;
+				}
+			} else if(!this.relativeSped.equals(other.relativeSped)) {
+				return false;
+			}
+			if (this.idTimePattern == null) {
+				if(other.idTimePattern != null){
+					return false;
+				}
+			} else if(!this.idTimePattern.equals(other.idTimePattern)) {
+				return false;
+			}
+			if (this.label == null) {
+				if(other.label() != null){
+					return false;
+				}
+			} else if(!this.label.equals(other.label())) {
+				return false;
+			}
+			if (getStartNode() == null) {
+				if (other.getStartNode() != null) {
+					return false;
+				}
+			} else if(!getStartNode().equals(other.getStartNode())){
+				return false;
+			}
+			if (getEndNode() == null) {
+				if (other.getEndNode() != null) {
+					return false;
+				}
+			} else if(!getEndNode().equals(other.getEndNode())){
+				return false;
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	/**

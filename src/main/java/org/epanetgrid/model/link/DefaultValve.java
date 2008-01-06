@@ -59,6 +59,57 @@ public class DefaultValve implements IValve<DefaultValve> {
 		return this.label;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+
+		if(obj instanceof DefaultValve){
+			DefaultValve other = (DefaultValve) obj;
+			if (this.diameter == null) {
+				if(other.diameter != null){
+					return false;
+				}
+			} else if(!this.diameter.equals(other.diameter)) {
+				return false;
+			}
+			if (this.lossCoef == null) {
+				if(other.lossCoef != null){
+					return false;
+				}
+			} else if(!this.lossCoef.equals(other.lossCoef)) {
+				return false;
+			}
+			if (this.label == null) {
+				if(other.label() != null){
+					return false;
+				}
+			} else if(!this.label.equals(other.label())) {
+				return false;
+			}
+			if (getStartNode() == null) {
+				if (other.getStartNode() != null) {
+					return false;
+				}
+			} else if(!getStartNode().equals(other.getStartNode())){
+				return false;
+			}
+			if (getEndNode() == null) {
+				if (other.getEndNode() != null) {
+					return false;
+				}
+			} else if(!getEndNode().equals(other.getEndNode())){
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	private DefaultValve(Builder builder){
 		this.diameter = builder.diameter;
 		this.label = builder.label;

@@ -23,11 +23,15 @@ import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
+import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
 import org.epanetgrid.model.nodes.IJunction;
+import org.epanetgrid.model.nodes.IReservoir;
+import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
+import org.joda.time.Duration;
 import org.jscience.physics.measures.Measure;
 
 /**
@@ -40,7 +44,7 @@ class EpaFileReader {
 	 * @return
 	 * @throws IOException 
 	 */
-	public NetWork read(String filePath) throws IOException {
+	public NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> read(String filePath) throws IOException {
 		
 		File inpFile = new File(filePath);
 		BufferedReader reader = new BufferedReader(new FileReader(inpFile));
@@ -59,14 +63,14 @@ class EpaFileReader {
 		return network;
 	}
 
-	public static void main(String args[]) throws IOException {
-		
-		for (Object junction : new EpaFileReader().read(args[0]).getJunctions()) {
-			
-			System.out.println("junc "+((IJunction)junction).label()+" elevation "+((IJunction)junction).getElevation()+" demand "+((IJunction)junction).getBaseDemandFlow());
-		};
-		
-	}
+//	public static void main(String args[]) throws IOException {
+//		
+//		for (Object junction : new EpaFileReader().read(args[0]).getJunctions()) {
+//			
+//			System.out.println("junc "+((IJunction<?>)junction).label()+" elevation "+((IJunction<?>)junction).getElevation()+" demand "+((IJunction<?>)junction).getBaseDemandFlow());
+//		};
+//		
+//	}
 	
 	private interface Parser {
 		
@@ -92,6 +96,7 @@ class EpaFileReader {
 		private static final String REPORT_ID = "REPORT";
 		private static final String ENERGY_ID = "ENERGY";
 		private static final String CURVES_ID = "CURVES";
+		private static final String CONTROLS_ID = "CONTROLS";
 		
 		private final Parser junctionParse = new JunctionParser();
 		private final Parser reservoirsParser = new ReservoirParser();
@@ -104,6 +109,7 @@ class EpaFileReader {
 		private final Parser optionParser = new OptionIDParser();
 		private final Parser energyParser = new EnergyIDParser();
 		private final Parser curvesParser = new CurvesIDParser();
+		private final Parser controlsParser = new ControlsIDParser();
 		
 		private final Parser NOPParser = new Parser(){
 			public void parse(String line) {}
@@ -157,6 +163,8 @@ class EpaFileReader {
 				return energyParser;
 			}else if(line.contains(CURVES_ID)){
 				return curvesParser;
+			}else if(line.contains(CONTROLS_ID)){
+				return controlsParser;
 			}else {
 				return NOPParser;
 			}
@@ -174,6 +182,7 @@ class EpaFileReader {
 			optionParser.collectResult(netWork);
 			energyParser.collectResult(netWork);
 			curvesParser.collectResult(netWork);
+			controlsParser.collectResult(netWork);
 		}
 	}
 	
@@ -272,6 +281,7 @@ class EpaFileReader {
 
 		@Override
 		protected void collectResult(String command, DefaultNetWork netWork) {
+//			System.out.println(command);
 //			;ID     Node1     Node2     Length     Diam.     Roughness 
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
@@ -297,10 +307,10 @@ class EpaFileReader {
 				pipeBuilder.roughnessCoefficient(Measure.valueOf(Double.valueOf(roughness), Dimensionless.SI_UNIT));
 			}
 			
-			INode montanteNode = (INode) netWork.getElemento(montNode);
-			INode jusanteNode = (INode) netWork.getElemento(jusaNode);
+			INode<?> montanteNode = (INode<?>) netWork.getElemento(montNode);
+			INode<?> jusanteNode = (INode<?>) netWork.getElemento(jusaNode);
 			
-			IPipe pipe = pipeBuilder.build();
+			IPipe<?> pipe = pipeBuilder.build();
 
 			netWork.addPipe(pipe, montanteNode, jusanteNode);
 		}
@@ -332,10 +342,10 @@ class EpaFileReader {
 				pumpBuilder.headCurveID(properties);
 			}
 			
-			INode montanteNode = (INode) netWork.getElemento(montNode);
-			INode jusanteNode = (INode) netWork.getElemento(jusaNode);
+			INode<?> montanteNode = (INode<?>) netWork.getElemento(montNode);
+			INode<?> jusanteNode = (INode<?>) netWork.getElemento(jusaNode);
 			
-			IPump pump = pumpBuilder.build();
+			IPump<?> pump = pumpBuilder.build();
 
 			netWork.addPump(pump, montanteNode, jusanteNode);
 		}
@@ -381,6 +391,55 @@ class EpaFileReader {
 		@Override
 		protected void collectResult(String command, DefaultNetWork netWork) {
 			netWork.addTime(command);
+			
+			/*
+			 * [TIMES]
+			 * DURATION 24 HOURS
+			 * HYDRAULIC TIMESTEP 60 MINUTES
+			 * PATTERN TIMESTEP 60 MINUTES
+			 * START CLOKTIME 12:00 AM
+			 */
+			StringTokenizer tokenizer = new StringTokenizer(command);
+			//ugly!
+			String element = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+			if ( element != null && element.equals("DURATION") ) {
+				String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+
+				if (value != null) {
+					long multiplicador = 60 * 60 * 1000; //horas
+					if (unidade != null) {
+						if(unidade.equals("MINUTES")) {
+							multiplicador = 60 * 1000;
+						} else if(unidade.equals("SECONDS")) {
+							multiplicador = 1000;
+						}
+					}
+					netWork.setDuration(new Duration(new Long(value) * multiplicador));					
+				}
+				
+			} else if ( element != null && element.equals("HYDRAULIC") ) {
+				String timestep = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				if (timestep != null && timestep.equals("TIMESTEP")) {
+					String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+					String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+
+					if (value != null) {
+						long multiplicador = 60 * 60 * 1000; //horas
+						if (unidade != null) {
+							if(unidade.equals("MINUTES")) {
+								multiplicador = 60 * 1000;
+							} else if(unidade.equals("SECONDS")) {
+								multiplicador = 1000;
+							}
+						}
+						netWork.setHydraulicTimestep(new Duration(new Long(value) * multiplicador));					
+					}
+	
+				}
+								
+			}
+			
 		}
 	}
 	
@@ -413,6 +472,38 @@ class EpaFileReader {
 		@Override
 		protected void collectResult(String command, DefaultNetWork netWork) {
 			netWork.addCurve(command);
+		}
+	}
+	
+	private class ControlsIDParser extends SimpleLineParser {
+		@Override
+		protected void collectResult(String command, DefaultNetWork netWork) {
+			
+			/*
+			 * [CONTROLS]
+			 * LINK 9 CLOSED AT TIME 1
+			 * LINK 9 OPEN AT TIME 10
+			 * LINK 9 CLOSED AT TIME 20
+			 */
+//			;LINK	ID     STATE	AT TIME	INTERVAL    
+			StringTokenizer tokenizer = new StringTokenizer(command);
+			
+			//ugly!
+			String element = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+			if ( element != null && element.equals("LINK") ) {
+				String linkID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				String state = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				String at = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				String time = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				String interval = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+
+				if (linkID != null && state != null && interval != null) {
+					netWork.addControl(linkID, new Integer(interval), state.equals("OPEN"));					
+				}
+				
+			}
+			
+
 		}
 	}
 	

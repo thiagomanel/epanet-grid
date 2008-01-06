@@ -36,4 +36,18 @@ public class Report implements IReport {
 		return values.get(key);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (obj instanceof Report) {
+			final Report other = (Report) obj;
+			return values.equals(other.values);
+		}
+		return false;
+	}
 }
