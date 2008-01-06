@@ -15,6 +15,7 @@ import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
+import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.DefaultJuntion;
 import org.epanetgrid.model.nodes.DefaultReservoir;
 import org.epanetgrid.model.nodes.DefaultTank;
@@ -29,7 +30,7 @@ import org.jscience.physics.measures.Measure;
  */
 public class DefaultNetWorkTest extends TestCase {
 
-	private NetWork baseNetWork;
+	private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -41,12 +42,12 @@ public class DefaultNetWorkTest extends TestCase {
 	 */
 	public void testReplaceComponent(){
 		
-		IPipe basePipe = (IPipe) baseNetWork.getElemento("P1");
-		INode noMontante = baseNetWork.getAnterior(basePipe);
-		INode noJusante = baseNetWork.getProximo(basePipe);
+		IPipe<?> basePipe = (IPipe<?>) baseNetWork.getElemento("P1");
+		INode<?> noMontante = baseNetWork.getAnterior(basePipe);
+		INode<?> noJusante = baseNetWork.getProximo(basePipe);
 		
 		Measure<Length> newLength = basePipe.getLength().times(2);
-		IPipe newPipe = new DefaultPipe.Builder("P1-new", baseNetWork).copy(basePipe).length(newLength).build();
+		IPipe<?> newPipe = new DefaultPipe.Builder("P1-new", baseNetWork).copy(basePipe).length(newLength).build();
 
 		assertTrue(baseNetWork.getPipes().contains(baseNetWork.getElemento("P1")));
 		assertFalse(baseNetWork.getTanks().contains(baseNetWork.getElemento("P1")));
@@ -69,7 +70,7 @@ public class DefaultNetWorkTest extends TestCase {
 		Set<ILink<?>> elosJusante = baseNetWork.getProximos(baseNode);
 		
 		Measure<Length> newElevation = baseNode.getElevation().times(2);
-		IJunction newJunction =  new DefaultJuntion.Builder("newJuction", baseNetWork).copy(baseNode).elevation(newElevation).build();
+		IJunction<?> newJunction =  new DefaultJuntion.Builder("newJuction", baseNetWork).copy(baseNode).elevation(newElevation).build();
 		
 		baseNetWork.replaceComponent(baseNode.label(), newJunction);
 		
@@ -91,7 +92,7 @@ public class DefaultNetWorkTest extends TestCase {
 	 * 
 	 */
 	public void testBuildNetWork(){
-		NetWork copiedNetwork = new DefaultNetWork.Builder().copy(baseNetWork).build();
+		NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> copiedNetwork = new DefaultNetWork.Builder().copy(baseNetWork).build();
 		
 		/*[JUNCTIONS]
 		 ;ID     Elevation    Demand     Pattern
@@ -115,7 +116,7 @@ public class DefaultNetWorkTest extends TestCase {
 		 N17      653          12.22         demanda*/
 		
 		assertTrue(copiedNetwork.contains("N1"));
-		assertTrue( ((IJunction)copiedNetwork.getElemento("N1")).getElevation().approximates(Measure.valueOf(621.75, Length.SI_UNIT)));
+		assertTrue( ((IJunction<?>)copiedNetwork.getElemento("N1")).getElevation().approximates(Measure.valueOf(621.75, Length.SI_UNIT)));
 		assertTrue(copiedNetwork.contains("N2"));
 		assertTrue(copiedNetwork.contains("N3"));
 		assertTrue(copiedNetwork.contains("N4"));
@@ -126,17 +127,17 @@ public class DefaultNetWorkTest extends TestCase {
 		assertTrue(copiedNetwork.contains("N9"));
 		assertTrue(copiedNetwork.contains("N10"));
 		assertTrue(copiedNetwork.contains("N11"));
-		assertTrue( ((IJunction)copiedNetwork.getElemento("N11")).getElevation().approximates(Measure.valueOf(689, Length.SI_UNIT)));
-		assertTrue( ((IJunction)copiedNetwork.getElemento("N11")).getBaseDemandFlow().approximates(Measure.valueOf(8.08, VolumetricFlowRate.SI_UNIT)));
+		assertTrue( ((IJunction<?>)copiedNetwork.getElemento("N11")).getElevation().approximates(Measure.valueOf(689, Length.SI_UNIT)));
+		assertTrue( ((IJunction<?>)copiedNetwork.getElemento("N11")).getBaseDemandFlow().approximates(Measure.valueOf(8.08, VolumetricFlowRate.SI_UNIT)));
 		assertTrue(copiedNetwork.contains("N12"));
 		assertTrue(copiedNetwork.contains("N13"));
 		assertTrue(copiedNetwork.contains("N14"));
 		assertTrue(copiedNetwork.contains("N15"));
 		assertTrue(copiedNetwork.contains("N16"));
 		assertTrue(copiedNetwork.contains("N17"));
-		assertTrue( ((IJunction)copiedNetwork.getElemento("N17")).getElevation().approximates(Measure.valueOf(653, Length.SI_UNIT)));
-		assertTrue( ((IJunction)copiedNetwork.getElemento("N17")).getBaseDemandFlow().approximates(Measure.valueOf(12.22, VolumetricFlowRate.SI_UNIT)));
-		assertEquals("demanda",  ((IJunction)copiedNetwork.getElemento("N17")).getDemandPatternID());
+		assertTrue( ((IJunction<?>)copiedNetwork.getElemento("N17")).getElevation().approximates(Measure.valueOf(653, Length.SI_UNIT)));
+		assertTrue( ((IJunction<?>)copiedNetwork.getElemento("N17")).getBaseDemandFlow().approximates(Measure.valueOf(12.22, VolumetricFlowRate.SI_UNIT)));
+		assertEquals("demanda",  ((IJunction<?>)copiedNetwork.getElemento("N17")).getDemandPatternID());
 		
 		/*
 		[RESERVOIRS]
@@ -145,7 +146,7 @@ public class DefaultNetWorkTest extends TestCase {
 		 M1      621.75
 		 */
 		assertTrue(copiedNetwork.contains("M1"));
-		assertTrue( ((IReservoir)copiedNetwork.getElemento("M1")).getHead().approximates(Measure.valueOf(621.75, Length.SI_UNIT)));
+		assertTrue( ((IReservoir<?>)copiedNetwork.getElemento("M1")).getHead().approximates(Measure.valueOf(621.75, Length.SI_UNIT)));
 		
 		/*
 		[TANKS]
@@ -157,11 +158,11 @@ public class DefaultNetWorkTest extends TestCase {
 		 */
 		assertTrue(copiedNetwork.contains("R1"));
 		assertTrue(copiedNetwork.contains("R2"));
-		assertTrue( ((ITank)copiedNetwork.getElemento("R2")).getElevation().approximates(Measure.valueOf(689, Length.SI_UNIT)));
-		assertTrue( ((ITank)copiedNetwork.getElemento("R2")).getInitialWaterLevel().approximates(Measure.valueOf(10, Length.SI_UNIT)));
-		assertTrue( ((ITank)copiedNetwork.getElemento("R2")).getMinimumWaterLevel().approximates(Measure.valueOf(7.2, Length.SI_UNIT)));
-		assertTrue( ((ITank)copiedNetwork.getElemento("R2")).getMaximumWaterLevel().approximates(Measure.valueOf(12.7, Length.SI_UNIT)));
-		assertTrue( ((ITank)copiedNetwork.getElemento("R2")).getNominalDiameter().approximates(Measure.valueOf(11.3, Length.SI_UNIT)));
+		assertTrue( ((ITank<?>)copiedNetwork.getElemento("R2")).getElevation().approximates(Measure.valueOf(689, Length.SI_UNIT)));
+		assertTrue( ((ITank<?>)copiedNetwork.getElemento("R2")).getInitialWaterLevel().approximates(Measure.valueOf(10, Length.SI_UNIT)));
+		assertTrue( ((ITank<?>)copiedNetwork.getElemento("R2")).getMinimumWaterLevel().approximates(Measure.valueOf(7.2, Length.SI_UNIT)));
+		assertTrue( ((ITank<?>)copiedNetwork.getElemento("R2")).getMaximumWaterLevel().approximates(Measure.valueOf(12.7, Length.SI_UNIT)));
+		assertTrue( ((ITank<?>)copiedNetwork.getElemento("R2")).getNominalDiameter().approximates(Measure.valueOf(11.3, Length.SI_UNIT)));
 		assertTrue(copiedNetwork.contains("R3"));
 		
 		/*
@@ -201,14 +202,14 @@ public class DefaultNetWorkTest extends TestCase {
 		//ID     Node1     Node2     Length     Diam.     Roughness
 		 //T9      N8         N9        280        200        150
 		//T11     R2         N11       1          200        150
-		assertTrue( ((IPipe)copiedNetwork.getElemento("P9")).getLength().approximates(Measure.valueOf(280, Length.SI_UNIT)));
-		assertTrue( ((IPipe)copiedNetwork.getElemento("P9")).getDiameter().approximates(Measure.valueOf(200, Length.SI_UNIT)));
-		assertTrue( ((IPipe)copiedNetwork.getElemento("P9")).getRoughnessCoefficient().approximates(Measure.valueOf(150, Dimensionless.SI_UNIT)));
-		assertEquals(copiedNetwork.getElemento("N8"), copiedNetwork.getAnterior(((IPipe)copiedNetwork.getElemento("P9"))));
-		assertEquals(copiedNetwork.getElemento("N9"), copiedNetwork.getProximo(((IPipe)copiedNetwork.getElemento("P9"))));
+		assertTrue( ((IPipe<?>)copiedNetwork.getElemento("P9")).getLength().approximates(Measure.valueOf(280, Length.SI_UNIT)));
+		assertTrue( ((IPipe<?>)copiedNetwork.getElemento("P9")).getDiameter().approximates(Measure.valueOf(200, Length.SI_UNIT)));
+		assertTrue( ((IPipe<?>)copiedNetwork.getElemento("P9")).getRoughnessCoefficient().approximates(Measure.valueOf(150, Dimensionless.SI_UNIT)));
+		assertEquals(copiedNetwork.getElemento("N8"), copiedNetwork.getAnterior(((IPipe<?>)copiedNetwork.getElemento("P9"))));
+		assertEquals(copiedNetwork.getElemento("N9"), copiedNetwork.getProximo(((IPipe<?>)copiedNetwork.getElemento("P9"))));
 		
-		assertEquals(copiedNetwork.getElemento("R2"), copiedNetwork.getAnterior(((IPipe)copiedNetwork.getElemento("P11"))));
-		assertEquals(copiedNetwork.getElemento("N11"), copiedNetwork.getProximo(((IPipe)copiedNetwork.getElemento("P11"))));
+		assertEquals(copiedNetwork.getElemento("R2"), copiedNetwork.getAnterior(((IPipe<?>)copiedNetwork.getElemento("P11"))));
+		assertEquals(copiedNetwork.getElemento("N11"), copiedNetwork.getProximo(((IPipe<?>)copiedNetwork.getElemento("P11"))));
 		
 		
 		/*
@@ -223,9 +224,9 @@ public class DefaultNetWorkTest extends TestCase {
 		assertTrue(copiedNetwork.contains("B2"));
 		assertTrue(copiedNetwork.contains("B3"));
 		
-		IPump b1 = ((IPump)copiedNetwork.getElemento("B1"));
-		IPump b2 = ((IPump)copiedNetwork.getElemento("B2"));
-		IPump b3 = ((IPump)copiedNetwork.getElemento("B3"));
+		IPump<?> b1 = ((IPump<?>)copiedNetwork.getElemento("B1"));
+		IPump<?> b2 = ((IPump<?>)copiedNetwork.getElemento("B2"));
+		IPump<?> b3 = ((IPump<?>)copiedNetwork.getElemento("B3"));
 		
 		assertEquals("B1", b1.getHeadCurveID());
 		assertEquals("B2", b2.getHeadCurveID());
@@ -278,10 +279,67 @@ public class DefaultNetWorkTest extends TestCase {
 		}
 	}
 	
+	public void testClone() throws CloneNotSupportedException {
+		
+		DefaultNetWork clone = ((DefaultNetWork)baseNetWork).clone();
+		assertNotSame(clone, baseNetWork);
+		
+		for (IReservoir<?> reservoir : baseNetWork.getReservoirs()) {
+			assertEquals(reservoir, clone.getElemento(reservoir.label()));
+			assertNotSame(reservoir, clone.getElemento(reservoir.label()));
+		}
+		for (ITank<?> tank : baseNetWork.getTanks()) {
+			assertEquals(tank, clone.getElemento(tank.label()));
+			assertNotSame(tank, clone.getElemento(tank.label()));
+		}
+		for (IJunction<?> junction : baseNetWork.getJunctions()) {
+			assertEquals(junction, clone.getElemento(junction.label()));
+			assertNotSame(junction, clone.getElemento(junction.label()));
+		}
+		for (IPump<?> pump : baseNetWork.getPumps()) {
+			assertEquals(pump, clone.getElemento(pump.label()));
+			assertNotSame(pump, clone.getElemento(pump.label()));
+		}
+		for (IValve<?> valve : baseNetWork.getValves()) {
+			assertEquals(valve, clone.getElemento(valve.label()));
+			assertNotSame(valve, clone.getElemento(valve.label()));
+		}
+		for (IPipe<?> pipe : baseNetWork.getPipes()) {
+			assertEquals(pipe, clone.getElemento(pipe.label()));
+			assertNotSame(pipe, clone.getElemento(pipe.label()));
+		}
+
+		assertEquals(baseNetWork.getControls(), clone.getControls());
+		assertNotSame(baseNetWork.getControls(), clone.getControls());
+		
+		assertEquals(baseNetWork.getEnergy(), clone.getEnergy());
+		assertNotSame(baseNetWork.getEnergy(), clone.getEnergy());
+		
+		assertEquals(baseNetWork.getOptions(), clone.getOptions());
+		assertNotSame(baseNetWork.getOptions(), clone.getOptions());
+		
+		assertEquals(baseNetWork.getPattern(), clone.getPattern());
+		assertNotSame(baseNetWork.getPattern(), clone.getPattern());
+		
+		assertEquals(baseNetWork.getReports(), clone.getReports());
+		assertNotSame(baseNetWork.getReports(), clone.getReports());
+		
+		assertEquals(baseNetWork.getTimes(), clone.getTimes());
+		assertNotSame(baseNetWork.getTimes(), clone.getTimes());
+		
+		assertEquals(baseNetWork.getCurves(), clone.getCurves());
+		assertNotSame(baseNetWork.getCurves(), clone.getCurves());
+		
+		assertEquals(baseNetWork.getDuration(), clone.getDuration());
+		
+		assertEquals(baseNetWork.getHydraulicTimestep(), clone.getHydraulicTimestep());
+		
+	}
+	
 	/**
 	 * @return Malha do teste de aceitação
 	 */
-	private NetWork createNetWork() {
+	private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> createNetWork() {
 		
 		DefaultNetWork network = new DefaultNetWork.Builder().build();
 		
@@ -307,57 +365,57 @@ public class DefaultNetWorkTest extends TestCase {
 		 N16      635          4.04            demanda
 		 N17      653          12.22         demanda
 		 */
-		IJunction n1 = new DefaultJuntion.Builder("N1", network).elevation(Measure.valueOf(621.75, Length.SI_UNIT))
+		IJunction<?> n1 = new DefaultJuntion.Builder("N1", network).elevation(Measure.valueOf(621.75, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n2 = new DefaultJuntion.Builder("N2", network).elevation(Measure.valueOf(633, Length.SI_UNIT))
+		IJunction<?> n2 = new DefaultJuntion.Builder("N2", network).elevation(Measure.valueOf(633, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n3 = new DefaultJuntion.Builder("N3", network).elevation(Measure.valueOf(625, Length.SI_UNIT))
+		IJunction<?> n3 = new DefaultJuntion.Builder("N3", network).elevation(Measure.valueOf(625, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n4 = new DefaultJuntion.Builder("N4", network).elevation(Measure.valueOf(618, Length.SI_UNIT))
+		IJunction<?> n4 = new DefaultJuntion.Builder("N4", network).elevation(Measure.valueOf(618, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n5 = new DefaultJuntion.Builder("N5", network).elevation(Measure.valueOf(633, Length.SI_UNIT))
+		IJunction<?> n5 = new DefaultJuntion.Builder("N5", network).elevation(Measure.valueOf(633, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n6 = new DefaultJuntion.Builder("N6", network).elevation(Measure.valueOf(640, Length.SI_UNIT))
+		IJunction<?> n6 = new DefaultJuntion.Builder("N6", network).elevation(Measure.valueOf(640, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n7 = new DefaultJuntion.Builder("N7", network).elevation(Measure.valueOf(622, Length.SI_UNIT))
+		IJunction<?> n7 = new DefaultJuntion.Builder("N7", network).elevation(Measure.valueOf(622, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(2.12, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n8 = new DefaultJuntion.Builder("N8", network).elevation(Measure.valueOf(628, Length.SI_UNIT)).build();
+		IJunction<?> n8 = new DefaultJuntion.Builder("N8", network).elevation(Measure.valueOf(628, Length.SI_UNIT)).build();
 		
-		IJunction n9 = new DefaultJuntion.Builder("N9", network).elevation(Measure.valueOf(631, Length.SI_UNIT)).build();
+		IJunction<?> n9 = new DefaultJuntion.Builder("N9", network).elevation(Measure.valueOf(631, Length.SI_UNIT)).build();
 		
-		IJunction n10 = new DefaultJuntion.Builder("N10", network).elevation(Measure.valueOf(631, Length.SI_UNIT)).build();
+		IJunction<?> n10 = new DefaultJuntion.Builder("N10", network).elevation(Measure.valueOf(631, Length.SI_UNIT)).build();
 
-		IJunction n11 = new DefaultJuntion.Builder("N11", network).elevation(Measure.valueOf(689, Length.SI_UNIT))
+		IJunction<?> n11 = new DefaultJuntion.Builder("N11", network).elevation(Measure.valueOf(689, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(8.08, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n12 = new DefaultJuntion.Builder("N12", network).elevation(Measure.valueOf(640, Length.SI_UNIT)).build();
+		IJunction<?> n12 = new DefaultJuntion.Builder("N12", network).elevation(Measure.valueOf(640, Length.SI_UNIT)).build();
 		
-		IJunction n13 = new DefaultJuntion.Builder("N13", network).elevation(Measure.valueOf(575, Length.SI_UNIT)).build();
+		IJunction<?> n13 = new DefaultJuntion.Builder("N13", network).elevation(Measure.valueOf(575, Length.SI_UNIT)).build();
 		
-		IJunction n14 = new DefaultJuntion.Builder("N14", network).elevation(Measure.valueOf(575, Length.SI_UNIT)).build();
+		IJunction<?> n14 = new DefaultJuntion.Builder("N14", network).elevation(Measure.valueOf(575, Length.SI_UNIT)).build();
 		
-		IJunction n15 = new DefaultJuntion.Builder("N15", network).elevation(Measure.valueOf(661, Length.SI_UNIT)).build();
+		IJunction<?> n15 = new DefaultJuntion.Builder("N15", network).elevation(Measure.valueOf(661, Length.SI_UNIT)).build();
 		
-		IJunction n16 = new DefaultJuntion.Builder("N16", network).elevation(Measure.valueOf(635, Length.SI_UNIT))
+		IJunction<?> n16 = new DefaultJuntion.Builder("N16", network).elevation(Measure.valueOf(635, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(4.04, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
-		IJunction n17 = new DefaultJuntion.Builder("N17", network).elevation(Measure.valueOf(653, Length.SI_UNIT))
+		IJunction<?> n17 = new DefaultJuntion.Builder("N17", network).elevation(Measure.valueOf(653, Length.SI_UNIT))
 								.baseDemandFlow(Measure.valueOf(12.22, VolumetricFlowRate.SI_UNIT)).demandPatternID("demanda")
 								.build();
 		
@@ -385,7 +443,7 @@ public class DefaultNetWorkTest extends TestCase {
 		 ;---------------
 		 M1      621.75
 		 */
-		IReservoir m1 = new DefaultReservoir.Builder("M1", network).head(Measure.valueOf(621.75, Length.SI_UNIT)).build();
+		IReservoir<?> m1 = new DefaultReservoir.Builder("M1", network).head(Measure.valueOf(621.75, Length.SI_UNIT)).build();
 		network.addReservoir(m1);
 		
 		/*
@@ -396,21 +454,21 @@ public class DefaultNetWorkTest extends TestCase {
 		 R2       689       10         7.2         12.7       11.3
 		 R3       669       10         8.3         12.2       9.2
 		 */
-		ITank R1 = new DefaultTank.Builder("R1", network).elevation(Measure.valueOf(643, Length.SI_UNIT))
+		ITank<?> R1 = new DefaultTank.Builder("R1", network).elevation(Measure.valueOf(643, Length.SI_UNIT))
 								.initialWaterLevel(Measure.valueOf(20, Length.SI_UNIT))
 								.minimumWaterLevel(Measure.valueOf(18.4, Length.SI_UNIT))
 								.maximumWaterLevel(Measure.valueOf(21.4, Length.SI_UNIT))
 								.nominalDiameter(Measure.valueOf(10.3, Length.SI_UNIT))
 								.build();
 		
-		ITank R2 = new DefaultTank.Builder("R2", network).elevation(Measure.valueOf(689, Length.SI_UNIT))
+		ITank<?> R2 = new DefaultTank.Builder("R2", network).elevation(Measure.valueOf(689, Length.SI_UNIT))
 								.initialWaterLevel(Measure.valueOf(10, Length.SI_UNIT))
 								.minimumWaterLevel(Measure.valueOf(7.2, Length.SI_UNIT))
 								.maximumWaterLevel(Measure.valueOf(12.7, Length.SI_UNIT))
 								.nominalDiameter(Measure.valueOf(11.3, Length.SI_UNIT))
 								.build();
 		
-		ITank R3 = new DefaultTank.Builder("R3", network).elevation(Measure.valueOf(669, Length.SI_UNIT))
+		ITank<?> R3 = new DefaultTank.Builder("R3", network).elevation(Measure.valueOf(669, Length.SI_UNIT))
 								.initialWaterLevel(Measure.valueOf(10, Length.SI_UNIT))
 								.minimumWaterLevel(Measure.valueOf(8.3, Length.SI_UNIT))
 								.maximumWaterLevel(Measure.valueOf(12.2, Length.SI_UNIT))
@@ -444,88 +502,88 @@ public class DefaultNetWorkTest extends TestCase {
 		 T17     N15        N17       1450       150        150
 		 */
 		
-		IPipe p1 = new DefaultPipe.Builder("P1", network).length(Measure.valueOf(2365, Length.SI_UNIT))
+		IPipe<?> p1 = new DefaultPipe.Builder("P1", network).length(Measure.valueOf(2365, Length.SI_UNIT))
 									.diameter(Measure.valueOf(200, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 
-		IPipe p2 = new DefaultPipe.Builder("P2", network).length(Measure.valueOf(181, Length.SI_UNIT))
+		IPipe<?> p2 = new DefaultPipe.Builder("P2", network).length(Measure.valueOf(181, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p3 = new DefaultPipe.Builder("P3", network).length(Measure.valueOf(465, Length.SI_UNIT))
+		IPipe<?> p3 = new DefaultPipe.Builder("P3", network).length(Measure.valueOf(465, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
 		
-		IPipe p4 = new DefaultPipe.Builder("P4", network).length(Measure.valueOf(122, Length.SI_UNIT))
+		IPipe<?> p4 = new DefaultPipe.Builder("P4", network).length(Measure.valueOf(122, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p5 = new DefaultPipe.Builder("P5", network).length(Measure.valueOf(335, Length.SI_UNIT))
+		IPipe<?> p5 = new DefaultPipe.Builder("P5", network).length(Measure.valueOf(335, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p6 = new DefaultPipe.Builder("P6", network).length(Measure.valueOf(164, Length.SI_UNIT))
+		IPipe<?> p6 = new DefaultPipe.Builder("P6", network).length(Measure.valueOf(164, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p7 = new DefaultPipe.Builder("P7", network).length(Measure.valueOf(1768, Length.SI_UNIT))
+		IPipe<?> p7 = new DefaultPipe.Builder("P7", network).length(Measure.valueOf(1768, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p8 = new DefaultPipe.Builder("P8", network).length(Measure.valueOf(485, Length.SI_UNIT))
+		IPipe<?> p8 = new DefaultPipe.Builder("P8", network).length(Measure.valueOf(485, Length.SI_UNIT))
 									.diameter(Measure.valueOf(250, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p9 = new DefaultPipe.Builder("P9", network).length(Measure.valueOf(280, Length.SI_UNIT))
+		IPipe<?> p9 = new DefaultPipe.Builder("P9", network).length(Measure.valueOf(280, Length.SI_UNIT))
 									.diameter(Measure.valueOf(200, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p10 = new DefaultPipe.Builder("P10", network).length(Measure.valueOf(1441, Length.SI_UNIT))
+		IPipe<?> p10 = new DefaultPipe.Builder("P10", network).length(Measure.valueOf(1441, Length.SI_UNIT))
 									.diameter(Measure.valueOf(200, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(100, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p11 = new DefaultPipe.Builder("P11", network).length(Measure.valueOf(1, Length.SI_UNIT))
+		IPipe<?> p11 = new DefaultPipe.Builder("P11", network).length(Measure.valueOf(1, Length.SI_UNIT))
 									.diameter(Measure.valueOf(200, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		 
-		IPipe p12 = new DefaultPipe.Builder("P12", network).length(Measure.valueOf(3354, Length.SI_UNIT))
+		IPipe<?> p12 = new DefaultPipe.Builder("P12", network).length(Measure.valueOf(3354, Length.SI_UNIT))
 									.diameter(Measure.valueOf(150, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p13 = new DefaultPipe.Builder("P13", network).length(Measure.valueOf(6340, Length.SI_UNIT))
+		IPipe<?> p13 = new DefaultPipe.Builder("P13", network).length(Measure.valueOf(6340, Length.SI_UNIT))
 									.diameter(Measure.valueOf(150, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p14 = new DefaultPipe.Builder("P14", network).length(Measure.valueOf(5290, Length.SI_UNIT))
+		IPipe<?> p14 = new DefaultPipe.Builder("P14", network).length(Measure.valueOf(5290, Length.SI_UNIT))
 									.diameter(Measure.valueOf(150, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p15 = new DefaultPipe.Builder("P15", network).length(Measure.valueOf(172, Length.SI_UNIT))
+		IPipe<?> p15 = new DefaultPipe.Builder("P15", network).length(Measure.valueOf(172, Length.SI_UNIT))
 									.diameter(Measure.valueOf(100, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 
-		IPipe p16 = new DefaultPipe.Builder("P16", network).length(Measure.valueOf(511, Length.SI_UNIT))
+		IPipe<?> p16 = new DefaultPipe.Builder("P16", network).length(Measure.valueOf(511, Length.SI_UNIT))
 									.diameter(Measure.valueOf(75, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
 		
-		IPipe p17 = new DefaultPipe.Builder("P17", network).length(Measure.valueOf(1450, Length.SI_UNIT))
+		IPipe<?> p17 = new DefaultPipe.Builder("P17", network).length(Measure.valueOf(1450, Length.SI_UNIT))
 									.diameter(Measure.valueOf(150, Length.SI_UNIT))
 									.roughnessCoefficient(Measure.valueOf(150, Dimensionless.SI_UNIT))
 									.build();
@@ -556,9 +614,9 @@ public class DefaultNetWorkTest extends TestCase {
 		 B2        N9       N10       HEAD B2
 		 B3        N13      N14       HEAD B
 		 */
-		 IPump b1 = new DefaultPump.Builder("B1", network).headCurveID("B1").build();
-		 IPump b2 = new DefaultPump.Builder("B2", network).headCurveID("B2").build();
-		 IPump b3 = new DefaultPump.Builder("B3", network).headCurveID("B3").build();
+		 IPump<?> b1 = new DefaultPump.Builder("B1", network).headCurveID("B1").build();
+		 IPump<?> b2 = new DefaultPump.Builder("B2", network).headCurveID("B2").build();
+		 IPump<?> b3 = new DefaultPump.Builder("B3", network).headCurveID("B3").build();
 		 
 		 network.addPump(b1, m1, n1);
 		 network.addPump(b2, n9, n10);

@@ -10,6 +10,7 @@ import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
+import org.joda.time.Duration;
 
 import junit.framework.TestCase;
 
@@ -69,6 +70,17 @@ public class EpaFileReaderTest extends TestCase {
 		
 		Map<String, String> reports = netWork.getReports().getValues();
 		assertEquals(7, reports.size());
+		
+		Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
+		
+		assertEquals(1, controls.size());
+		assertEquals(2, controls.get("B1").size());
+		assertFalse(controls.get("B1").get(1));
+		assertTrue(controls.get("B1").get(10));
+		
+		assertEquals(new Duration(24 * 60 * 60 * 1000), netWork.getDuration());
+		
+		assertEquals(new Duration(60 * 60 * 1000), netWork.getHydraulicTimestep());
 		
 		assertTrue(reports.containsKey("FILE"));
 

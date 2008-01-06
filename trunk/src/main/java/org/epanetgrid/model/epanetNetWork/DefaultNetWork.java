@@ -29,6 +29,7 @@ import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.report.IReport;
 import org.epanetgrid.model.report.Report;
 import org.epanetgrid.util.NetWorkComponentStringComparator;
+import org.joda.time.Duration;
 
 /**
  * @author thiago
@@ -52,6 +53,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
 	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
+	private final Map<String, Map<Integer, Boolean>> controls = new HashMap<String, Map<Integer,Boolean>>();
+	
 	private final Set<String> energy = new HashSet<String>();
 	private final Set<String> options = new HashSet<String>();
 	private final Set<String> patterns = new HashSet<String>();
@@ -59,6 +62,9 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Set<String> times = new HashSet<String>();
 
 	private final List<String> curves = new LinkedList<String>();
+
+	private Duration duration;
+	private Duration hydraulicTimestep;
 
 	/**
 	 * @param builder
@@ -73,9 +79,21 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			copyOptions(baseNetWork);
 			copyReports(baseNetWork);
 			copyTime(baseNetWork);
+			copyControls(baseNetWork);
+			this.duration = baseNetWork.getDuration();
+			this.hydraulicTimestep = baseNetWork.getHydraulicTimestep();
 		}
 	}
 		
+	private void copyControls(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (Map.Entry<String, Map<Integer, Boolean>> linkControl : baseNetWork.getControls().entrySet()) {
+			for (Map.Entry<Integer, Boolean> control : linkControl.getValue().entrySet()) {
+				addControl(linkControl.getKey(), control.getKey(), control.getValue());
+			}
+		}
+	}
+
 	/**
 	 * @param baseNetWork
 	 */
@@ -182,6 +200,15 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		}
 	}
 
+	
+	
+	@Override
+	public DefaultNetWork clone() throws CloneNotSupportedException {
+		return new Builder().copy(this).build();
+	}
+
+
+
 	public static class Builder{
 		private NetWork baseNetWork;
 		
@@ -213,7 +240,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	
 	public void addPipe(IPipe pipe, INode noMontante, INode noJusante) {
 		if (contains(pipe.label())) {
-			throw new IllegalArgumentException("J existe um elemento com a descrio dessa juno <" + pipe.label() + ">.");
+			throw new IllegalArgumentException("Já existe um elemento com a descrição desse duto <" + pipe.label() + ">.");
 		}
 		pipes.add(pipe);
 		component.put(pipe.label(), pipe);
@@ -525,10 +552,54 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return this.times;
 	}
 	
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
+	public Duration getHydraulicTimestep() {
+		return hydraulicTimestep;
+	}
+
+	public void setHydraulicTimestep(Duration hydraulicTimestep) {
+		this.hydraulicTimestep = hydraulicTimestep;
+	}
+
 	private  Set<? extends NetworkComponent> sortSet(Set<? extends NetworkComponent> components){
 		TreeSet<NetworkComponent> sortedSet = new TreeSet(new NetWorkComponentStringComparator());
 		sortedSet.addAll(components);
 		return sortedSet;
+	}
+
+	public void addControl(String linkID, Integer interval, boolean state) {
+		if (controls.get(linkID) == null) {
+			controls.put(linkID, new HashMap<Integer, Boolean>());
+		}
+		controls.get(linkID).put(interval, state);
+	}
+
+	public Map<String, Map<Integer, Boolean>> getControls() {
+		return controls;
+	}
+	
+	public Map<String, Map<Integer, Boolean>> getFullControls() {
+		Map<String, Map<Integer, Boolean>> controls = new HashMap<String, Map<Integer,Boolean>>();
+		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
+		for (IPump<?> pump : this.pumps) {
+			HashMap<Integer, Boolean> pumpControl = new HashMap<Integer,Boolean>();
+			for (int i = 0; i < numIntervals; i++) {
+				Boolean state = this.controls.get(pump.label()).get(i);
+				if (state == null) {
+					state = (i == 0 ? true : this.controls.get(pump.label()).get(i-1));
+				}
+				pumpControl.put(i, state);
+			}
+			controls.put(pump.label(), pumpControl);
+		}
+		return controls;
 	}
 
 }
