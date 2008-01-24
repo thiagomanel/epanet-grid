@@ -574,6 +574,15 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return sortedSet;
 	}
 
+	public void setControls(Map<String, Map<Integer, Boolean>> controls) {
+		this.controls.clear();
+		for (Map.Entry<String, Map<Integer, Boolean>> entry : controls.entrySet()) {
+			for (Map.Entry<Integer, Boolean> control : entry.getValue().entrySet()) {
+				addControl(entry.getKey(), control.getKey(), control.getValue());
+			}
+		}
+	}
+	
 	public void addControl(String linkID, Integer interval, boolean state) {
 		if (controls.get(linkID) == null) {
 			controls.put(linkID, new HashMap<Integer, Boolean>());

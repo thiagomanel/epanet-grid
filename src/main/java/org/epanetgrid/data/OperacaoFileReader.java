@@ -198,6 +198,9 @@ class OperacaoFileReader {
 			
 			ITank<?> tank = (ITank<?>) netWork.getElemento(tankID);
 			
+			if(tank == null) throw new IllegalArgumentException("Erro na leitura do arquivo de operacao: " +
+					"O tanque <" + tankID + "> não existe na malha.");
+			
 			DefaultTank.Builder tankBuilder = new DefaultTank.Builder(tankID, netWork).copy(tank);
 			
 			if(maxLevel != null) {
