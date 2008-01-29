@@ -5,6 +5,7 @@ package org.epanetgrid.data;
 
 import java.io.IOException;
 
+import org.epanetgrid.model.epanetNetWork.DefaultNetWork;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 
 /**
@@ -22,6 +23,17 @@ public class DataFacade {
 	 */
 	public NetWork createNetWorkFromFile(String filePath) throws IOException{
 		return new EpaFileReader().read(filePath);
+	}
+	
+	/**
+	 * @param inpFile
+	 * @param operacaoFile
+	 * @return
+	 * @throws IOException
+	 */
+	public NetWork createNetWorkFromFile(String inpFile, String operacaoFile) throws IOException{
+		NetWork network = new EpaFileReader().read(inpFile);
+		return new OperacaoFileReader().read(operacaoFile, (DefaultNetWork) network);
 	}
 	
 	/**
