@@ -1,0 +1,177 @@
+[TITLE]
+ABES NET
+CURSO DE EPANET
+
+[JUNCTIONS]
+;ID              	Elev        	Demand      	Pattern         
+ N1              	213         	0.1         	1               	;
+ N2              	216         	1.2         	1               	;
+ N3              	213         	7.0         	1               	;
+ N4              	198         	9.1         	1               	;
+ N5              	213         	1.4         	1               	;
+ N6              	213         	1.1         	1               	;
+ N7              	216         	0           	                	;
+
+[RESERVOIRS]
+;ID              	Head        	Pattern         
+ 1               	213         	                	;
+
+[TANKS]
+;ID              	Elevation   	InitLevel   	MinLevel    	MaxLevel    	Diameter    	MinVol      	VolCurve
+ 8               	253         	1           	0.5         	3           	9           	0           	                	;
+
+[PIPES]
+;ID              	Node1           	Node2           	Length      	Diameter    	Roughness   	MinorLoss   	Status
+ T1              	N1              	N2              	915         	200         	0.15        	0           	Open  	;
+ T2              	N2              	N6              	1525        	100         	0.15        	0           	Open  	;
+ T3              	N3              	N5              	1525        	80          	0.15        	0           	Open  	;
+ T4              	N5              	N6              	1525        	80          	0.15        	0           	Open  	;
+ T5              	N6              	8               	2134        	80          	0.15        	0           	Open  	;
+ T6              	N3              	N4              	1525        	150         	0.15        	0           	Open  	;
+ T7              	N4              	N5              	2134        	80          	0.15        	0           	Open  	;
+ T8              	N7              	N3              	1525        	150         	0.15        	0           	Open  	;
+
+[PUMPS]
+;ID              	Node1           	Node2           	Parameters
+ B1              	1               	N1              	HEAD 1	;
+
+[VALVES]
+;ID              	Node1           	Node2           	Diameter    	Type	Setting     	MinorLoss   
+ V1              	N2              	N7              	150         	PRV 	50          	15          	;
+
+[TAGS]
+
+[DEMANDS]
+;Junction        	Demand      	Pattern         	Category
+
+[STATUS]
+;ID              	Status/Setting
+
+[PATTERNS]
+;ID              	Multipliers
+;consumo
+ 1               	0.3         	0.3         	1.0         	1.3         	1.3         	1.2         
+ 1               	1.0         	0.3         
+;energia
+ 2               	0.6         	0.6         	1.0         	1.0         	1.0         	1.0         
+ 2               	1.5         	0.8         
+
+[CURVES]
+;ID              	X-Value     	Y-Value
+;PUMP:  
+ 1               	18          	57.5        
+;EFFICIENCY:  curva de rendimento
+ 2               	5           	30          
+ 2               	10          	45          
+ 2               	18          	70          
+ 2               	25          	60          
+ 2               	40          	30          
+
+[CONTROLS]
+
+[RULES]
+
+
+[ENERGY]
+ Global Efficiency  	75
+ Global Price       	0
+ Demand Charge      	0
+ Pump 	B1              	Efficiency	2
+ Pump 	B1              	Price     	0.15
+ Pump 	B1              	Pattern   	2
+
+[EMITTERS]
+;Junction        	Coefficient
+
+[QUALITY]
+;Node            	InitQual
+ 1               	1
+
+[SOURCES]
+;Node            	Type        	Quality     	Pattern
+
+[REACTIONS]
+;Type     	Pipe/Tank       	Coefficient
+
+
+[REACTIONS]
+ Order Bulk            	1
+ Order Wall            	1
+ Global Bulk           	-2.5
+ Global Wall           	-0.75
+ Limiting Potential    	0
+ Roughness Correlation 	0
+
+[MIXING]
+;Tank            	Model
+
+[TIMES]
+ Duration           	4
+ Hydraulic Timestep 	1:00
+ Quality Timestep   	0:05
+ Pattern Timestep   	3:00
+ Pattern Start      	0:00
+ Report Timestep    	1:00
+ Report Start       	0:00 
+ Start ClockTime    	12 am
+ Statistic          	NONE
+
+
+[OPTIONS]
+ Units              	LPS
+ Headloss           	D-W
+ Specific Gravity   	1
+ Viscosity          	1
+ Trials             	2
+ Accuracy           	0.001
+ Unbalanced         	Continue
+ Pattern            	1
+ Demand Multiplier  	1.0
+ Emitter Exponent   	0.5
+ Quality            	Cloro mg/L
+ Diffusivity        	1
+ Tolerance          	0.01
+
+[COORDINATES]
+;Node            	X-Coord         	Y-Coord
+ N1              	3522.22         	7644.44         
+ N2              	4833.33         	7644.44         
+ N3              	4833.33         	5844.44         
+ N4              	4822.22         	4422.22         
+ N5              	7133.33         	5833.33         
+ N6              	7133.33         	7622.22         
+ N7              	4822.22         	6955.56         
+ 1               	2755.56         	7633.33         
+ 8               	8333.33         	8300.00         
+
+[VERTICES]
+;Link            	X-Coord         	Y-Coord
+ T4              	7144.44         	7422.22         
+ T5              	8333.33         	7655.56         
+ T7              	5511.11         	4633.33         
+ T7              	6200.00         	4966.67         
+ T7              	6766.67         	5422.22         
+
+[LABELS]
+;X-Coord           Y-Coord          Label & Anchor Node
+ 1822.22          7788.89          "RNF" 1               
+ 3011.11          8000.00          "BOMBA"                 
+ 7877.78          8455.56          "RNV"                 
+
+[BACKDROP]
+ DIMENSIONS     	0.00            	0.00            	10000.00        	10000.00        
+ UNITS          	None
+ FILE           	
+ OFFSET         	0.00            	0.00    
+
+        
+[REPORT]
+ STATUS no
+ SUMMARY yes
+ MESSAGES yes
+ NODES all
+ LINKS all
+ FILE Resultados_nao_convergencia2.txt
+ ENERGY YES
+ 
+[END]

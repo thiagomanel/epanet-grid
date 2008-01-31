@@ -1,0 +1,24 @@
+  Page 1                                    Wed Jan 30 20:34:01 2008
+
+  ******************************************************************
+  *                           E P A N E T                          *
+  *                   Hydraulic and Water Quality                  *
+  *                   Analysis for Pipe Networks                   *
+  *                           Version 2.0                          *
+  ******************************************************************
+  
+  Input Error 215: Pump 1 is a duplicate ID.
+  
+  Input Error 204: Control  refers to undefined link.
+  LINK 9 CLOSED AT TIME 1
+
+  Input Error 204: Control  refers to undefined link.
+  LINK 9 OPEN AT TIME 10
+
+  Input Error 216: Energy data specified for undefined Pump 1.
+  
+  Input Error 216: Energy data specified for undefined Pump 1.
+  
+  Input Error 216: Energy data specified for undefined Pump 1.
+  
+  Input Error 200: one or more errors in input file.
