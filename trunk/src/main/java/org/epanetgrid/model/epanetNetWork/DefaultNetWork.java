@@ -29,6 +29,7 @@ import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.report.IReport;
 import org.epanetgrid.model.report.Report;
 import org.epanetgrid.util.NetWorkComponentStringComparator;
+import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 /**
@@ -65,6 +66,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 
 	private Duration duration;
 	private Duration hydraulicTimestep;
+	private DateTime startClockTime;
 
 	/**
 	 * @param builder
@@ -82,6 +84,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			copyControls(baseNetWork);
 			this.duration = baseNetWork.getDuration();
 			this.hydraulicTimestep = baseNetWork.getHydraulicTimestep();
+			this.startClockTime = baseNetWork.getStartClockTime();
 		}
 	}
 		
@@ -240,7 +243,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	
 	public void addPipe(IPipe pipe, INode noMontante, INode noJusante) {
 		if (contains(pipe.label())) {
-			throw new IllegalArgumentException("Já existe um elemento com a descrição desse duto <" + pipe.label() + ">.");
+			throw new IllegalArgumentException("Jï¿½ existe um elemento com a descriï¿½ï¿½o desse duto <" + pipe.label() + ">.");
 		}
 		pipes.add(pipe);
 		component.put(pipe.label(), pipe);
@@ -566,6 +569,14 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 
 	public void setHydraulicTimestep(Duration hydraulicTimestep) {
 		this.hydraulicTimestep = hydraulicTimestep;
+	}
+	
+	public DateTime getStartClockTime() {
+		return startClockTime;
+	}
+
+	public void setStartClockTime(DateTime startClockTime) {
+		this.startClockTime = startClockTime;
 	}
 
 	private  Set<? extends NetworkComponent> sortSet(Set<? extends NetworkComponent> components){

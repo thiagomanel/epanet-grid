@@ -4,7 +4,6 @@
 package org.epanetgrid.resultado.output;
 
 import javax.units.Dimension;
-import javax.units.Unit;
 
 /**
  * @author alan
