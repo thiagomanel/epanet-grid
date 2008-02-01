@@ -31,6 +31,7 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
+import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.jscience.physics.measures.Measure;
 
@@ -434,6 +435,26 @@ class EpaFileReader {
 							}
 						}
 						netWork.setHydraulicTimestep(new Duration(new Long(value) * multiplicador));					
+					}
+	
+				}
+								
+			} else if ( element != null && element.equals("START") ) {
+				String clocktime = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+				if (clocktime != null && clocktime.equals("CLOKTIME")) {
+					String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+					String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+
+					if (value != null) {
+						StringTokenizer st = new StringTokenizer(value, ":");
+						int hora = Integer.valueOf(st.nextToken());
+						int minutos = Integer.valueOf(st.nextToken());
+						if (unidade != null) {
+							if(unidade.equals("PM")) {
+								hora = hora + 12;
+							}
+						}
+						netWork.setStartClockTime(new DateTime(2008, 01, 31, hora, minutos, 0, 0));					
 					}
 	
 				}

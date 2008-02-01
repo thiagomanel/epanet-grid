@@ -1,11 +1,6 @@
 package org.epanetgrid.resultado.output;
 
-import javax.quantities.Dimensionless;
-import javax.quantities.Quantity;
 import javax.units.Dimension;
-import javax.units.Unit;
-
-import org.epanetgrid.resultado.output.IAlarme.Tipo;
 
 public class AlarmeSaida implements IAlarme {
 

@@ -17,6 +17,7 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.report.IReport;
+import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 /**
@@ -69,5 +70,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	public Duration getDuration();
 	
 	public Duration getHydraulicTimestep();
+	
+	public DateTime getStartClockTime();
 
 }
