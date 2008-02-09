@@ -14,7 +14,6 @@ import java.util.Set;
 import javax.quantities.Pressure;
 import javax.quantities.Velocity;
 
-import org.epanetgrid.model.INode;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
@@ -31,8 +30,6 @@ import org.epanetgrid.resultado.output.EPANETErrorRelatorio;
 import org.epanetgrid.resultado.output.EPANETOutPutRelatorio;
 import org.epanetgrid.resultado.output.IAlarme;
 import org.epanetgrid.resultado.output.IInputError;
-import org.jscience.economics.money.Money;
-import org.jscience.physics.measures.Measure;
 
 /**
  * @author alan
@@ -78,12 +75,14 @@ public class ResultadoSimulacao {
 			for (IPipe<?> pipe : network.getPipes()) {
 				VelocidadeNode result = resultDutos.get(pipe.label());
 				if ( result != null ){
-					if(result.getVelocidade().compareTo(pipe.getMaxVelocity()) > 0 ) {
+					if( pipe.getMaxVelocity() != null &&
+							result.getVelocidade().compareTo(pipe.getMaxVelocity()) > 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A velocidade no duto <" + pipe.label() + "> está maior que a máxima.", 
 								Velocity.SI_UNIT.getDimension(), IAlarme.Tipo.max);
 						alarmesIntervalo.add(alarme);
-					} else if(result.getVelocidade().compareTo(pipe.getMinVelocity()) < 0) {
+					} else if( pipe.getMinVelocity() != null && 
+							result.getVelocidade().compareTo(pipe.getMinVelocity()) < 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A velocidade no duto <" + pipe.label() + "> está menor que a mínima.", 
 								Velocity.SI_UNIT.getDimension(), IAlarme.Tipo.min);
@@ -95,12 +94,14 @@ public class ResultadoSimulacao {
 			for (IJunction<?> junction : network.getJunctions()) {
 				PressaoNode result = resultTanquesNos.get(junction.label());
 				if ( result != null ){
-					if(result.getPressao().compareTo(junction.getMaxPressure()) > 0 ) {
+					if( junction.getMaxPressure()!= null && 
+							result.getPressao().compareTo(junction.getMaxPressure()) > 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A pressão na junção <" + junction.label() + "> está maior que a máxima.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.max);
 						alarmesIntervalo.add(alarme);
-					} else if(result.getPressao().compareTo(junction.getMinPressure()) < 0) {
+					} else if( junction.getMinPressure() != null &&
+							result.getPressao().compareTo(junction.getMinPressure()) < 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A pressão na junção <" + junction.label() + "> está menor que a mínima.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.min);
@@ -112,12 +113,14 @@ public class ResultadoSimulacao {
 			for (ITank<?> tank : network.getTanks()) {
 				PressaoNode result = resultTanquesNos.get(tank.label());
 				if ( result != null ){
-					if(result.getPressao().getEstimatedValue() > tank.getMaximumSecurityLevel().getEstimatedValue() ) {
+					if( tank.getMaximumSecurityLevel() != null && 
+							result.getPressao().getEstimatedValue() > tank.getMaximumSecurityLevel().getEstimatedValue() ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"O nível do tanque <" + tank.label() + "> está maior que o máximo.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.max);
 						alarmesIntervalo.add(alarme);
-					} else if(result.getPressao().getEstimatedValue() < tank.getMinimumSecurityLevel().getEstimatedValue() ) {
+					} else if( tank.getMinimumSecurityLevel() != null && 
+							result.getPressao().getEstimatedValue() < tank.getMinimumSecurityLevel().getEstimatedValue() ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"O nível do tanque <" + tank.label() + "> está menor que o mínimo.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.min);
