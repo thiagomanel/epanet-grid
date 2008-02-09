@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Map.Entry;
 
@@ -54,7 +55,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
 	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
-	private final Map<String, Map<Integer, Boolean>> controls = new HashMap<String, Map<Integer,Boolean>>();
+	private final Map<Integer, Map<String, Boolean>> controls = new TreeMap<Integer, Map<String,Boolean>>();
 	
 	private final Set<String> energy = new HashSet<String>();
 	private final Set<String> options = new HashSet<String>();
@@ -90,8 +91,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		
 	private void copyControls(
 			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
-		for (Map.Entry<String, Map<Integer, Boolean>> linkControl : baseNetWork.getControls().entrySet()) {
-			for (Map.Entry<Integer, Boolean> control : linkControl.getValue().entrySet()) {
+		for (Map.Entry<Integer, Map<String, Boolean>> linkControl : baseNetWork.getControls().entrySet()) {
+			for (Map.Entry<String, Boolean> control : linkControl.getValue().entrySet()) {
 				addControl(linkControl.getKey(), control.getKey(), control.getValue());
 			}
 		}
@@ -585,41 +586,45 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return sortedSet;
 	}
 
-	public void setControls(Map<String, Map<Integer, Boolean>> controls) {
+	public void setControls(Map<Integer, Map<String, Boolean>> controls) {
 		this.controls.clear();
-		for (Map.Entry<String, Map<Integer, Boolean>> entry : controls.entrySet()) {
-			for (Map.Entry<Integer, Boolean> control : entry.getValue().entrySet()) {
+		for (Map.Entry<Integer, Map<String, Boolean>> entry : controls.entrySet()) {
+			for (Map.Entry<String, Boolean> control : entry.getValue().entrySet()) {
 				addControl(entry.getKey(), control.getKey(), control.getValue());
 			}
 		}
 	}
 	
-	public void addControl(String linkID, Integer interval, boolean state) {
-		if (controls.get(linkID) == null) {
-			controls.put(linkID, new HashMap<Integer, Boolean>());
+	public void addControl(Integer interval, String linkID, boolean state) {
+		if ( controls.get(interval) == null ) {
+			controls.put(interval, new TreeMap<String, Boolean>());
 		}
-		controls.get(linkID).put(interval, state);
+		controls.get(interval).put(linkID, state);
 	}
 
-	public Map<String, Map<Integer, Boolean>> getControls() {
+	public Map<Integer, Map<String, Boolean>> getControls() {
 		return controls;
 	}
 	
-	public Map<String, Map<Integer, Boolean>> getFullControls() {
-		Map<String, Map<Integer, Boolean>> controls = new HashMap<String, Map<Integer,Boolean>>();
+	public Map<Integer, Map<String, Boolean>> getFullControls() {
+		
+		Map<Integer, Map<String, Boolean>> full = new HashMap<Integer, Map<String,Boolean>>();
+		
 		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
-		for (IPump<?> pump : this.pumps) {
-			HashMap<Integer, Boolean> pumpControl = new HashMap<Integer,Boolean>();
-			for (int i = 0; i < numIntervals; i++) {
-				Boolean state = this.controls.get(pump.label()).get(i);
+		
+		for (int i = 1; i < numIntervals; i++) {
+			Map<String, Boolean> intervalControl = new TreeMap<String,Boolean>();
+			for (IPump<?> pump : this.pumps) {
+				Boolean state = ( controls.get(i) != null ? controls.get(i).get(pump.label()) : null );
 				if (state == null) {
-					state = (i == 0 ? true : this.controls.get(pump.label()).get(i-1));
+					state = (i == 0 ? true : this.controls.get(i-1).get(pump.label()));
 				}
-				pumpControl.put(i, state);
+				intervalControl.put(pump.label(), state);
 			}
-			controls.put(pump.label(), pumpControl);
+			full.put(i, intervalControl);
 		}
-		return controls;
+
+		return full;
 	}
 
 }
