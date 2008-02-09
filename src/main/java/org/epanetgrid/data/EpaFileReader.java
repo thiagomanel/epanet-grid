@@ -519,7 +519,7 @@ class EpaFileReader {
 				String interval = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
 				if (linkID != null && state != null && interval != null) {
-					netWork.addControl(linkID, new Integer(interval), state.equals("OPEN"));					
+					netWork.addControl(new Integer(interval), linkID, state.equals("OPEN"));					
 				}
 				
 			}

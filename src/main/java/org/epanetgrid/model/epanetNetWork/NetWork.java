@@ -65,7 +65,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public IReport getReports();
 
-	public Map<String, Map<Integer, Boolean>> getControls();
+	public Map<Integer, Map<String, Boolean>> getControls();
 
 	public Duration getDuration();
 	

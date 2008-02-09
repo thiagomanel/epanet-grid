@@ -406,13 +406,13 @@ class EpaFileWriter {
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
-			for (Map.Entry<String, Map<Integer, Boolean>> entry : controls.entrySet()) {
-				for (Map.Entry<Integer, Boolean> control : entry.getValue().entrySet()) {
+			Map<Integer, Map<String, Boolean>> controls = netWork.getControls();
+			for (Map.Entry<Integer, Map<String, Boolean>> entry : controls.entrySet()) {
+				for (Map.Entry<String, Boolean> control : entry.getValue().entrySet()) {
 					StringBuffer sb = new StringBuffer("LINK ");
-					sb.append(entry.getKey() + " ");
+					sb.append(control.getKey() + " ");
 					sb.append(control.getValue() ? "OPEN" : "CLOSED");
-					sb.append(" AT TIME " + control.getKey());
+					sb.append(" AT TIME " + entry.getKey());
 					writer.println(sb.toString());
 				}
 				
