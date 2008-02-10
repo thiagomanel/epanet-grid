@@ -38,13 +38,16 @@ public class OutputTest extends TestCase {
 
 		List<Map<String, VelocidadeNode>> velocidades = relatorioFinal.velocidadeNodes();
 		List<Map<String, PressaoNode>> pressoes = relatorioFinal.pressaoNodes();
+		List<Map<String, AlturaNode>> alturas = relatorioFinal.alturaNodes();
 		
 		assertEquals(2, velocidades.size());
 		assertEquals(2, pressoes.size());
+		assertEquals(2, alturas.size());
 		
 		// Cenario 1
 		Map<String, VelocidadeNode> velCen1 = velocidades.get(0);
 		Map<String, PressaoNode> preCen1 = pressoes.get(0);
+		Map<String, AlturaNode> altCen1 = alturas.get(0);
 		
 		assertEquals(1.36, velCen1.get("T1").getVelocidade().getEstimatedValue(), 0.0001);
 		assertEquals(1.01, velCen1.get("T2").getVelocidade().getEstimatedValue(), 0.0001);
@@ -88,10 +91,33 @@ public class OutputTest extends TestCase {
 		assertEquals(20.00, preCen1.get("R1").getPressao().getEstimatedValue(), 0.0001);
 		assertEquals(10.00, preCen1.get("R2").getPressao().getEstimatedValue(), 0.0001);
 		assertEquals(10.00, preCen1.get("R3").getPressao().getEstimatedValue(), 0.0001);
+
+		assertEquals(699.94, altCen1.get("N1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(661.75, altCen1.get("N2").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(658.58, altCen1.get("N3").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(657.77, altCen1.get("N4").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(655.59, altCen1.get("N5").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(654.54, altCen1.get("N6").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(643.46, altCen1.get("N7").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(640.49, altCen1.get("N8").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(638.09, altCen1.get("N9").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(711.37, altCen1.get("N10").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(699.00, altCen1.get("N11").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(671.07, altCen1.get("N12").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(618.29, altCen1.get("N13").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(723.04, altCen1.get("N14").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(678.53, altCen1.get("N15").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(678.09, altCen1.get("N16").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(678.20, altCen1.get("N17").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(621.75, altCen1.get("M1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(663.00, altCen1.get("R1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(699.00, altCen1.get("R2").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(679.00, altCen1.get("R3").getAltura().getEstimatedValue(), 0.0001);
 		
 		// Cenario 2
 		Map<String, VelocidadeNode> velCen2 = velocidades.get(1);
 		Map<String, PressaoNode> preCen2 = pressoes.get(1);
+		Map<String, AlturaNode> altCen2 = alturas.get(1);
 		
 		assertEquals(1.36, velCen2.get("T1").getVelocidade().getEstimatedValue(), 0.0001);
 		assertEquals(1.00, velCen2.get("T2").getVelocidade().getEstimatedValue(), 0.0001);
@@ -135,6 +161,28 @@ public class OutputTest extends TestCase {
 		assertEquals(19.70, preCen2.get("R1").getPressao().getEstimatedValue(), 0.0001);
 		assertEquals(10.82, preCen2.get("R2").getPressao().getEstimatedValue(), 0.0001);
 		assertEquals(10.94, preCen2.get("R3").getPressao().getEstimatedValue(), 0.0001);
+		
+		assertEquals(699.80, altCen2.get("N1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(661.47, altCen2.get("N2").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(658.36, altCen2.get("N3").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(657.56, altCen2.get("N4").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(655.41, altCen2.get("N5").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(654.38, altCen2.get("N6").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(643.50, altCen2.get("N7").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(640.58, altCen2.get("N8").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(638.21, altCen2.get("N9").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(711.98, altCen2.get("N10").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(699.82, altCen2.get("N11").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(671.92, altCen2.get("N12").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(619.17, altCen2.get("N13").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(723.95, altCen2.get("N14").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(679.47, altCen2.get("N15").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(679.03, altCen2.get("N16").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(679.14, altCen2.get("N17").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(621.75, altCen2.get("M1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(662.70, altCen2.get("R1").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(699.82, altCen2.get("R2").getAltura().getEstimatedValue(), 0.0001);
+		assertEquals(679.94, altCen2.get("R3").getAltura().getEstimatedValue(), 0.0001);
 		
 	}
 	
