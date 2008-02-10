@@ -14,6 +14,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.quantities.Length;
 import javax.quantities.Pressure;
 import javax.quantities.Velocity;
 
@@ -77,20 +78,46 @@ public class DefaultOutPutRelatorio {
 			String source = docItem.getSource();
 
 			String node = source.substring(0, 12).trim();
-			String pressure = source.substring(25, 35).trim();
+			String velocidade = source.substring(25, 35).trim();
 			
 			if (velocidades.containsKey(node)) {
 				velocidades = new HashMap<String, VelocidadeNode>();
 				cenarios.add(velocidades);
 			}
 			
-			velocidades.put(node, new VelocidadeNode(Measure.valueOf(Double.parseDouble(pressure), Velocity.SI_UNIT), node));
+			velocidades.put(node, new VelocidadeNode(Measure.valueOf(Double.parseDouble(velocidade), Velocity.SI_UNIT), node));
 			
 		}
 		
 		return cenarios;
 	}
 
+	public List<Map<String, AlturaNode>> alturaNodes() {
+		
+		Map<String, AlturaNode> alturas = new HashMap<String, AlturaNode>();
+		List<Map<String, AlturaNode>> cenarios = new LinkedList<Map<String, AlturaNode>>(); 
+
+		cenarios.add(alturas);
+		
+		for (IDocItem docItem : docItems.get(pressaoMatcher)) {
+			String source = docItem.getSource();
+
+			String node = source.substring(0, 12).trim();
+			String altura = source.substring(25, 35).trim();
+			
+			if (alturas.containsKey(node)) {
+				alturas = new HashMap<String, AlturaNode>();
+				cenarios.add(alturas);
+			}
+			
+			alturas.put(node, new AlturaNode(Measure.valueOf(Double.parseDouble(altura), Length.SI_UNIT), node));
+			
+		}
+		
+		return cenarios;
+	}
+
+	
 	public List<Map<String, PressaoNode>> pressaoNodes() {
 		
 		Map<String, PressaoNode> pressoes = new HashMap<String, PressaoNode>();
@@ -280,5 +307,6 @@ public class DefaultOutPutRelatorio {
 					pressaoMatcher, velocidadeMatcher, dataSimulacaoMatcher, custoSimulacaoMatcher);
 		}
 	}
+
 
 }
