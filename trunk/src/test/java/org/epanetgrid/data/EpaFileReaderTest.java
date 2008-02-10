@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
+import org.epanetgrid.model.link.IValve;
 import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
@@ -88,5 +89,96 @@ public class EpaFileReaderTest extends TestCase {
 
 		assertEquals("Relatorio-1.txt" , netWork.getReports().getValue("FILE").trim());
 	}
+	
+	public final void testRead2() throws IOException {
+		
+		EpaFileReader fileReader = new EpaFileReader();
+		
+		String filePath = "resources/accept/RedeSerea.inp";
+		NetWork netWork = fileReader.read(filePath);
+		
+		Set<IJunction<?>> junctions  = netWork.getJunctions();
+		assertEquals(23, junctions.size());	
+		
+		Set<IReservoir> reservoirs = netWork.getReservoirs();
+		assertEquals(1, reservoirs.size());
+		
+		Set<ITank<?>> tanks = netWork.getTanks();
+		assertEquals(4, tanks.size());
+		
+		Set<IPipe> pipes = netWork.getPipes();
+		assertEquals(26, pipes.size());
+		
+		Set<ITank<?>> pumps = netWork.getPumps();
+		assertEquals(5, pumps.size());
+		
+		Set<IValve<?>> valves = netWork.getValves();
+		assertEquals(1, valves.size());
+
+		Set<String> tags = netWork.getTags();
+		assertEquals(0, tags.size());
+
+		Set<String> demands = netWork.getDemands();
+		assertEquals(0, demands.size());
+
+		Set<String> status = netWork.getStatus();
+		assertEquals(7, status.size());
+		
+		Set<String> patterns = netWork.getPattern();
+		assertEquals(16, patterns.size());
+		
+		Set<String> curves = (Set<String>) netWork.getCurves();
+		assertEquals(49, curves.size());
+		
+		Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
+		assertEquals(0, controls.size());
+
+		Set<String> rules = netWork.getRules();
+		assertEquals(96, rules.size());
+		
+		Set<String> energy = netWork.getEnergy();
+		assertEquals(9, energy.size());
+		
+		Set<String> emmiters = netWork.getEmmiters();
+		assertEquals(0, emmiters.size());
+		
+		Set<String> quality = netWork.getQuality();
+		assertEquals(0, quality.size());
+		
+		Set<String> sources = netWork.getSources();
+		assertEquals(0, sources.size());
+		
+		Set<String> reactions = netWork.getReactions();
+		assertEquals(6, reactions.size());
+
+		Set<String> mixing = netWork.getMixing();
+		assertEquals(0, mixing.size());
+
+		Set<String> times = netWork.getTimes();
+		assertEquals(9, times.size());
+		
+		Set<String> options = netWork.getOptions();
+		assertEquals(13, options.size());
+		
+		Set<String> coordinates = netWork.getCoordinates();
+		assertEquals(28, coordinates.size());
+		
+		Set<String> vertices = netWork.getVertices();
+		assertEquals(4, vertices.size());
+		
+		Set<String> labels = netWork.getLabels();
+		assertEquals(0, labels.size());
+		
+		Set<String> backdrop = netWork.getBackdrop();
+		assertEquals(4, backdrop.size());
+		
+		Map<String, String> reports = netWork.getReports().getValues();
+		assertEquals(7, reports.size());
+		
+		assertTrue(reports.containsKey("FILE"));
+
+		assertEquals("resultado_serea.txt" , netWork.getReports().getValue("FILE").trim());
+	}
+	
 
 }

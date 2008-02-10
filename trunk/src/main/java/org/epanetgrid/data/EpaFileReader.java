@@ -403,34 +403,34 @@ class EpaFileReader {
 			StringTokenizer tokenizer = new StringTokenizer(command);
 			//ugly!
 			String element = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-			if ( element != null && element.equals("DURATION") ) {
+			if ( element != null && element.equalsIgnoreCase("DURATION") ) {
 				String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 				String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
 				if (value != null) {
 					long multiplicador = 60 * 60 * 1000; //horas
 					if (unidade != null) {
-						if(unidade.equals("MINUTES")) {
+						if(unidade.equalsIgnoreCase("MINUTES")) {
 							multiplicador = 60 * 1000;
-						} else if(unidade.equals("SECONDS")) {
+						} else if(unidade.equalsIgnoreCase("SECONDS")) {
 							multiplicador = 1000;
 						}
 					}
 					netWork.setDuration(new Duration(new Long(value) * multiplicador));					
 				}
 				
-			} else if ( element != null && element.equals("HYDRAULIC") ) {
+			} else if ( element != null && element.equalsIgnoreCase("HYDRAULIC") ) {
 				String timestep = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-				if (timestep != null && timestep.equals("TIMESTEP")) {
+				if (timestep != null && timestep.equalsIgnoreCase("TIMESTEP")) {
 					String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
 					if (value != null) {
 						long multiplicador = 60 * 60 * 1000; //horas
 						if (unidade != null) {
-							if(unidade.equals("MINUTES")) {
+							if(unidade.equalsIgnoreCase("MINUTES")) {
 								multiplicador = 60 * 1000;
-							} else if(unidade.equals("SECONDS")) {
+							} else if(unidade.equalsIgnoreCase("SECONDS")) {
 								multiplicador = 1000;
 							}
 						}
@@ -439,9 +439,9 @@ class EpaFileReader {
 	
 				}
 								
-			} else if ( element != null && element.equals("START") ) {
+			} else if ( element != null && element.equalsIgnoreCase("START") ) {
 				String clocktime = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-				if (clocktime != null && clocktime.equals("CLOKTIME")) {
+				if (clocktime != null && clocktime.equalsIgnoreCase("CLOKTIME")) {
 					String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
@@ -450,11 +450,13 @@ class EpaFileReader {
 						int hora = Integer.valueOf(st.nextToken());
 						int minutos = Integer.valueOf(st.nextToken());
 						if (unidade != null) {
-							if(unidade.equals("PM")) {
+							if (unidade.equalsIgnoreCase("PM")) {
 								hora = hora + 12;
+							} else if (hora == 12) {
+								hora = 0;
 							}
 						}
-						netWork.setStartClockTime(new DateTime(2008, 01, 31, hora, minutos, 0, 0));					
+						netWork.setStartClockTime(new DateTime(2008, 01, 01, hora, minutos, 0, 0));					
 					}
 	
 				}
@@ -511,7 +513,7 @@ class EpaFileReader {
 			
 			//ugly!
 			String element = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-			if ( element != null && element.equals("LINK") ) {
+			if ( element != null && element.equalsIgnoreCase("LINK") ) {
 				String linkID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 				String state = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 				String at = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
@@ -519,7 +521,7 @@ class EpaFileReader {
 				String interval = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
 				if (linkID != null && state != null && interval != null) {
-					netWork.addControl(new Integer(interval), linkID, state.equals("OPEN"));					
+					netWork.addControl(new Integer(interval), linkID, state.equalsIgnoreCase("OPEN"));					
 				}
 				
 			}

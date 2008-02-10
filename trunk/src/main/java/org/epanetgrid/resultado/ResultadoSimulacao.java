@@ -30,6 +30,8 @@ import org.epanetgrid.resultado.output.EPANETErrorRelatorio;
 import org.epanetgrid.resultado.output.EPANETOutPutRelatorio;
 import org.epanetgrid.resultado.output.IAlarme;
 import org.epanetgrid.resultado.output.IInputError;
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
 
 /**
  * @author alan
@@ -42,10 +44,12 @@ public class ResultadoSimulacao {
 	
 	private List<Set<IAlarme>> alarmes;
 	private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
+	private int intervalos;
 	
 	public ResultadoSimulacao(String relatorioFilePath, String saidaFilePath, 
 			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network) throws FileNotFoundException {
 		this.network = network;
+		this.intervalos = (int)(network.getDuration().getMillis() / network.getHydraulicTimestep().getMillis());
 		EPANETOutPutRelatorio relatorio = new EPANETOutPutRelatorio();
 		this.relatorioFinal = relatorio.generateOutPutRelatorio(new File(relatorioFilePath));
 		this.relatorioSaida = new EPANETErrorRelatorio().generateOutPutRelatorio(new File(saidaFilePath));
@@ -55,12 +59,7 @@ public class ResultadoSimulacao {
 
 	private List<Set<IAlarme>> capturarAlarmes() {
 		
-		List<Set<IAlarme>> alarmes = new LinkedList<Set<IAlarme>>();
-		
-		List<IAlarme> warnings = this.relatorioSaida.getAlarmes();
-		for (IAlarme alarme : warnings) {
-			
-		}
+		List<Set<IAlarme>> alarmes = getWarnings(this.relatorioSaida.getAlarmes());
 		
 		List<Map<String, VelocidadeNode>> velocidades = relatorioFinal.velocidadeNodes();
 		List<Map<String, PressaoNode>> pressoesNiveis = relatorioFinal.pressaoNodes();
@@ -70,7 +69,7 @@ public class ResultadoSimulacao {
 			Map<String, VelocidadeNode> resultDutos = velocidades.get(i);
 			Map<String, PressaoNode> resultTanquesNos = pressoesNiveis.get(i);
 			
-			Set<IAlarme> alarmesIntervalo = new HashSet<IAlarme>();
+//			Set<IAlarme> alarmesIntervalo = new HashSet<IAlarme>();
 			
 			for (IPipe<?> pipe : network.getPipes()) {
 				VelocidadeNode result = resultDutos.get(pipe.label());
@@ -80,13 +79,13 @@ public class ResultadoSimulacao {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A velocidade no duto <" + pipe.label() + "> está maior que a máxima.", 
 								Velocity.SI_UNIT.getDimension(), IAlarme.Tipo.max);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					} else if( pipe.getMinVelocity() != null && 
 							result.getVelocidade().compareTo(pipe.getMinVelocity()) < 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A velocidade no duto <" + pipe.label() + "> está menor que a mínima.", 
 								Velocity.SI_UNIT.getDimension(), IAlarme.Tipo.min);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					}
 				}
 			}
@@ -99,13 +98,13 @@ public class ResultadoSimulacao {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A pressão na junção <" + junction.label() + "> está maior que a máxima.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.max);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					} else if( junction.getMinPressure() != null &&
 							result.getPressao().compareTo(junction.getMinPressure()) < 0 ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"A pressão na junção <" + junction.label() + "> está menor que a mínima.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.min);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					}
 				}
 			}
@@ -118,23 +117,75 @@ public class ResultadoSimulacao {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"O nível do tanque <" + tank.label() + "> está maior que o máximo.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.max);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					} else if( tank.getMinimumSecurityLevel() != null && 
 							result.getPressao().getEstimatedValue() < tank.getMinimumSecurityLevel().getEstimatedValue() ) {
 						IAlarme alarme = new AlarmeSaida(null, 
 								"O nível do tanque <" + tank.label() + "> está menor que o mínimo.", 
 								Pressure.SI_UNIT.getDimension(), IAlarme.Tipo.min);
-						alarmesIntervalo.add(alarme);
+						alarmes.get(i).add(alarme);
 					}
 				}
 			}
 			
-			alarmes.add(alarmesIntervalo);
+//			alarmes.add(alarmesIntervalo);
 			
 			
 		}
 		
 		return alarmes;
+	}
+
+
+	private List<Set<IAlarme>> getWarnings(List<IAlarme> alarmes) {
+		
+		List<Set<IAlarme>> warnings = new LinkedList<Set<IAlarme>>();
+		
+		for (int i = 0; i <= intervalos; i++) {
+			warnings.add(new HashSet<IAlarme>());
+		}
+		
+		for (IAlarme alarme : alarmes) {
+			if ( alarme.getTipoDeRestricao().equals(IAlarme.Tipo.warning) ) {
+				int index = getIndiceWarning(alarme);
+//				if (index == intervalos) {
+//					index--;
+//				}
+				warnings.get(index).add(alarme);
+			}
+		}
+		
+		return warnings;
+	}
+
+
+	private int getIndiceWarning(IAlarme alarme) {
+//		DateTime startClockTime = network.getStartClockTime();
+//		DateTime warningTime = new DateTime(startClockTime.getYear(), 
+//				startClockTime.getMonthOfYear(), 
+//				startClockTime.getDayOfMonth(), 
+//				alarme.getDate().getHour(), 
+//				alarme.getDate().getMinutes(), 
+//				alarme.getDate().getSeconds(), 
+//				0);
+		
+		long d1 = (network.getStartClockTime().getHourOfDay() * 60 * 60 * 1000) + 
+				(network.getStartClockTime().getMinuteOfHour() * 60 * 1000) +
+				(network.getStartClockTime().getSecondOfMinute() * 1000);
+
+//		System.out.println("d1 = " + (network.getStartClockTime().getHourOfDay()) + " " + 
+//				(network.getStartClockTime().getMinuteOfHour()) +  " " +
+//				(network.getStartClockTime().getSecondOfMinute()) + " = " + d1);
+		
+		long d2 = (alarme.getDate().getHour() * 60 * 60 * 1000) + 
+				(alarme.getDate().getMinutes() * 60 * 1000) +
+				(alarme.getDate().getSeconds() * 1000);
+		
+//		System.out.println("d2 = " +  (alarme.getDate().getHour()) + " " + 
+//				(alarme.getDate().getMinutes()) + " " +
+//				(alarme.getDate().getSeconds())  + " = " + d2);
+		
+		return (int)( (d2 - d1) / network.getHydraulicTimestep().getMillis() );
 	}
 
 
