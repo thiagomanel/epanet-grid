@@ -24,4 +24,9 @@ public class DateTimeInterval {
 		return seconds;
 	}
 	
+	@Override
+	public String toString() {
+		return hour + ":" + minutes + ":" + seconds;
+	}
+
 }
