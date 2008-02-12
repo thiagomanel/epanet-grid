@@ -2,8 +2,11 @@ package org.epanetgrid.data;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import junit.framework.TestCase;
 
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
@@ -12,8 +15,6 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.joda.time.Duration;
-
-import junit.framework.TestCase;
 
 /**
  * @author thiago
@@ -57,17 +58,17 @@ public class EpaFileReaderTest extends TestCase {
 		Set<ITank<?>> pumps = netWork.getPumps();
 		assertEquals(3, pumps.size());
 		
-		Set<String> options = netWork.getOptions();
+		List<String> options = netWork.getOptions();
 		assertEquals(2, options.size());
 		
-		Set<String> patterns = netWork.getPattern();
+		List<String> patterns = netWork.getPattern();
 		assertEquals(2, patterns.size());
 		
-		Set<String> energy = netWork.getEnergy();
+		List<String> energy = netWork.getEnergy();
 		assertEquals(3, energy.size());
 		
-		Set<String> times = netWork.getTimes();
-		assertEquals(4, times.size());
+		List<String> times = netWork.getTimes();
+		assertEquals(5, times.size());
 		
 		Map<String, String> reports = netWork.getReports().getValues();
 		assertEquals(7, reports.size());
@@ -115,61 +116,55 @@ public class EpaFileReaderTest extends TestCase {
 		Set<IValve<?>> valves = netWork.getValves();
 		assertEquals(1, valves.size());
 
-		Set<String> tags = netWork.getTags();
-		assertEquals(0, tags.size());
-
-		Set<String> demands = netWork.getDemands();
+		List<String> demands = netWork.getDemands();
 		assertEquals(0, demands.size());
 
-		Set<String> status = netWork.getStatus();
+		List<String> status = netWork.getStatus();
 		assertEquals(7, status.size());
 		
-		Set<String> patterns = netWork.getPattern();
+		List<String> patterns = netWork.getPattern();
 		assertEquals(16, patterns.size());
 		
-		Set<String> curves = (Set<String>) netWork.getCurves();
+		List<String> curves = netWork.getCurves();
 		assertEquals(49, curves.size());
 		
 		Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
 		assertEquals(0, controls.size());
 
-		Set<String> rules = netWork.getRules();
+		List<String> rules = netWork.getRules();
 		assertEquals(96, rules.size());
 		
-		Set<String> energy = netWork.getEnergy();
+		List<String> energy = netWork.getEnergy();
 		assertEquals(9, energy.size());
 		
-		Set<String> emmiters = netWork.getEmmiters();
+		List<String> emmiters = netWork.getEmitters();
 		assertEquals(0, emmiters.size());
 		
-		Set<String> quality = netWork.getQuality();
+		List<String> quality = netWork.getQuality();
 		assertEquals(0, quality.size());
 		
-		Set<String> sources = netWork.getSources();
+		List<String> sources = netWork.getSources();
 		assertEquals(0, sources.size());
 		
-		Set<String> reactions = netWork.getReactions();
+		List<String> reactions = netWork.getReactions();
 		assertEquals(6, reactions.size());
 
-		Set<String> mixing = netWork.getMixing();
+		List<String> mixing = netWork.getMixing();
 		assertEquals(0, mixing.size());
 
-		Set<String> times = netWork.getTimes();
+		List<String> times = netWork.getTimes();
 		assertEquals(9, times.size());
 		
-		Set<String> options = netWork.getOptions();
+		List<String> options = netWork.getOptions();
 		assertEquals(13, options.size());
 		
-		Set<String> coordinates = netWork.getCoordinates();
+		List<String> coordinates = netWork.getCoordinates();
 		assertEquals(28, coordinates.size());
 		
-		Set<String> vertices = netWork.getVertices();
+		List<String> vertices = netWork.getVertices();
 		assertEquals(4, vertices.size());
 		
-		Set<String> labels = netWork.getLabels();
-		assertEquals(0, labels.size());
-		
-		Set<String> backdrop = netWork.getBackdrop();
+		List<String> backdrop = netWork.getBackdrop();
 		assertEquals(4, backdrop.size());
 		
 		Map<String, String> reports = netWork.getReports().getValues();
