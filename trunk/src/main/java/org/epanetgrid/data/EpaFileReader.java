@@ -532,8 +532,8 @@ class EpaFileReader {
 						}
 						netWork.setDuration(new Duration(new Long(value) * multiplicador));					
 					}
-
-				} else if ( element != null && element.equalsIgnoreCase("HYDRAULIC") ) {
+//Report Timestep
+				} else if ( element != null && element.equalsIgnoreCase("Report") ) {
 					String timestep = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					if (timestep != null && timestep.equalsIgnoreCase("TIMESTEP")) {
 						String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
