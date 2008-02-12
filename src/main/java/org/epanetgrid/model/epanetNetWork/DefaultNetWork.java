@@ -720,12 +720,12 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		
 		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
 		
-		for (int i = 1; i <= numIntervals; i++) {
+		for (int i = 0; i <= numIntervals; i++) {
 			Map<String, Boolean> intervalControl = new TreeMap<String,Boolean>();
 			for (IPump<?> pump : this.pumps) {
 				Boolean state = ( full.get(i) != null ? full.get(i).get(pump.label()) : null );
 				if (state == null) {
-					state = (i == 1 ? true : full.get(i-1).get(pump.label()));
+					state = (i == 0 ? true : full.get(i-1).get(pump.label()));
 				}
 				intervalControl.put(pump.label(), state);
 			}
