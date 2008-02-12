@@ -1,6 +1,7 @@
 package org.epanetgrid.data;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -55,10 +56,10 @@ public class EpaFileWriterTest extends TestCase {
 		Set<IPump<?>> pumps = netWork.getPumps();
 		assertEquals(3, pumps.size());
 		
-		Set<String> options = netWork.getOptions();
+		List<String> options = netWork.getOptions();
 		assertEquals(2, options.size());
 		
-		Set<String> patterns = netWork.getPattern();
+		List<String> patterns = netWork.getPattern();
 		assertEquals(2, patterns.size());
 		
 		/*
@@ -66,14 +67,14 @@ public class EpaFileWriterTest extends TestCase {
 		GLOBAL PATTERN   preco
 		DEMAND CHARGE    9.52
 		*/
-		Set<String> energy = netWork.getEnergy();
+		List<String> energy = netWork.getEnergy();
 		assertEquals(3, energy.size());
 		assertTrue(energy.contains("GLOBAL PRICE     0.10294"));
 		assertTrue(energy.contains("GLOBAL PATTERN   preco"));
 		assertTrue(energy.contains("DEMAND CHARGE    9.52"));
 		
-		Set<String> times = netWork.getTimes();
-		assertEquals(4, times.size());
+		List<String> times = netWork.getTimes();
+		assertEquals(5, times.size());
 		
 		Map<String, String> reports = netWork.getReports().getValues();
 		assertEquals(7, reports.size());
