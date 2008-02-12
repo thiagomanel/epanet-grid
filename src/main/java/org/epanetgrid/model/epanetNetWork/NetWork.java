@@ -53,19 +53,43 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public void replaceComponent(String oldComponentLabel, NetworkComponent newComponent);
 	
-	public Set<String> getPattern();
-	
-	public Set<String> getEnergy();
-	
-	public Set<String> getOptions();
-	
-	public Set<String> getTimes();
+	public List<String> getTitle();
 	
 	public List<String> getCurves();
 	
-	public IReport getReports();
-
+	public List<String> getEmitters();
+	
+	public List<String> getQuality();
+	
+	public List<String> getPattern();
+	
+	public List<String> getEnergy();
+	
+	public List<String> getStatus();
+	
+	public List<String> getCoordinates();
+	
+	public List<String> getVertices();
+	
+	public List<String> getBackdrop();
+	
 	public Map<Integer, Map<String, Boolean>> getControls();
+	
+	public List<String> getRules();
+	
+	public List<String> getDemands();
+	
+	public List<String> getOptions();
+	
+	public List<String> getReactions();
+	
+	public List<String> getSources();
+	
+	public List<String> getMixing();
+	
+	public List<String> getTimes();
+	
+	public IReport getReports();
 
 	public Duration getDuration();
 	

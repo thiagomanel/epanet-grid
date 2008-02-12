@@ -16,22 +16,18 @@ public class AlarmeSaida implements IAlarme {
 		this.tipoDeRestricao = tipoDeRestricao;
 	}
 	
-	@Override
 	public DateTimeInterval getDate() {
 		return this.dateTimeInterval;
 	}
 
-	@Override
 	public String getDescricao() {
 		return this.descricao;
 	}
 
-	@Override
 	public Dimension getTipoDeAlarme() {
 		return this.tipoDeAlarme;
 	}
 
-	@Override
 	public Tipo getTipoDeRestricao() {
 		return this.tipoDeRestricao;
 	}

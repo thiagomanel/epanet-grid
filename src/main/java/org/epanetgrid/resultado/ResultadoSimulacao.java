@@ -30,8 +30,6 @@ import org.epanetgrid.resultado.output.EPANETErrorRelatorio;
 import org.epanetgrid.resultado.output.EPANETOutPutRelatorio;
 import org.epanetgrid.resultado.output.IAlarme;
 import org.epanetgrid.resultado.output.IInputError;
-import org.joda.time.DateTime;
-import org.joda.time.Duration;
 
 /**
  * @author alan
@@ -56,6 +54,9 @@ public class ResultadoSimulacao {
 		this.alarmes = capturarAlarmes();
 	}
 
+	public boolean executionHalted() {
+		return this.relatorioSaida.executionHalted();
+	}
 
 	private List<Set<IAlarme>> capturarAlarmes() {
 		
