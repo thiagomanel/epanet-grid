@@ -25,6 +25,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	private final Measure<Dimensionless> lossCoefficient;
 	private final NetWork network;
 	private final String label;
+	private final String status;
 
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.link.IPipe#getLength()
@@ -71,8 +72,8 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.link.IPipe#getStatus()
 	 */
-	public Status getStatus() {
-		return null;
+	public String getStatus() {
+		return this.status;
 	}
 
 	/* (non-Javadoc)
@@ -106,6 +107,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		this.length = builder.length;
 		this.maxVelocity = builder.maxVelocity;
 		this.minVelocity = builder.minVelocity;
+		this.status = builder.status;
 	}
 	
 	public static class Builder {
@@ -118,6 +120,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		protected Measure<Dimensionless> lossCoefficient;
 		protected NetWork network;
 		protected String label;
+		private String status;
 		
 		/**
 		 * @param label
@@ -135,6 +138,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 			roughnessCoefficient(pipe.getRoughnessCoefficient());
 			maxVelocity(pipe.getMaxVelocity());
 			minVelocity(pipe.getMinVelocity());
+			status(pipe.getStatus());
 			return this;
 		}
 
@@ -167,10 +171,16 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 			this.roughnessCoefficient = roughnessCoefficient;
 			return this;
 		}
+
+		public Builder status(String status) {
+			this.status = status;
+			return this;
+		}
 		
 		public DefaultPipe build(){
 			return new DefaultPipe(this);
 		}
+
 	}
 
 	/* (non-Javadoc)
@@ -189,6 +199,7 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 		result = PRIME * result + ((roughnessCoefficient == null) ? 0 : roughnessCoefficient.hashCode());
 		result = PRIME * result + ((maxVelocity == null) ? 0 : maxVelocity.hashCode());
 		result = PRIME * result + ((minVelocity == null) ? 0 : minVelocity.hashCode());
+		result = PRIME * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -257,6 +268,14 @@ public class DefaultPipe implements IPipe<DefaultPipe> {
 				return false;
 			}
 		} else if (!roughnessCoefficient.equals(other.roughnessCoefficient)) {
+			return false;
+		}
+		
+		if (status == null) {
+			if (other.status != null) {
+				return false;
+			}
+		} else if (!status.equals(other.status)) {
 			return false;
 		}
 

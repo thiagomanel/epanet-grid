@@ -26,7 +26,7 @@ public interface IPipe<T extends IPipe> extends ILink<T> {
 	
 	public Measure<Dimensionless> getLossCoefficient();
 	
-	public Status getStatus();
+	public String getStatus();
 	
 	public Measure<Velocity> getMaxVelocity();
 	

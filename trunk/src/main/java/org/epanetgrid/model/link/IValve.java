@@ -21,4 +21,8 @@ public interface IValve<T extends IValve> extends ILink<T> {
 	public Measure<Length> getDiameter();
 	
 	public Measure<Dimensionless> getLossCoefficient();
+	
+	public String getType();
+	
+	public String getSetting();
 }

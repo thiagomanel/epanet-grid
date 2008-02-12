@@ -21,6 +21,8 @@ public class DefaultValve implements IValve<DefaultValve> {
 
 	private final Measure<Length> diameter;
 	private final Measure<Dimensionless> lossCoef;
+	private String type;
+	private String setting;
 	private final String label;
 	private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 
@@ -53,6 +55,20 @@ public class DefaultValve implements IValve<DefaultValve> {
 	}
 
 	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.link.IValve#getSetting()
+	 */
+	public String getSetting() {
+		return this.setting;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.epanetgrid.model.link.IValve#getType()
+	 */
+	public String getType() {
+		return this.type;
+	}
+	
+	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.NetworkComponent#label()
 	 */
 	public String label() {
@@ -82,6 +98,20 @@ public class DefaultValve implements IValve<DefaultValve> {
 					return false;
 				}
 			} else if(!this.lossCoef.equals(other.lossCoef)) {
+				return false;
+			}
+			if (this.setting == null) {
+				if(other.setting != null){
+					return false;
+				}
+			} else if(!this.setting.equals(other.setting)) {
+				return false;
+			}
+			if (this.type == null) {
+				if(other.type != null){
+					return false;
+				}
+			} else if(!this.type.equals(other.type)) {
 				return false;
 			}
 			if (this.label == null) {
@@ -114,6 +144,8 @@ public class DefaultValve implements IValve<DefaultValve> {
 		this.diameter = builder.diameter;
 		this.label = builder.label;
 		this.lossCoef = builder.lossCoef;
+		this.setting = builder.setting;
+		this.type = builder.type;
 		this.network = builder.network;
 	}
 	
@@ -121,6 +153,8 @@ public class DefaultValve implements IValve<DefaultValve> {
 		
 		private Measure<Length> diameter;
 		private Measure<Dimensionless> lossCoef;
+		private String type;
+		private String setting;
 		private String label;
 		private NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> network;
 		
@@ -141,6 +175,16 @@ public class DefaultValve implements IValve<DefaultValve> {
 
 		public Builder diameter(Measure<Length> diameter) {
 			this.diameter = diameter;
+			return this;
+		}
+		
+		public Builder type(String type) {
+			this.type = type;
+			return this;
+		}
+		
+		public Builder setting(String setting) {
+			this.setting = setting;
 			return this;
 		}
 

@@ -37,6 +37,7 @@ public class DefaultErrorRelatorio {
 	private IMatcher inputAlarmeMatcher;
 	private DateTime data;
 	private Pattern datePatternWarning;
+	private boolean executionHalted;
 
 	/**
 	 * @param linedText
@@ -66,6 +67,13 @@ public class DefaultErrorRelatorio {
 		}
 	}
 
+	/**
+	 * @return
+	 */
+	public boolean executionHalted() {
+		return this.executionHalted;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -109,6 +117,7 @@ public class DefaultErrorRelatorio {
 			if (source.contains("System unbalanced")) {
 				if (source.contains("EXECUTION HALTED")) {
 					tipo = Tipo.halted;
+					this.executionHalted = true;
 				} else {
 					tipo = Tipo.unbalanced;
 				}

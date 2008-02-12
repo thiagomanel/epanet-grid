@@ -50,20 +50,48 @@ class EpaFileWriter {
 	}
 	
 	private ComponentWriter createComponentWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+		/*
+		 * The order of sections is not important. However, whenever a node or link is referred to 
+		 * in a section it must have already been defined in the [JUNCTIONS], [RESERVOIRS], [TANKS], 
+		 * [PIPES], [PUMPS], or [VALVES] sections. Thus it is recommended that these sections be placed first.
+		 * 
+		 * [TITLE][CURVES][JUNCTIONS][RESERVOIRS][TANKS][PIPES][PUMPS][VALVES][EMITTERS][QUALITY][PATTERNS][ENERGY]
+		 * [STATUS][CONTROLS][RULES][DEMANDS][OPTIONS][REACTIONS][SOURCES][MIXING][TIMES][REPORT]
+		 */
+		
 		CompositeComponentWriter compositeWriter = new CompositeComponentWriter();
+		
+		compositeWriter.addWriter(new TitleWriter(netWork));
+		compositeWriter.addWriter(new CurveWriter(netWork));
+		
 		compositeWriter.addWriter(new JuncaoWriter(netWork));
 		compositeWriter.addWriter(new ReservoirsWriter(netWork));
 		compositeWriter.addWriter(new TankWriter(netWork));
 		compositeWriter.addWriter(new PipeWriter(netWork));
 		compositeWriter.addWriter(new PumpWriter(netWork));
+		compositeWriter.addWriter(new ValveWriter(netWork));
 		
+		compositeWriter.addWriter(new EmittersWriter(netWork));
+		compositeWriter.addWriter(new QualityWriter(netWork));
+		compositeWriter.addWriter(new PatternsWriter(netWork));
+		compositeWriter.addWriter(new EnergyWriter(netWork));
+		compositeWriter.addWriter(new StatusWriter(netWork));
+		compositeWriter.addWriter(new ControlsWriter(netWork));
+		compositeWriter.addWriter(new RulesWriter(netWork));
+		compositeWriter.addWriter(new DemandsWriter(netWork));
 		compositeWriter.addWriter(new OptionsWriter(netWork));
+		compositeWriter.addWriter(new ReactionsWriter(netWork));
+		compositeWriter.addWriter(new SourcesWriter(netWork));
+		compositeWriter.addWriter(new MixingWriter(netWork));
 		compositeWriter.addWriter(new TimeWriter(netWork));
 		compositeWriter.addWriter(new ReportWriter(netWork));
-		compositeWriter.addWriter(new EnergyWriter(netWork));
-		compositeWriter.addWriter(new CurveWriter(netWork));
-		compositeWriter.addWriter(new PatternsWriter(netWork));
-		compositeWriter.addWriter(new ControlsWriter(netWork));
+		
+		compositeWriter.addWriter(new CoordinatesWriter(netWork));
+		compositeWriter.addWriter(new VerticesWriter(netWork));
+		compositeWriter.addWriter(new BackdropWriter(netWork));
+		
+		compositeWriter.addWriter(new SimpleWriter("[END]"));
+		
 		return compositeWriter;
 	}
 
@@ -101,6 +129,23 @@ class EpaFileWriter {
 		protected abstract void printHeader(PrintWriter writer);
 	}
 	
+	private class SimpleWriter extends AbstractComponentWriter {
+		
+		private final String txt;
+
+		public SimpleWriter(String txt){
+			this.txt = txt;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			writer.println(txt);
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) { }
+	}
+	
 	private class JuncaoWriter extends AbstractComponentWriter {
 		private static final String HEADER = "[JUNCTIONS]\n;ID     Elevation    Demand     Pattern\n;-------------------------------------------";
 		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
@@ -122,6 +167,39 @@ class EpaFileWriter {
 			String demand = (junction.getBaseDemandFlow() == null ) ? "" : junction.getBaseDemandFlow().getEstimatedValue()+"";
 			String pattern = (junction.getDemandPatternID() == null ) ? "" : junction.getDemandPatternID();
 			String outPut = id+"\t"+elevation+"\t"+demand+"\t"+pattern;
+			writer.println(outPut);
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);
+		}
+	}
+	
+	private class ValveWriter extends AbstractComponentWriter {
+		private static final String HEADER = "[VALVES]\n;ID	Node1	Node2	Diameter	Type	Setting		MinorLoss  \n;-------------------------------------------";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public ValveWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork){
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (IValve<?> valve : netWork.getValves()) {
+				printValve(valve, writer);
+			}
+		}
+		
+		private void printValve(IValve<?> valve, PrintWriter writer) {
+			String id = valve.label();
+			String node1 = (netWork.getAnterior(valve) == null ) ? "" : netWork.getAnterior(valve).label();
+			String node2 = (netWork.getProximo(valve) == null ) ? "" : netWork.getProximo(valve).label();
+			String diameter = (valve.getDiameter() == null ) ? "" : valve.getDiameter().getEstimatedValue()+"";
+			String type = (valve.getType() == null ) ? "" : valve.getType();
+			String setting = (valve.getSetting() == null ) ? "" : valve.getSetting();
+			String minorLoss = (valve.getLossCoefficient() == null ) ? "" : valve.getLossCoefficient().getEstimatedValue()+"";
+			String outPut = id+"\t"+node1+"\t"+node2+"\t"+diameter+"\t"+type+"\t"+setting+"\t"+minorLoss;
 			writer.println(outPut);
 		}
 
@@ -207,7 +285,7 @@ class EpaFileWriter {
 			}
 		}
 
-		//ID     Node1     Node2     Length     Diam.     Roughness 
+		//ID     Node1     Node2     Length     Diam.     Roughness		MinorLoss   	Status
 		private void printPipe(IPipe<?> pipe, PrintWriter writer) {
 			String id = pipe.label();
 			String node1 = netWork.getAnterior(pipe).label();
@@ -215,7 +293,9 @@ class EpaFileWriter {
 			String length = (pipe.getLength() == null ) ? "" : pipe.getLength().getEstimatedValue()+"";
 			String diam = (pipe.getDiameter() == null ) ? "" : pipe.getDiameter().getEstimatedValue()+"";
 			String rough = (pipe.getRoughnessCoefficient() == null ) ? "" : pipe.getRoughnessCoefficient().getEstimatedValue()+"";
-			String outPut = id+"\t"+node1+"\t"+node2+"\t"+length+"\t"+diam+"\t"+rough;
+			String loss = (pipe.getLossCoefficient() == null ) ? "" : pipe.getLossCoefficient().getEstimatedValue()+"";
+			String status = (pipe.getStatus() == null ) ? "" : pipe.getStatus()+"";
+			String outPut = id+"\t"+node1+"\t"+node2+"\t"+length+"\t"+diam+"\t"+rough+"\t"+loss+"\t"+status;
 			writer.println(outPut);
 		}
 
@@ -235,13 +315,13 @@ class EpaFileWriter {
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			for (IPump<?> pipe : netWork.getPumps()) {
-				printPipe(pipe, writer);
+			for (IPump<?> pump : netWork.getPumps()) {
+				printPump(pump, writer);
 			}
 		}
 
 		//ID     Node1     Node2     Properties   
-		private void printPipe(IPump<?> pump, PrintWriter writer) {
+		private void printPump(IPump<?> pump, PrintWriter writer) {
 			String id = pump.label();
 			String node1 = netWork.getAnterior(pump).label();
 			String node2 = netWork.getProximo(pump).label();
@@ -277,6 +357,282 @@ class EpaFileWriter {
 			writer.println(HEADER);		
 		}
 		
+	}
+
+	private class TitleWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[TITLE]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public TitleWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String title : netWork.getTitle()) {
+				writer.println(title);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class CoordinatesWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[COORDINATES]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public CoordinatesWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String coordinate : netWork.getCoordinates()) {
+				writer.println(coordinate);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+
+	private class EmittersWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[EMITTERS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+		
+		public EmittersWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+		
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String emitter : netWork.getEmitters()) {
+				writer.println(emitter);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+		
+	}
+	
+	private class QualityWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[QUALITY]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public QualityWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String quality : netWork.getQuality()) {
+				writer.println(quality);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class StatusWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[STATUS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public StatusWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String status : netWork.getStatus()) {
+				writer.println(status);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class RulesWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[RULES]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public RulesWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String rules : netWork.getRules()) {
+				writer.println(rules);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class DemandsWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[DEMANDS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public DemandsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String demand : netWork.getDemands()) {
+				writer.println(demand);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class ReactionsWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[REACTIONS]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public ReactionsWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String reaction : netWork.getReactions()) {
+				writer.println(reaction);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class SourcesWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[SOURCES]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public SourcesWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String source : netWork.getSources()) {
+				writer.println(source);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class MixingWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[MIXING]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public MixingWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String mixing : netWork.getMixing()) {
+				writer.println(mixing);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class VerticesWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[VERTICES]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public VerticesWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String vertice : netWork.getVertices()) {
+				writer.println(vertice);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
+	}
+
+	private class BackdropWriter extends AbstractComponentWriter{
+
+		private static final String HEADER = "[BACKDROP]";
+		private final NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork;
+
+		public BackdropWriter(NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> netWork) {
+			this.netWork = netWork;
+		}
+
+		@Override
+		protected void printCore(PrintWriter writer) {
+			for (String backdrop : netWork.getBackdrop()) {
+				writer.println(backdrop);
+			}
+		}
+
+		@Override
+		protected void printHeader(PrintWriter writer) {
+			writer.println(HEADER);		
+		}
+
 	}
 	
 	private class OptionsWriter extends AbstractComponentWriter{

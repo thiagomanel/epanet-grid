@@ -57,17 +57,30 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 
 	private final Map<Integer, Map<String, Boolean>> controls = new TreeMap<Integer, Map<String,Boolean>>();
 	
-	private final Set<String> energy = new HashSet<String>();
-	private final Set<String> options = new HashSet<String>();
-	private final Set<String> patterns = new HashSet<String>();
+	private final List<String> energy = new LinkedList<String>();
+	private final List<String> options = new LinkedList<String>();
+	private final List<String> patterns = new LinkedList<String>();
 	private final IReport reports = new Report();
-	private final Set<String> times = new HashSet<String>();
+	private final List<String> times = new LinkedList<String>();
 
 	private final List<String> curves = new LinkedList<String>();
 
 	private Duration duration;
 	private Duration hydraulicTimestep;
 	private DateTime startClockTime;
+
+	private List<String> backdrop = new LinkedList<String>();
+	private List<String> coordinates = new LinkedList<String>();
+	private List<String> demmands = new LinkedList<String>();
+	private List<String> emitters = new LinkedList<String>();
+	private List<String> mixing = new LinkedList<String>();
+	private List<String> quality = new LinkedList<String>();
+	private List<String> reactions = new LinkedList<String>();
+	private List<String> rules = new LinkedList<String>();
+	private List<String> sources = new LinkedList<String>();
+	private List<String> status = new LinkedList<String>();
+	private List<String> title = new LinkedList<String>();
+	private List<String> vertices = new LinkedList<String>();
 
 	/**
 	 * @param builder
@@ -83,6 +96,18 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 			copyReports(baseNetWork);
 			copyTime(baseNetWork);
 			copyControls(baseNetWork);
+			copyBackdrop(baseNetWork);
+			copyCoordinates(baseNetWork);
+			copyDemands(baseNetWork);
+			copyEmitters(baseNetWork);
+			copyMixing(baseNetWork);
+			copyQuality(baseNetWork);
+			copyReactions(baseNetWork);
+			copyRules(baseNetWork);
+			copySources(baseNetWork);
+			copyStatus(baseNetWork);
+			copyTitle(baseNetWork);
+			copyVertice(baseNetWork);
 			this.duration = baseNetWork.getDuration();
 			this.hydraulicTimestep = baseNetWork.getHydraulicTimestep();
 			this.startClockTime = baseNetWork.getStartClockTime();
@@ -204,6 +229,89 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		}
 	}
 
+	private void copyBackdrop(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String backdrop : baseNetWork.getBackdrop()) {
+			addBackdrop(backdrop);
+		}
+	}
+	
+	private void copyCoordinates(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String coordinates : baseNetWork.getCoordinates()) {
+			addCoordinates(coordinates);
+		}
+	}
+
+	private void copyDemands(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String demands : baseNetWork.getDemands()) {
+			addDemands(demands);
+		}
+	}
+	
+	private void copyEmitters(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String emitters : baseNetWork.getEmitters()) {
+			addEmitters(emitters);
+		}
+	}
+	
+	private void copyMixing(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String mixing : baseNetWork.getMixing()) {
+			addMixing(mixing);
+		}
+	}
+	
+	private void copyQuality(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String quality : baseNetWork.getQuality()) {
+			addQuality(quality);
+		}
+	}
+	
+	private void copyReactions(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String reaction : baseNetWork.getReactions()) {
+			addReaction(reaction);
+		}
+	}
+	
+	private void copyRules(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String rules : baseNetWork.getRules()) {
+			addRules(rules);
+		}
+	}
+	
+	private void copySources(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String source : baseNetWork.getSources()) {
+			addSource(source);
+		}
+	}
+	
+	private void copyStatus(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String status : baseNetWork.getStatus()) {
+			addStatus(status);
+		}
+	}
+	
+	private void copyTitle(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String title : baseNetWork.getTitle()) {
+			addTitle(title);
+		}
+	}
+	
+	private void copyVertice(
+			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
+		for (String vertice : baseNetWork.getVertices()) {
+			addVertice(vertice);
+		}
+	}
 	
 	
 	@Override
@@ -497,7 +605,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getEnergy()
 	 */
-	public Set<String> getEnergy() {
+	public List<String> getEnergy() {
 		return this.energy;
 	}
 
@@ -508,7 +616,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getOptions()
 	 */
-	public Set<String> getOptions() {
+	public List<String> getOptions() {
 		return this.options;
 	}
 	
@@ -519,7 +627,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getPattern()
 	 */
-	public Set<String> getPattern() {
+	public List<String> getPattern() {
 		return this.patterns;
 	}
 
@@ -552,7 +660,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	/* (non-Javadoc)
 	 * @see org.epanetgrid.model.epanetNetWork.NetWork#getTimes()
 	 */
-	public Set<String> getTimes() {
+	public List<String> getTimes() {
 		return this.times;
 	}
 	
@@ -608,16 +716,16 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	
 	public Map<Integer, Map<String, Boolean>> getFullControls() {
 		
-		Map<Integer, Map<String, Boolean>> full = new HashMap<Integer, Map<String,Boolean>>();
+		Map<Integer, Map<String, Boolean>> full = new HashMap<Integer, Map<String,Boolean>>(this.controls);
 		
 		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
 		
-		for (int i = 1; i < numIntervals; i++) {
+		for (int i = 1; i <= numIntervals; i++) {
 			Map<String, Boolean> intervalControl = new TreeMap<String,Boolean>();
 			for (IPump<?> pump : this.pumps) {
-				Boolean state = ( controls.get(i) != null ? controls.get(i).get(pump.label()) : null );
+				Boolean state = ( full.get(i) != null ? full.get(i).get(pump.label()) : null );
 				if (state == null) {
-					state = (i == 0 ? true : this.controls.get(i-1).get(pump.label()));
+					state = (i == 1 ? true : full.get(i-1).get(pump.label()));
 				}
 				intervalControl.put(pump.label(), state);
 			}
@@ -627,4 +735,100 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return full;
 	}
 
+	public List<String> getBackdrop() {
+		return this.backdrop;
+	}
+
+	public void addBackdrop(String backdrop){
+		this.backdrop.add(backdrop);
+	}
+	
+	public List<String> getCoordinates() {
+		return this.coordinates;
+	}
+	
+	public void addCoordinates(String coordinates){
+		this.coordinates.add(coordinates);
+	}
+
+	public List<String> getDemands() {
+		return this.demmands;
+	}
+
+	public void addDemands(String demands){
+		this.demmands.add(demands);
+	}
+	
+	public List<String> getEmitters() {
+		return this.emitters;
+	}
+
+	public void addEmitters(String emitters){
+		this.emitters.add(emitters);
+	}
+	
+	public List<String> getMixing() {
+		return this.mixing;
+	}
+
+	public void addMixing(String mixing){
+		this.mixing.add(mixing);
+	}
+	
+	public List<String> getQuality() {
+		return this.quality;
+	}
+
+	public void addQuality(String quality){
+		this.quality.add(quality);
+	}
+	
+	public List<String> getReactions() {
+		return this.reactions;
+	}
+
+	public void addReaction(String reaction){
+		this.reactions.add(reaction);
+	}
+	
+	public List<String> getRules() {
+		return this.rules;
+	}
+
+	public void addRules(String rules){
+		this.rules.add(rules);
+	}
+	
+	public List<String> getSources() {
+		return this.sources;
+	}
+
+	public void addSource(String source){
+		this.sources.add(source);
+	}
+	
+	public List<String> getStatus() {
+		return this.status;
+	}
+
+	public void addStatus(String status){
+		this.status.add(status);
+	}
+	
+	public List<String> getTitle() {
+		return this.title;
+	}
+
+	public void addTitle(String title){
+		this.title.add(title);
+	}
+	
+	public List<String> getVertices() {
+		return this.vertices;
+	}
+
+	public void addVertice(String vertice){
+		this.vertices.add(vertice);
+	}
+	
 }
