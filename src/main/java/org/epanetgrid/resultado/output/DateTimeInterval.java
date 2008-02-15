@@ -25,10 +25,10 @@ public class DateTimeInterval implements Comparable<DateTimeInterval> {
 	}
 
 	public DateTimeInterval plus(long milli) {
-		int seconds = (int) (milli / 1000);
-		int minutes = seconds / 60;
+		int seconds = (int) (milli / 1000) + this.seconds;
+		int minutes = (seconds / 60) + this.minutes;
 		seconds = seconds % 60;
-		int hours = minutes / 60;
+		int hours = (minutes / 60) + this.hour;
 		minutes = minutes % 60;
 		return new DateTimeInterval(hours, minutes, seconds);
 	}
@@ -41,16 +41,15 @@ public class DateTimeInterval implements Comparable<DateTimeInterval> {
 	
 	@Override
 	public String toString() {
-		return hour + ":" + minutes + ":" + seconds;
+		return hour + ":" + minutes;
 	}
 
 	public String toAmPmString() {
-		int hour = Math.min(this.hour, Math.abs(this.hour - 12));
+		int hour = this.hour;
 		String unit = "AM";
-		if (this.hour > 12) {
+		if(hour >= 12){
 			unit = "PM";
-		} else if (this.hour == 0) {
-			hour = 12;
+			hour = (hour == 12 ? hour : hour - 12);
 		}
 		return hour + ":" + minutes + " " + unit;
 	}
