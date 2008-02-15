@@ -17,7 +17,6 @@ import javax.quantities.Length;
 import javax.quantities.VolumetricFlowRate;
 
 import org.epanetgrid.model.INode;
-import org.epanetgrid.model.NetworkComponent;
 import org.epanetgrid.model.epanetNetWork.DefaultNetWork;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.DefaultPipe;
@@ -33,6 +32,7 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.nodes.DefaultJuntion.Builder;
+import org.epanetgrid.resultado.output.DateTimeInterval;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.jscience.physics.measures.Measure;
@@ -65,15 +65,6 @@ class EpaFileReader {
 
 		return network;
 	}
-
-//	public static void main(String args[]) throws IOException {
-
-//	for (Object junction : new EpaFileReader().read(args[0]).getJunctions()) {
-
-//	System.out.println("junc "+((IJunction<?>)junction).label()+" elevation "+((IJunction<?>)junction).getElevation()+" demand "+((IJunction<?>)junction).getBaseDemandFlow());
-//	};
-
-//	}
 
 	private interface Parser {
 
@@ -509,70 +500,66 @@ class EpaFileReader {
 
 				/*
 				 * [TIMES]
-				 * DURATION 24 HOURS
-				 * HYDRAULIC TIMESTEP 60 MINUTES
-				 * PATTERN TIMESTEP 60 MINUTES
-				 * START CLOKTIME 12:00 AM
+				 * DURATION HH:MM
+				 * REPORT TIMESTEP HH:MM
+				 * START CLOKTIME HH:MM AM
 				 */
 				StringTokenizer tokenizer = new StringTokenizer(command);
 				//ugly!
 				String element = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 				if ( element != null && element.equalsIgnoreCase("DURATION") ) {
+					//DURATION, format: HH:MM
 					String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-					String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-
 					if (value != null) {
-						long multiplicador = 60 * 60 * 1000; //horas
-						if (unidade != null) {
-							if(unidade.equalsIgnoreCase("MINUTES")) {
-								multiplicador = 60 * 1000;
-							} else if(unidade.equalsIgnoreCase("SECONDS")) {
-								multiplicador = 1000;
-							}
+						StringTokenizer st = new StringTokenizer(value, ":");
+						String hours = st.hasMoreTokens() ? st.nextToken() : null;
+						String minutes = st.hasMoreTokens() ? st.nextToken() : null;
+						if (hours != null && minutes != null) {
+							long miliseconds = new Integer(hours) * 60 * 60 * 1000;
+							miliseconds += new Integer(minutes) * 60 * 1000;
+							netWork.setDuration(new Duration(miliseconds));
 						}
-						netWork.setDuration(new Duration(new Long(value) * multiplicador));					
 					}
-//Report Timestep
+
 				} else if ( element != null && element.equalsIgnoreCase("Report") ) {
+					//Report Timestep, format: HH:MM					
 					String timestep = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					if (timestep != null && timestep.equalsIgnoreCase("TIMESTEP")) {
 						String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-						String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-
 						if (value != null) {
-							long multiplicador = 60 * 60 * 1000; //horas
-							if (unidade != null) {
-								if(unidade.equalsIgnoreCase("MINUTES")) {
-									multiplicador = 60 * 1000;
-								} else if(unidade.equalsIgnoreCase("SECONDS")) {
-									multiplicador = 1000;
-								}
+							StringTokenizer st = new StringTokenizer(value, ":");
+							String hours = st.hasMoreTokens() ? st.nextToken() : null;
+							String minutes = st.hasMoreTokens() ? st.nextToken() : null;
+							if (hours != null && minutes != null) {
+								long miliseconds = new Integer(hours) * 60 * 60 * 1000;
+								miliseconds += new Integer(minutes) * 60 * 1000;
+								netWork.setHydraulicTimestep(new Duration(miliseconds));
 							}
-							netWork.setHydraulicTimestep(new Duration(new Long(value) * multiplicador));					
+				
 						}
 
 					}
 
 				} else if ( element != null && element.equalsIgnoreCase("START") ) {
-					
+					// START CLOCKTIME, format: HH:MM
 					String clocktime = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-
 					if (clocktime != null && clocktime.equalsIgnoreCase("CLOCKTIME")) {
 						String value = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 						String unidade = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
 						if (value != null) {
 							StringTokenizer st = new StringTokenizer(value, ":");
-							int hora = Integer.valueOf(st.nextToken());
-							int minutos = Integer.valueOf(st.nextToken());
-							if (unidade != null) {
+							Integer hours = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
+							Integer minutes = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
+							if (hours != null && minutes != null && unidade != null) {
 								if (unidade.equalsIgnoreCase("PM")) {
-									hora = hora + 12;
-								} else if (hora == 12) {
-									hora = 0;
+									hours = hours + 12;
+								} else if (hours == 12) {
+									hours = 0;
 								}
+								netWork.setStartClockTime(new DateTimeInterval(hours, minutes, 0));
 							}
-							netWork.setStartClockTime(new DateTime(2008, 01, 01, hora, minutos, 0, 0));					
+				
 						}
 
 					}
@@ -704,11 +691,10 @@ class EpaFileReader {
 
 				/*
 				 * [CONTROLS]
-				 * LINK 9 CLOSED AT TIME 1
-				 * LINK 9 OPEN AT TIME 10
-				 * LINK 9 CLOSED AT TIME 20
+				 * LINK ID CLOSED AT CLOCKTIME HH:MM AM|PM
+				 * LINK ID OPEN AT CLOCKTIME HH:MM AM|PM
 				 */
-//				;LINK	ID     STATE	AT TIME	INTERVAL    
+//				;LINK	ID     STATE	AT CLOCKTIME	INTERVAL    
 				StringTokenizer tokenizer = new StringTokenizer(command);
 
 				//ugly!
@@ -717,11 +703,25 @@ class EpaFileReader {
 					String linkID = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					String state = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					String at = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+					String clocktime = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+					
 					String time = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-					String interval = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+					String unit = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
-					if (linkID != null && state != null && interval != null) {
-						netWork.addControl(new Integer(interval), linkID, state.equalsIgnoreCase("OPEN"));					
+					if (linkID != null && state != null && time != null && unit != null) {
+						
+						StringTokenizer st = new StringTokenizer(time, ":");
+						Integer hours = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
+						Integer minutes = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
+						if(hours != null && minutes != null) {
+							if (unit.equalsIgnoreCase("PM")) {
+								hours += 12;
+							} else if (hours == 12) {
+								hours = 0;
+							}
+							netWork.addControl(new DateTimeInterval(hours, minutes, 0), 
+									linkID, state.equalsIgnoreCase("OPEN"));							
+						}
 					}
 
 				}

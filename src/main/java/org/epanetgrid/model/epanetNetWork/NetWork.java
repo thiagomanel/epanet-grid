@@ -4,12 +4,12 @@
 package org.epanetgrid.model.epanetNetWork;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.epanetgrid.model.ILink;
 import org.epanetgrid.model.INode;
 import org.epanetgrid.model.NetworkComponent;
+import org.epanetgrid.model.controls.ControlAction;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
 import org.epanetgrid.model.link.IValve;
@@ -17,6 +17,7 @@ import org.epanetgrid.model.nodes.IJunction;
 import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.report.IReport;
+import org.epanetgrid.resultado.output.DateTimeInterval;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
@@ -73,7 +74,7 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public List<String> getBackdrop();
 	
-	public Map<Integer, Map<String, Boolean>> getControls();
+	public Set<ControlAction> getControls();
 	
 	public List<String> getRules();
 	
@@ -95,6 +96,6 @@ public interface NetWork <B extends IPump, P extends IPipe, T extends ITank, J e
 	
 	public Duration getHydraulicTimestep();
 	
-	public DateTime getStartClockTime();
+	public DateTimeInterval getStartClockTime();
 
 }

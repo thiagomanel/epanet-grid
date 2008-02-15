@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 import org.epanetgrid.model.ILink;
 import org.epanetgrid.model.INode;
 import org.epanetgrid.model.NetworkComponent;
+import org.epanetgrid.model.controls.ControlAction;
 import org.epanetgrid.model.link.DefaultPipe;
 import org.epanetgrid.model.link.DefaultPump;
 import org.epanetgrid.model.link.IPipe;
@@ -29,6 +30,7 @@ import org.epanetgrid.model.nodes.IReservoir;
 import org.epanetgrid.model.nodes.ITank;
 import org.epanetgrid.model.report.IReport;
 import org.epanetgrid.model.report.Report;
+import org.epanetgrid.resultado.output.DateTimeInterval;
 import org.epanetgrid.util.NetWorkComponentStringComparator;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
@@ -39,7 +41,7 @@ import org.joda.time.Duration;
  */
 public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>>{
 	
-	private final Map<String, NetworkComponent> component = new HashMap<String, NetworkComponent>();
+	private final Map<String, NetworkComponent<?>> component = new HashMap<String, NetworkComponent<?>>();
 	
 	private final Set<IPipe<?>> pipes = new HashSet<IPipe<?>>();
 	private final Set<IPump<?>> pumps = new HashSet<IPump<?>>();
@@ -55,7 +57,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 	private final Map<INode<?>, Set<ILink<?>>> elosAJusante = new HashMap<INode<?>, Set<ILink<?>>>();
 	private final Map<INode<?>, Set<ILink<?>>> elosAMontante = new HashMap<INode<?>, Set<ILink<?>>>();
 
-	private final Map<Integer, Map<String, Boolean>> controls = new TreeMap<Integer, Map<String,Boolean>>();
+	private final Set<ControlAction> controls = new TreeSet<ControlAction>();
 	
 	private final List<String> energy = new LinkedList<String>();
 	private final List<String> options = new LinkedList<String>();
@@ -67,7 +69,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 
 	private Duration duration;
 	private Duration hydraulicTimestep;
-	private DateTime startClockTime;
+	private DateTimeInterval startClockTime;
 
 	private List<String> backdrop = new LinkedList<String>();
 	private List<String> coordinates = new LinkedList<String>();
@@ -116,10 +118,8 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		
 	private void copyControls(
 			NetWork<IPump<?>, IPipe<?>, ITank<?>, IJunction<?>, IValve<?>, IReservoir<?>> baseNetWork) {
-		for (Map.Entry<Integer, Map<String, Boolean>> linkControl : baseNetWork.getControls().entrySet()) {
-			for (Map.Entry<String, Boolean> control : linkControl.getValue().entrySet()) {
-				addControl(linkControl.getKey(), control.getKey(), control.getValue());
-			}
+		for (ControlAction action : baseNetWork.getControls()) {
+			addControl(action.getClocktime(), action.getLinkID(), action.state());
 		}
 	}
 
@@ -680,11 +680,11 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		this.hydraulicTimestep = hydraulicTimestep;
 	}
 	
-	public DateTime getStartClockTime() {
+	public DateTimeInterval getStartClockTime() {
 		return startClockTime;
 	}
 
-	public void setStartClockTime(DateTime startClockTime) {
+	public void setStartClockTime(DateTimeInterval startClockTime) {
 		this.startClockTime = startClockTime;
 	}
 
@@ -694,42 +694,47 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		return sortedSet;
 	}
 
-	public void setControls(Map<Integer, Map<String, Boolean>> controls) {
+	public void setControls(Set<ControlAction> controls) {
 		this.controls.clear();
-		for (Map.Entry<Integer, Map<String, Boolean>> entry : controls.entrySet()) {
-			for (Map.Entry<String, Boolean> control : entry.getValue().entrySet()) {
-				addControl(entry.getKey(), control.getKey(), control.getValue());
-			}
+		for (ControlAction action : controls) {
+			this.controls.add(action);
 		}
 	}
 	
-	public void addControl(Integer interval, String linkID, boolean state) {
-		if ( controls.get(interval) == null ) {
-			controls.put(interval, new TreeMap<String, Boolean>());
-		}
-		controls.get(interval).put(linkID, state);
+	public void addControl(DateTimeInterval dateTime, String linkID, boolean state) {
+		controls.add(new ControlAction(dateTime, linkID, state));
 	}
 
-	public Map<Integer, Map<String, Boolean>> getControls() {
+	public Set<ControlAction> getControls() {
 		return controls;
 	}
 	
-	public Map<Integer, Map<String, Boolean>> getFullControls() {
-		
-		Map<Integer, Map<String, Boolean>> full = new HashMap<Integer, Map<String,Boolean>>(this.controls);
+	public Set<ControlAction> getFullControls() {
 		
 		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
 		
-		for (int i = 0; i <= numIntervals; i++) {
-			Map<String, Boolean> intervalControl = new TreeMap<String,Boolean>();
-			for (IPump<?> pump : this.pumps) {
-				Boolean state = ( full.get(i) != null ? full.get(i).get(pump.label()) : null );
-				if (state == null) {
-					state = (i == 0 ? true : full.get(i-1).get(pump.label()));
+		Map<String, Map<DateTimeInterval, Boolean>> actions = new HashMap<String, Map<DateTimeInterval, Boolean>>();
+		
+		for (IPump<?> pump : this.pumps) {
+			for (int i = 0; i <= numIntervals; i++) {
+				DateTimeInterval clocktime = startClockTime.plus(i * hydraulicTimestep.getMillis());
+				if ( actions.get(pump.label()) == null ) {
+					actions.put(pump.label(), new TreeMap<DateTimeInterval, Boolean>());					
 				}
-				intervalControl.put(pump.label(), state);
+				actions.get(pump.label()).put(clocktime, true);
 			}
-			full.put(i, intervalControl);
+		}
+		
+		for (ControlAction action : this.controls) {
+			actions.get(action.getLinkID()).put(action.getClocktime(), action.state());
+		}
+		
+		Set<ControlAction> full = new TreeSet<ControlAction>();
+		
+		for (Map.Entry<String, Map<DateTimeInterval, Boolean>> pumpActions : actions.entrySet()) {
+			for (Map.Entry<DateTimeInterval, Boolean> pumpControl : pumpActions.getValue().entrySet()) {
+				full.add(new ControlAction(pumpControl.getKey(), pumpActions.getKey(), pumpControl.getValue()));
+			}
 		}
 
 		return full;

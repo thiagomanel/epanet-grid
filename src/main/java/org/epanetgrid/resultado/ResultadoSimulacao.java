@@ -30,6 +30,7 @@ import org.epanetgrid.resultado.output.EPANETErrorRelatorio;
 import org.epanetgrid.resultado.output.EPANETOutPutRelatorio;
 import org.epanetgrid.resultado.output.IAlarme;
 import org.epanetgrid.resultado.output.IInputError;
+import org.epanetgrid.util.NetWorkUtils;
 
 /**
  * @author alan
@@ -148,7 +149,8 @@ public class ResultadoSimulacao {
 		
 		for (IAlarme alarme : alarmes) {
 			if ( alarme.getTipoDeRestricao().equals(IAlarme.Tipo.warning) ) {
-				int index = getIndiceWarning(alarme);
+//				int index = getIndiceWarning(alarme);
+				int index = NetWorkUtils.getIndice(network, alarme.getDate());
 //				if (index == intervalos) {
 //					index--;
 //				}
@@ -160,35 +162,23 @@ public class ResultadoSimulacao {
 	}
 
 
-	private int getIndiceWarning(IAlarme alarme) {
-//		DateTime startClockTime = network.getStartClockTime();
-//		DateTime warningTime = new DateTime(startClockTime.getYear(), 
-//				startClockTime.getMonthOfYear(), 
-//				startClockTime.getDayOfMonth(), 
-//				alarme.getDate().getHour(), 
-//				alarme.getDate().getMinutes(), 
-//				alarme.getDate().getSeconds(), 
-//				0);
-		
-		long d1 = (network.getStartClockTime().getHourOfDay() * 60 * 60 * 1000) + 
-				(network.getStartClockTime().getMinuteOfHour() * 60 * 1000) +
-				(network.getStartClockTime().getSecondOfMinute() * 1000);
+//	private int getIndiceWarning(IAlarme alarme) {
+//		long d1 = (network.getStartClockTime().getHour() * 60 * 60 * 1000) + 
+//				(network.getStartClockTime().getMinutes() * 60 * 1000);
+//
+//		long d2 = (alarme.getDate().getHour() * 60 * 60 * 1000) + 
+//				(alarme.getDate().getMinutes() * 60 * 1000);
+//		
+//		return (int)( (d2 - d1) / network.getHydraulicTimestep().getMillis() );
+//	}
 
-//		System.out.println("d1 = " + (network.getStartClockTime().getHourOfDay()) + " " + 
-//				(network.getStartClockTime().getMinuteOfHour()) +  " " +
-//				(network.getStartClockTime().getSecondOfMinute()) + " = " + d1);
-		
-		long d2 = (alarme.getDate().getHour() * 60 * 60 * 1000) + 
-				(alarme.getDate().getMinutes() * 60 * 1000) +
-				(alarme.getDate().getSeconds() * 1000);
-		
-//		System.out.println("d2 = " +  (alarme.getDate().getHour()) + " " + 
-//				(alarme.getDate().getMinutes()) + " " +
-//				(alarme.getDate().getSeconds())  + " = " + d2);
-		
-		return (int)( (d2 - d1) / network.getHydraulicTimestep().getMillis() );
+	public DefaultOutPutRelatorio getRelatorioFinal() {
+		return relatorioFinal;
 	}
-
+	
+	public DefaultErrorRelatorio getRelatorioSaida() {
+		return relatorioSaida;
+	}
 
 	public List<IInputError> getInputErrors() {
 		return relatorioSaida.getInputErrors();
