@@ -8,6 +8,7 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 
+import org.epanetgrid.model.controls.ControlAction;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IValve;
@@ -73,14 +74,9 @@ public class EpaFileReaderTest extends TestCase {
 		Map<String, String> reports = netWork.getReports().getValues();
 		assertEquals(7, reports.size());
 		
-		Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
+		Set<ControlAction> controls = netWork.getControls();
 		
 		assertEquals(2, controls.size());
-		assertEquals(1, controls.get(1).size());
-		assertNull(controls.get(2));
-		assertEquals(1, controls.get(10).size());
-		assertFalse(controls.get(1).get("B1"));
-		assertTrue(controls.get(10).get("B1"));
 		
 		assertEquals(new Duration(24 * 60 * 60 * 1000), netWork.getDuration());
 		
@@ -128,7 +124,7 @@ public class EpaFileReaderTest extends TestCase {
 		List<String> curves = netWork.getCurves();
 		assertEquals(49, curves.size());
 		
-		Map<String, Map<Integer, Boolean>> controls = netWork.getControls();
+		Set<ControlAction> controls = netWork.getControls();
 		assertEquals(0, controls.size());
 
 		List<String> rules = netWork.getRules();

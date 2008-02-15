@@ -11,7 +11,9 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
+import org.epanetgrid.model.controls.ControlAction;
 import org.epanetgrid.model.epanetNetWork.NetWork;
 import org.epanetgrid.model.link.IPipe;
 import org.epanetgrid.model.link.IPump;
@@ -762,17 +764,15 @@ class EpaFileWriter {
 		
 		@Override
 		protected void printCore(PrintWriter writer) {
-			Map<Integer, Map<String, Boolean>> controls = netWork.getControls();
-			for (Map.Entry<Integer, Map<String, Boolean>> entry : controls.entrySet()) {
-				for (Map.Entry<String, Boolean> control : entry.getValue().entrySet()) {
-					StringBuffer sb = new StringBuffer("LINK ");
-					sb.append(control.getKey() + " ");
-					sb.append(control.getValue() ? "OPEN" : "CLOSED");
-					sb.append(" AT TIME " + entry.getKey());
-					writer.println(sb.toString());
-				}
-				
+			Set<ControlAction> controls = netWork.getControls();
+			for (ControlAction action : controls) {
+				StringBuffer sb = new StringBuffer("LINK ");
+				sb.append(action.getLinkID() + " ");
+				sb.append(action.state() ? "OPEN" : "CLOSED");
+				sb.append(" AT CLOCKTIME " + action.getClocktime().toAmPmString());
+				writer.println(sb.toString());
 			}
+
 		}
 
 		@Override
