@@ -552,9 +552,9 @@ class EpaFileReader {
 							Integer hours = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 							Integer minutes = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 							if (hours != null && minutes != null && unidade != null) {
-								if (unidade.equalsIgnoreCase("PM")) {
-									hours = hours + 12;
-								} else if (hours == 12) {
+								if (unidade.equalsIgnoreCase("PM") && hours != 12) {
+									hours += 12;
+								} else if (unidade.equalsIgnoreCase("AM") && hours == 12) {
 									hours = 0;
 								}
 								netWork.setStartClockTime(new DateTimeInterval(hours, minutes, 0));
@@ -714,9 +714,9 @@ class EpaFileReader {
 						Integer hours = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 						Integer minutes = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 						if(hours != null && minutes != null) {
-							if (unit.equalsIgnoreCase("PM")) {
+							if (unit.equalsIgnoreCase("PM") && hours != 12) {
 								hours += 12;
-							} else if (hours == 12) {
+							} else if (unit.equalsIgnoreCase("AM") && hours == 12) {
 								hours = 0;
 							}
 							netWork.addControl(new DateTimeInterval(hours, minutes, 0), 

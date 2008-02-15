@@ -32,7 +32,6 @@ import org.epanetgrid.model.report.IReport;
 import org.epanetgrid.model.report.Report;
 import org.epanetgrid.resultado.output.DateTimeInterval;
 import org.epanetgrid.util.NetWorkComponentStringComparator;
-import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 /**
@@ -713,30 +712,43 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		
 		int numIntervals = (int) (duration.getMillis() / hydraulicTimestep.getMillis());
 		
-		Map<String, Map<DateTimeInterval, Boolean>> actions = new HashMap<String, Map<DateTimeInterval, Boolean>>();
-		
-		for (IPump<?> pump : this.pumps) {
-			for (int i = 0; i <= numIntervals; i++) {
-				DateTimeInterval clocktime = startClockTime.plus(i * hydraulicTimestep.getMillis());
-				if ( actions.get(pump.label()) == null ) {
-					actions.put(pump.label(), new TreeMap<DateTimeInterval, Boolean>());					
-				}
-				actions.get(pump.label()).put(clocktime, true);
-			}
-		}
+		Map<String, Map<DateTimeInterval, ControlAction>> control = new TreeMap<String, Map<DateTimeInterval,ControlAction>>();
 		
 		for (ControlAction action : this.controls) {
-			actions.get(action.getLinkID()).put(action.getClocktime(), action.state());
+			if (control.get(action.getLinkID()) == null) {
+				control.put(action.getLinkID(), new TreeMap<DateTimeInterval, ControlAction>());
+			}
+			control.get(action.getLinkID()).put(action.getClocktime(), action);
 		}
-		
 		Set<ControlAction> full = new TreeSet<ControlAction>();
 		
-		for (Map.Entry<String, Map<DateTimeInterval, Boolean>> pumpActions : actions.entrySet()) {
-			for (Map.Entry<DateTimeInterval, Boolean> pumpControl : pumpActions.getValue().entrySet()) {
-				full.add(new ControlAction(pumpControl.getKey(), pumpActions.getKey(), pumpControl.getValue()));
+		Map<String, Map<DateTimeInterval, ControlAction>> actions = new HashMap<String, Map<DateTimeInterval, ControlAction>>();
+		
+		for (IPump<?> pump : this.pumps) {
+			DateTimeInterval clocktimeAntes = null;
+			DateTimeInterval clocktime = startClockTime;
+			for (int i = 0; i < numIntervals; i++) {
+				
+				if ( actions.get(pump.label()) == null ) {
+					actions.put(pump.label(), new TreeMap<DateTimeInterval, ControlAction>());					
+				}
+				ControlAction action = control.get(pump.label()).get(clocktime);
+				if (action == null) {
+					if(clocktimeAntes == null){
+						action = new ControlAction(clocktime, pump.label(), true);
+					} else {
+						action = actions.get(pump.label()).get(clocktimeAntes);
+						action = new ControlAction(clocktime, action.getLinkID(), action.state());
+					}
+				}
+				actions.get(pump.label()).put(clocktime, action);
+				full.add(action);
+				
+				clocktimeAntes = clocktime;
+				clocktime = clocktime.plus(hydraulicTimestep.getMillis());
 			}
 		}
-
+		
 		return full;
 	}
 

@@ -27,6 +27,12 @@ public class ControlAction implements Comparable<ControlAction> {
 		this.state = state;
 	}
 
+	public ControlAction(ControlAction action) {
+		this.clocktime = action.clocktime;
+		this.linkID = action.linkID;
+		this.state = action.state;
+	}
+
 	/**
 	 * @return
 	 */
