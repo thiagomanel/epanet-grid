@@ -706,19 +706,19 @@ class EpaFileReader {
 					String clocktime = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 					
 					String time = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
-					String unit = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
+//					String unit = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
 
-					if (linkID != null && state != null && time != null && unit != null) {
+					if (linkID != null && state != null && time != null /*&& unit != null*/) {
 						
 						StringTokenizer st = new StringTokenizer(time, ":");
 						Integer hours = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 						Integer minutes = st.hasMoreTokens() ? new Integer(st.nextToken()) : null;
 						if(hours != null && minutes != null) {
-							if (unit.equalsIgnoreCase("PM") && hours != 12) {
-								hours += 12;
-							} else if (unit.equalsIgnoreCase("AM") && hours == 12) {
-								hours = 0;
-							}
+//							if (unit.equalsIgnoreCase("PM") && hours != 12) {
+//								hours += 12;
+//							} else if (unit.equalsIgnoreCase("AM") && hours == 12) {
+//								hours = 0;
+//							}
 							netWork.addControl(new DateTimeInterval(hours, minutes, 0), 
 									linkID, state.equalsIgnoreCase("OPEN"));							
 						}
