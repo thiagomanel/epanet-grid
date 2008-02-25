@@ -726,7 +726,7 @@ public class DefaultNetWork implements NetWork<IPump<?>, IPipe<?>, ITank<?>, IJu
 		
 		for (IPump<?> pump : this.pumps) {
 			DateTimeInterval clocktimeAntes = null;
-			DateTimeInterval clocktime = startClockTime;
+			DateTimeInterval clocktime = startClockTime.plus(hydraulicTimestep.getMillis());;
 			for (int i = 0; i < numIntervals; i++) {
 				
 				if ( actions.get(pump.label()) == null ) {

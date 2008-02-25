@@ -769,7 +769,7 @@ class EpaFileWriter {
 				StringBuffer sb = new StringBuffer("LINK ");
 				sb.append(action.getLinkID() + " ");
 				sb.append(action.state() ? "OPEN" : "CLOSED");
-				sb.append(" AT CLOCKTIME " + action.getClocktime().toAmPmString());
+				sb.append(" AT TIME " + action.getClocktime().toString());
 				writer.println(sb.toString());
 			}
 
