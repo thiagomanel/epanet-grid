@@ -36,7 +36,7 @@ public class JunctionElevationPerturbadorTest extends TestCase {
 		EasyMock.replay(baseJunction);
 		
 		double newValue = new Random().nextDouble();
-		DefaultJuntion junctPert = new JunctionElevationPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
+		DefaultJuntion junctPert = (DefaultJuntion) new JunctionElevationPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
 		
 		assertTrue(baseJunction.label().equals(junctPert.label()));
 		assertTrue(baseJunction.getDemandPatternID().equals(junctPert.getDemandPatternID()));
