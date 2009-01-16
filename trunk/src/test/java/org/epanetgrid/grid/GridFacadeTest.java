@@ -81,4 +81,13 @@ public class GridFacadeTest extends TestCase {
 			fail();
 		} catch (IllegalArgumentException e) { }
 	}
+	
+	
+	public final void testGridExecution() {
+		
+		facade.addNetWorkFile("resources"+fs+"accept"+fs+"MalhaTeste1-1.inp",
+				"xptoOUT.txt");
+		
+		facade.execute();
+	}
 }

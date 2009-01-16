@@ -36,7 +36,7 @@ public class JunctionBaseDemandFlowPerturbadorTest extends TestCase {
 		EasyMock.replay(baseJunction);
 		
 		double newValue = new Random().nextDouble();
-		DefaultJuntion junctPert = new JunctionBaseDemandFlowPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
+		DefaultJuntion junctPert = (DefaultJuntion) new JunctionBaseDemandFlowPerturbador(baseJunction.label(), newValue).disturb(baseJunction);
 		
 		assertTrue(baseJunction.label().equals(junctPert.label()));
 		assertTrue(baseJunction.getDemandPatternID().equals(junctPert.getDemandPatternID()));
