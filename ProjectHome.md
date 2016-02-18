@@ -1,0 +1,1 @@
+Esta implementação contará com um extensão para execução paralela do modelo de simulação do EPANET
